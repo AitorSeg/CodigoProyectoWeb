@@ -49,16 +49,20 @@ function contarUsuariosDemo($usuarios, $tipo)
     return $total;
 }
 
-function obtenerIconoPerfil($tipo)
+function obtenerNombreIconoPerfil($tipo)
 {
+    $tipo = trim(mb_strtolower((string) $tipo, 'UTF-8'));
+
     $iconos = [
-        'todos' => 'user.svg',
-        'alumno' => 'graduation-cap.svg',
-        'profesor' => 'user.svg',
-        'secretaria' => 'briefcase-business.svg',
+        'todos' => 'layout-grid',
+        'alumno' => 'graduation-cap',
+        'profesor' => 'user',
+        'pas' => 'briefcase-business',
+        'secretaria' => 'briefcase-business',
+        'secretaría' => 'briefcase-business',
     ];
 
-    return $iconos[$tipo] ?? 'user.svg';
+    return $iconos[$tipo] ?? 'user';
 }
 ?>
 <!DOCTYPE html>
@@ -82,7 +86,7 @@ function obtenerIconoPerfil($tipo)
 
             <div class="demo-login-title">
                 <span class="demo-login-icon" aria-hidden="true">
-                    <img src="../img/iconos/user.svg" alt="">
+                    <img src="../img/iconos/blue-user.svg" alt="">
                 </span>
 
                 <div>
@@ -104,7 +108,7 @@ function obtenerIconoPerfil($tipo)
                         <?php
                             $totalUsuarios = contarUsuariosDemo($usuariosDemo, $tipo);
                             $claseInicial = $tipo === 'todos' ? 'demo-tab demo-tab-active' : 'demo-tab';
-                            $iconoTipo = obtenerIconoPerfil($tipo);
+                            $iconoTipo = obtenerNombreIconoPerfil($tipo);
                         ?>
 
                         <button
@@ -112,12 +116,18 @@ function obtenerIconoPerfil($tipo)
                             type="button"
                             data-filtro="<?php echo e($tipo); ?>"
                         >
-                            <img
-                                class="demo-tab-icon"
-                                src="../img/iconos/<?php echo e($iconoTipo); ?>"
-                                alt=""
-                                aria-hidden="true"
-                            >
+                            <span class="demo-tab-icon" aria-hidden="true">
+                                <img
+                                    class="demo-state-icon demo-state-icon-grey"
+                                    src="../img/iconos/grey-<?php echo e($iconoTipo); ?>.svg"
+                                    alt=""
+                                >
+                                <img
+                                    class="demo-state-icon demo-state-icon-blue"
+                                    src="../img/iconos/blue-<?php echo e($iconoTipo); ?>.svg"
+                                    alt=""
+                                >
+                            </span>
                             <span class="demo-tab-text">
                                 <?php echo e($nombreTipo); ?>
                                 <small>(<?php echo $totalUsuarios; ?>)</small>
@@ -136,7 +146,7 @@ function obtenerIconoPerfil($tipo)
                             <div class="demo-user-list">
                                 <?php foreach ($usuariosDemo as $usuario): ?>
                                     <?php if (($usuario['tipo'] ?? '') !== $tipo) { continue; } ?>
-                                    <?php $iconoUsuario = obtenerIconoPerfil($usuario['tipo'] ?? ''); ?>
+                                    <?php $iconoUsuario = obtenerNombreIconoPerfil($usuario['tipo'] ?? ''); ?>
 
                                     <button
                                         class="demo-user-option"
@@ -150,7 +160,16 @@ function obtenerIconoPerfil($tipo)
                                         data-rol="<?php echo e($usuario['rol'] ?? ''); ?>"
                                     >
                                         <span class="demo-user-avatar" aria-hidden="true">
-                                            <img src="../img/iconos/<?php echo e($iconoUsuario); ?>" alt="">
+                                            <img
+                                                class="demo-state-icon demo-state-icon-grey"
+                                                src="../img/iconos/grey-<?php echo e($iconoUsuario); ?>.svg"
+                                                alt=""
+                                            >
+                                            <img
+                                                class="demo-state-icon demo-state-icon-blue"
+                                                src="../img/iconos/blue-<?php echo e($iconoUsuario); ?>.svg"
+                                                alt=""
+                                            >
                                         </span>
 
                                         <span class="demo-user-info">

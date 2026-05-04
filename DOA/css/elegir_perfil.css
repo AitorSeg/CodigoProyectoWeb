@@ -90,9 +90,23 @@
 }
 
 .demo-tab-icon {
+    position: relative;
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+}
+
+.demo-state-icon {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.18s ease;
+}
+
+.demo-state-icon-blue {
+    opacity: 0;
 }
 
 .demo-tab-text {
@@ -111,6 +125,16 @@
 .demo-tab-active {
     color: var(--color-primary);
     border-bottom-color: var(--color-primary);
+}
+
+.demo-tab:hover .demo-state-icon-grey,
+.demo-tab-active .demo-state-icon-grey {
+    opacity: 0;
+}
+
+.demo-tab:hover .demo-state-icon-blue,
+.demo-tab-active .demo-state-icon-blue {
+    opacity: 1;
 }
 
 .demo-user-groups {
@@ -157,7 +181,18 @@
     background: rgba(0, 229, 255, 0.08);
 }
 
+.demo-user-option:hover .demo-state-icon-grey,
+.demo-user-option-active .demo-state-icon-grey {
+    opacity: 0;
+}
+
+.demo-user-option:hover .demo-state-icon-blue,
+.demo-user-option-active .demo-state-icon-blue {
+    opacity: 1;
+}
+
 .demo-user-avatar {
+    position: relative;
     width: 34px;
     height: 34px;
     display: grid;
@@ -167,7 +202,8 @@
     background: var(--color-surface-alt);
 }
 
-.demo-user-avatar img {
+.demo-user-avatar .demo-state-icon {
+    inset: 7px;
     width: 19px;
     height: 19px;
 }
