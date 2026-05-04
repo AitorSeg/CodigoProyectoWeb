@@ -1,12 +1,16 @@
 <?php
 session_start();
-require_once __DIR__ . '/usuarios_demo.php';
 
 /*
-    Intelephense no siempre detecta variables creadas dentro de archivos incluidos.
-    Esta línea deja claro que la lista de usuarios existe después del require_once.
+    Cargamos los usuarios mock de forma compatible con las dos versiones
+    que hemos usado durante el desarrollo.
 */
-$usuariosDemo = $usuariosDemo ?? [];
+$usuariosDemo = [];
+$datosUsuarios = require __DIR__ . '/usuarios_demo.php';
+
+if (is_array($datosUsuarios)) {
+    $usuariosDemo = $datosUsuarios['usuarios'] ?? $datosUsuarios['usuariosDemo'] ?? $usuariosDemo;
+}
 
 $email = strtolower(trim($_POST['email'] ?? ''));
 $password = trim($_POST['password'] ?? '');
@@ -16,26 +20,29 @@ if ($email === '' || $password === '') {
     exit;
 }
 
-$usuario = buscarUsuarioPorCredenciales($usuariosDemo, $email, $password);
+$usuarioEncontrado = null;
 
-if ($usuario === null) {
+foreach ($usuariosDemo as $usuario) {
+    if (($usuario['email'] ?? '') === $email && ($usuario['password'] ?? '') === $password) {
+        $usuarioEncontrado = $usuario;
+        break;
+    }
+}
+
+if ($usuarioEncontrado === null) {
     $emailUrl = urlencode($email);
     header("Location: elegir_perfil.php?error=credenciales&email=$emailUrl");
     exit;
 }
 
 $_SESSION['usuario_demo'] = [
-    'id' => $usuario['id'],
-    'dni' => $usuario['dni'],
-    'nombre' => $usuario['nombre'],
-    'email' => $usuario['email'],
-    'tipo' => $usuario['tipo'],
-    'rol' => $usuario['rol'],
+    'id' => $usuarioEncontrado['id'],
+    'dni' => $usuarioEncontrado['dni'],
+    'nombre' => $usuarioEncontrado['nombre'],
+    'email' => $usuarioEncontrado['email'],
+    'tipo' => $usuarioEncontrado['tipo'],
+    'rol' => $usuarioEncontrado['rol'],
 ];
 
-/*
-    De momento todos los perfiles entran al mismo panel.
-    Más adelante se podrá redirigir según el tipo de usuario.
-*/
 header('Location: panel_principal.php');
 exit;

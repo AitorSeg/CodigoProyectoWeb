@@ -1,13 +1,21 @@
 <?php
 session_start();
-require_once __DIR__ . '/usuarios_demo.php';
 
 /*
-    Intelephense no siempre detecta variables creadas dentro de archivos incluidos.
-    Estas dos líneas dejan claro que las variables existen después del require_once.
+    Cargamos los datos mock de usuarios.
+    Esta forma acepta dos versiones de usuarios_demo.php:
+    - una que define $usuariosDemo y $tiposUsuarioDemo;
+    - una que devuelve un array con 'usuarios' y 'tipos'.
 */
-$usuariosDemo = $usuariosDemo ?? [];
-$tiposUsuarioDemo = $tiposUsuarioDemo ?? [];
+$usuariosDemo = [];
+$tiposUsuarioDemo = [];
+
+$datosUsuarios = require __DIR__ . '/usuarios_demo.php';
+
+if (is_array($datosUsuarios)) {
+    $usuariosDemo = $datosUsuarios['usuarios'] ?? $datosUsuarios['usuariosDemo'] ?? $usuariosDemo;
+    $tiposUsuarioDemo = $datosUsuarios['tipos'] ?? $datosUsuarios['tiposUsuarioDemo'] ?? $tiposUsuarioDemo;
+}
 
 $error = $_GET['error'] ?? '';
 $emailAnterior = $_GET['email'] ?? '';
@@ -17,10 +25,40 @@ $mensajesError = [
     'credenciales' => 'Las credenciales no pertenecen a ningún usuario de prueba.',
 ];
 
-$mensajeError = '';
+$mensajeError = $mensajesError[$error] ?? '';
 
-if (isset($mensajesError[$error])) {
-    $mensajeError = $mensajesError[$error];
+function e($texto)
+{
+    return htmlspecialchars((string) $texto, ENT_QUOTES, 'UTF-8');
+}
+
+function contarUsuariosDemo($usuarios, $tipo)
+{
+    if ($tipo === 'todos') {
+        return count($usuarios);
+    }
+
+    $total = 0;
+
+    foreach ($usuarios as $usuario) {
+        if (($usuario['tipo'] ?? '') === $tipo) {
+            $total++;
+        }
+    }
+
+    return $total;
+}
+
+function obtenerIconoPerfil($tipo)
+{
+    $iconos = [
+        'todos' => 'user.svg',
+        'alumno' => 'graduation-cap.svg',
+        'profesor' => 'user.svg',
+        'secretaria' => 'briefcase-business.svg',
+    ];
+
+    return $iconos[$tipo] ?? 'user.svg';
 }
 ?>
 <!DOCTYPE html>
@@ -43,7 +81,9 @@ if (isset($mensajesError[$error])) {
             >
 
             <div class="demo-login-title">
-                <span class="demo-login-icon" aria-hidden="true">👤</span>
+                <span class="demo-login-icon" aria-hidden="true">
+                    <img src="../img/iconos/user.svg" alt="">
+                </span>
 
                 <div>
                     <h1>Elegir perfil de prueba</h1>
@@ -62,17 +102,26 @@ if (isset($mensajesError[$error])) {
                 <div class="demo-tabs" role="tablist" aria-label="Filtrar perfiles de prueba">
                     <?php foreach ($tiposUsuarioDemo as $tipo => $nombreTipo): ?>
                         <?php
-                            $totalUsuarios = contarUsuariosPorTipo($usuariosDemo, $tipo);
+                            $totalUsuarios = contarUsuariosDemo($usuariosDemo, $tipo);
                             $claseInicial = $tipo === 'todos' ? 'demo-tab demo-tab-active' : 'demo-tab';
+                            $iconoTipo = obtenerIconoPerfil($tipo);
                         ?>
 
                         <button
-                            class="<?php echo $claseInicial; ?>"
+                            class="<?php echo e($claseInicial); ?>"
                             type="button"
-                            data-filtro="<?php echo limpiarTexto($tipo); ?>"
+                            data-filtro="<?php echo e($tipo); ?>"
                         >
-                            <?php echo limpiarTexto($nombreTipo); ?>
-                            <span>(<?php echo $totalUsuarios; ?>)</span>
+                            <img
+                                class="demo-tab-icon"
+                                src="../img/iconos/<?php echo e($iconoTipo); ?>"
+                                alt=""
+                                aria-hidden="true"
+                            >
+                            <span class="demo-tab-text">
+                                <?php echo e($nombreTipo); ?>
+                                <small>(<?php echo $totalUsuarios; ?>)</small>
+                            </span>
                         </button>
                     <?php endforeach; ?>
                 </div>
@@ -81,32 +130,35 @@ if (isset($mensajesError[$error])) {
                     <?php foreach ($tiposUsuarioDemo as $tipo => $nombreTipo): ?>
                         <?php if ($tipo === 'todos') { continue; } ?>
 
-                        <section class="demo-user-group" data-grupo="<?php echo limpiarTexto($tipo); ?>">
-                            <h3><?php echo limpiarTexto($nombreTipo); ?></h3>
+                        <section class="demo-user-group" data-grupo="<?php echo e($tipo); ?>">
+                            <h3><?php echo e($nombreTipo); ?></h3>
 
                             <div class="demo-user-list">
                                 <?php foreach ($usuariosDemo as $usuario): ?>
-                                    <?php if ($usuario['tipo'] !== $tipo) { continue; } ?>
+                                    <?php if (($usuario['tipo'] ?? '') !== $tipo) { continue; } ?>
+                                    <?php $iconoUsuario = obtenerIconoPerfil($usuario['tipo'] ?? ''); ?>
 
                                     <button
                                         class="demo-user-option"
                                         type="button"
-                                        data-id="<?php echo limpiarTexto($usuario['id']); ?>"
-                                        data-dni="<?php echo limpiarTexto($usuario['dni']); ?>"
-                                        data-nombre="<?php echo limpiarTexto($usuario['nombre']); ?>"
-                                        data-email="<?php echo limpiarTexto($usuario['email']); ?>"
-                                        data-password="<?php echo limpiarTexto($usuario['password']); ?>"
-                                        data-tipo="<?php echo limpiarTexto($usuario['tipo']); ?>"
-                                        data-rol="<?php echo limpiarTexto($usuario['rol']); ?>"
+                                        data-id="<?php echo e($usuario['id'] ?? ''); ?>"
+                                        data-dni="<?php echo e($usuario['dni'] ?? ''); ?>"
+                                        data-nombre="<?php echo e($usuario['nombre'] ?? ''); ?>"
+                                        data-email="<?php echo e($usuario['email'] ?? ''); ?>"
+                                        data-password="<?php echo e($usuario['password'] ?? ''); ?>"
+                                        data-tipo="<?php echo e($usuario['tipo'] ?? ''); ?>"
+                                        data-rol="<?php echo e($usuario['rol'] ?? ''); ?>"
                                     >
-                                        <span class="demo-user-avatar" aria-hidden="true">👤</span>
+                                        <span class="demo-user-avatar" aria-hidden="true">
+                                            <img src="../img/iconos/<?php echo e($iconoUsuario); ?>" alt="">
+                                        </span>
 
                                         <span class="demo-user-info">
-                                            <strong><?php echo limpiarTexto($usuario['nombre']); ?></strong>
+                                            <strong><?php echo e($usuario['nombre'] ?? ''); ?></strong>
                                             <span>
-                                                <?php echo limpiarTexto($usuario['email']); ?>
+                                                <?php echo e($usuario['email'] ?? ''); ?>
                                                 ·
-                                                <?php echo limpiarTexto($usuario['password']); ?>
+                                                <?php echo e($usuario['password'] ?? ''); ?>
                                             </span>
                                         </span>
 
@@ -142,7 +194,7 @@ if (isset($mensajesError[$error])) {
                     id="mensajeError"
                     role="alert"
                 >
-                    <?php echo limpiarTexto($mensajeError); ?>
+                    <?php echo e($mensajeError); ?>
                 </p>
 
                 <form action="procesar_login_demo.php" method="post" id="formLoginDemo">
@@ -155,7 +207,7 @@ if (isset($mensajesError[$error])) {
                             type="email"
                             id="email"
                             name="email"
-                            value="<?php echo limpiarTexto($emailAnterior); ?>"
+                            value="<?php echo e($emailAnterior); ?>"
                             placeholder="ejemplo@upv.es"
                             autocomplete="username"
                         >

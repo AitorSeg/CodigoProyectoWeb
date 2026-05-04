@@ -41,9 +41,19 @@
 }
 
 .demo-login-icon {
-    color: var(--color-text-muted);
-    font-size: 40px;
-    line-height: 1;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+}
+
+.demo-login-icon img {
+    width: 24px;
+    height: 24px;
 }
 
 .demo-login-grid {
@@ -68,6 +78,10 @@
 
 .demo-tab {
     min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
     border: 0;
     border-bottom: 2px solid transparent;
     color: var(--color-text-muted);
@@ -75,8 +89,22 @@
     font-weight: 600;
 }
 
-.demo-tab span {
+.demo-tab-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.demo-tab-text {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.demo-tab-text small {
     color: var(--color-text-soft);
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .demo-tab:hover,
@@ -123,8 +151,25 @@
     background: rgba(0, 229, 255, 0.06);
 }
 
+.demo-user-option:hover .demo-user-avatar,
+.demo-user-option-active .demo-user-avatar {
+    border-color: var(--color-primary);
+    background: rgba(0, 229, 255, 0.08);
+}
+
 .demo-user-avatar {
-    color: var(--color-text-muted);
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    background: var(--color-surface-alt);
+}
+
+.demo-user-avatar img {
+    width: 19px;
+    height: 19px;
 }
 
 .demo-user-arrow {
