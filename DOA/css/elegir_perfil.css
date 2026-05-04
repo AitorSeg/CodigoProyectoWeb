@@ -1,0 +1,281 @@
+/* ==========================================================================
+   DOA - Pantalla elegir perfil de prueba
+   Añadir como archivo aparte: DOA/css/elegir_perfil.css
+   ========================================================================== */
+
+.demo-login-body {
+    min-height: 100vh;
+    background: var(--color-bg);
+}
+
+.demo-login-page {
+    width: min(100% - 48px, 1180px);
+    margin: 0 auto;
+    padding: var(--space-6) 0 var(--space-8);
+}
+
+.demo-login-header {
+    margin-bottom: var(--space-6);
+}
+
+.demo-login-logo {
+    width: 122px;
+    height: auto;
+    margin-bottom: var(--space-8);
+}
+
+.demo-login-title {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+}
+
+.demo-login-title h1 {
+    margin-bottom: var(--space-2);
+}
+
+.demo-login-title p {
+    max-width: 680px;
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+}
+
+.demo-login-icon {
+    color: var(--color-text-muted);
+    font-size: 40px;
+    line-height: 1;
+}
+
+.demo-login-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+    gap: var(--space-8);
+    align-items: flex-start;
+}
+
+.demo-users-card,
+.demo-form-card {
+    padding: var(--space-6);
+}
+
+.demo-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.demo-tab {
+    min-height: 44px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: var(--color-text-muted);
+    background: transparent;
+    font-weight: 600;
+}
+
+.demo-tab span {
+    color: var(--color-text-soft);
+}
+
+.demo-tab:hover,
+.demo-tab-active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+.demo-user-groups {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.demo-user-group h3 {
+    margin-bottom: var(--space-3);
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+.demo-user-list {
+    display: grid;
+    gap: var(--space-2);
+}
+
+.demo-user-option {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--space-3);
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    background: var(--color-surface);
+    text-align: left;
+}
+
+.demo-user-option:hover,
+.demo-user-option-active {
+    border-color: var(--color-primary);
+    background: rgba(0, 229, 255, 0.06);
+}
+
+.demo-user-avatar {
+    color: var(--color-text-muted);
+}
+
+.demo-user-arrow {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    justify-self: end;
+    flex-shrink: 0;
+}
+
+.demo-user-arrow-icon {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.18s ease;
+}
+
+.demo-user-arrow-blue {
+    opacity: 0;
+}
+
+.demo-user-option:hover .demo-user-arrow-grey,
+.demo-user-option-active .demo-user-arrow-grey {
+    opacity: 0;
+}
+
+.demo-user-option:hover .demo-user-arrow-blue,
+.demo-user-option-active .demo-user-arrow-blue {
+    opacity: 1;
+}
+
+.demo-user-info {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+}
+
+.demo-user-info strong,
+.demo-user-info span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.demo-user-info span {
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+.demo-form-card h2 {
+    margin-bottom: var(--space-2);
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.demo-error {
+    margin: var(--space-4) 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radius-md);
+    color: var(--color-error);
+    background: rgba(255, 64, 85, 0.08);
+}
+
+.demo-password-field {
+    position: relative;
+}
+
+.demo-password-field .input {
+    padding-right: 92px;
+}
+
+.demo-show-password {
+    position: absolute;
+    top: 50%;
+    right: var(--space-2);
+    transform: translateY(-50%);
+    min-height: 32px;
+    padding: 0 var(--space-3);
+    border: 0;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    background: transparent;
+}
+
+.demo-show-password:hover {
+    color: var(--color-primary);
+    background: rgba(0, 229, 255, 0.08);
+}
+
+.demo-selected-profile {
+    margin: var(--space-6) 0;
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-alt);
+}
+
+.demo-selected-profile .label {
+    margin-bottom: var(--space-3);
+}
+
+.demo-selected-profile ul {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.demo-selected-profile li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    color: var(--color-text-muted);
+}
+
+.demo-selected-profile strong {
+    color: var(--color-text);
+    text-align: right;
+}
+
+.demo-submit-button {
+    width: 100%;
+}
+
+.demo-info-box {
+    margin-top: var(--space-6);
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
+    background: rgba(21, 31, 45, 0.7);
+}
+
+.demo-info-box p {
+    margin: var(--space-2) 0 0;
+}
+
+@media (max-width: 900px) {
+    .demo-login-page {
+        width: min(100% - 32px, 520px);
+    }
+
+    .demo-login-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .demo-tabs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
