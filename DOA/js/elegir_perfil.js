@@ -1,116 +1,154 @@
 /*
-    DOA - Elegir perfil de prueba
+    Pantalla: Elegir perfil de prueba
 */
 
 document.addEventListener("DOMContentLoaded", function () {
-    const tabButtons = document.querySelectorAll(".demo-tab");
-    const userGroups = document.querySelectorAll(".demo-user-group");
-    const userButtons = document.querySelectorAll(".demo-user-option");
+    const filtros = document.querySelectorAll(".filtro-perfil");
+    const gruposUsuarios = document.querySelectorAll(".grupo-usuarios-demo");
+    const usuarios = document.querySelectorAll(".usuario-demo");
 
     const formLogin = document.getElementById("formLoginDemo");
-    const inputPerfilId = document.getElementById("perfilId");
-    const inputEmail = document.getElementById("email");
-    const inputPassword = document.getElementById("password");
+    const inputCorreo = document.getElementById("correoDemo");
+    const inputPassword = document.getElementById("passwordDemo");
     const botonMostrarPassword = document.getElementById("botonMostrarPassword");
-    const mensajeError = document.getElementById("mensajeError");
-
-    const tarjetaLogin = document.querySelector(".demo-form-card");
+    const mensajeError = document.getElementById("mensajeErrorLogin");
 
     const perfilNombre = document.getElementById("perfilNombre");
     const perfilDni = document.getElementById("perfilDni");
     const perfilRol = document.getElementById("perfilRol");
 
-    function filtrarUsuarios(tipo) {
-        userGroups.forEach(function (group) {
-            if (tipo === "todos" || group.dataset.grupo === tipo) {
-                group.classList.remove("hidden");
+    const cajaLogin = document.querySelector(".caja-demo--login");
+
+    filtros.forEach(function (filtro) {
+        filtro.addEventListener("click", function () {
+            cambiarFiltro(filtro);
+        });
+    });
+
+    usuarios.forEach(function (usuario) {
+        usuario.addEventListener("click", function () {
+            seleccionarUsuario(usuario);
+        });
+    });
+
+    botonMostrarPassword.addEventListener("click", function () {
+        cambiarVisibilidadPassword();
+    });
+
+    formLogin.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        validarAcceso();
+    });
+
+    function cambiarFiltro(filtroSeleccionado) {
+        const filtro = filtroSeleccionado.dataset.filtro;
+
+        filtros.forEach(function (filtro) {
+            filtro.classList.remove("filtro-perfil--activo");
+        });
+
+        filtroSeleccionado.classList.add("filtro-perfil--activo");
+
+        gruposUsuarios.forEach(function (grupo) {
+            const grupoTipo = grupo.dataset.grupo;
+
+            if (filtro === "todos" || filtro === grupoTipo) {
+                grupo.classList.remove("oculto");
             } else {
-                group.classList.add("hidden");
+                grupo.classList.add("oculto");
             }
         });
     }
 
-    function activarTab(tabActiva) {
-        tabButtons.forEach(function (tab) {
-            tab.classList.remove("demo-tab-active");
+    function seleccionarUsuario(usuarioSeleccionado) {
+        usuarios.forEach(function (usuario) {
+            usuario.classList.remove("usuario-demo--activo");
         });
 
-        tabActiva.classList.add("demo-tab-active");
-    }
+        usuarioSeleccionado.classList.add("usuario-demo--activo");
 
-    function seleccionarUsuario(botonUsuario) {
-        userButtons.forEach(function (button) {
-            button.classList.remove("demo-user-option-active");
-        });
+        inputCorreo.value = usuarioSeleccionado.dataset.email;
+        inputPassword.value = usuarioSeleccionado.dataset.password;
 
-        botonUsuario.classList.add("demo-user-option-active");
-
-        inputPerfilId.value = botonUsuario.dataset.id;
-        inputEmail.value = botonUsuario.dataset.email;
-        inputPassword.value = botonUsuario.dataset.password;
-
-        perfilNombre.textContent = botonUsuario.dataset.nombre;
-        perfilDni.textContent = botonUsuario.dataset.dni;
-        perfilRol.textContent = botonUsuario.dataset.rol;
+        perfilNombre.textContent = usuarioSeleccionado.dataset.nombre;
+        perfilDni.textContent = usuarioSeleccionado.dataset.dni;
+        perfilRol.textContent = usuarioSeleccionado.dataset.rol;
 
         ocultarError();
         bajarAlLoginEnMovil();
     }
 
+    function cambiarVisibilidadPassword() {
+        if (inputPassword.type === "password") {
+            inputPassword.type = "text";
+            botonMostrarPassword.textContent = "Ocultar";
+        } else {
+            inputPassword.type = "password";
+            botonMostrarPassword.textContent = "Mostrar";
+        }
+    }
+
+    function validarAcceso() {
+        const correo = inputCorreo.value.trim().toLowerCase();
+        const password = inputPassword.value.trim();
+
+        if (correo === "" || password === "") {
+            mostrarError("Introduce el correo electrónico y la contraseña.");
+            return;
+        }
+
+        const usuarioEncontrado = buscarUsuario(correo, password);
+
+        if (usuarioEncontrado === null) {
+            mostrarError("Las credenciales no pertenecen a ningún usuario de prueba.");
+            return;
+        }
+
+        sessionStorage.setItem("usuarioDemoDOA", JSON.stringify(usuarioEncontrado));
+
+        window.location.href = "panel_principal.html";
+    }
+
+    function buscarUsuario(correo, password) {
+        for (let i = 0; i < usuarios.length; i++) {
+            const usuario = usuarios[i];
+
+            if (
+                usuario.dataset.email.toLowerCase() === correo &&
+                usuario.dataset.password === password
+            ) {
+                return {
+                    nombre: usuario.dataset.nombre,
+                    dni: usuario.dataset.dni,
+                    email: usuario.dataset.email,
+                    rol: usuario.dataset.rol
+                };
+            }
+        }
+
+        return null;
+    }
+
     function mostrarError(texto) {
         mensajeError.textContent = texto;
-        mensajeError.classList.remove("hidden");
+        mensajeError.classList.remove("oculto");
     }
 
     function ocultarError() {
         mensajeError.textContent = "";
-        mensajeError.classList.add("hidden");
+        mensajeError.classList.add("oculto");
     }
 
     function bajarAlLoginEnMovil() {
-        const esMovil = window.matchMedia("(max-width: 900px)").matches;
+        const esPantallaPequena = window.matchMedia("(max-width: 900px)").matches;
 
-        if (!esMovil || tarjetaLogin === null) {
+        if (!esPantallaPequena || cajaLogin === null) {
             return;
         }
 
-        tarjetaLogin.scrollIntoView({
+        cajaLogin.scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
     }
-
-    tabButtons.forEach(function (tab) {
-        tab.addEventListener("click", function () {
-            activarTab(tab);
-            filtrarUsuarios(tab.dataset.filtro);
-        });
-    });
-
-    userButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            seleccionarUsuario(button);
-        });
-    });
-
-    if (botonMostrarPassword !== null) {
-        botonMostrarPassword.addEventListener("click", function () {
-            const passwordEstaOculta = inputPassword.type === "password";
-
-            inputPassword.type = passwordEstaOculta ? "text" : "password";
-            botonMostrarPassword.textContent = passwordEstaOculta ? "Ocultar" : "Mostrar";
-        });
-    }
-
-    formLogin.addEventListener("submit", function (event) {
-        const email = inputEmail.value.trim();
-        const password = inputPassword.value.trim();
-
-        if (email === "" || password === "") {
-            event.preventDefault();
-            mostrarError("Introduce el correo electrónico y la contraseña.");
-        }
-    });
-
-    filtrarUsuarios("todos");
 });

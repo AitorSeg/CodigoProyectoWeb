@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegir perfil de prueba | DOA</title>
+
+    <link rel="stylesheet" href="../css/doa.css">
+    <link rel="stylesheet" href="../css/elegir_perfil.css">
+</head>
+
+<body class="pagina-doa pagina-elegir-perfil">
+    <header class="cabecera-doa">
+        <div class="cabecera-doa__logo">
+            <a href="elegir_perfil.html" aria-label="Volver a elegir perfil de prueba">
+                <img
+                    src="../img/LogoDoaAzulRecortado.png"
+                    alt="Logo de DOA"
+                    class="logo-doa"
+                >
+            </a>
+        </div>
+
+        <div class="cabecera-doa__centro">
+            <!-- En otras ventanas irá aquí el buscador -->
+        </div>
+
+        <div class="cabecera-doa__derecha">
+            <!-- En otras ventanas irá aquí el perfil del usuario -->
+        </div>
+    </header>
+
+    <main class="contenido-elegir-perfil">
+        <section class="presentacion-perfil">
+            <div class="presentacion-perfil__icono" aria-hidden="true">
+                <img src="../img/iconos/blue-user.svg" alt="">
+            </div>
+
+            <div class="presentacion-perfil__texto">
+                <h1>Elegir perfil de prueba</h1>
+                <p>
+                    Selecciona un usuario de prueba para completar el inicio de sesión.
+                    También puedes escribir los datos de inicio de sesión manualmente.
+                </p>
+            </div>
+        </section>
+
+        <section class="zona-acceso-demo" aria-label="Acceso a la demo de DOA">
+            <div class="caja-demo caja-demo--usuarios">
+                <h2 class="sr-only">Usuarios de prueba</h2>
+
+                <nav class="filtros-perfil" aria-label="Filtrar usuarios de prueba">
+                    <button class="filtro-perfil filtro-perfil--activo" type="button" data-filtro="todos">
+                        <span class="filtro-perfil__icono" aria-hidden="true">
+                            <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-grid.svg" alt="">
+                            <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-grid.svg" alt="">
+                        </span>
+                        <span>Todos <small>(8)</small></span>
+                    </button>
+
+                    <button class="filtro-perfil" type="button" data-filtro="alumno">
+                        <span class="filtro-perfil__icono" aria-hidden="true">
+                            <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-graduation-cap.svg" alt="">
+                            <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-graduation-cap.svg" alt="">
+                        </span>
+                        <span>Alumnos <small>(3)</small></span>
+                    </button>
+
+                    <button class="filtro-perfil" type="button" data-filtro="profesor">
+                        <span class="filtro-perfil__icono" aria-hidden="true">
+                            <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-user.svg" alt="">
+                            <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-user.svg" alt="">
+                        </span>
+                        <span>Profesores <small>(3)</small></span>
+                    </button>
+
+                    <button class="filtro-perfil" type="button" data-filtro="pas">
+                        <span class="filtro-perfil__icono" aria-hidden="true">
+                            <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-briefcase-business.svg" alt="">
+                            <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-briefcase-business.svg" alt="">
+                        </span>
+                        <span>Secretaría <small>(2)</small></span>
+                    </button>
+                </nav>
+
+                <div class="lista-usuarios-demo">
+                    <section class="grupo-usuarios-demo" data-grupo="alumno">
+                        <h3>Alumnos</h3>
+
+                        <button class="usuario-demo"
+                            type="button"
+                            data-nombre="Lief Simants Dredge"
+                            data-dni="01-9218611"
+                            data-email="l.simdre@epsg.upv.es"
+                            data-password="9218611"
+                            data-rol="Alumno"
+                        >
+                            <span class="usuario-demo__icono" aria-hidden="true">
+                                <img
+                                    class="icono-estado icono-estado--gris"
+                                    src="../img/iconos/grey-graduation-cap.svg"
+                                    alt=""
+                                >
+                                <img
+                                    class="icono-estado icono-estado--azul"
+                                    src="../img/iconos/blue-graduation-cap.svg"
+                                    alt=""
+                                >
+                            </span>
+
+                            <span class="usuario-demo__datos">
+                                <strong>Lief Simants Dredge</strong>
+                                <span>l.simdre@epsg.upv.es · 9218611</span>
+                            </span>
+
+                            <span class="usuario-demo__flecha" aria-hidden="true">
+                                <img
+                                    class="icono-estado icono-estado--gris"
+                                    src="../img/iconos/grey-chevron-right.svg"
+                                    alt=""
+                                >
+                                <img
+                                    class="icono-estado icono-estado--azul"
+                                    src="../img/iconos/blue-chevron-right.svg"
+                                    alt=""
+                                >
+                            </span>
+                        </button>
+
+                        <button class="usuario-demo"
+                            type="button"
+                            data-nombre="Merline Kirdsch Kampshell"
+                            data-dni="04-1320191"
+                            data-email="m.kirkam@epsg.upv.es"
+                            data-password="1320191"
+                            data-rol="Alumno"
+                        >
+                            <span class="usuario-demo__icono" aria-hidden="true">
+                                <img
+                                    class="icono-estado icono-estado--gris"
+                                    src="../img/iconos/grey-graduation-cap.svg"
+                                    alt=""
+                                >
+                                <img
+                                    class="icono-estado icono-estado--azul"
+                                    src="../img/iconos/blue-graduation-cap.svg"
+                                    alt=""
+                                >
+                            </span>
+
+                            <span class="usuario-demo__datos">
+                                <strong>Merline Kirdsch Kampshell</strong>
+                                <span>m.kirkam@epsg.upv.es · 1320191</span>
+                            </span>
+
+                            <span class="usuario-demo__flecha" aria-hidden="true">
+                                <img
+                                    class="icono-estado icono-estado--gris"
+                                    src="../img/iconos/grey-chevron-right.svg"
+                                    alt=""
+                                >
+                                <img
+                                    class="icono-estado icono-estado--azul"
+                                    src="../img/iconos/blue-chevron-right.svg"
+                                    alt=""
+                                >
+                            </span>
+                        </button>
+
+                        <button class="usuario-demo"
+                            type="button"
+                            data-nombre="Debora Rawstorne"
+                            data-dni="05-9971924"
+                            data-email="d.rawabc@epsg.upv.es"
+                            data-password="9971924"
+                            data-rol="Alumno"
+                        >
+                            <span class="usuario-demo__icono" aria-hidden="true">
+                                <img
+                                    class="icono-estado icono-estado--gris"
+                                    src="../img/iconos/grey-graduation-cap.svg"
+                                    alt=""
+                                >
+                                <img
+                                    class="icono-estado icono-estado--azul"
+                                    src="../img/iconos/blue-graduation-cap.svg"
+                                    alt=""
+                                >
+                            </span>
+
+                            <span class="usuario-demo__datos">
+                                <strong>Debora Rawstorne</strong>
+                                <span>d.rawabc@epsg.upv.es · 9971924</span>
+                            </span>
+
+                            <span class="usuario-demo__flecha" aria-hidden="true">
+                                <img
+                                    class="icono-estado icono-estado--gris"
+                                    src="../img/iconos/grey-chevron-right.svg"
+                                    alt=""
+                                >
+                                <img
+                                    class="icono-estado icono-estado--azul"
+                                    src="../img/iconos/blue-chevron-right.svg"
+                                    alt=""
+                                >
+                            </span>
+                        </button>
+                    </section>
+                    <section class="grupo-usuarios-demo" data-grupo="profesor">
+                        <h3>Profesores</h3>
+
+                        <button class="usuario-demo"
+                            type="button"
+                            data-nombre="Kevan Pounds Mainston"
+                            data-dni="60-4525956"
+                            data-email="k.poumai@upv.es"
+                            data-password="4525956"
+                            data-rol="Profesor"
+                        >
+                            <span class="usuario-demo__icono" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-user.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-user.svg" alt="">
+                            </span>
+
+                            <span class="usuario-demo__datos">
+                                <strong>Kevan Pounds Mainston</strong>
+                                <span>k.poumai@upv.es · 4525956</span>
+                            </span>
+
+                            <span class="usuario-demo__flecha" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-chevron-right.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-chevron-right.svg" alt="">
+                            </span>
+                        </button>
+
+                        <button class="usuario-demo"
+                            type="button"
+                            data-nombre="Luelle Pridmore Starsmeare"
+                            data-dni="64-6055365"
+                            data-email="l.prista@upv.es"
+                            data-password="6055365"
+                            data-rol="Profesor"
+                        >
+                            <span class="usuario-demo__icono" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-user.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-user.svg" alt="">
+                            </span>
+
+                            <span class="usuario-demo__datos">
+                                <strong>Luelle Pridmore Starsmeare</strong>
+                                <span>l.prista@upv.es · 6055365</span>
+                            </span>
+
+                            <span class="usuario-demo__flecha" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-chevron-right.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-chevron-right.svg" alt="">
+                            </span>
+                        </button>
+
+                        <button class="usuario-demo" type="button"
+                            data-nombre="Eolande Merriton Mizzi"
+                            data-dni="64-6738133"
+                            data-email="e.mermiz@upv.es"
+                            data-password="6738133"
+                            data-rol="Profesor"
+                        >
+                            <span class="usuario-demo__icono" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-user.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-user.svg" alt="">
+                            </span>
+
+                            <span class="usuario-demo__datos">
+                                <strong>Eolande Merriton Mizzi</strong>
+                                <span>e.mermiz@upv.es · 6738133</span>
+                            </span>
+
+                            <span class="usuario-demo__flecha" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-chevron-right.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-chevron-right.svg" alt="">
+                            </span>
+                        </button>
+                    </section>
+
+                    <section class="grupo-usuarios-demo" data-grupo="pas">
+                        <h3>Secretaría</h3>
+
+                        <button class="usuario-demo"
+                            type="button"
+                            data-nombre="Ondrea Brezlaw Sherwill"
+                            data-dni="88-1316390"
+                            data-email="o.breshe@upv.es"
+                            data-password="1316390"
+                            data-rol="Secretaría"
+                        >
+                            <span class="usuario-demo__icono" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-briefcase-business.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-briefcase-business.svg" alt="">
+                            </span>
+
+                            <span class="usuario-demo__datos">
+                                <strong>Ondrea Brezlaw Sherwill</strong>
+                                <span>o.breshe@upv.es · 1316390</span>
+                            </span>
+
+                            <span class="usuario-demo__flecha" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-chevron-right.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-chevron-right.svg" alt="">
+                            </span>
+                        </button>
+
+                        <button class="usuario-demo"
+                            type="button"
+                            data-nombre="Brooke Malimoe Thomerson"
+                            data-dni="91-1970980"
+                            data-email="b.maltho@upv.es"
+                            data-password="1970980"
+                            data-rol="Secretaría"
+                        >
+                            <span class="usuario-demo__icono" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-briefcase-business.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-briefcase-business.svg" alt="">
+                            </span>
+
+                            <span class="usuario-demo__datos">
+                                <strong>Brooke Malimoe Thomerson</strong>
+                                <span>b.maltho@upv.es · 1970980</span>
+                            </span>
+
+                            <span class="usuario-demo__flecha" aria-hidden="true">
+                                <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-chevron-right.svg" alt="">
+                                <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-chevron-right.svg" alt="">
+                            </span>
+                        </button>
+                    </section>
+                </div>
+            </div>
+
+            <div class="caja-demo caja-demo--login">
+                <h2 class="titulo-con-icono">
+                    <span class="titulo-con-icono__icono" aria-hidden="true">
+                        <img src="../img/iconos/grey-lock-keyhole.svg" alt="">
+                    </span>
+                    <span>Inicio de sesión</span>
+                </h2>
+
+                <p>
+                    Accede con uno de los usuarios de prueba registrados en la demo.
+                </p>
+
+                <form class="formulario-login-demo" id="formLoginDemo" action="#" method="post">
+                    <div class="campo-formulario">
+                        <label for="correoDemo">Correo electrónico</label>
+                        <input
+                            type="email"
+                            id="correoDemo"
+                            name="correoDemo"
+                            placeholder="ejemplo@upv.es"
+                        >
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="passwordDemo">Contraseña</label>
+
+                        <div class="campo-password">
+                            <input
+                                type="password"
+                                id="passwordDemo"
+                                name="passwordDemo"
+                                placeholder="Introduce la contraseña"
+                            >
+
+                            <button type="button" class="boton-mostrar-password" id="botonMostrarPassword">
+                                Mostrar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="perfil-seleccionado">
+                        <p class="perfil-seleccionado__titulo">Perfil seleccionado</p>
+
+                        <ul>
+                            <li>
+                                <span>Nombre:</span>
+                                <strong id="perfilNombre">Ninguno</strong>
+                            </li>
+                            <li>
+                                <span>DNI:</span>
+                                <strong id="perfilDni">---</strong>
+                            </li>
+                            <li>
+                                <span>Rol detectado:</span>
+                                <strong id="perfilRol">---</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p class="mensaje-error-login oculto" id="mensajeErrorLogin"></p>
+
+                    <button type="submit" class="boton-acceso-demo">
+                        Acceder a DOA
+                    </button>
+                </form>
+
+                <div class="caja-info-demo">
+                    <div class="caja-info-demo__cabecera">
+                        <span class="caja-info-demo__icono" aria-hidden="true">
+                            <img src="../img/iconos/grey-info.svg" alt="">
+                        </span>
+                        <strong>Información</strong>
+                    </div>
+
+                    <p>
+                        Selecciona un perfil o introduce credenciales manualmente.
+                        Si los datos no coinciden con ningún usuario de prueba, no se podrá acceder a DOA.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/elegir_perfil.js"></script>
+
+</body>
+</html>

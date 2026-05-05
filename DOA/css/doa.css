@@ -1,40 +1,29 @@
 /* =========================================================
    DOA - Estilos base
+   Archivo común para las pantallas del módulo DOA.
    ========================================================= */
 
 :root {
-    /* Tipografía */
     --font-main: "Inter", Arial, Helvetica, sans-serif;
 
-    /* Colores principales DOA */
-    --color-primary: #00E5FF;
-    --color-primary-hover: #33E9FF;
-    --color-primary-active: #00C7E0;
-    --color-primary-dark: #004A54;
-
-    /* Fondos y superficies */
     --color-bg: #070B12;
     --color-surface: #0E1622;
     --color-surface-alt: #151F2D;
     --color-border: #243246;
 
-    /* Texto */
-    --color-text: #F2F6FA;
-    --color-text-muted: #A8B7C8;
-    --color-text-soft: #6F7F91;
-    --color-on-primary: #04131A;
+    --color-primary: #00E5FF;
+    --color-primary-hover: #33E9FF;
+    --color-primary-dark: #004A54;
 
-    /* Estados */
+    --color-text: #F2F6FA;
+    --color-muted: #A8B7C8;
+    --color-soft: #6F7F91;
+    --color-dark: #04131A;
+
+    --color-error: #FF4055;
     --color-success: #98EF6A;
     --color-warning: #FF945C;
-    --color-error: #FF4055;
 
-    /* Medidas generales */
-    --sidebar-width: 272px;
-    --header-height: 72px;
-    --content-max-width: 1280px;
-
-    /* Espaciado */
     --space-1: 4px;
     --space-2: 8px;
     --space-3: 12px;
@@ -43,24 +32,15 @@
     --space-6: 24px;
     --space-8: 32px;
     --space-10: 40px;
-    --space-12: 48px;
 
-    /* Bordes */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
 
-    /* Sombras */
-    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.28);
-    --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.34);
-
-    /* Transiciones */
-    --transition-fast: 160ms ease;
-    --transition-base: 220ms ease;
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
-/* Reset básico */
 *,
 *::before,
 *::after {
@@ -90,8 +70,8 @@ svg {
 
 button,
 input,
-select,
-textarea {
+textarea,
+select {
     font: inherit;
 }
 
@@ -99,123 +79,59 @@ button {
     cursor: pointer;
 }
 
-button:disabled,
-input:disabled,
-select:disabled,
-textarea:disabled {
-    cursor: not-allowed;
-    opacity: 0.65;
-}
-
-/* Tipografía */
 h1,
 h2,
 h3,
-h4,
 p {
     margin-top: 0;
 }
 
-h1,
-.title-h1 {
-    margin-bottom: var(--space-4);
+h1 {
+    margin-bottom: var(--space-3);
     font-size: 40px;
-    line-height: 48px;
+    line-height: 1.15;
     font-weight: 700;
     letter-spacing: -0.03em;
 }
 
-h2,
-.title-h2 {
-    margin-bottom: var(--space-4);
-    font-size: 28px;
-    line-height: 36px;
+h2 {
+    margin-bottom: var(--space-3);
+    font-size: 24px;
+    line-height: 1.25;
     font-weight: 700;
-    letter-spacing: -0.02em;
 }
 
-h3,
-.title-h3 {
+h3 {
     margin-bottom: var(--space-3);
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 p {
     margin-bottom: var(--space-4);
-}
-
-.text-muted {
-    color: var(--color-text-muted);
-}
-
-.text-soft {
-    color: var(--color-text-soft);
-}
-
-.text-primary {
-    color: var(--color-primary);
-}
-
-.text-small {
-    font-size: 12px;
-    line-height: 16px;
 }
 
 a {
     color: var(--color-primary);
     text-decoration: none;
-    transition: color var(--transition-fast);
 }
 
 a:hover {
     color: var(--color-primary-hover);
 }
 
-/* Layout común */
-.page-container {
-    width: min(100% - 48px, var(--content-max-width));
-    margin: 0 auto;
-}
-
-.doa-layout {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-}
-
-.doa-main {
-    min-width: 0;
-    background: var(--color-bg);
-}
-
-.doa-content {
-    width: min(100% - 48px, var(--content-max-width));
-    margin: 0 auto;
-    padding: var(--space-8) 0;
-}
-
-/* Superficies */
 .card {
+    padding: var(--space-6);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background: var(--color-surface);
     box-shadow: var(--shadow-soft);
 }
 
-.card-light {
-    background: var(--color-surface-alt);
-}
-
-.divider {
-    height: 1px;
-    border: 0;
-    margin: var(--space-6) 0;
-    background: var(--color-border);
-}
-
-/* Botones */
 .btn {
     min-height: 42px;
     display: inline-flex;
@@ -225,43 +141,19 @@ a:hover {
     padding: 0 var(--space-4);
     border: 1px solid transparent;
     border-radius: var(--radius-md);
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
-    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .btn-primary {
-    color: var(--color-on-primary);
+    color: var(--color-dark);
     background: var(--color-primary);
 }
 
 .btn-primary:hover {
-    color: var(--color-on-primary);
     background: var(--color-primary-hover);
 }
 
-.btn-secondary {
-    color: var(--color-text);
-    border-color: var(--color-border);
-    background: var(--color-surface-alt);
-}
-
-.btn-secondary:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-}
-
-.btn-ghost {
-    color: var(--color-text-muted);
-    background: transparent;
-}
-
-.btn-ghost:hover {
-    color: var(--color-primary);
-    background: rgba(0, 229, 255, 0.08);
-}
-
-/* Formularios */
 .form-group {
     margin-bottom: var(--space-4);
 }
@@ -269,13 +161,10 @@ a:hover {
 .form-label {
     display: block;
     margin-bottom: var(--space-2);
-    color: var(--color-text);
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.input,
-.select,
-.textarea {
+.input {
     width: 100%;
     min-height: 42px;
     padding: 0 var(--space-3);
@@ -284,89 +173,47 @@ a:hover {
     color: var(--color-text);
     background: var(--color-surface-alt);
     outline: none;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.textarea {
-    min-height: 120px;
-    padding-top: var(--space-3);
-    resize: vertical;
+.input::placeholder {
+    color: var(--color-soft);
 }
 
-.input::placeholder,
-.textarea::placeholder {
-    color: var(--color-text-soft);
-}
-
-.input:focus,
-.select:focus,
-.textarea:focus {
+.input:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.16);
+    box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15);
 }
 
-/* Badges y mensajes */
-.badge {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    padding: 0 var(--space-2);
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--color-primary);
-    background: rgba(0, 229, 255, 0.1);
+.text-muted {
+    color: var(--color-muted);
 }
 
-.alert {
-    padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface-alt);
+.text-soft {
+    color: var(--color-soft);
 }
 
-.alert-error {
-    border-color: var(--color-error);
-    color: var(--color-error);
-    background: rgba(255, 64, 85, 0.08);
-}
-
-.alert-success {
-    border-color: var(--color-success);
-    color: var(--color-success);
-    background: rgba(152, 239, 106, 0.08);
-}
-
-/* Utilidades pequeñas */
 .hidden {
     display: none !important;
 }
 
-.full-width {
-    width: 100%;
-}
-
-.mt-0 {
-    margin-top: 0 !important;
-}
-
-.mb-0 {
-    margin-bottom: 0 !important;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 @media (max-width: 900px) {
-    h1,
-    .title-h1 {
+    h1 {
         font-size: 32px;
-        line-height: 40px;
     }
 
-    .doa-layout {
-        display: block;
-    }
-
-    .doa-content,
-    .page-container {
-        width: min(100% - 32px, var(--content-max-width));
+    .card {
+        padding: var(--space-5);
     }
 }
