@@ -137,23 +137,269 @@
 }
 
 /*
+    Tarjeta grande de progreso
+*/
+
+.tarjeta-progreso-asignatura {
+    --progreso-color: var(--color-primary);
+
+    margin-top: var(--space-5);
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+.tarjeta-progreso-asignatura--secundaria {
+    --progreso-color: var(--color-muted);
+
+    opacity: 0.82;
+}
+
+.tarjeta-progreso-asignatura__cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+.tarjeta-progreso-asignatura__cabecera h2 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.boton-entrar-asignatura {
+    min-width: 106px;
+    min-height: 42px;
+    padding: 0 var(--space-4);
+    border: 0;
+    border-radius: var(--radius-md);
+    background: var(--color-primary);
+    color: var(--color-dark);
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition:
+        background-color 0.15s ease,
+        transform 0.08s ease;
+}
+
+.tarjeta-progreso-asignatura--secundaria .boton-entrar-asignatura {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+}
+
+.boton-entrar-asignatura:hover {
+    background: var(--color-primary-hover);
+}
+
+.tarjeta-progreso-asignatura--secundaria .boton-entrar-asignatura {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+}
+
+.tarjeta-progreso-asignatura--secundaria .boton-entrar-asignatura:hover {
+    border-color: var(--color-muted);
+    background: var(--color-surface-alt);
+}
+
+.boton-entrar-asignatura:active {
+    transform: translateY(1px);
+}
+
+.boton-entrar-asignatura:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/*
+    Zona de progreso
+*/
+
+.progreso-asignatura {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+    align-items: start;
+    padding-top: var(--space-4);
+}
+
+.progreso-asignatura::before,
+.progreso-asignatura::after {
+    content: "";
+    position: absolute;
+    top: 44px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    border-radius: 999px;
+}
+.progreso-asignatura::before {
+    background: var(--color-border);
+}
+
+.progreso-asignatura::after {
+    width: var(--progreso-escritorio, 0%);
+    right: auto;
+    background: var(--progreso-color, var(--color-primary));
+}
+
+.progreso-asignatura__unidad {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    text-align: center;
+}
+
+.progreso-asignatura__badge {
+    min-height: 20px;
+    padding: 0 var(--space-2);
+    border: 1px solid var(--progreso-color, var(--color-primary));
+    border-radius: 999px;
+    background: var(--color-bg);
+    color: var(--progreso-color, var(--color-primary));
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 18px;
+}
+
+.progreso-asignatura__unidad:not(.progreso-asignatura__unidad--actual) .progreso-asignatura__badge {
+    visibility: hidden;
+}
+
+.progreso-asignatura__estado {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--color-surface);
+}
+
+.progreso-asignatura__estado img {
+    width: 24px;
+    height: 24px;
+}
+
+.progreso-asignatura__nombre {
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+}
+
+.progreso-asignatura__nombre:hover {
+    color: var(--color-primary);
+}
+
+.progreso-asignatura__unidad--bloqueada .progreso-asignatura__nombre {
+    color: var(--color-muted);
+    text-decoration: none;
+}
+
+/*
     Responsive
 */
 
-@media (max-width: 1100px) {
-    .resumen-asignaturas {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .cabecera-bloque-panel {
         flex-direction: column;
         align-items: flex-start;
-        margin-bottom: 16px;
+        gap: var(--space-2);
+        margin-bottom: var(--space-4);
     }
 
     .cabecera-bloque-panel h1 {
         font-size: 28px;
+        margin-bottom: 0;
+    }
+
+    .cabecera-bloque-panel__enlace {
+        font-size: 10px;
+    }
+
+    .contenido-panel-doa {
+        padding-top: var(--space-4);
+        padding-bottom: calc(72px + var(--space-5));
+    }
+
+    .bloque-panel-principal {
+        padding-top: 0;
+    }
+
+    .resumen-asignaturas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-3);
+    }
+
+    .tarjeta-asignatura-resumen--ocultar-movil {
+        display: none;
+    }
+
+    .tarjeta-asignatura-resumen {
+        min-height: 76px;
+        gap: var(--space-3);
+        padding: var(--space-4);
+    }
+
+    .tarjeta-asignatura-resumen__nombre {
+        font-size: 14px;
+    }
+
+    .tarjeta-progreso-asignatura {
+        margin-top: var(--space-4);
+        padding: var(--space-4);
+    }
+
+    .tarjeta-progreso-asignatura__cabecera {
+        align-items: flex-start;
+        margin-bottom: var(--space-4);
+    }
+
+    .tarjeta-progreso-asignatura__cabecera h2 {
+        font-size: 18px;
+    }
+
+    .boton-entrar-asignatura {
+        min-width: 96px;
+        min-height: 40px;
+    }
+
+    .progreso-asignatura {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding-top: var(--space-3);
+    }
+
+    .progreso-asignatura::before,
+    .progreso-asignatura::after {
+        top: 44px;
+        left: 16.666%;
+        right: 16.666%;
+    }
+
+    .progreso-asignatura::after {
+        width: var(--progreso-movil, var(--progreso-escritorio, 0%));
+    }
+
+    .progreso-asignatura__unidad--ocultar-movil {
+        display: none;
+    }
+
+    .progreso-asignatura__nombre {
+        font-size: 11px;
     }
 }

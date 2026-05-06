@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
     <link rel="stylesheet" href="../css/panel_principal.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body class="pagina-doa pagina-panel-principal">
@@ -55,7 +59,7 @@
             <a class="boton-cerrar-sesion-movil" href="elegir_perfil.html" aria-label="Cerrar sesión">
                 <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
                     <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
-                    <img class="icono-estado icono-estado--blanco" src="../img/iconos/white-log-out.svg" alt="">
+                    <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
                 </span>
             </a>
         </div>
@@ -82,7 +86,6 @@
                 <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="panel_principal.html">
                     <span class="navegacion-lateral-doa__icono" aria-hidden="true">
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
-                        <img class="icono-estado icono-estado--blanco" src="../img/iconos/white-layout-dashboard.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
                     </span>
 
@@ -92,7 +95,6 @@
                 <a class="navegacion-lateral-doa__item" href="#">
                     <span class="navegacion-lateral-doa__icono" aria-hidden="true">
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-notebook.svg" alt="">
-                        <img class="icono-estado icono-estado--blanco" src="../img/iconos/white-notebook.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-notebook.svg" alt="">
                     </span>
 
@@ -102,7 +104,6 @@
                 <a class="navegacion-lateral-doa__item" href="#">
                     <span class="navegacion-lateral-doa__icono" aria-hidden="true">
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-bell.svg" alt="">
-                        <img class="icono-estado icono-estado--blanco" src="../img/iconos/white-bell.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-bell.svg" alt="">
                     </span>
 
@@ -114,7 +115,6 @@
                 <a class="boton-cerrar-sesion" href="elegir_perfil.html">
                     <span class="boton-cerrar-sesion__icono" aria-hidden="true">
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
-                        <img class="icono-estado icono-estado--blanco" src="../img/iconos/white-log-out.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
                     </span>
 
@@ -131,7 +131,7 @@
                 </div>
 
                 <div class="resumen-asignaturas">
-                    <button type="button" class="tarjeta-asignatura-resumen tarjeta-asignatura-resumen--activa">
+                    <button type="button" class="tarjeta-asignatura-resumen tarjeta-asignatura-resumen--activa" data-asignatura="matematicas">
                         <span class="tarjeta-asignatura-resumen__nombre">Matemáticas</span>
                         <span class="tarjeta-asignatura-resumen__punto" aria-hidden="true"></span>
 
@@ -140,7 +140,7 @@
                         </span>
                     </button>
 
-                    <button type="button" class="tarjeta-asignatura-resumen">
+                    <button type="button" class="tarjeta-asignatura-resumen" data-asignatura="programacion">
                         <span class="tarjeta-asignatura-resumen__nombre">Programación</span>
                         <span class="tarjeta-asignatura-resumen__punto" aria-hidden="true"></span>
 
@@ -149,7 +149,7 @@
                         </span>
                     </button>
 
-                    <button type="button" class="tarjeta-asignatura-resumen">
+                    <button type="button" class="tarjeta-asignatura-resumen tarjeta-asignatura-resumen--ocultar-movil" data-asignatura="fisica">
                         <span class="tarjeta-asignatura-resumen__nombre">Física</span>
                         <span class="tarjeta-asignatura-resumen__punto" aria-hidden="true"></span>
 
@@ -158,8 +158,207 @@
                         </span>
                     </button>
                 </div>
+                <div class="lista-progresos-asignaturas" id="listaProgresosAsignaturas">
+                    <article class="tarjeta-progreso-asignatura" data-asignatura="matematicas">
+                        <div class="tarjeta-progreso-asignatura__cabecera">
+                            <h2>Progreso Matemáticas</h2>
+
+                            <button type="button" class="boton-entrar-asignatura">
+                                Entrar
+                            </button>
+                        </div>
+
+                        <div
+                            class="progreso-asignatura"
+                            style="--progreso-escritorio: 40%; --progreso-movil: 33%;"
+                            aria-label="Progreso de Matemáticas"
+                        >
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/blue-check.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 01</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/blue-check.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 02</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--actual">
+                                <span class="progreso-asignatura__badge">Actual</span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/blue-play.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 03</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-x.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 04</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada progreso-asignatura__unidad--ocultar-movil">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-x.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 05</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="tarjeta-progreso-asignatura tarjeta-progreso-asignatura--secundaria" data-asignatura="programacion">
+                        <div class="tarjeta-progreso-asignatura__cabecera">
+                            <h2>Progreso Programación</h2>
+
+                            <button type="button" class="boton-entrar-asignatura">
+                                Entrar
+                            </button>
+                        </div>
+
+                        <div
+                            class="progreso-asignatura"
+                            style="--progreso-escritorio: 40%; --progreso-movil: 33.333%;"
+                            aria-label="Progreso de Programación"
+                        >
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-check.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 01</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-check.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 02</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--actual">
+                                <span class="progreso-asignatura__badge">Actual</span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-play.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 03</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-x.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 04</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada progreso-asignatura__unidad--ocultar-movil">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-x.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 05</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-progreso-asignatura tarjeta-progreso-asignatura--secundaria" data-asignatura="fisica">
+                        <div class="tarjeta-progreso-asignatura__cabecera">
+                            <h2>Progreso Física</h2>
+
+                            <button type="button" class="boton-entrar-asignatura">
+                                Entrar
+                            </button>
+                        </div>
+
+                        <div
+                            class="progreso-asignatura"
+                            style="--progreso-escritorio: 40%; --progreso-movil: 33.333%;"
+                            aria-label="Progreso de Física"
+                        >
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-check.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 01</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-check.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 02</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--actual">
+                                <span class="progreso-asignatura__badge">Actual</span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-play.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 03</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-x.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 04</a>
+                            </div>
+
+                            <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada progreso-asignatura__unidad--ocultar-movil">
+                                <span class="progreso-asignatura__badge"></span>
+
+                                <span class="progreso-asignatura__estado" aria-hidden="true">
+                                    <img src="../img/iconos/grey-x.svg" alt="">
+                                </span>
+
+                                <a href="#" class="progreso-asignatura__nombre">Unidad 05</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </section>
         </main>
     </div>
+    <script src="../js/panel_principal.js"></script>
 </body>
 </html>
