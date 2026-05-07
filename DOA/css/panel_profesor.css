@@ -1,0 +1,500 @@
+/*
+    Pantalla: Panel principal del profesor
+*/
+
+.pagina-panel-profesor {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.contenido-panel-profesor {
+    padding: var(--space-6) var(--space-8) var(--space-8);
+}
+
+/*
+    Cabecera
+*/
+
+.cabecera-panel-profesor {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-bottom: var(--space-5);
+}
+
+.cabecera-panel-profesor__etiqueta {
+    margin: 0 0 var(--space-2);
+    color: var(--color-primary);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cabecera-panel-profesor h1 {
+    margin: 0 0 var(--space-2);
+    color: var(--color-text);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.cabecera-panel-profesor p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.acciones-rapidas-profesor {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.boton-accion-profesor {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.08s ease;
+}
+
+.boton-accion-profesor:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.boton-accion-profesor--principal {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-dark);
+}
+
+.boton-accion-profesor--principal:hover {
+    background: var(--color-primary-hover);
+    color: var(--color-dark);
+}
+
+.boton-accion-profesor:active {
+    transform: translateY(1px);
+}
+
+/*
+    Resumen
+*/
+
+.resumen-profesor {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+.tarjeta-resumen-profesor {
+    min-height: 88px;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+}
+
+.tarjeta-resumen-profesor span {
+    display: block;
+    margin-bottom: var(--space-2);
+    color: var(--color-muted);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.tarjeta-resumen-profesor strong {
+    display: block;
+    color: var(--color-text);
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+/*
+    Estructura principal
+*/
+
+.panel-profesor-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: var(--space-6);
+    align-items: start;
+}
+
+.bloque-profesor,
+.tarjeta-lateral-profesor {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+.bloque-profesor {
+    padding: var(--space-5);
+}
+
+.cabecera-bloque-profesor {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-5);
+    margin-bottom: var(--space-5);
+}
+
+.cabecera-bloque-profesor h2 {
+    margin: 0 0 var(--space-2);
+    color: var(--color-text);
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.cabecera-bloque-profesor p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/*
+    Asignaturas del profesor
+*/
+
+.lista-asignaturas-profesor {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+}
+
+.tarjeta-asignatura-profesor {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-height: 220px;
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease;
+}
+
+.tarjeta-asignatura-profesor--activa {
+    border-color: var(--color-primary);
+    background: var(--color-surface-alt);
+}
+
+.tarjeta-asignatura-profesor__cabecera {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.tarjeta-asignatura-profesor__cabecera h3 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.tarjeta-asignatura-profesor__cabecera p {
+    margin: var(--space-1) 0 0;
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.etiqueta-asignatura-profesor {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+    padding: 0 var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.tarjeta-asignatura-profesor--activa .etiqueta-asignatura-profesor {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.datos-asignatura-profesor {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.datos-asignatura-profesor li {
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+}
+
+.datos-asignatura-profesor span {
+    display: block;
+    margin-bottom: var(--space-1);
+    color: var(--color-muted);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.datos-asignatura-profesor strong {
+    display: block;
+    color: var(--color-text);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.acciones-asignatura-profesor {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+    margin-top: auto;
+}
+
+.boton-asignatura-profesor {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition:
+        border-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.08s ease;
+}
+
+.boton-asignatura-profesor:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.boton-asignatura-profesor:active {
+    transform: translateY(1px);
+}
+
+/*
+    Panel lateral
+*/
+
+.panel-lateral-profesor {
+    position: sticky;
+    top: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.tarjeta-lateral-profesor {
+    padding: var(--space-4);
+}
+
+.tarjeta-lateral-profesor__titulo {
+    margin: 0 0 var(--space-3);
+    color: var(--color-muted);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.tarjeta-lateral-profesor__contenido h2 {
+    margin: 0 0 var(--space-2);
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.tarjeta-lateral-profesor__contenido p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.acciones-tarjeta-profesor {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+}
+
+.boton-secundario-profesor {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-text);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition:
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.boton-secundario-profesor:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.lista-pendientes-profesor {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.pendiente-profesor {
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+}
+
+.pendiente-profesor strong {
+    display: block;
+    margin-bottom: var(--space-1);
+    color: var(--color-text);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.pendiente-profesor span {
+    display: block;
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/*
+    Responsive
+*/
+
+@media (max-width: 900px) {
+    .contenido-panel-profesor {
+        padding: var(--space-5);
+        padding-bottom: calc(88px + var(--space-6));
+    }
+
+    .cabecera-panel-profesor {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--space-4);
+        margin-bottom: var(--space-4);
+    }
+
+    .cabecera-panel-profesor h1 {
+        font-size: 28px;
+    }
+
+    .acciones-rapidas-profesor {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .resumen-profesor {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+        margin-bottom: var(--space-4);
+    }
+
+    .tarjeta-resumen-profesor {
+        min-height: 72px;
+        padding: var(--space-3);
+    }
+
+    .tarjeta-resumen-profesor span {
+        margin-bottom: var(--space-1);
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+    .tarjeta-resumen-profesor strong {
+        font-size: 20px;
+    }
+
+    .panel-profesor-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .bloque-profesor {
+        padding: var(--space-4);
+    }
+
+    .cabecera-bloque-profesor {
+        margin-bottom: var(--space-4);
+    }
+
+    .lista-asignaturas-profesor {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-asignatura-profesor {
+        min-height: auto;
+    }
+
+    .datos-asignatura-profesor {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .acciones-asignatura-profesor {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-lateral-profesor {
+        position: static;
+        gap: var(--space-3);
+    }
+}

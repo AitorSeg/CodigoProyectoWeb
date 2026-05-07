@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del profesor | DOA</title>
+
+    <link rel="stylesheet" href="../css/doa.css">
+    <link rel="stylesheet" href="../css/doa-layout.css">
+    <link rel="stylesheet" href="../css/doa-componentes.css">
+    <link rel="stylesheet" href="../css/panel_profesor.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-doa pagina-panel-profesor">
+    <header class="cabecera-panel-doa">
+        <div class="cabecera-panel-doa__logo">
+            <div class="marca-doa">
+                <a class="marca-doa__link" href="panel_profesor.html" aria-label="Ir al panel del profesor de DOA">
+                    <img
+                        src="../img/LogoDoaAzulRecortado.png"
+                        alt="Logo de DOA"
+                        class="logo-doa"
+                    >
+                </a>
+
+                <div class="marca-doa__powered">
+                    <span class="marca-doa__powered-text">Powered by</span>
+                    <img
+                        src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
+                        alt="Grado en Tecnologías Interactivas"
+                        class="marca-doa__powered-logo"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="cabecera-panel-doa__buscador">
+            <div
+                class="buscador-header buscador-header--desactivado"
+                aria-label="Buscador visual pendiente de activar"
+                title="El buscador se activará cuando se conecte la base de datos"
+            >
+                <span class="buscador-header__icono" aria-hidden="true">
+                    <img src="../img/iconos/grey-search.svg" alt="">
+                </span>
+
+                <input
+                    type="search"
+                    placeholder="Buscar asignatura, tarea..."
+                    disabled
+                >
+            </div>
+        </div>
+
+        <div class="cabecera-panel-doa__perfil">
+            <div class="perfil-header">
+                <span class="perfil-header__icono" aria-hidden="true">
+                    <img src="../img/iconos/grey-user.svg" alt="">
+                </span>
+
+                <span class="perfil-header__texto">
+                    <strong id="nombreUsuarioHeader">Usuario demo</strong>
+                    <small id="rolUsuarioHeader">Perfil DOA</small>
+                </span>
+            </div>
+
+            <a class="boton-cerrar-sesion-movil" href="elegir_perfil.html" aria-label="Cerrar sesión">
+                <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
+                    <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
+                    <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <div class="layout-doa">
+        <div class="barra-lateral-doa">
+            <div class="tarjeta-modo-prueba">
+                <div class="tarjeta-modo-prueba__cabecera">
+                    <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
+                        <img src="../img/iconos/grey-info.svg" alt="">
+                    </span>
+
+                    <strong>Modo de prueba</strong>
+                </div>
+
+                <p>
+                    Estás usando DOA con datos de prueba. Las acciones no afectan a usuarios reales
+                    y los permisos dependen del perfil elegido.
+                </p>
+            </div>
+
+            <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
+                <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="panel_profesor.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
+                    </span>
+
+                    <span>Panel Principal</span>
+                </a>
+
+                <a class="navegacion-lateral-doa__item" href="#asignaturasProfesor">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-notebook.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-notebook.svg" alt="">
+                    </span>
+
+                    <span>Mis Asignaturas</span>
+                </a>
+
+                <a class="navegacion-lateral-doa__item" href="notificaciones.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-bell.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-bell.svg" alt="">
+                    </span>
+
+                    <span>Notificaciones</span>
+                </a>
+            </nav>
+
+            <div class="barra-lateral-doa__salida">
+                <a class="boton-cerrar-sesion" href="elegir_perfil.html">
+                    <span class="boton-cerrar-sesion__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
+                    </span>
+
+                    <span>Cerrar sesión</span>
+                </a>
+            </div>
+        </div>
+
+        <main class="contenido-doa contenido-panel-profesor">
+            <section class="cabecera-panel-profesor">
+                <div>
+                    <p class="cabecera-panel-profesor__etiqueta">Panel del profesor</p>
+                    <h1 id="saludoProfesor">Buenos días</h1>
+                    <p>
+                        Gestiona tus asignaturas, revisa entregas pendientes y accede rápidamente a la creación de tareas y recursos.
+                    </p>
+                </div>
+
+                <div class="acciones-rapidas-profesor">
+                    <a href="crear_tarea.html" class="boton-accion-profesor boton-accion-profesor--principal" id="accionCrearTarea">
+                        Crear tarea
+                    </a>
+
+                    <a href="recursosdoa.html" class="boton-accion-profesor" id="accionSubirRecurso">
+                        Subir recurso
+                    </a>
+                </div>
+            </section>
+
+            <section class="resumen-profesor" aria-label="Resumen del profesor">
+                <article class="tarjeta-resumen-profesor">
+                    <span>Asignaturas</span>
+                    <strong id="totalAsignaturasProfesor">0</strong>
+                </article>
+
+                <article class="tarjeta-resumen-profesor">
+                    <span>Tareas activas</span>
+                    <strong id="totalTareasActivasProfesor">0</strong>
+                </article>
+
+                <article class="tarjeta-resumen-profesor">
+                    <span>Entregas pendientes</span>
+                    <strong id="totalEntregasPendientesProfesor">0</strong>
+                </article>
+
+                <article class="tarjeta-resumen-profesor">
+                    <span>Recursos publicados</span>
+                    <strong id="totalRecursosProfesor">0</strong>
+                </article>
+            </section>
+
+            <div class="panel-profesor-grid">
+                <section class="bloque-profesor" id="asignaturasProfesor">
+                    <div class="cabecera-bloque-profesor">
+                        <div>
+                            <h2>Asignaturas impartidas</h2>
+                            <p>Selecciona una asignatura para trabajar sobre sus recursos o tareas.</p>
+                        </div>
+                    </div>
+
+                    <div class="lista-asignaturas-profesor" id="listaAsignaturasProfesor">
+                        <!-- JS carga las asignaturas -->
+                    </div>
+                </section>
+
+                <aside class="panel-lateral-profesor">
+                    <article class="tarjeta-lateral-profesor">
+                        <p class="tarjeta-lateral-profesor__titulo">Asignatura activa</p>
+
+                        <div class="tarjeta-lateral-profesor__contenido">
+                            <h2 id="asignaturaActivaProfesor">Asignatura</h2>
+                            <p id="unidadActivaProfesor">Unidad actual</p>
+
+                            <div class="acciones-tarjeta-profesor">
+                                <a href="recursosdoa.html" class="boton-secundario-profesor" id="botonRecursosAsignaturaActiva">
+                                    Gestionar recursos
+                                </a>
+
+                                <a href="crear_tarea.html" class="boton-secundario-profesor" id="botonTareaAsignaturaActiva">
+                                    Crear tarea
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-lateral-profesor">
+                        <p class="tarjeta-lateral-profesor__titulo">Pendiente hoy</p>
+
+                        <div class="lista-pendientes-profesor" id="listaPendientesProfesor">
+                            <!-- JS carga pendientes -->
+                        </div>
+                    </article>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/doa-layout.js"></script>
+    <script src="../js/doa-datos.js"></script>
+    <script src="../js/panel_profesor.js"></script>
+</body>
+</html>
