@@ -51,20 +51,15 @@ function renderizarDetalleAsignatura(datos, idAsignatura) {
     tituloTareaAsignatura.textContent = datos.tarea.titulo;
     vencimientoTareaAsignatura.textContent = datos.tarea.vencimiento;
 
-    // ==========================================
-    // NUEVA MAGIA: ENLAZAR CON RECURSOS (URL)
-    // ==========================================
-    const linkPestanaRecursos = document.getElementById('linkPestanaRecursos');
-    const linkBotonRecursos = document.getElementById('linkBotonRecursos');
+    const linkPestanaRecursos = document.getElementById("linkPestanaRecursos");
+    const linkBotonRecursos = document.getElementById("linkBotonRecursos");
+    const urlDestino = "Recursosdoaalumno.html?materia=" + idAsignatura;
 
-    // Armamos el link con la materia correcta (ej: Recursosdoaalumno.html?materia=matematicas)
-    const urlDestino = `Recursosdoaalumno.html?materia=${idAsignatura}`;
-
-    if (linkPestanaRecursos) {
+    if (linkPestanaRecursos !== null) {
         linkPestanaRecursos.href = urlDestino;
     }
 
-    if (linkBotonRecursos) {
+    if (linkBotonRecursos !== null) {
         linkBotonRecursos.href = urlDestino;
     }
 }

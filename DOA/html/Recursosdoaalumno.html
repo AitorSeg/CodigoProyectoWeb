@@ -31,11 +31,9 @@
   </div>
 
   <div class="cabecera-panel-doa__buscador">
-    <div class="buscador-header">
-                <span class="buscador-header__icono">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                </span>
-      <input type="search" id="inputBuscador" placeholder="Buscar recurso en la tabla...">
+    <div class="buscador-header buscador-header--desactivado" aria-label="Buscador visual pendiente de activar" title="El buscador se activará cuando se conecte la base de datos">
+      <span class="buscador-header__icono" aria-hidden="true"><img src="../img/iconos/grey-search.svg" alt=""></span>
+      <input type="search" id="inputBuscador" placeholder="Buscar recurso en la tabla..." disabled>
     </div>
   </div>
 
@@ -54,6 +52,16 @@
 
 <div class="layout-doa">
   <div class="barra-lateral-doa">
+    <div class="tarjeta-modo-prueba">
+      <div class="tarjeta-modo-prueba__cabecera">
+        <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
+          <img src="../img/iconos/grey-info.svg" alt="">
+        </span>
+        <strong>Modo de prueba</strong>
+      </div>
+      <p>Estás usando DOA con datos de prueba. Las acciones no afectan a usuarios reales y los permisos dependen del perfil elegido.</p>
+    </div>
+
     <nav class="navegacion-lateral-doa">
       <a class="navegacion-lateral-doa__item" href="panel_principal.html">
                     <span class="navegacion-lateral-doa__icono">
@@ -85,11 +93,18 @@
     </div>
   </div>
 
-  <main class="contenido-doa">
+  <main class="contenido-doa contenido-detalle-asignatura contenido-recursos-alumno">
     <section class="detalle-asignatura-principal">
 
       <div class="cabecera-detalle-asignatura">
         <div class="cabecera-detalle-asignatura__texto">
+          <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
+            <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
+              <img src="../img/iconos/grey-chevron-right.svg" alt="">
+            </span>
+            <span>Volver a detalles de la asignatura</span>
+          </a>
+
           <h1 id="tituloAsignatura">Cargando...</h1>
           <ul class="metadatos-asignatura">
             <li>
@@ -103,11 +118,11 @@
           </ul>
         </div>
         <div class="cabecera-detalle-asignatura__pestanas">
-          <nav class="pestanas-asignatura">
-            <a href="#" class="pestanas-asignatura__item--activo">Recursos</a>
-            <a href="#">Tareas</a>
-            <a href="#">Exámenes</a>
-            <a href="#">Calificaciones</a>
+          <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
+            <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Recursos</a>
+            <a href="listado_tareas.html" class="pestanas-asignatura__item">Tareas</a>
+            <a href="examenes.html" class="pestanas-asignatura__item">Exámenes</a>
+            <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
           </nav>
         </div>
       </div>

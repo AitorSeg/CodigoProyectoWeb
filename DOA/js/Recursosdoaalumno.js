@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const baseDeDatos = {
         "programacion": {
             titulo: "Programación II",
-            profesor: "Kevan Pounds",
-            unidadActualTexto: "Unidad 03: Estructuras de datos",
+            profesor: "Don Pepito",
+            unidadActualTexto: "Unidad 03: Recursividad",
             archivos: {
                 "UNIDAD 01": [
                     { nombre: "Introducción a la Programación", tipo: "PDF", tamano: "1.2 MB", etiqueta: "Teoría", claseEtiqueta: "etiqueta-neutral", fecha: "10/01/2026" }
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "matematicas": {
             titulo: "Matemáticas",
             profesor: "Don Pepito",
-            unidadActualTexto: "Unidad 03: Recursividad",
+            unidadActualTexto: "Unidad 03: Límites",
             archivos: {
                 "UNIDAD 01": [
                     { nombre: "Álgebra Básica", tipo: "PDF", tamano: "3.2 MB", etiqueta: "Teoría", claseEtiqueta: "etiqueta-neutral", fecha: "12/01/2026" },
@@ -60,18 +60,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. LEER LA MATERIA DESDE EL LINK (URL)
     // ==========================================
     const parametrosURL = new URLSearchParams(window.location.search);
-    const materiaSeleccionada = parametrosURL.get('materia') || 'programacion';
-    const datosMateria = baseDeDatos[materiaSeleccionada] || baseDeDatos["programacion"];
+    const materiaURL = parametrosURL.get('materia');
+    const materiaGuardada = window.obtenerAsignaturaSeleccionada ? window.obtenerAsignaturaSeleccionada() : 'programacion';
+    const materiaSeleccionada = materiaURL || materiaGuardada || 'programacion';
+
+    if (window.guardarAsignaturaSeleccionada && baseDeDatos[materiaSeleccionada]) {
+        window.guardarAsignaturaSeleccionada(materiaSeleccionada);
+    }
+
+    const datosMateria = baseDeDatos[materiaSeleccionada] || baseDeDatos['matematicas'];
+    const datosCabecera = window.DOA_ASIGNATURAS && window.DOA_ASIGNATURAS[materiaSeleccionada]
+        ? window.DOA_ASIGNATURAS[materiaSeleccionada]
+        : datosMateria;
 
     // ==========================================
     // 3. CAMBIAR TÍTULOS EN EL HTML
     // ==========================================
-    document.getElementById('tituloAsignatura').textContent = datosMateria.titulo;
-    document.getElementById('profesorAsignatura').textContent = datosMateria.profesor;
+    document.getElementById('tituloAsignatura').textContent = datosCabecera.nombre || datosCabecera.titulo;
+    document.getElementById('profesorAsignatura').textContent = datosCabecera.profesor;
 
     const labelUnidadActual = document.getElementById('unidadActualTextoAsignatura');
     if(labelUnidadActual) {
-        labelUnidadActual.textContent = datosMateria.unidadActualTexto;
+        labelUnidadActual.textContent = datosCabecera.unidadActualTexto;
     }
 
     // ==========================================
@@ -99,8 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderizarTabla() {
         cuerpoTablaArchivos.innerHTML = '';
 
-        // Agarramos los archivos de la materia y carpeta actual
-        const archivosDeLaCarpeta = datosMateria.archivos[unidadGlobalActual] || [];
+        const claveSinAcentos = unidadGlobalActual.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const archivosDeLaCarpeta = datosMateria.archivos[unidadGlobalActual] || datosMateria.archivos[claveSinAcentos] || [];
 
         const tipoSeleccionado = filtroTipo.value;
         const etiquetaSeleccionada = filtroEtiqueta.value;
@@ -169,24 +179,30 @@ document.addEventListener('DOMContentLoaded', () => {
     filtroTipo.addEventListener('change', renderizarTabla);
     filtroEtiqueta.addEventListener('change', renderizarTabla);
 
-    inputBuscador.addEventListener('keyup', (event) => {
-        const textoBusqueda = event.target.value.toLowerCase();
-        const filas = document.querySelectorAll('.archivo-fila');
-        filas.forEach(fila => {
-            const nombreArchivo = fila.querySelector('.nombre-archivo').textContent.toLowerCase();
-            fila.style.display = nombreArchivo.includes(textoBusqueda) ? 'grid' : 'none';
+    if (inputBuscador) {
+        inputBuscador.addEventListener('keyup', (event) => {
+            const textoBusqueda = event.target.value.toLowerCase();
+            const filas = document.querySelectorAll('.archivo-fila');
+            filas.forEach(fila => {
+                const nombreArchivo = fila.querySelector('.nombre-archivo').textContent.toLowerCase();
+                fila.style.display = nombreArchivo.includes(textoBusqueda) ? 'grid' : 'none';
+            });
         });
-    });
+    }
 
-    btnNavegacionMovil.addEventListener('click', () => {
-        sidebar.classList.toggle('mostrar-movil');
-        contenedorFiltros.classList.remove('mostrar-movil');
-    });
+    if (btnNavegacionMovil && sidebar && contenedorFiltros) {
+        btnNavegacionMovil.addEventListener('click', () => {
+            sidebar.classList.toggle('mostrar-movil');
+            contenedorFiltros.classList.remove('mostrar-movil');
+        });
+    }
 
-    btnFiltrarMovil.addEventListener('click', () => {
-        contenedorFiltros.classList.toggle('mostrar-movil');
-        sidebar.classList.remove('mostrar-movil');
-    });
+    if (btnFiltrarMovil && contenedorFiltros && sidebar) {
+        btnFiltrarMovil.addEventListener('click', () => {
+            contenedorFiltros.classList.toggle('mostrar-movil');
+            sidebar.classList.remove('mostrar-movil');
+        });
+    }
 
     // 7. ARRANQUE
     renderizarTabla();
