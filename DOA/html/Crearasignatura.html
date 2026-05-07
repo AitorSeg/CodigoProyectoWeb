@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear asignatura | DOA</title>
+
+    <link rel="stylesheet" href="../css/doa.css">
+    <link rel="stylesheet" href="../css/doa-layout.css">
+    <link rel="stylesheet" href="../css/doa-componentes.css">
+    <link rel="stylesheet" href="../css/crear_asignatura.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-doa pagina-crear-asignatura">
+    <header class="cabecera-panel-doa">
+        <div class="cabecera-panel-doa__logo">
+            <div class="marca-doa">
+                <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
+                    <img src="../img/LogoDoaAzulRecortado.png" alt="Logo de DOA" class="logo-doa">
+                </a>
+
+                <div class="marca-doa__powered">
+                    <span class="marca-doa__powered-text">Powered by</span>
+                    <img
+                        src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
+                        alt="Grado en Tecnologías Interactivas"
+                        class="marca-doa__powered-logo"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="cabecera-panel-doa__buscador">
+            <div
+                class="buscador-header buscador-header--desactivado"
+                aria-label="Buscador visual pendiente de activar"
+                title="El buscador se activará cuando se conecte la base de datos"
+            >
+                <span class="buscador-header__icono" aria-hidden="true">
+                    <img src="../img/iconos/grey-search.svg" alt="">
+                </span>
+
+                <input type="search" placeholder="Buscar asignatura..." disabled>
+            </div>
+        </div>
+
+        <div class="cabecera-panel-doa__perfil">
+            <div class="perfil-header">
+                <span class="perfil-header__icono" aria-hidden="true">
+                    <img src="../img/iconos/grey-user.svg" alt="">
+                </span>
+
+                <span class="perfil-header__texto">
+                    <strong id="nombreUsuarioHeader">Usuario demo</strong>
+                    <small id="rolUsuarioHeader">Perfil DOA</small>
+                </span>
+            </div>
+
+            <a class="boton-cerrar-sesion-movil" href="elegir_perfil.html" aria-label="Cerrar sesión">
+                <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
+                    <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
+                    <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <div class="layout-doa">
+        <div class="barra-lateral-doa">
+            <div class="tarjeta-modo-prueba">
+                <div class="tarjeta-modo-prueba__cabecera">
+                    <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
+                        <img src="../img/iconos/grey-info.svg" alt="">
+                    </span>
+
+                    <strong>Modo de prueba</strong>
+                </div>
+
+                <p>
+                    Estás usando DOA con datos de prueba. Las acciones no afectan a usuarios reales
+                    y los permisos dependen del perfil elegido.
+                </p>
+            </div>
+
+            <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
+                <a class="navegacion-lateral-doa__item" href="panel_principal.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
+                    </span>
+                    <span>Panel Principal</span>
+                </a>
+
+                <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="asignaturas.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-notebook.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-notebook.svg" alt="">
+                    </span>
+                    <span>Mis Asignaturas</span>
+                </a>
+
+                <a class="navegacion-lateral-doa__item" href="#">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-bell.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-bell.svg" alt="">
+                    </span>
+                    <span>Notificaciones</span>
+                </a>
+            </nav>
+
+            <div class="barra-lateral-doa__salida">
+                <a class="boton-cerrar-sesion" href="elegir_perfil.html">
+                    <span class="boton-cerrar-sesion__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
+                    </span>
+                    <span>Cerrar sesión</span>
+                </a>
+            </div>
+        </div>
+
+        <main class="contenido-doa contenido-crear-asignatura">
+            <section class="cabecera-crear-asignatura">
+                <a href="asignaturas.html" class="enlace-volver-asignaturas">
+                    <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
+                        <img src="../img/iconos/grey-chevron-right.svg" alt="">
+                    </span>
+                    <span>Volver a asignaturas</span>
+                </a>
+
+                <h1>Crear asignatura</h1>
+                <p>Registra una nueva asignatura de prueba para preparar su contenido académico.</p>
+            </section>
+
+            <section class="card tarjeta-formulario-asignatura">
+                <form id="formCrearAsignatura" novalidate>
+                    <div class="formulario-grid">
+                        <div class="campo-formulario">
+                            <label for="nombreAsignatura">Nombre de la asignatura *</label>
+                            <input type="text" id="nombreAsignatura" placeholder="Ej. Matemáticas Avanzadas">
+                            <p class="mensaje-error-campo" id="errorNombre">Este campo es obligatorio.</p>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="codigoAsignatura">Código de la asignatura *</label>
+                            <input type="text" id="codigoAsignatura" placeholder="Ej. MAT-101">
+                            <p class="mensaje-error-campo" id="errorCodigo">Este campo es obligatorio.</p>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="cursoAsignatura">Curso</label>
+                            <select id="cursoAsignatura">
+                                <option value="">Selecciona un curso...</option>
+                                <option value="1">1º curso</option>
+                                <option value="2">2º curso</option>
+                                <option value="3">3º curso</option>
+                                <option value="4">4º curso</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="profesorAsignatura">Profesor responsable</label>
+                            <select id="profesorAsignatura">
+                                <option value="">Asignar profesor más tarde...</option>
+                                <option value="don-pepito">Don Pepito</option>
+                                <option value="luelle-pridmore-starsmeare">Luelle Pridmore Starsmeare</option>
+                                <option value="eolande-merriton-mizzi">Eolande Merriton Mizzi</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-formulario campo-formulario--completo">
+                            <label for="descAsignatura">Descripción</label>
+                            <textarea id="descAsignatura" placeholder="Breve resumen del contenido de la asignatura..."></textarea>
+                        </div>
+                    </div>
+
+                    <p class="mensaje-exito-formulario hidden" id="mensajeExitoAsignatura" role="status"></p>
+
+                    <div class="acciones-formulario">
+                        <button type="button" class="boton-formulario boton-formulario--secundario" id="botonCancelarCrearAsignatura">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="boton-formulario boton-formulario--principal">
+                            Guardar asignatura
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/doa-layout.js"></script>
+    <script src="../js/crear-asignatura.js"></script>
+</body>
+</html>

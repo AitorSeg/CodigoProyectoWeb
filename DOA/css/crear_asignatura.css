@@ -1,0 +1,185 @@
+/*
+    Pantalla: Crear asignatura
+*/
+
+.pagina-crear-asignatura {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.cabecera-crear-asignatura {
+    margin-bottom: var(--space-5);
+}
+
+.cabecera-crear-asignatura h1 {
+    margin: 0 0 var(--space-2);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--color-text);
+}
+
+.cabecera-crear-asignatura p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 14px;
+}
+
+.tarjeta-formulario-asignatura {
+    max-width: 960px;
+}
+
+.formulario-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.campo-formulario--completo {
+    grid-column: 1 / -1;
+}
+
+.campo-formulario label {
+    color: var(--color-text);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-alt);
+    color: var(--color-text);
+    font-family: inherit;
+    outline: none;
+}
+
+.campo-formulario textarea {
+    min-height: 120px;
+    padding-top: var(--space-3);
+    resize: vertical;
+}
+
+.campo-formulario input::placeholder,
+.campo-formulario textarea::placeholder {
+    color: var(--color-soft);
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15);
+}
+
+.campo-formulario--error input,
+.campo-formulario--error select,
+.campo-formulario--error textarea {
+    border-color: var(--color-error);
+}
+
+.mensaje-error-campo {
+    display: none;
+    margin: 0;
+    color: var(--color-error);
+    font-size: 12px;
+}
+
+.campo-formulario--error .mensaje-error-campo {
+    display: block;
+}
+
+.mensaje-exito-formulario {
+    margin: var(--space-5) 0 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-success);
+    border-radius: var(--radius-md);
+    color: var(--color-success);
+    background: var(--color-bg);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.acciones-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+.boton-formulario {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-5);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.08s ease;
+}
+
+.boton-formulario:active {
+    transform: translateY(1px);
+}
+
+.boton-formulario--principal {
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-dark);
+}
+
+.boton-formulario--principal:hover {
+    background: var(--color-primary-hover);
+}
+
+.boton-formulario--secundario {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+}
+
+.boton-formulario--secundario:hover {
+    border-color: var(--color-muted);
+    background: var(--color-surface-alt);
+}
+
+@media (max-width: 900px) {
+    .cabecera-crear-asignatura h1 {
+        font-size: 28px;
+    }
+
+    .formulario-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .acciones-formulario {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .boton-formulario {
+        width: 100%;
+    }
+}
