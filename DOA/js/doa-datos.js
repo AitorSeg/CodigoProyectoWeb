@@ -75,5 +75,11 @@ window.guardarAsignaturaSeleccionada = function (idAsignatura) {
 };
 
 window.obtenerAsignaturaSeleccionada = function () {
-    return localStorage.getItem("doaAsignaturaSeleccionada") || "programacion";
+    const idGuardado = localStorage.getItem("doaAsignaturaSeleccionada");
+
+    if (idGuardado && window.DOA_ASIGNATURAS[idGuardado]) {
+        return idGuardado;
+    }
+
+    return "matematicas";
 };

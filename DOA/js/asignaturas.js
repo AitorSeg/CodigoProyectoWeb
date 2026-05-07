@@ -12,6 +12,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    const enlacesDetalleAsignatura = document.querySelectorAll(".enlace-detalle-asignatura");
+
+    enlacesDetalleAsignatura.forEach(function (enlace) {
+        enlace.addEventListener("click", function () {
+            const asignatura = enlace.dataset.asignatura;
+
+            if (asignatura) {
+                window.guardarAsignaturaSeleccionada(asignatura);
+            }
+        });
+    });
+
+    const botonesEntrarDetalle = document.querySelectorAll(".boton-asignatura--principal");
+
+    botonesEntrarDetalle.forEach(function (boton) {
+        boton.addEventListener("click", function () {
+            const tarjeta = boton.closest(".tarjeta-asignatura");
+            const asignatura = tarjeta.dataset.asignatura;
+
+            if (asignatura) {
+                window.guardarAsignaturaSeleccionada(asignatura);
+            }
+        });
+    });
+
     function cambiarEstadoTarjetaResumen(boton) {
         const tarjeta = boton.closest(".dato-asignaturas");
         const idDetalle = boton.getAttribute("aria-controls");
@@ -26,17 +51,4 @@ document.addEventListener("DOMContentLoaded", function () {
         tarjeta.classList.toggle("dato-asignaturas--abierta", !estaAbierta);
         detalle.hidden = estaAbierta;
     }
-
-    const botonesEntrarDetalle = document.querySelectorAll(".boton-asignatura--principal");
-
-    botonesEntrarDetalle.forEach(function (boton) {
-        boton.addEventListener("click", function () {
-            const tarjeta = boton.closest(".tarjeta-asignatura");
-            const asignatura = tarjeta.dataset.asignatura;
-
-            if (asignatura) {
-                window.guardarAsignaturaSeleccionada(asignatura);
-            }
-        });
-    });
 });
