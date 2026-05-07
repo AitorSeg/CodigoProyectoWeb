@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear asignatura | Secretaría DOA</title>
+
+    <link rel="stylesheet" href="../css/doa.css">
+    <link rel="stylesheet" href="../css/doa-layout.css">
+    <link rel="stylesheet" href="../css/doa-componentes.css">
+    <link rel="stylesheet" href="../css/secretaria.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-doa pagina-secretaria">
+    <header class="cabecera-panel-doa">
+        <div class="cabecera-panel-doa__logo">
+            <div class="marca-doa">
+                <a class="marca-doa__link" href="panel_secretaria.html" aria-label="Ir al panel de Secretaría de DOA">
+                    <img
+                        src="../img/LogoDoaAzulRecortado.png"
+                        alt="Logo de DOA"
+                        class="logo-doa"
+                    >
+                </a>
+
+                <div class="marca-doa__powered">
+                    <span class="marca-doa__powered-text">Powered by</span>
+                    <img
+                        src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
+                        alt="Grado en Tecnologías Interactivas"
+                        class="marca-doa__powered-logo"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="cabecera-panel-doa__buscador">
+            <div
+                class="buscador-header buscador-header--desactivado"
+                aria-label="Buscador visual pendiente de activar"
+                title="El buscador se activará cuando se conecte la base de datos"
+            >
+                <span class="buscador-header__icono" aria-hidden="true">
+                    <img src="../img/iconos/grey-search.svg" alt="">
+                </span>
+
+                <input
+                    type="search"
+                    placeholder="Buscar asignatura, profesor, alumno..."
+                    disabled
+                >
+            </div>
+        </div>
+
+        <div class="cabecera-panel-doa__perfil">
+            <div class="perfil-header">
+                <span class="perfil-header__icono" aria-hidden="true">
+                    <img src="../img/iconos/grey-briefcase-business.svg" alt="">
+                </span>
+
+                <span class="perfil-header__texto">
+                    <strong id="nombreUsuarioHeader">Ondrea Brezlaw</strong>
+                    <small id="rolUsuarioHeader">Secretaría</small>
+                </span>
+            </div>
+
+            <a class="boton-cerrar-sesion-movil" href="elegir_perfil.html" aria-label="Cerrar sesión">
+                <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
+                    <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
+                    <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <div class="layout-doa">
+        <div class="barra-lateral-doa">
+            <div class="tarjeta-modo-prueba">
+                <div class="tarjeta-modo-prueba__cabecera">
+                    <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
+                        <img src="../img/iconos/grey-info.svg" alt="">
+                    </span>
+
+                    <strong>Modo de prueba</strong>
+                </div>
+
+                <p>
+                    Estás usando DOA con datos de prueba. Las acciones no afectan a usuarios reales
+                    y los permisos dependen del perfil elegido.
+                </p>
+            </div>
+
+            <nav class="navegacion-lateral-doa" aria-label="Navegación principal de Secretaría">
+                <a class="navegacion-lateral-doa__item" href="panel_secretaria.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
+                    </span>
+
+                    <span>Panel Principal</span>
+                </a>
+
+                <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="asignaturas_secretaria.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-notebook.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-notebook.svg" alt="">
+                    </span>
+
+                    <span>Asignaturas</span>
+                </a>
+
+                <a class="navegacion-lateral-doa__item" href="asignaciones_secretaria.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-user.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-user.svg" alt="">
+                    </span>
+
+                    <span>Asignaciones</span>
+                </a>
+
+                <a class="navegacion-lateral-doa__item" href="notificaciones.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-bell.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-bell.svg" alt="">
+                    </span>
+
+                    <span>Notificaciones</span>
+                </a>
+            </nav>
+
+            <div class="barra-lateral-doa__salida">
+                <a class="boton-cerrar-sesion" href="elegir_perfil.html">
+                    <span class="boton-cerrar-sesion__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
+                    </span>
+
+                    <span>Cerrar sesión</span>
+                </a>
+            </div>
+        </div>
+
+        <main class="contenido-doa contenido-secretaria">
+            <section class="cabecera-secretaria">
+                <div class="cabecera-secretaria__texto">
+                    <a href="asignaturas_secretaria.html" class="enlace-volver-secretaria">
+                        <span class="enlace-volver-secretaria__icono" aria-hidden="true">
+                            <img src="../img/iconos/grey-chevron-right.svg" alt="">
+                        </span>
+
+                        <span>Volver a asignaturas</span>
+                    </a>
+
+                    <p class="cabecera-secretaria__eyebrow">Gestión académica</p>
+
+                    <h1>Crear asignatura</h1>
+
+                    <p>
+                        Da de alta una nueva asignatura o grupo para que posteriormente
+                        se puedan asignar profesores y alumnos.
+                    </p>
+                </div>
+            </section>
+
+            <div class="grid-formulario-secretaria">
+                <section class="bloque-secretaria">
+                    <div class="bloque-secretaria__cabecera">
+                        <div>
+                            <h2>Datos de la asignatura</h2>
+                            <p>
+                                Completa los datos básicos. Los campos marcados con asterisco son obligatorios.
+                            </p>
+                        </div>
+                    </div>
+
+                    <form id="formCrearAsignatura" class="formulario-secretaria" novalidate>
+                        <div class="campo-formulario-secretaria">
+                            <label class="form-label" for="nombreAsignatura">Nombre de la asignatura *</label>
+                            <input
+                                type="text"
+                                id="nombreAsignatura"
+                                class="input"
+                                placeholder="Ej. Diseño de Interfaces"
+                            >
+                            <p class="mensaje-error-campo" id="errorNombreAsignatura"></p>
+                        </div>
+
+                        <div class="campo-formulario-secretaria">
+                            <label class="form-label" for="codigoAsignatura">Código *</label>
+                            <input
+                                type="text"
+                                id="codigoAsignatura"
+                                class="input"
+                                placeholder="Ej. GTI-221"
+                            >
+                            <p class="mensaje-error-campo" id="errorCodigoAsignatura"></p>
+                        </div>
+
+                        <div class="campo-formulario-secretaria">
+                            <label class="form-label" for="cursoAsignatura">Curso *</label>
+                            <select id="cursoAsignatura" class="input">
+                                <option value="">Selecciona curso</option>
+                                <option value="1º">1º</option>
+                                <option value="2º">2º</option>
+                                <option value="3º">3º</option>
+                                <option value="4º">4º</option>
+                            </select>
+                            <p class="mensaje-error-campo" id="errorCursoAsignatura"></p>
+                        </div>
+
+                        <div class="campo-formulario-secretaria">
+                            <label class="form-label" for="grupoAsignatura">Grupo *</label>
+                            <select id="grupoAsignatura" class="input">
+                                <option value="">Selecciona grupo</option>
+                                <option value="A">Grupo A</option>
+                                <option value="B">Grupo B</option>
+                                <option value="C">Grupo C</option>
+                            </select>
+                            <p class="mensaje-error-campo" id="errorGrupoAsignatura"></p>
+                        </div>
+
+                        <div class="campo-formulario-secretaria campo-formulario-secretaria--completo">
+                            <label class="form-label" for="descripcionAsignatura">Descripción</label>
+                            <textarea
+                                id="descripcionAsignatura"
+                                class="input textarea-secretaria"
+                                placeholder="Descripción breve de la asignatura..."
+                            ></textarea>
+                        </div>
+
+                        <div class="campo-formulario-secretaria campo-formulario-secretaria--completo">
+                            <label class="form-label" for="estadoAsignatura">Estado inicial</label>
+                            <select id="estadoAsignatura" class="input">
+                                <option value="pendiente">Pendiente de asignaciones</option>
+                                <option value="activa">Activa</option>
+                            </select>
+                        </div>
+
+                        <div class="mensaje-formulario-secretaria mensaje-formulario-secretaria--oculto" id="mensajeFormularioAsignatura">
+                            Asignatura creada correctamente en modo demo.
+                        </div>
+
+                        <div class="acciones-formulario-secretaria">
+                            <a href="asignaturas_secretaria.html" class="boton-secretaria">
+                                Cancelar
+                            </a>
+
+                            <button type="submit" class="boton-secretaria boton-secretaria--principal">
+                                Guardar asignatura
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <aside class="lateral-secretaria">
+                    <article class="tarjeta-lateral-secretaria">
+                        <h3>Después de crearla</h3>
+
+                        <div class="lista-lateral-secretaria">
+                            <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
+                                <strong>1. Revisar datos</strong>
+                                <span>Comprueba que el código, curso y grupo son correctos.</span>
+                            </div>
+
+                            <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
+                                <strong>2. Asignar profesor</strong>
+                                <span>Selecciona el docente responsable de la asignatura.</span>
+                            </div>
+
+                            <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
+                                <strong>3. Añadir alumnos</strong>
+                                <span>Matricula los alumnos correspondientes al grupo.</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-lateral-secretaria">
+                        <h3>Estado demo</h3>
+
+                        <p class="texto-lateral-secretaria">
+                            En esta versión PMV, el alta se simula en el navegador.
+                            Más adelante estos datos se guardarían en una base de datos.
+                        </p>
+                    </article>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/doa-datos.js"></script>
+    <script src="../js/doa-layout.js"></script>
+    <script src="../js/crear_asignatura.js"></script>
+</body>
+</html>
