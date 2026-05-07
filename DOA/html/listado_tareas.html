@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de tareas | DOA</title>
+
+    <!-- Enlaces a hojas de estilo -->
 
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
@@ -11,52 +14,50 @@
     <link rel="stylesheet" href="../css/detalle_asignatura.css">
     <link rel="stylesheet" href="../css/listado_tareas.css">
 
+    <!-- Fin enlaces a hojas de estilo -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="pagina-doa pagina-listado-tareas">
+
+    <!-- Inicio de el header -->
     <header class="cabecera-panel-doa">
+
+        <!-- Inicio del logo -->
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
                 <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
-                    <img
-                        src="../img/LogoDoaAzulRecortado.png"
-                        alt="Logo de DOA"
-                        class="logo-doa"
-                    >
+                    <img src="../img/LogoDoaAzulRecortado.png" alt="Logo de DOA" class="logo-doa">
                 </a>
 
                 <div class="marca-doa__powered">
                     <span class="marca-doa__powered-text">Powered by</span>
-                    <img
-                        src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
-                        alt="Grado en Tecnologías Interactivas"
-                        class="marca-doa__powered-logo"
-                    >
+                    <img src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
+                        alt="Grado en Tecnologías Interactivas" class="marca-doa__powered-logo">
                 </div>
             </div>
         </div>
+        <!-- Final del logo -->
 
+        <!-- Inicio del buscador -->
         <div class="cabecera-panel-doa__buscador">
-            <div
-                class="buscador-header buscador-header--desactivado"
-                aria-label="Buscador visual pendiente de activar"
-                title="El buscador se activará cuando se conecte la base de datos"
-            >
+            <div class="buscador-header buscador-header--desactivado" aria-label="Buscador visual pendiente de activar"
+                title="El buscador se activará cuando se conecte la base de datos">
                 <span class="buscador-header__icono" aria-hidden="true">
                     <img src="../img/iconos/grey-search.svg" alt="">
                 </span>
 
-                <input
-                    type="search"
-                    placeholder="Buscar recurso, tarea..."
-                    disabled
-                >
+                <input type="search" placeholder="Buscar recurso, tarea..." disabled>
             </div>
         </div>
+        <!-- Final del buscador -->
 
+        <!-- Inicio del perfil de usuario -->
         <div class="cabecera-panel-doa__perfil">
             <div class="perfil-header">
                 <span class="perfil-header__icono" aria-hidden="true">
@@ -69,17 +70,26 @@
                 </span>
             </div>
 
+            <!-- Inicio del botón cerrar sesión en móvil -->
             <a class="boton-cerrar-sesion-movil" href="elegir_perfil.html" aria-label="Cerrar sesión">
                 <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
                     <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
                     <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
                 </span>
             </a>
+            <!-- Final del botón cerrar sesión en móvil -->
         </div>
+        <!-- Final del perfil de usuario -->
     </header>
+    <!-- Final de el header -->
 
+    <!-- Inicio del contenido principal -->
     <div class="layout-doa">
+
+        <!-- Inicio de la barra lateral -->
         <div class="barra-lateral-doa">
+
+            <!-- Inicio de la tarjeta de modo de prueba -->
             <div class="tarjeta-modo-prueba">
                 <div class="tarjeta-modo-prueba__cabecera">
                     <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
@@ -94,7 +104,9 @@
                     y los permisos dependen del perfil elegido.
                 </p>
             </div>
+            <!-- Final de la tarjeta de modo de prueba -->
 
+            <!-- Inicio de la navegación lateral -->
             <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
                 <a class="navegacion-lateral-doa__item" href="panel_principal.html">
                     <span class="navegacion-lateral-doa__icono" aria-hidden="true">
@@ -123,7 +135,9 @@
                     <span>Notificaciones</span>
                 </a>
             </nav>
+            <!-- Final de la navegación lateral -->
 
+            <!-- Inicio del botón cerrar sesión en escritorio -->
             <div class="barra-lateral-doa__salida">
                 <a class="boton-cerrar-sesion" href="elegir_perfil.html">
                     <span class="boton-cerrar-sesion__icono" aria-hidden="true">
@@ -134,11 +148,18 @@
                     <span>Cerrar sesión</span>
                 </a>
             </div>
+            <!-- Final del botón cerrar sesión en escritorio -->
         </div>
+        <!-- Final de la barra lateral -->
 
+        <!-- Inicio del contenido principal de la asignatura -->
         <main class="contenido-doa contenido-detalle-asignatura contenido-listado-tareas">
             <section class="detalle-asignatura-principal">
+
+                <!-- Inicio de la cabecera de detalles de asignatura -->
                 <div class="cabecera-detalle-asignatura">
+
+                    <!-- Inicio del enlace de volver a asignaturas e información de la asignatura -->
                     <div class="cabecera-detalle-asignatura__texto">
                         <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
                             <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
@@ -161,7 +182,9 @@
                             </li>
                         </ul>
                     </div>
+                    <!-- Final del enlace de volver a asignaturas e información de la asignatura -->
 
+                    <!-- Inicio de las pestañas de navegación entre secciones de la asignatura -->
                     <div class="cabecera-detalle-asignatura__pestanas">
                         <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
                             <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item">Recursos</a>
@@ -170,8 +193,11 @@
                             <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
                         </nav>
                     </div>
+                    <!-- Final de las pestañas de navegación entre secciones de la asignatura -->
                 </div>
+                <!-- Final de la cabecera de detalles de asignatura -->
 
+                <!-- Inicio del bloque de próxima entrega -->
                 <section class="proxima-entrega">
                     <div class="proxima-entrega__contenido">
                         <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
@@ -200,25 +226,44 @@
                         </a>
                     </div>
                 </section>
+                <!-- Final del bloque de próxima entrega -->
 
+                <!-- Inicio del bloque de listado de tareas -->
                 <section class="bloque-listado-tareas">
+
+                    <!-- Inicio de los filtros de tareas -->
                     <div class="filtros-tareas">
-                        <button type="button" class="filtro-tarea">
-                            <span>Tipo: Todas</span>
-                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
-                        </button>
+                        <label class="filtro-tarea">
+                            <span>Tipo:</span>
+                            <select id="filtroTipo">
+                                <option value="todas">Todas</option>
+                                <option value="tarea">Tareas</option>
+                                <option value="practica">Prácticas</option>
+                            </select>
+                        </label>
 
-                        <button type="button" class="filtro-tarea">
-                            <span>Estado</span>
-                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
-                        </button>
+                        <label class="filtro-tarea">
+                            <span>Estado:</span>
+                            <select id="filtroEstado">
+                                <option value="todos">Todos</option>
+                                <option value="entregada">Entregada</option>
+                                <option value="pendiente">Pendiente</option>
+                                <option value="tardia">Tardía</option>
+                            </select>
+                        </label>
 
-                        <button type="button" class="filtro-tarea">
-                            <span>Ordenar por</span>
-                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
-                        </button>
+                        <label class="filtro-tarea">
+                            <span>Ordenar:</span>
+                            <select id="ordenTareas">
+                                <option value="ninguno">Sin ordenar</option>
+                                <option value="cercana">Más reciente</option>
+                                <option value="tarde">Más antigua</option>
+                            </select>
+                        </label>
                     </div>
+                    <!-- Final de los filtros de tareas -->
 
+                    <!-- Inicio de la tabla de tareas -->
                     <div class="tabla-tareas">
                         <div class="tabla-tareas__cabecera">
                             <p>Tareas</p>
@@ -227,42 +272,86 @@
                             <p>Estado</p>
                             <p>Calificación</p>
                         </div>
-                        <article class="fila-tarea">
-                            <a href="detalle_tarea.html" class="fila-tarea__nombre">Tarea 2: Implementación de APIs</a>
+
+                        <!-- Inicio tarea 1 -->
+                        <article
+                            class="fila-tarea"
+                            data-tipo="tarea"
+                            data-estado="entregada"
+                            data-fecha-entrega="2026-04-19"
+                        >
+                            <a href="detalle_tarea.html" class="fila-tarea__nombre">
+                                Tarea 2: Implementación de APIs
+                            </a>
+
                             <p><strong>16 Abr, 2026</strong></p>
                             <p><strong>19 Abr, 2026</strong></p>
+
                             <p>
                                 <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
                             </p>
+
                             <p class="fila-tarea__nota"><strong>/</strong></p>
                         </article>
+                        <!-- Final tarea 1 -->
 
-                        <article class="fila-tarea">
-                            <a href="detalle_tarea.html" class="fila-tarea__nombre">Tarea 3: Cooperación de webs</a>
+                        <!-- Inicio tarea 2 -->
+                        <article
+                            class="fila-tarea"
+                            data-tipo="practica"
+                            data-estado="pendiente"
+                            data-fecha-entrega="2026-04-24"
+                        >
+                            <a href="detalle_tarea.html" class="fila-tarea__nombre">
+                                Tarea 3: Cooperación de webs
+                            </a>
+
                             <p><strong>22 Abr, 2026</strong></p>
                             <p><strong>24 Abr, 2026</strong></p>
+
                             <p>
                                 <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
                             </p>
+
                             <p class="fila-tarea__nota"><strong>/</strong></p>
                         </article>
+                        <!-- Final tarea 2 -->
 
-                        <article class="fila-tarea">
-                            <a href="detalle_tarea.html" class="fila-tarea__nombre">Tarea 4: Seguimiento de mapas</a>
+                        <!-- Inicio tarea 3 -->
+                        <article
+                            class="fila-tarea"
+                            data-tipo="tarea"
+                            data-estado="tardia"
+                            data-fecha-entrega="2026-05-02"
+                        >
+                            <a href="detalle_tarea.html" class="fila-tarea__nombre">
+                                Tarea 4: Seguimiento de mapas
+                            </a>
+
                             <p><strong>30 Abr, 2026</strong></p>
                             <p><strong>02 May, 2026</strong></p>
+
                             <p>
-                                <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
+                                <span class="etiqueta-estado etiqueta-estado--tardia">Tardía</span>
                             </p>
+
                             <p class="fila-tarea__nota"><strong>/</strong></p>
                         </article>
+                        <!-- Final tarea 3 -->
                     </div>
+                    <!-- Final de la tabla de tareas -->
                 </section>
+                <!-- Final del bloque de listado de tareas -->
             </section>
+            <!-- Final del detalle de asignatura principal -->
         </main>
+        <!-- Final del contenido principal de la asignatura -->
     </div>
+    <!-- Final del contenido principal -->
 
     <script src="../js/doa-layout.js"></script>
     <script src="../js/doa-datos.js"></script>
+    <script src="../js/listado_tareas.js"></script>
 </body>
+
 </html>

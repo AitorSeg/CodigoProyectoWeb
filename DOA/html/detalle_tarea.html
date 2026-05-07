@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles de la tarea | DOA</title>
+
+    <!-- Enlaces a hojas de estilo -->
 
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
@@ -11,13 +14,21 @@
     <link rel="stylesheet" href="../css/detalle_asignatura.css">
     <link rel="stylesheet" href="../css/detalle_tarea.css">
 
+    <!-- Fin enlaces a hojas de estilo -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="pagina-doa pagina-detalle-tarea">
+
+    <!-- Inicio de el header -->
     <header class="cabecera-panel-doa">
+
+        <!-- Inicio del logo -->
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
                 <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
@@ -38,7 +49,9 @@
                 </div>
             </div>
         </div>
+        <!-- Final del logo -->
 
+        <!-- Inicio del buscador -->
         <div class="cabecera-panel-doa__buscador">
             <div
                 class="buscador-header buscador-header--desactivado"
@@ -56,7 +69,9 @@
                 >
             </div>
         </div>
+        <!-- Final del buscador -->
 
+        <!-- Inicio del perfil de usuario -->
         <div class="cabecera-panel-doa__perfil">
             <div class="perfil-header">
                 <span class="perfil-header__icono" aria-hidden="true">
@@ -68,18 +83,27 @@
                     <small id="rolUsuarioHeader">Perfil DOA</small>
                 </span>
             </div>
+            <!-- Final del perfil de usuario -->
 
+            <!-- Inicio del botón cerrar sesión en móvil -->
             <a class="boton-cerrar-sesion-movil" href="elegir_perfil.html" aria-label="Cerrar sesión">
                 <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
                     <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
                     <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
                 </span>
             </a>
+            <!-- Final del botón cerrar sesión en móvil -->
         </div>
     </header>
+    <!-- Final de el header -->
 
+    <!-- Inicio del contenido principal -->
     <div class="layout-doa">
+
+        <!-- Inicio de la barra lateral -->
         <div class="barra-lateral-doa">
+
+            <!-- Inicio de la tarjeta de modo de prueba -->
             <div class="tarjeta-modo-prueba">
                 <div class="tarjeta-modo-prueba__cabecera">
                     <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
@@ -94,7 +118,9 @@
                     y los permisos dependen del perfil elegido.
                 </p>
             </div>
+            <!-- Final de la tarjeta de modo de prueba -->
 
+            <!-- Inicio de la navegación lateral -->
             <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
                 <a class="navegacion-lateral-doa__item" href="panel_principal.html">
                     <span class="navegacion-lateral-doa__icono" aria-hidden="true">
@@ -123,7 +149,9 @@
                     <span>Notificaciones</span>
                 </a>
             </nav>
+            <!-- Final de la navegación lateral -->
 
+            <!-- Inicio del botón cerrar sesión en escritorio -->
             <div class="barra-lateral-doa__salida">
                 <a class="boton-cerrar-sesion" href="elegir_perfil.html">
                     <span class="boton-cerrar-sesion__icono" aria-hidden="true">
@@ -134,11 +162,18 @@
                     <span>Cerrar sesión</span>
                 </a>
             </div>
+            <!-- Final del botón cerrar sesión en escritorio -->
         </div>
+        <!-- Final de la barra lateral -->
 
+        <!-- Inicio del contenido principal de la asignatura -->
         <main class="contenido-doa contenido-detalle-asignatura contenido-detalle-tarea">
             <section class="detalle-asignatura-principal">
+
+                <!-- Inicio de la cabecera de detalles de asignatura -->
                 <div class="cabecera-detalle-asignatura">
+
+                    <!-- Inicio de la información de la asignatura -->
                     <div class="cabecera-detalle-asignatura__texto">
                         <h1 id="tituloAsignatura">Programación II</h1>
 
@@ -154,7 +189,9 @@
                             </li>
                         </ul>
                     </div>
+                    <!-- Final de la información de la asignatura -->
 
+                    <!-- Inicio de las pestañas de navegación entre secciones de la asignatura -->
                     <div class="cabecera-detalle-asignatura__pestanas">
                         <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
                             <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item">Recursos</a>
@@ -163,16 +200,25 @@
                             <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
                         </nav>
                     </div>
+                    <!-- Final de las pestañas de navegación entre secciones de la asignatura -->
                 </div>
+                <!-- Final de la cabecera de detalles de asignatura -->
 
+                <!-- Inicio del enlace para volver al listado de tareas -->
                 <a href="listado_tareas.html" class="enlace-volver">
                     <span aria-hidden="true">←</span>
                     Volver
                 </a>
+                <!-- Final del enlace para volver al listado de tareas -->
 
+                <!-- Inicio del detalle de la tarea -->
                 <section class="detalle-tarea">
-                    <h2>Tarea 1: Desarrollo de APIs</h2>
 
+                    <!-- Inicio del título de la tarea -->
+                    <h2>Tarea 1: Desarrollo de APIs</h2>
+                    <!-- Final del título de la tarea -->
+
+                    <!-- Inicio de la descripción de la tarea -->
                     <div class="descripcion-tarea">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac eros metus.
@@ -184,9 +230,12 @@
                             risus feugiat, tempus elit nec, imperdiet sapien.
                         </p>
                     </div>
+                    <!-- Final de la descripción de la tarea -->
 
+                    <!-- Separador visual entre descripción y fechas -->
                     <div class="separador"></div>
 
+                    <!-- Inicio del bloque de fechas de la tarea -->
                     <div class="fechas-tarea">
                         <div class="fecha-tarea">
                             <span>Fecha de emisión:</span>
@@ -198,8 +247,12 @@
                             <p class="fecha-tarea__valor">Viernes, 19 de Abril</p>
                         </div>
                     </div>
+                    <!-- Final del bloque de fechas de la tarea -->
 
+                    <!-- Inicio de la zona de entrega y recursos adjuntos -->
                     <div class="zona-entrega">
+
+                        <!-- Inicio del bloque de archivos subidos por el alumno -->
                         <section class="archivos-subidos">
                             <ul class="lista-archivos">
                                 <li>
@@ -231,7 +284,9 @@
                                 </button>
                             </div>
                         </section>
+                        <!-- Final del bloque de archivos subidos por el alumno -->
 
+                        <!-- Inicio del bloque de recursos adjuntos -->
                         <section class="recursos-adjuntos">
                             <h3>Recursos Adjuntos</h3>
 
@@ -270,19 +325,36 @@
                                 </li>
                             </ul>
                         </section>
+                        <!-- Final del bloque de recursos adjuntos -->
 
+                        <!-- Inicio de los botones finales de la tarea -->
                         <div class="acciones-tarea">
-                            <button type="button" class="boton-secundario">Guardar</button>
-                            <button type="button" class="boton-principal">Entregar</button>
-                            <button type="button" class="boton-secundario">Cancelar</button>
+                            <button type="button" class="boton-secundario">
+                                Guardar
+                            </button>
+
+                            <button type="button" class="boton-principal">
+                                Entregar
+                            </button>
+
+                            <button type="button" class="boton-secundario" onclick="window.location.href='listado_tareas.html'">
+                                Cancelar
+                            </button>
                         </div>
+                        <!-- Final de los botones finales de la tarea -->
                     </div>
+                    <!-- Final de la zona de entrega y recursos adjuntos -->
                 </section>
+                <!-- Final del detalle de la tarea -->
             </section>
+            <!-- Final del detalle de asignatura principal -->
         </main>
+        <!-- Final del contenido principal de la asignatura -->
     </div>
+    <!-- Final del contenido principal -->
 
     <script src="../js/doa-layout.js"></script>
     <script src="../js/doa-datos.js"></script>
 </body>
+
 </html>

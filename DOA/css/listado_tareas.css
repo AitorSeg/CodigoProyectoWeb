@@ -12,11 +12,18 @@
     padding: var(--space-6) var(--space-8) var(--space-8);
 }
 
+/*
+    Botones reutilizables
+*/
+
 .boton-secundario {
     min-width: 118px;
     min-height: 36px;
     padding: 0 var(--space-4);
+    border: 1px solid rgba(168, 183, 200, 0.55);
     border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
     font-family: inherit;
     font-size: 12px;
     font-weight: 800;
@@ -26,13 +33,6 @@
         background-color 0.15s ease,
         color 0.15s ease,
         transform 0.08s ease;
-    
-}
-
-.boton-secundario {
-    border: 1px solid rgba(168, 183, 200, 0.55);
-    background: var(--color-surface);
-    color: var(--color-text);
 }
 
 .boton-secundario:hover {
@@ -40,18 +40,19 @@
     background: rgba(0, 229, 255, 0.06);
     color: var(--color-primary);
 }
+
 /*
     Ajustes listado profesor
 */
 
 .acciones-superiores-tareas {
     display: flex;
+    justify-content: flex-start;
     margin-bottom: var(--space-4);
 }
 
 .boton-crear-tarea {
     min-width: 118px;
-    justify-content: flex-start;
 }
 
 .pagina-listado-tareas-profe .tabla-tareas__cabecera,
@@ -62,13 +63,12 @@
 .boton-editar-tarea {
     min-width: 112px;
     min-height: 34px;
-    justify-self: end;
+    justify-self: center;
+    justify-content: center;
     padding: 0 var(--space-3);
     font-size: 11px;
     white-space: nowrap;
-    justify-content: flex-end;
 }
-
 
 /*
     Próxima entrega
@@ -90,6 +90,10 @@
     min-width: 0;
 }
 
+/*
+    Etiquetas de estado
+*/
+
 .etiqueta-estado {
     display: inline-flex;
     align-items: center;
@@ -100,6 +104,7 @@
     font-size: 10px;
     font-weight: 700;
     line-height: 1;
+    white-space: nowrap;
 }
 
 .etiqueta-estado--entregada,
@@ -113,6 +118,12 @@
     border: 1px solid var(--color-warning);
     color: var(--color-warning);
     background: rgba(255, 148, 92, 0.06);
+}
+
+.etiqueta-estado--tardia {
+    border: 1px solid var(--color-error);
+    color: var(--color-error);
+    background: rgba(255, 92, 92, 0.06);
 }
 
 .proxima-entrega h2 {
@@ -191,6 +202,10 @@
     margin-top: var(--space-5);
 }
 
+/*
+    Filtros
+*/
+
 .filtros-tareas {
     display: flex;
     justify-content: flex-end;
@@ -232,6 +247,10 @@
     background: var(--color-surface);
     color: var(--color-text);
 }
+
+/*
+    Tabla de tareas
+*/
 
 .tabla-tareas {
     display: flex;
@@ -295,8 +314,35 @@
 .fila-tarea__nota {
     text-align: center;
 }
+
 /*
-    Alineación de columnas en listado profesor
+    Alineación de columnas en tabla de tareas
+*/
+
+.tabla-tareas__cabecera p,
+.fila-tarea > p {
+    justify-self: center;
+    text-align: center;
+}
+
+.tabla-tareas__cabecera p:first-child,
+.fila-tarea__nombre {
+    justify-self: start;
+    text-align: left;
+}
+
+.fila-tarea > p {
+    width: 100%;
+}
+
+.fila-tarea > p:nth-of-type(3),
+.fila-tarea > p:nth-of-type(4) {
+    display: flex;
+    justify-content: center;
+}
+
+/*
+    Alineación específica de columnas en listado profesor
 */
 
 .pagina-listado-tareas-profe .tabla-tareas__cabecera p,
@@ -312,22 +358,11 @@
     text-align: left;
 }
 
-.pagina-listado-tareas-profe .fila-tarea > p {
-    width: 100%;
-}
-
-.pagina-listado-tareas-profe .fila-tarea > p:nth-of-type(3),
-.pagina-listado-tareas-profe .fila-tarea > p:nth-of-type(4) {
-    display: flex;
-    justify-content: center;
-}
-
 /*
     Responsive
 */
 
 @media (max-width: 1180px) {
-
     .tabla-tareas {
         overflow-x: auto;
         padding-bottom: var(--space-2);
@@ -337,11 +372,11 @@
     .fila-tarea {
         min-width: 820px;
     }
+
     .pagina-listado-tareas-profe .tabla-tareas__cabecera,
     .pagina-listado-tareas-profe .fila-tarea {
-    min-width: 900px;
+        min-width: 900px;
     }
-    
 }
 
 @media (max-width: 900px) {
@@ -438,7 +473,7 @@
     .filtros-tareas {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: var(--space-4);
+        gap: var(--space-3);
         margin-bottom: var(--space-5);
     }
 
@@ -459,12 +494,14 @@
         line-height: 1;
     }
 
-    .filtro-tarea span[aria-hidden="true"] {
-        width: 12px;
-        height: 12px;
-        font-size: 11px;
-        transform: translateY(-1px);
+    .filtro-tarea select {
+        max-width: 100%;
+        font-size: 10px;
     }
+
+    /*
+        Tabla móvil
+    */
 
     .tabla-tareas__cabecera,
     .fila-tarea {
@@ -483,6 +520,7 @@
     .fila-tarea p {
         font-size: 14px;
     }
+
     .pagina-listado-tareas-profe .tabla-tareas__cabecera,
     .pagina-listado-tareas-profe .fila-tarea {
         grid-template-columns: 210px 125px 125px 100px 80px 110px;
@@ -494,24 +532,8 @@
         min-height: 32px;
         font-size: 10px;
     }
-    .filtros-tareas {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: var(--space-3);
-    }
-
-    .filtro-tarea {
-        width: 100%;
-        justify-content: center;
-        padding: 0 var(--space-2);
-        font-size: 10px;
-    }
-
-    .filtro-tarea select {
-        max-width: 100%;
-        font-size: 10px;
-    }
 }
+
 @media (max-width: 560px) {
     .filtros-tareas {
         grid-template-columns: 1fr;
