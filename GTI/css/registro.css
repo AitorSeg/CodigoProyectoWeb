@@ -1,5 +1,8 @@
 
-    :root {
+/* Página de Registro - Estilos para el formulario de registro */
+
+/* Variables CSS globales para colores y fuentes */
+:root {
       --primary-orange: #D97706;
       --secondary-orange: #F89119;
       --bg-main: #000000;
@@ -12,9 +15,11 @@
       --font-main: 'Space Grotesk', sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+/* Reset global para box-sizing, margin y padding */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
+/* Estilos del cuerpo de la página */
+body {
       background-color: var(--bg-main);
       color: var(--text-white);
       font-family: var(--font-main);
@@ -24,9 +29,8 @@
       min-height: 100vh;
     }
 
-    
-    /* Estructura a dos columnas */
-    .auth-container {
+/* Contenedor principal con layout de dos columnas */
+.auth-container {
       display: flex;
       gap: 64px;
       max-width: 1000px;
@@ -35,11 +39,17 @@
       flex-wrap: wrap;
     }
 
-    .auth-text { flex: 1; min-width: 300px; }
-    .auth-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; line-height: 1.1; }
-    .auth-text p { font-size: 16px; color: var(--text-gray); max-width: 400px; }
+/* Sección de texto lateral */
+.auth-text { flex: 1; min-width: 300px; }
 
-    .auth-card {
+/* Título de la sección de texto */
+.auth-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; line-height: 1.1; }
+
+/* Párrafo de la sección de texto */
+.auth-text p { font-size: 16px; color: var(--text-gray); max-width: 400px; }
+
+/* Tarjeta del formulario de registro */
+.auth-card {
       flex: 1;
       min-width: 350px;
       background-color: var(--bg-card);
@@ -48,18 +58,25 @@
       box-shadow: 10px 10px 30px rgba(0,0,0,0.8);
     }
 
-    .auth-card h2 {
+/* Título de la tarjeta de registro */
+.auth-card h2 {
       font-size: 30px;
       margin-bottom: 32px;
       color: var(--primary-orange);
       text-align: center;
     }
 
-    .form-row { display: flex; gap: 16px; }
-    .form-group { margin-bottom: 20px; width: 100%; }
-    .form-group label { display: block; font-size: 14px; margin-bottom: 8px; font-weight: 600; }
+/* Fila de formulario para campos en línea */
+.form-row { display: flex; gap: 16px; }
 
-    .form-group input {
+/* Grupo de formulario (etiqueta + input) */
+.form-group { margin-bottom: 20px; width: 100%; }
+
+/* Etiqueta del grupo de formulario */
+.form-group label { display: block; font-size: 14px; margin-bottom: 8px; font-weight: 600; }
+
+/* Campo de entrada */
+.form-group input {
       width: 100%;
       height: 44px;
       background-color: var(--bg-input);
@@ -71,12 +88,14 @@
       transition: 0.3s;
     }
 
-    .form-group input:focus {
+/* Estilos al enfocar el input */
+.form-group input:focus {
       border-color: var(--accent-blue);
       outline: none;
     }
 
-    .btn-primary {
+/* Botón primario de registro */
+.btn-primary {
       width: 100%;
       height: 44px;
       background-color: var(--primary-orange);
@@ -90,9 +109,11 @@
       margin-top: 10px;
     }
 
-    .btn-primary:hover { background-color: var(--secondary-orange); }
+/* Hover del botón primario */
+.btn-primary:hover { background-color: var(--secondary-orange); }
 
-    .error-msg {
+/* Mensaje de error (oculto por defecto) */
+.error-msg {
       color: var(--error);
       font-size: 12px;
       margin-top: 6px;

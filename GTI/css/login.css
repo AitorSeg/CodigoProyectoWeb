@@ -1,4 +1,7 @@
-   :root {
+/* Página de Login - Estilos para el formulario de autenticación */
+
+/* Variables CSS globales para colores y fuentes */
+:root {
       --primary-orange: #D97706;
       --secondary-orange: #F89119;
       --bg-main: #000000;
@@ -11,7 +14,8 @@
       --font-main: 'Space Grotesk', Arial, Helvetica, sans-serif;
     }
 
-    body {
+/* Estilos del cuerpo de la página */
+body {
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -22,7 +26,8 @@
       font-family: var(--font-main);
     }
 
-    .auth-card {
+/* Tarjeta principal de autenticación */
+.auth-card {
       background-color: var(--bg-card);
       padding: 40px;
       border-radius: 16px; /* Radio estándar de tarjetas GTI */
@@ -32,33 +37,38 @@
       text-align: center;
     }
 
-    .auth-card h2 {
+/* Título de la tarjeta de autenticación */
+.auth-card h2 {
       font-size: 30px; /* Título H2 */
       font-weight: 600; /* SemiBold */
       margin-bottom: 5px;
       color: var(--text-white);
     }
 
-    .auth-card p.subtitle {
+/* Subtítulo de la tarjeta */
+.auth-card p.subtitle {
       font-size: 14px;
       color: var(--text-gray);
       margin-bottom: 32px;
     }
 
-    .form-group {
+/* Grupo de formulario (etiqueta + input) */
+.form-group {
       text-align: left;
       margin-bottom: 24px;
     }
 
-    .form-group label {
+/* Etiqueta del grupo de formulario */
+.form-group label {
       display: block;
       font-size: 14px;
       font-weight: 600;
       margin-bottom: 8px;
     }
 
-    .form-group input[type="email"],
-    .form-group input[type="password"] {
+/* Campos de entrada para email y contraseña */
+.form-group input[type="email"],
+.form-group input[type="password"] {
       width: 100%;
       background-color: var(--bg-input);
       border: 2px solid transparent;
@@ -73,11 +83,13 @@
       transition: border 0.3s ease;
     }
 
-    .form-group input:focus {
+/* Estilos al enfocar los inputs */
+.form-group input:focus {
       border-color: var(--accent-blue);
     }
 
-    .form-options {
+/* Opciones del formulario (recordar contraseña, olvidar contraseña) */
+.form-options {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -85,7 +97,8 @@
       margin-bottom: 24px;
     }
 
-    .form-options label {
+/* Etiqueta con checkbox para recordar contraseña */
+.form-options label {
       color: var(--text-gray);
       display: flex;
       align-items: center;
@@ -93,18 +106,21 @@
       cursor: pointer;
     }
 
-    .form-options a {
+/* Enlace para olvidar contraseña */
+.form-options a {
       color: var(--primary-orange);
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
     }
 
-    .form-options a:hover {
+/* Hover del enlace */
+.form-options a:hover {
       color: var(--secondary-orange);
     }
 
-    .btn-primary {
+/* Botón primario de login */
+.btn-primary {
       background-color: var(--primary-orange);
       color: var(--text-white);
       border: none;
@@ -119,23 +135,27 @@
       transition: background 0.3s ease;
     }
 
-    .btn-primary:hover {
+/* Hover del botón primario */
+.btn-primary:hover {
       background-color: var(--secondary-orange);
     }
 
-    .auth-footer {
+/* Pie de la tarjeta de autenticación */
+.auth-footer {
       margin-top: 24px;
       font-size: 14px;
       color: var(--text-gray);
     }
 
-    .auth-footer a {
+/* Enlace en el pie (registro) */
+.auth-footer a {
       color: var(--primary-orange);
       text-decoration: none;
       font-weight: 600;
     }
 
-    .error-text {
+/* Texto de error (oculto por defecto) */
+.error-text {
       color: #ff4d4d;
       font-size: 12px;
       margin-top: 6px;

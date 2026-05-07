@@ -1,59 +1,78 @@
 <!DOCTYPE html>
+<!-- Página de Registro - Formulario para crear nueva cuenta de usuario -->
 <html lang="es">
 <head>
+  <!-- Configuración de caracteres y título de la página -->
   <meta charset="UTF-8">
   <title>GTI - Crear Cuenta</title>
-    <link rel="stylesheet" href="../css/gti.css" />
-    <link rel="stylesheet" href="../css/registro.css" />
+  <!-- Estilos globales de GTI -->
+  <link rel="stylesheet" href="../css/gti.css" />
+  <!-- Estilos específicos para la página de registro -->
+  <link rel="stylesheet" href="../css/registro.css" />
   
 </head>
 <body>
 
+<!-- Contenedor principal con layout de dos columnas -->
 <div class="auth-container">
+  <!-- Sección de texto con título y descripción -->
   <div class="auth-text">
     <h1>Crea tu cuenta <br><span style="color: var(--primary-orange)">y comienza hoy</span></h1>
     <p>Regístrate para comprar, gestionar tus licencias y acceder a tus módulos educativos de pago único.</p>
   </div>
 
+  <!-- Tarjeta del formulario de registro -->
   <div class="auth-card">
+    <!-- Título de la tarjeta -->
     <h2>Crear cuenta</h2>
+    <!-- Formulario de registro con validación -->
     <form id="registerForm">
 
+      <!-- Fila con campos de nombre y apellidos -->
       <div class="form-row">
+        <!-- Campo de nombre -->
         <div class="form-group">
           <label>Nombre *</label>
           <input type="text" id="nombre" placeholder="Tu nombre" required>
         </div>
+        <!-- Campo de apellidos -->
         <div class="form-group">
           <label>Apellidos *</label>
           <input type="text" id="apellidos" placeholder="Tus apellidos" required>
         </div>
       </div>
 
+      <!-- Campo de correo electrónico -->
       <div class="form-group">
         <label>Correo electrónico *</label>
         <input type="email" id="email" placeholder="ejemplo@correo.com" required>
       </div>
 
+      <!-- Campo de contraseña -->
       <div class="form-group">
         <label>Contraseña *</label>
         <input type="password" id="pass" placeholder="Ingresa tu contraseña" required>
       </div>
 
+      <!-- Campo de confirmación de contraseña con validación de error -->
       <div class="form-group">
         <label>Confirmar Contraseña *</label>
         <input type="password" id="passConfirm" placeholder="Repite tu contraseña" required>
         <div class="error-msg" id="passError">Las contraseñas no coinciden</div>
       </div>
 
+      <!-- Botón para enviar el formulario -->
       <button type="submit" class="btn-primary">REGISTRARSE</button>
 
+      <!-- Enlace para ir a la página de login -->
       <p style="margin-top: 24px; text-align: center; font-size: 14px; color: var(--text-gray)">
         ¿Ya tienes una cuenta? <a href="login.html" style="color: var(--primary-orange); text-decoration: none; font-weight: 600;">Inicia sesión</a>
       </p>
     </form>
   </div>
 </div>
+
+<!-- Script para manejar la lógica de registro -->
 <script src="../js/registro.js"></script>
 </body>
 </html>
