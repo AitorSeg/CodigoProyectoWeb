@@ -55,7 +55,7 @@
     grid-area: titulo;
     margin: 0;
     color: var(--color-text);
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 800;
     line-height: 1.2;
 }
@@ -108,7 +108,7 @@
     padding: var(--space-4);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    background: var(--color-bg);
+    background: var(--color-surface);
 }
 
 .dato-examen span {
@@ -175,9 +175,9 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     color: var(--color-muted);
-    background: var(--color-bg);
+    background: var(--color-surface-alt);
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 /*
@@ -319,7 +319,7 @@
     }
 
     .tarjeta-detalle-examen__cabecera h2 {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .tarjeta-detalle-examen__cabecera p {
