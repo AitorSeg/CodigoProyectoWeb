@@ -1,0 +1,144 @@
+
+    :root {
+      --primary-orange: #D97706;
+      --secondary-orange: #F89119;
+      --bg-main: #000000;
+      --bg-card: #1B1B1B;
+      --bg-input: #353535;
+      --text-white: #FFFFFF;
+      --text-gray: #A9B7C8;
+      --accent-blue: #0B3D91;
+      --error: #FF4D57;
+      --font-main: 'Space Grotesk', Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: var(--bg-main);
+      color: var(--text-white);
+      font-family: var(--font-main);
+    }
+
+    .auth-card {
+      background-color: var(--bg-card);
+      padding: 40px;
+      border-radius: 16px; /* Radio estándar de tarjetas GTI */
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .auth-card h2 {
+      font-size: 30px; /* Título H2 */
+      font-weight: 600; /* SemiBold */
+      margin-bottom: 5px;
+      color: var(--text-white);
+    }
+
+    .auth-card p.subtitle {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+      width: 100%;
+      background-color: var(--bg-input);
+      border: 2px solid transparent;
+      color: var(--text-white);
+      height: 44px; /* Alto definido en el libro de estilos */
+      padding: 0 16px; /* Padding horizontal de 16px */
+      border-radius: 12px; /* Radio de 12px para inputs */
+      font-family: var(--font-main);
+      font-size: 16px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px; /* Caption */
+      margin-bottom: 24px;
+    }
+
+    .form-options label {
+      color: var(--text-gray);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .form-options a {
+      color: var(--primary-orange);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .form-options a:hover {
+      color: var(--secondary-orange);
+    }
+
+    .btn-primary {
+      background-color: var(--primary-orange);
+      color: var(--text-white);
+      border: none;
+      height: 44px; /* Alto del botón primario */
+      padding: 0 16px;
+      width: 100%;
+      font-family: var(--font-main);
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 12px; /* Radio de 12px para botones */
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-orange);
+    }
+
+    .auth-footer {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+
+    .auth-footer a {
+      color: var(--primary-orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .error-text {
+      color: #ff4d4d;
+      font-size: 12px;
+      margin-top: 6px;
+      display: none;
+    }

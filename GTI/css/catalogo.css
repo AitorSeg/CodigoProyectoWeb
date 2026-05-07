@@ -1,0 +1,362 @@
+/* Página Nuestro Último Módulo */
+
+/* Enlace activo del menú */
+nav a.active {
+    color: var(--naranja);
+    border-bottom: 3px solid var(--naranja);
+    padding-bottom: 6px;
+}
+
+/* Hero del módulo */
+.module-hero {
+    min-height: 370px;
+    padding: 70px 7% 40px;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 70px;
+    align-items: start;
+    background-color: #000;
+}
+
+.module-hero h1 {
+    font-size: 105px;
+    line-height: 1;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 26px;
+}
+
+.module-hero p {
+    max-width: 720px;
+    color: var(--cream);
+    font-size: 22px;
+    line-height: 1.35;
+}
+
+.module-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    padding-top: 10px;
+}
+
+.buy-btn,
+.trial-btn {
+    width: 250px;
+    height: 68px;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.buy-btn {
+    background-color: var(--naranja);
+    color: #1b1b1b;
+    border: 2px solid var(--naranja);
+}
+
+.trial-btn {
+    background-color: transparent;
+    color: var(--cream);
+    border: 4px solid var(--cream);
+}
+
+/* Tarjetas de funcionalidades */
+.features-section {
+    padding: 35px 7% 80px;
+    background-color: #000;
+}
+
+.features-grid {
+    width: 78%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.feature-card {
+    min-height: 270px;
+    background-color: #333;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 7px solid var(--cream);
+}
+
+.feature-card.blue {
+    border-left-color: var(--azul);
+}
+
+.feature-icon {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    margin-bottom: 24px;
+}
+
+.feature-title {
+    font-size: 17px;
+    margin-bottom: 65px;
+}
+
+.feature-card p {
+    font-size: 19px;
+    line-height: 1.1;
+}
+
+/* Sección de pago */
+.payment-section {
+    padding: 35px 7% 150px;
+    display: grid;
+    grid-template-columns: 1fr 550px;
+    gap: 90px;
+    align-items: start;
+    background-color: #000;
+}
+
+.payment-info h2 {
+    color: var(--naranja);
+    font-size: 31px;
+    line-height: 1.1;
+    margin-bottom: 28px;
+}
+
+.payment-info > p {
+    max-width: 520px;
+    font-size: 21px;
+    line-height: 1.15;
+    margin-bottom: 70px;
+}
+
+.price-list {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    font-size: 15px;
+}
+
+.price-row span:last-child {
+    color: var(--naranja);
+}
+
+.price-row:last-child span:last-child {
+    color: white;
+}
+
+/* Tarjeta de licencia */
+.license-card {
+    background-color: #333;
+    padding: 35px 34px 55px;
+    min-height: 390px;
+}
+
+.license-title {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 42px;
+}
+
+.license-title img {
+    width: 46px;
+    height: 46px;
+}
+
+.license-title h3 {
+    font-size: 23px;
+}
+
+.license-list {
+    display: flex;
+    flex-direction: column;
+    gap: 58px;
+    margin-bottom: 65px;
+}
+
+.license-item {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 21px;
+}
+
+.license-item img {
+    width: 26px;
+    height: 26px;
+}
+
+.buy-now-btn {
+    display: block;
+    width: 250px;
+    height: 68px;
+    margin: 0 auto;
+    background-color: var(--naranja);
+    color: #1b1b1b;
+    border: none;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 950px) {
+    .module-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 65px 9% 45px;
+        gap: 60px;
+    }
+
+    .module-hero h1 {
+        text-align: center;
+        font-size: 88px;
+        margin-bottom: 45px;
+    }
+
+    .module-hero p {
+        max-width: 360px;
+        font-size: 20px;
+        line-height: 1.45;
+    }
+
+    .module-actions {
+        width: 100%;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .buy-btn,
+    .trial-btn {
+        width: 275px;
+    }
+
+    .features-section {
+        background-color: var(--gris-fondo);
+        padding: 34px 6% 38px;
+    }
+
+    .features-grid {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 34px;
+    }
+
+    .feature-card {
+        min-height: 185px;
+        padding: 22px 24px 24px;
+    }
+
+    .feature-title {
+        margin-bottom: 38px;
+    }
+
+    .feature-card p {
+        font-size: 17px;
+    }
+
+    .payment-section {
+        background-color: var(--gris-fondo);
+        display: flex;
+        flex-direction: column;
+        padding: 20px 5% 95px;
+        gap: 28px;
+    }
+
+    .payment-info h2 {
+        font-size: 29px;
+        margin-bottom: 18px;
+    }
+
+    .payment-info > p {
+        font-size: 20px;
+        margin-bottom: 22px;
+    }
+
+    .license-card {
+        width: 100%;
+        padding: 24px 18px 38px;
+        min-height: auto;
+    }
+
+    .license-title {
+        gap: 18px;
+        margin-bottom: 26px;
+    }
+
+    .license-title h3 {
+        font-size: 20px;
+    }
+
+    .license-title img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .license-list {
+        gap: 28px;
+        margin-bottom: 34px;
+    }
+
+    .license-item {
+        gap: 22px;
+        font-size: 19px;
+    }
+
+    .license-item img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .buy-now-btn {
+        width: 280px;
+        max-width: 100%;
+    }
+
+    .price-list {
+        width: 100%;
+        gap: 42px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .module-hero h1 {
+        font-size: 82px;
+    }
+
+    .module-hero p {
+        font-size: 19px;
+    }
+
+    .feature-card {
+        padding: 20px 22px;
+    }
+
+    .payment-info h2 {
+        font-size: 28px;
+    }
+
+    .payment-info > p {
+        font-size: 19px;
+    }
+
+    .license-title h3 {
+        font-size: 19px;
+    }
+
+    .license-item {
+        font-size: 18px;
+    }
+}

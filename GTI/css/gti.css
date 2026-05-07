@@ -514,3 +514,10 @@ header {
     height: 34px;
     display: block;
 }
+
+.header-actions a,
+.module-btn,
+.register-btn,
+.login-btn {
+    text-decoration: none;
+}
