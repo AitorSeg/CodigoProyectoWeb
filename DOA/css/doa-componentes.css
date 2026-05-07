@@ -291,13 +291,16 @@
 */
 
 .pestanas-asignatura {
-    display: flex;
-    justify-content: flex-end;
+    width: auto;
+    max-width: 100%;
+    display: inline-flex;
+    justify-content: center;
     gap: var(--space-8);
+    padding: 0 var(--space-2);
     border-bottom: 1px solid var(--color-border);
 }
 
-.pestanas-asignatura a {
+.pestanas-asignatura__item {
     min-height: 40px;
     display: inline-flex;
     align-items: center;
@@ -311,7 +314,7 @@
         border-color 0.15s ease;
 }
 
-.pestanas-asignatura a:hover,
+.pestanas-asignatura__item:hover,
 .pestanas-asignatura__item--activo {
     color: var(--color-primary);
     border-bottom-color: var(--color-primary);

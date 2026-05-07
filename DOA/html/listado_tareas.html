@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de tareas | DOA</title>
+
+    <link rel="stylesheet" href="../css/doa.css">
+    <link rel="stylesheet" href="../css/doa-layout.css">
+    <link rel="stylesheet" href="../css/doa-componentes.css">
+    <link rel="stylesheet" href="../css/detalle_asignatura.css">
+    <link rel="stylesheet" href="../css/listado_tareas.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-doa pagina-listado-tareas">
+    <header class="cabecera-panel-doa">
+        <div class="cabecera-panel-doa__logo">
+            <div class="marca-doa">
+                <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
+                    <img
+                        src="../img/LogoDoaAzulRecortado.png"
+                        alt="Logo de DOA"
+                        class="logo-doa"
+                    >
+                </a>
+
+                <div class="marca-doa__powered">
+                    <span class="marca-doa__powered-text">Powered by</span>
+                    <img
+                        src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
+                        alt="Grado en Tecnologías Interactivas"
+                        class="marca-doa__powered-logo"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="cabecera-panel-doa__buscador">
+            <div
+                class="buscador-header buscador-header--desactivado"
+                aria-label="Buscador visual pendiente de activar"
+                title="El buscador se activará cuando se conecte la base de datos"
+            >
+                <span class="buscador-header__icono" aria-hidden="true">
+                    <img src="../img/iconos/grey-search.svg" alt="">
+                </span>
+
+                <input
+                    type="search"
+                    placeholder="Buscar recurso, tarea..."
+                    disabled
+                >
+            </div>
+        </div>
+
+        <div class="cabecera-panel-doa__perfil">
+            <div class="perfil-header">
+                <span class="perfil-header__icono" aria-hidden="true">
+                    <img src="../img/iconos/grey-user.svg" alt="">
+                </span>
+
+                <span class="perfil-header__texto">
+                    <strong id="nombreUsuarioHeader">Usuario demo</strong>
+                    <small id="rolUsuarioHeader">Perfil DOA</small>
+                </span>
+            </div>
+
+            <a class="boton-cerrar-sesion-movil" href="elegir_perfil.html" aria-label="Cerrar sesión">
+                <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
+                    <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
+                    <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <div class="layout-doa">
+        <div class="barra-lateral-doa">
+            <div class="tarjeta-modo-prueba">
+                <div class="tarjeta-modo-prueba__cabecera">
+                    <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
+                        <img src="../img/iconos/grey-info.svg" alt="">
+                    </span>
+
+                    <strong>Modo de prueba</strong>
+                </div>
+
+                <p>
+                    Estás usando DOA con datos de prueba. Las acciones no afectan a usuarios reales
+                    y los permisos dependen del perfil elegido.
+                </p>
+            </div>
+
+            <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
+                <a class="navegacion-lateral-doa__item" href="panel_principal.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
+                    </span>
+
+                    <span>Panel Principal</span>
+                </a>
+
+                <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="asignaturas.html">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-notebook.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-notebook.svg" alt="">
+                    </span>
+
+                    <span>Mis Asignaturas</span>
+                </a>
+
+                <a class="navegacion-lateral-doa__item" href="#">
+                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-bell.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-bell.svg" alt="">
+                    </span>
+
+                    <span>Notificaciones</span>
+                </a>
+            </nav>
+
+            <div class="barra-lateral-doa__salida">
+                <a class="boton-cerrar-sesion" href="elegir_perfil.html">
+                    <span class="boton-cerrar-sesion__icono" aria-hidden="true">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
+                    </span>
+
+                    <span>Cerrar sesión</span>
+                </a>
+            </div>
+        </div>
+
+        <main class="contenido-doa contenido-detalle-asignatura contenido-listado-tareas">
+            <section class="detalle-asignatura-principal">
+                <div class="cabecera-detalle-asignatura">
+                    <div class="cabecera-detalle-asignatura__texto">
+                        <a href="asignaturas.html" class="enlace-volver-asignaturas">
+                            <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
+                                <img src="../img/iconos/grey-chevron-right.svg" alt="">
+                            </span>
+                            <span>Volver a mis asignaturas</span>
+                        </a>
+
+                        <h1 id="tituloAsignatura">Programación II</h1>
+
+                        <ul class="metadatos-asignatura">
+                            <li>
+                                <img src="../img/iconos/grey-user.svg" alt="">
+                                <span id="profesorAsignatura">Don Pepito</span>
+                            </li>
+
+                            <li>
+                                <img src="../img/iconos/grey-notebook.svg" alt="">
+                                <span id="unidadActualTextoAsignatura">Unidad 03: <strong>Recursividad</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="cabecera-detalle-asignatura__pestanas">
+                        <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
+                            <a href="detalle_asignatura.html" class="pestanas-asignatura__item">Recursos</a>
+                            <a href="listado_tareas.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Tareas</a>
+                            <a href="#" class="pestanas-asignatura__item">Exámenes</a>
+                            <a href="#" class="pestanas-asignatura__item">Calificaciones</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <section class="proxima-entrega">
+                    <div class="proxima-entrega__contenido">
+                        <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
+
+                        <h2>PRÓXIMA ENTREGA</h2>
+
+                        <p class="proxima-entrega__titulo">
+                            Tarea 1: Desarrollo de APIs
+                        </p>
+
+                        <p class="proxima-entrega__descripcion">
+                            Descripción de la tarea: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed ac eros metus. Mauris id tortor ut nibh viverra rhoncus. Maecenas tincidunt
+                            sem dapibus, rhoncus ligula a, ultricies sapien. Phasellus venenatis risus feugiat,
+                            tempus elit nec, imperdiet sapien.
+                        </p>
+                    </div>
+
+                    <div class="proxima-entrega__accion">
+                        <p class="proxima-entrega__tiempo">
+                            Tiempo restante: 3 días
+                        </p>
+
+                        <a href="detalle_tarea.html" class="boton-ver-detalles">
+                            Ver detalles
+                        </a>
+                    </div>
+                </section>
+
+                <section class="bloque-listado-tareas">
+                    <div class="filtros-tareas">
+                        <button type="button" class="filtro-tarea">
+                            <span>Tipo: Todas</span>
+                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
+                        </button>
+
+                        <button type="button" class="filtro-tarea">
+                            <span>Estado</span>
+                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
+                        </button>
+
+                        <button type="button" class="filtro-tarea">
+                            <span>Ordenar por</span>
+                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
+                        </button>
+                    </div>
+
+                    <div class="tabla-tareas">
+                        <div class="tabla-tareas__cabecera">
+                            <p>Tareas</p>
+                            <p>Fecha de emisión</p>
+                            <p>Fecha de entrega</p>
+                            <p>Estado</p>
+                            <p>Calificación</p>
+                        </div>
+                        <article class="fila-tarea">
+                            <a href="detalle_tarea.html" class="fila-tarea__nombre">Tarea 2: Implementación de APIs</a>
+                            <p><strong>16 Abr, 2026</strong></p>
+                            <p><strong>19 Abr, 2026</strong></p>
+                            <p>
+                                <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
+                            </p>
+                            <p class="fila-tarea__nota"><strong>/</strong></p>
+                        </article>
+
+                        <article class="fila-tarea">
+                            <a href="detalle_tarea.html" class="fila-tarea__nombre">Tarea 3: Cooperación de webs</a>
+                            <p><strong>22 Abr, 2026</strong></p>
+                            <p><strong>24 Abr, 2026</strong></p>
+                            <p>
+                                <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
+                            </p>
+                            <p class="fila-tarea__nota"><strong>/</strong></p>
+                        </article>
+
+                        <article class="fila-tarea">
+                            <a href="detalle_tarea.html" class="fila-tarea__nombre">Tarea 4: Seguimiento de mapas</a>
+                            <p><strong>30 Abr, 2026</strong></p>
+                            <p><strong>02 May, 2026</strong></p>
+                            <p>
+                                <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
+                            </p>
+                            <p class="fila-tarea__nota"><strong>/</strong></p>
+                        </article>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/doa-layout.js"></script>
+    <script src="../js/doa-datos.js"></script>
+</body>
+</html>
