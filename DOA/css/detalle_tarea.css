@@ -246,6 +246,7 @@
     transform: translateY(1px);
 }
 
+
 /*
     Recursos adjuntos
 */
@@ -292,6 +293,36 @@
     color: var(--color-primary);
 }
 
+
+.boton-adjuntar {
+    min-width: 118px;
+    min-height: 36px;
+    padding: var(--space-4);
+    border: 1px solid rgba(168, 183, 200, 0.55);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+        border-color 0.15s ease,
+        color 0.15s ease,
+        background-color 0.15s ease,
+        transform 0.08s ease;
+}
+
+.boton-adjuntar:hover {
+    border-color: var(--color-primary);
+    background: rgba(0, 229, 255, 0.06);
+    color: var(--color-primary);
+}
+
+.boton-adjuntar:active {
+    transform: translateY(1px);
+}
+
 /*
     Botones finales
 */
@@ -334,7 +365,7 @@
 
 .boton-secundario {
     border: 1px solid rgba(168, 183, 200, 0.55);
-    background: transparent;
+    background: var(--color-surface);
     color: var(--color-text);
 }
 
