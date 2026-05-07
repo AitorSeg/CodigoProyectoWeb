@@ -444,7 +444,7 @@
         font-size: 10px;
     }
 
-    .contenido-panel-doa {
+    .contenido-doa {
         padding-top: var(--space-4);
         padding-bottom: calc(72px + var(--space-5));
     }
