@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recursos | DOA</title>
+    <title>Detalle del examen | DOA</title>
 
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
     <link rel="stylesheet" href="../css/doa-componentes.css">
     <link rel="stylesheet" href="../css/detalle_asignatura.css">
-    <link rel="stylesheet" href="../css/recursosdoa.css">
+    <link rel="stylesheet" href="../css/detalle_examen.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="pagina-doa pagina-recursos-asignatura">
+<body class="pagina-doa pagina-detalle-examen">
     <header class="cabecera-panel-doa">
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
                 <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
-                    <img src="../img/LogoDoaAzulRecortado.png" alt="Logo de DOA" class="logo-doa">
+                    <img
+                        src="../img/LogoDoaAzulRecortado.png"
+                        alt="Logo de DOA"
+                        class="logo-doa"
+                    >
                 </a>
 
                 <div class="marca-doa__powered">
@@ -45,7 +49,11 @@
                     <img src="../img/iconos/grey-search.svg" alt="">
                 </span>
 
-                <input type="search" placeholder="Buscar recurso..." disabled>
+                <input
+                    type="search"
+                    placeholder="Buscar examen..."
+                    disabled
+                >
             </div>
         </div>
 
@@ -77,6 +85,7 @@
                     <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
                         <img src="../img/iconos/grey-info.svg" alt="">
                     </span>
+
                     <strong>Modo de prueba</strong>
                 </div>
 
@@ -92,6 +101,7 @@
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
                     </span>
+
                     <span>Panel Principal</span>
                 </a>
 
@@ -100,6 +110,7 @@
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-notebook.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-notebook.svg" alt="">
                     </span>
+
                     <span>Mis Asignaturas</span>
                 </a>
 
@@ -108,6 +119,7 @@
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-bell.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-bell.svg" alt="">
                     </span>
+
                     <span>Notificaciones</span>
                 </a>
             </nav>
@@ -118,115 +130,129 @@
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
                     </span>
+
                     <span>Cerrar sesión</span>
                 </a>
             </div>
         </div>
 
-        <main class="contenido-doa contenido-recursos-asignatura">
-            <section class="detalle-asignatura-principal">
-                <div class="cabecera-detalle-asignatura cabecera-recursos-asignatura">
-                    <div class="cabecera-detalle-asignatura__texto">
-                        <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
-                            <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
-                                <img src="../img/iconos/grey-chevron-right.svg" alt="">
-                            </span>
-                            <span>Volver al detalle</span>
-                        </a>
+        <main class="contenido-doa contenido-detalle-examen">
+            <section class="cabecera-detalle-asignatura">
+                <div class="cabecera-detalle-asignatura__texto">
+                    <a href="examenes.html" class="enlace-volver-asignaturas">
+                        <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
+                            <img src="../img/iconos/grey-chevron-right.svg" alt="">
+                        </span>
+                        <span>Volver a exámenes</span>
+                    </a>
 
-                        <h1 id="tituloAsignatura">Programación II</h1>
+                    <h1 id="tituloExamen">Detalle del examen</h1>
 
-                        <ul class="metadatos-asignatura">
-                            <li>
-                                <img src="../img/iconos/grey-user.svg" alt="">
-                                <span id="profesorAsignatura">Don Pepito</span>
-                            </li>
-                            <li>
-                                <img src="../img/iconos/grey-notebook.svg" alt="">
-                                <span id="unidadActualTextoAsignatura">Unidad 03: Recursividad</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="cabecera-detalle-asignatura__pestanas">
-                        <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
-                            <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Recursos</a>
-                            <a href="listado_tareas.html" class="pestanas-asignatura__item">Tareas</a>
-                            <a href="examenes.html" class="pestanas-asignatura__item">Exámenes</a>
-                            <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
-                        </nav>
-                    </div>
-                </div>
-
-                <section class="card tarjeta-subida-recurso" aria-labelledby="tituloSubidaRecurso">
-                    <div class="cabecera-bloque-recursos">
-                        <div>
-                            <h2 id="tituloSubidaRecurso">Subir recurso</h2>
-                            <p>Añade un recurso de prueba a la biblioteca de la asignatura.</p>
-                        </div>
-                    </div>
-
-                    <form id="formSubirRecurso" novalidate>
-                        <div class="formulario-recursos-grid">
-                            <div class="campo-formulario">
-                                <label for="tituloRecurso">Título del recurso *</label>
-                                <input type="text" id="tituloRecurso" placeholder="Ej. Presentación Unidad 03">
-                                <p class="mensaje-error-campo" id="errorTituloRecurso">Introduce un título para el recurso.</p>
-                            </div>
-
-                            <div class="campo-formulario">
-                                <label for="archivoRecurso">Archivo *</label>
-                                <input type="file" id="archivoRecurso">
-                                <p class="mensaje-error-campo" id="errorArchivoRecurso">Selecciona un archivo.</p>
-                            </div>
-                        </div>
-
-                        <p class="mensaje-exito-formulario hidden" id="mensajeExitoRecurso" role="status"></p>
-
-                        <div class="acciones-formulario acciones-formulario--recursos">
-                            <button type="submit" class="boton-formulario boton-formulario--principal">
-                                Guardar recurso
-                            </button>
-                        </div>
-                    </form>
-                </section>
-
-                <section class="card tarjeta-listado-recursos" aria-labelledby="tituloListadoRecursos">
-                    <div class="cabecera-bloque-recursos">
-                        <div>
-                            <h2 id="tituloListadoRecursos">Recursos publicados</h2>
-                            <p>Material disponible para la unidad actual.</p>
-                        </div>
-                    </div>
-
-                    <div class="estado-vacio-recursos hidden" id="estadoVacioRecursos">
-                        No hay recursos publicados en esta asignatura.
-                    </div>
-
-                    <ul class="lista-recursos-publicados" id="listaRecursos">
-                        <li class="recurso-publicado">
-                            <div class="recurso-publicado__info">
-                                <strong>Ejercicios de prueba</strong>
-                                <span>PDF · Publicado por Don Pepito</span>
-                            </div>
-                            <a href="#" class="boton-secundario-panel">Descargar</a>
+                    <ul class="metadatos-asignatura">
+                        <li>
+                            <img src="../img/iconos/grey-notebook.svg" alt="">
+                            <span id="asignaturaExamen">Asignatura</span>
                         </li>
 
-                        <li class="recurso-publicado">
-                            <div class="recurso-publicado__info">
-                                <strong>Descargar Visual Studio</strong>
-                                <span>Vídeo · Recurso recomendado</span>
-                            </div>
-                            <a href="#" class="boton-secundario-panel">Abrir</a>
+                        <li>
+                            <img src="../img/iconos/grey-calendar.svg" alt="">
+                            <span id="fechaExamen">Fecha</span>
                         </li>
                     </ul>
-                </section>
+                </div>
+
+                <div class="cabecera-detalle-asignatura__pestanas">
+                    <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
+                        <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item">Recursos</a>
+                        <a href="listado_tareas.html" class="pestanas-asignatura__item">Tareas</a>
+                        <a href="examenes.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Exámenes</a>
+                        <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
+                    </nav>
+                </div>
+            </section>
+
+            <section class="detalle-examen-grid">
+                <article class="tarjeta-detalle-examen">
+                    <div class="tarjeta-detalle-examen__cabecera">
+                        <span class="estado-detalle-examen" id="estadoExamen">Abierto</span>
+                        <h2 id="nombreExamen">Parcial 01</h2>
+                        <p id="descripcionExamen">
+                            Examen tipo test sobre los contenidos de la unidad actual.
+                        </p>
+                    </div>
+
+                    <div class="datos-examen">
+                        <div class="dato-examen">
+                            <span>Apertura</span>
+                            <strong id="aperturaExamen">10 Nov, 2026</strong>
+                        </div>
+
+                        <div class="dato-examen">
+                            <span>Cierre</span>
+                            <strong id="cierreExamen">15 Nov, 2026</strong>
+                        </div>
+
+                        <div class="dato-examen">
+                            <span>Duración</span>
+                            <strong id="duracionExamen">45 min</strong>
+                        </div>
+
+                        <div class="dato-examen">
+                            <span>Preguntas</span>
+                            <strong id="preguntasExamen">10 preguntas</strong>
+                        </div>
+
+                        <div class="dato-examen">
+                            <span>Intentos</span>
+                            <strong id="intentosExamen">1 intento</strong>
+                        </div>
+                    </div>
+
+                    <div class="bloque-detalle-examen">
+                        <h3>Contenido evaluado</h3>
+                        <ul class="lista-temas-examen" id="temasExamen"></ul>
+                    </div>
+
+                    <div class="bloque-detalle-examen">
+                        <h3>Indicaciones</h3>
+                        <p>
+                            Lee con atención cada pregunta antes de responder. Cuando empieces el examen,
+                            el tiempo comenzará a contar y no podrás reiniciarlo desde esta demo.
+                        </p>
+                    </div>
+                </article>
+
+                <aside class="panel-accion-examen">
+                    <div class="tarjeta-accion-examen">
+                        <p class="tarjeta-accion-examen__titulo">Acceso al examen</p>
+
+                        <p class="tarjeta-accion-examen__texto" id="mensajeAccesoExamen">
+                            El examen está disponible. Puedes empezar cuando quieras.
+                        </p>
+
+                        <a
+                            href="realizar_examen.html"
+                            class="boton-realizar-examen"
+                            id="botonRealizarExamen"
+                        >
+                            Realizar examen
+                        </a>
+                    </div>
+
+                    <div class="tarjeta-aviso-examen">
+                        <strong>Recuerda</strong>
+                        <p>
+                            Esta pantalla forma parte de la demo. Las respuestas no afectarán a ningún expediente real.
+                        </p>
+                    </div>
+                </aside>
             </section>
         </main>
     </div>
 
     <script src="../js/doa-layout.js"></script>
     <script src="../js/doa-datos.js"></script>
-    <script src="../js/recursosdoa.js"></script>
+    <script src="../js/doa-examenes-datos.js"></script>
+    <script src="../js/detalle_examen.js"></script>
 </body>
 </html>

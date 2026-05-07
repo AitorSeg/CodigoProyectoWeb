@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recursos | DOA</title>
+    <title>Listado de tareas | DOA</title>
 
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
     <link rel="stylesheet" href="../css/doa-componentes.css">
     <link rel="stylesheet" href="../css/detalle_asignatura.css">
-    <link rel="stylesheet" href="../css/recursosdoa.css">
+    <link rel="stylesheet" href="../css/listado_tareas.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="pagina-doa pagina-recursos-asignatura">
+<body class="pagina-doa pagina-listado-tareas">
     <header class="cabecera-panel-doa">
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
                 <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
-                    <img src="../img/LogoDoaAzulRecortado.png" alt="Logo de DOA" class="logo-doa">
+                    <img
+                        src="../img/LogoDoaAzulRecortado.png"
+                        alt="Logo de DOA"
+                        class="logo-doa"
+                    >
                 </a>
 
                 <div class="marca-doa__powered">
@@ -45,7 +49,11 @@
                     <img src="../img/iconos/grey-search.svg" alt="">
                 </span>
 
-                <input type="search" placeholder="Buscar recurso..." disabled>
+                <input
+                    type="search"
+                    placeholder="Buscar recurso, tarea..."
+                    disabled
+                >
             </div>
         </div>
 
@@ -77,6 +85,7 @@
                     <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
                         <img src="../img/iconos/grey-info.svg" alt="">
                     </span>
+
                     <strong>Modo de prueba</strong>
                 </div>
 
@@ -92,6 +101,7 @@
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
                     </span>
+
                     <span>Panel Principal</span>
                 </a>
 
@@ -100,6 +110,7 @@
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-notebook.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-notebook.svg" alt="">
                     </span>
+
                     <span>Mis Asignaturas</span>
                 </a>
 
@@ -108,6 +119,7 @@
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-bell.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-bell.svg" alt="">
                     </span>
+
                     <span>Notificaciones</span>
                 </a>
             </nav>
@@ -118,20 +130,21 @@
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
                     </span>
+
                     <span>Cerrar sesión</span>
                 </a>
             </div>
         </div>
 
-        <main class="contenido-doa contenido-recursos-asignatura">
+        <main class="contenido-doa contenido-detalle-asignatura contenido-listado-tareas">
             <section class="detalle-asignatura-principal">
-                <div class="cabecera-detalle-asignatura cabecera-recursos-asignatura">
+                <div class="cabecera-detalle-asignatura">
                     <div class="cabecera-detalle-asignatura__texto">
                         <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
                             <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
                                 <img src="../img/iconos/grey-chevron-right.svg" alt="">
                             </span>
-                            <span>Volver al detalle</span>
+                            <span>Volver a detalles de la asignatura</span>
                         </a>
 
                         <h1 id="tituloAsignatura">Programación II</h1>
@@ -141,6 +154,7 @@
                                 <img src="../img/iconos/grey-user.svg" alt="">
                                 <span id="profesorAsignatura">Don Pepito</span>
                             </li>
+
                             <li>
                                 <img src="../img/iconos/grey-notebook.svg" alt="">
                                 <span id="unidadActualTextoAsignatura">Unidad 03: Recursividad</span>
@@ -150,76 +164,99 @@
 
                     <div class="cabecera-detalle-asignatura__pestanas">
                         <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
-                            <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Recursos</a>
-                            <a href="listado_tareas.html" class="pestanas-asignatura__item">Tareas</a>
+                            <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item">Recursos</a>
+                            <a href="listado_tareas.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Tareas</a>
                             <a href="examenes.html" class="pestanas-asignatura__item">Exámenes</a>
                             <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
                         </nav>
                     </div>
                 </div>
 
-                <section class="card tarjeta-subida-recurso" aria-labelledby="tituloSubidaRecurso">
-                    <div class="cabecera-bloque-recursos">
-                        <div>
-                            <h2 id="tituloSubidaRecurso">Subir recurso</h2>
-                            <p>Añade un recurso de prueba a la biblioteca de la asignatura.</p>
-                        </div>
+                <section class="proxima-entrega">
+                    <div class="proxima-entrega__contenido">
+                        <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
+
+                        <h2>PRÓXIMA ENTREGA</h2>
+
+                        <p class="proxima-entrega__titulo">
+                            Tarea 1: Desarrollo de APIs
+                        </p>
+
+                        <p class="proxima-entrega__descripcion">
+                            Descripción de la tarea: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed ac eros metus. Mauris id tortor ut nibh viverra rhoncus. Maecenas tincidunt
+                            sem dapibus, rhoncus ligula a, ultricies sapien. Phasellus venenatis risus feugiat,
+                            tempus elit nec, imperdiet sapien.
+                        </p>
                     </div>
 
-                    <form id="formSubirRecurso" novalidate>
-                        <div class="formulario-recursos-grid">
-                            <div class="campo-formulario">
-                                <label for="tituloRecurso">Título del recurso *</label>
-                                <input type="text" id="tituloRecurso" placeholder="Ej. Presentación Unidad 03">
-                                <p class="mensaje-error-campo" id="errorTituloRecurso">Introduce un título para el recurso.</p>
-                            </div>
+                    <div class="proxima-entrega__accion">
+                        <p class="proxima-entrega__tiempo">
+                            Tiempo restante: 3 días
+                        </p>
 
-                            <div class="campo-formulario">
-                                <label for="archivoRecurso">Archivo *</label>
-                                <input type="file" id="archivoRecurso">
-                                <p class="mensaje-error-campo" id="errorArchivoRecurso">Selecciona un archivo.</p>
-                            </div>
-                        </div>
-
-                        <p class="mensaje-exito-formulario hidden" id="mensajeExitoRecurso" role="status"></p>
-
-                        <div class="acciones-formulario acciones-formulario--recursos">
-                            <button type="submit" class="boton-formulario boton-formulario--principal">
-                                Guardar recurso
-                            </button>
-                        </div>
-                    </form>
+                        <a href="detalle_tarea.html" class="boton-ver-detalles">
+                            Ver detalles
+                        </a>
+                    </div>
                 </section>
 
-                <section class="card tarjeta-listado-recursos" aria-labelledby="tituloListadoRecursos">
-                    <div class="cabecera-bloque-recursos">
-                        <div>
-                            <h2 id="tituloListadoRecursos">Recursos publicados</h2>
-                            <p>Material disponible para la unidad actual.</p>
+                <section class="bloque-listado-tareas">
+                    <div class="filtros-tareas">
+                        <button type="button" class="filtro-tarea">
+                            <span>Tipo: Todas</span>
+                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
+                        </button>
+
+                        <button type="button" class="filtro-tarea">
+                            <span>Estado</span>
+                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
+                        </button>
+
+                        <button type="button" class="filtro-tarea">
+                            <span>Ordenar por</span>
+                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
+                        </button>
+                    </div>
+
+                    <div class="tabla-tareas">
+                        <div class="tabla-tareas__cabecera">
+                            <p>Tareas</p>
+                            <p>Fecha de emisión</p>
+                            <p>Fecha de entrega</p>
+                            <p>Estado</p>
+                            <p>Calificación</p>
                         </div>
+                        <article class="fila-tarea">
+                            <a href="detalle_tarea.html" class="fila-tarea__nombre">Tarea 2: Implementación de APIs</a>
+                            <p><strong>16 Abr, 2026</strong></p>
+                            <p><strong>19 Abr, 2026</strong></p>
+                            <p>
+                                <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
+                            </p>
+                            <p class="fila-tarea__nota"><strong>/</strong></p>
+                        </article>
+
+                        <article class="fila-tarea">
+                            <a href="detalle_tarea.html" class="fila-tarea__nombre">Tarea 3: Cooperación de webs</a>
+                            <p><strong>22 Abr, 2026</strong></p>
+                            <p><strong>24 Abr, 2026</strong></p>
+                            <p>
+                                <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
+                            </p>
+                            <p class="fila-tarea__nota"><strong>/</strong></p>
+                        </article>
+
+                        <article class="fila-tarea">
+                            <a href="detalle_tarea.html" class="fila-tarea__nombre">Tarea 4: Seguimiento de mapas</a>
+                            <p><strong>30 Abr, 2026</strong></p>
+                            <p><strong>02 May, 2026</strong></p>
+                            <p>
+                                <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
+                            </p>
+                            <p class="fila-tarea__nota"><strong>/</strong></p>
+                        </article>
                     </div>
-
-                    <div class="estado-vacio-recursos hidden" id="estadoVacioRecursos">
-                        No hay recursos publicados en esta asignatura.
-                    </div>
-
-                    <ul class="lista-recursos-publicados" id="listaRecursos">
-                        <li class="recurso-publicado">
-                            <div class="recurso-publicado__info">
-                                <strong>Ejercicios de prueba</strong>
-                                <span>PDF · Publicado por Don Pepito</span>
-                            </div>
-                            <a href="#" class="boton-secundario-panel">Descargar</a>
-                        </li>
-
-                        <li class="recurso-publicado">
-                            <div class="recurso-publicado__info">
-                                <strong>Descargar Visual Studio</strong>
-                                <span>Vídeo · Recurso recomendado</span>
-                            </div>
-                            <a href="#" class="boton-secundario-panel">Abrir</a>
-                        </li>
-                    </ul>
                 </section>
             </section>
         </main>
@@ -227,6 +264,5 @@
 
     <script src="../js/doa-layout.js"></script>
     <script src="../js/doa-datos.js"></script>
-    <script src="../js/recursosdoa.js"></script>
 </body>
 </html>

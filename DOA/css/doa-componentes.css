@@ -291,13 +291,16 @@
 */
 
 .pestanas-asignatura {
-    display: flex;
-    justify-content: flex-end;
+    width: auto;
+    max-width: 100%;
+    display: inline-flex;
+    justify-content: center;
     gap: var(--space-8);
+    padding: 0 var(--space-2);
     border-bottom: 1px solid var(--color-border);
 }
 
-.pestanas-asignatura a {
+.pestanas-asignatura__item {
     min-height: 40px;
     display: inline-flex;
     align-items: center;
@@ -311,10 +314,86 @@
         border-color 0.15s ease;
 }
 
-.pestanas-asignatura a:hover,
+.pestanas-asignatura__item:hover,
 .pestanas-asignatura__item--activo {
     color: var(--color-primary);
     border-bottom-color: var(--color-primary);
+}
+
+
+/*
+    Título y metadatos de cabecera de asignatura
+*/
+
+.cabecera-detalle-asignatura__texto h1,
+.cabecera-calificaciones__texto h1 {
+    margin: 0 0 var(--space-3);
+    color: var(--color-text);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0;
+}
+
+/*
+    Cabecera interna de asignatura
+*/
+
+.enlace-volver-asignaturas {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+    color: var(--color-muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.enlace-volver-asignaturas:hover {
+    color: var(--color-primary);
+}
+
+.enlace-volver-asignaturas__icono {
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(180deg);
+}
+
+.enlace-volver-asignaturas__icono img {
+    width: 14px;
+    height: 14px;
+    display: block;
+}
+
+.metadatos-asignatura {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.metadatos-asignatura li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-muted);
+    font-size: 12px;
+}
+
+.metadatos-asignatura img {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.metadatos-asignatura strong {
+    color: var(--color-text);
 }
 
 /*
@@ -378,14 +457,25 @@
     }
 
     .pestanas-asignatura {
-        justify-content: flex-start;
-        gap: var(--space-5);
-        overflow-x: auto;
-        padding-bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        overflow: visible;
+        border-bottom: 1px solid var(--color-border);
     }
 
-    .pestanas-asignatura a {
-        flex-shrink: 0;
+    .pestanas-asignatura__item {
+        min-width: 0;
+        justify-content: center;
+        text-align: center;
         font-size: 12px;
+    }
+
+    .cabecera-detalle-asignatura__texto h1,
+    .cabecera-calificaciones__texto h1 {
+        font-size: 28px;
     }
 }

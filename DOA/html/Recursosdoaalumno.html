@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos Alumno | DOA</title>
+
+  <link rel="stylesheet" href="../css/doa.css">
+  <link rel="stylesheet" href="../css/doa-layout.css">
+  <link rel="stylesheet" href="../css/doa-componentes.css">
+  <link rel="stylesheet" href="../css/detalle_asignatura.css">
+  <link rel="stylesheet" href="../css/Recursosdoaalumno.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-doa pagina-recursos-asignatura">
+<header class="cabecera-panel-doa">
+  <div class="cabecera-panel-doa__logo">
+    <div class="marca-doa">
+      <a class="marca-doa__link" href="panel_principal.html">
+        <img src="../img/LogoDoaAzulRecortado.png" alt="Logo de DOA" class="logo-doa">
+      </a>
+      <div class="marca-doa__powered">
+        <span class="marca-doa__powered-text">Powered by</span>
+        <img src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png" alt="GTI" class="marca-doa__powered-logo">
+      </div>
+    </div>
+  </div>
+
+  <div class="cabecera-panel-doa__buscador">
+    <div class="buscador-header buscador-header--desactivado" aria-label="Buscador visual pendiente de activar" title="El buscador se activará cuando se conecte la base de datos">
+      <span class="buscador-header__icono" aria-hidden="true"><img src="../img/iconos/grey-search.svg" alt=""></span>
+      <input type="search" id="inputBuscador" placeholder="Buscar recurso en la tabla..." disabled>
+    </div>
+  </div>
+
+  <div class="cabecera-panel-doa__perfil">
+    <div class="perfil-header">
+                <span class="perfil-header__icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </span>
+      <span class="perfil-header__texto">
+                    <strong id="nombreUsuarioHeader">Lief Simants</strong>
+                    <small id="rolUsuarioHeader">Alumno GTI</small>
+                </span>
+    </div>
+  </div>
+</header>
+
+<div class="layout-doa">
+  <div class="barra-lateral-doa">
+    <div class="tarjeta-modo-prueba">
+      <div class="tarjeta-modo-prueba__cabecera">
+        <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
+          <img src="../img/iconos/grey-info.svg" alt="">
+        </span>
+        <strong>Modo de prueba</strong>
+      </div>
+      <p>Estás usando DOA con datos de prueba. Las acciones no afectan a usuarios reales y los permisos dependen del perfil elegido.</p>
+    </div>
+
+    <nav class="navegacion-lateral-doa">
+      <a class="navegacion-lateral-doa__item" href="panel_principal.html">
+                    <span class="navegacion-lateral-doa__icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                    </span>
+        <span>Panel Principal</span>
+      </a>
+      <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="asignaturas.html">
+                    <span class="navegacion-lateral-doa__icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </span>
+        <span style="color: #00E5FF;">Mis Asignaturas</span>
+      </a>
+      <a class="navegacion-lateral-doa__item" href="#">
+                    <span class="navegacion-lateral-doa__icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                    </span>
+        <span>Notificaciones</span>
+      </a>
+    </nav>
+
+    <div class="barra-lateral-doa__salida">
+      <a class="boton-cerrar-sesion" href="elegir_perfil.html">
+                    <span class="boton-cerrar-sesion__icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    </span>
+        <span>Cerrar sesión</span>
+      </a>
+    </div>
+  </div>
+
+  <main class="contenido-doa contenido-detalle-asignatura contenido-recursos-alumno">
+    <section class="detalle-asignatura-principal">
+
+      <div class="cabecera-detalle-asignatura">
+        <div class="cabecera-detalle-asignatura__texto">
+          <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
+            <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
+              <img src="../img/iconos/grey-chevron-right.svg" alt="">
+            </span>
+            <span>Volver a detalles de la asignatura</span>
+          </a>
+
+          <h1 id="tituloAsignatura">Cargando...</h1>
+          <ul class="metadatos-asignatura">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8B7C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span id="profesorAsignatura">Cargando...</span>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A8B7C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              <span id="unidadActualTextoAsignatura">Unidad Actual</span>
+            </li>
+          </ul>
+        </div>
+        <div class="cabecera-detalle-asignatura__pestanas">
+          <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
+            <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Recursos</a>
+            <a href="listado_tareas.html" class="pestanas-asignatura__item">Tareas</a>
+            <a href="examenes.html" class="pestanas-asignatura__item">Exámenes</a>
+            <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
+          </nav>
+        </div>
+      </div>
+
+      <section class="bloque-recursos">
+        <div class="recursos-tema-cabecera">
+          <h2>Recursos del tema actual</h2>
+          <a href="#" class="enlace-ver-todos">Ver todos<span class="ocultar-movil"> los recursos del tema</span></a>
+        </div>
+
+        <div class="grid-recursos-tema">
+          <a href="#" class="tarjeta-recurso-mini">
+            <div class="tarjeta-recurso-mini__icono">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8B7C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <div class="tarjeta-recurso-mini__info">
+              <h4>Material de la Unidad</h4>
+              <span>PDF</span>
+            </div>
+          </a>
+          <a href="#" class="tarjeta-recurso-mini">
+            <div class="tarjeta-recurso-mini__icono">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8B7C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            </div>
+            <div class="tarjeta-recurso-mini__info">
+              <h4>Clase Grabada</h4>
+              <span>Vídeo</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="bloque-recursos">
+        <h2>Biblioteca</h2>
+
+        <div class="biblioteca-layout">
+          <aside class="biblioteca-sidebar" id="menuCarpetasGeneral">
+            <div class="biblioteca-carpeta">
+              <div class="biblioteca-carpeta__titulo activo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> TEMARIO
+              </div>
+              <ul class="biblioteca-menu-lista">
+                <li><a href="#" class="carpeta-click" data-unidad="UNIDAD 01">UNIDAD 01</a></li>
+                <li><a href="#" class="carpeta-click" data-unidad="UNIDAD 02">UNIDAD 02</a></li>
+                <li><a href="#" class="carpeta-click activo" data-unidad="UNIDAD 03">UNIDAD 03</a></li>
+              </ul>
+            </div>
+            <div class="biblioteca-carpeta">
+              <div class="biblioteca-carpeta__titulo carpeta-click" data-unidad="PRÁCTICAS">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> PRÁCTICAS
+              </div>
+            </div>
+            <div class="biblioteca-carpeta">
+              <div class="biblioteca-carpeta__titulo carpeta-click" data-unidad="EXÁMENES">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> EXÁMENES
+              </div>
+            </div>
+            <div class="biblioteca-carpeta">
+              <div class="biblioteca-carpeta__titulo carpeta-click" data-unidad="EJERCICIOS">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> EJERCICIOS
+              </div>
+            </div>
+            <div class="biblioteca-carpeta">
+              <div class="biblioteca-carpeta__titulo carpeta-click" data-unidad="BIBLIOGRAFÍA">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> BIBLIOGRAFÍA
+              </div>
+            </div>
+            <div class="biblioteca-carpeta">
+              <div class="biblioteca-carpeta__titulo carpeta-click" data-unidad="RÚBRICAS">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> RÚBRICAS
+              </div>
+            </div>
+          </aside>
+
+          <div class="biblioteca-contenido">
+            <div class="biblioteca-toolbar">
+              <div class="biblioteca-breadcrumb" id="btnNavegacionMovil">
+                <span id="textoCarpetaPadre">TEMARIO</span>
+                <img src="../img/iconos/grey-chevron-right.svg" alt=">" class="flecha-breadcrumb" id="flechaBreadcrumb">
+                <strong id="textoBreadcrumb">UNIDAD 03</strong>
+                <svg class="icono-desplegable-movil" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+
+              <div class="contenedor-filtros-wrapper" style="position: relative; display: flex;">
+                <button class="btn-filtrar-movil" id="btnFiltrarMovil">
+                  FILTRAR
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </button>
+
+                <div class="biblioteca-filtros" id="contenedorFiltros">
+                  <select class="input-filtro" id="filtroTipo">
+                    <option value="TODOS">TIPO: TODOS</option>
+                    <option value="PDF">PDF</option>
+                    <option value="ZIP">ZIP</option>
+                  </select>
+                  <select class="input-filtro" id="filtroEtiqueta">
+                    <option value="TODAS">ETIQUETAS: TODAS</option>
+                    <option value="Unidad actual">Unidad actual</option>
+                    <option value="Teoría">Teoría</option>
+                    <option value="Práctica">Práctica</option>
+                    <option value="Importante">Importante</option>
+                    <option value="Evaluación">Evaluación</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="biblioteca-tabla">
+              <div class="biblioteca-tabla-header">
+                <span>NOMBRE</span>
+                <span>TIPO</span>
+                <span>TAMAÑO</span>
+                <span>ETIQUETAS</span>
+                <span>FECHA</span>
+              </div>
+
+              <div id="cuerpoTablaArchivos">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </section>
+  </main>
+</div>
+
+<script src="../js/doa-layout.js"></script>
+<script src="../js/doa-datos.js"></script>
+<script src="../js/Recursosdoaalumno.js"></script>
+</body>
+</html>
