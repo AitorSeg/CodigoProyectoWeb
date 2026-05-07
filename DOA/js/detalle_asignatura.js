@@ -1,65 +1,49 @@
-/*
-    Pantalla: Detalle de asignatura
-    Carga la asignatura seleccionada desde localStorage.
-*/
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Obtenemos el ID (ej: "matematicas") o ponemos "programacion" por si hay error
     const idAsignatura = window.obtenerAsignaturaSeleccionada() || "programacion";
     const datosAsignatura = window.DOA_ASIGNATURAS[idAsignatura] || window.DOA_ASIGNATURAS.programacion;
 
-    // Le pasamos también el idAsignatura a la función
     renderizarDetalleAsignatura(datosAsignatura, idAsignatura);
 });
 
 function renderizarDetalleAsignatura(datos, idAsignatura) {
-    const tituloAsignatura = document.getElementById("tituloAsignatura");
-    const profesorAsignatura = document.getElementById("profesorAsignatura");
-    const unidadActualTextoAsignatura = document.getElementById("unidadActualTextoAsignatura");
-    const tituloUnidadActual = document.getElementById("tituloUnidadActual");
-    const descripcionUnidadActual = document.getElementById("descripcionUnidadActual");
-    const rutaProgresoAsignatura = document.getElementById("rutaProgresoAsignatura");
+    document.getElementById("tituloAsignatura").textContent = datos.nombre;
+    document.getElementById("profesorAsignatura").textContent = datos.profesor;
 
-    const tituloEvaluacionAsignatura = document.getElementById("tituloEvaluacionAsignatura");
-    const fechaEvaluacionAsignatura = document.getElementById("fechaEvaluacionAsignatura");
-    const horaEvaluacionAsignatura = document.getElementById("horaEvaluacionAsignatura");
-    const lugarEvaluacionAsignatura = document.getElementById("lugarEvaluacionAsignatura");
+    const unidadTexto = document.getElementById("unidadActualTextoAsignatura");
+    if (unidadTexto) unidadTexto.innerHTML = datos.unidadActualTexto;
 
-    const tituloTareaAsignatura = document.getElementById("tituloTareaAsignatura");
-    const vencimientoTareaAsignatura = document.getElementById("vencimientoTareaAsignatura");
+    document.getElementById("tituloUnidadActual").textContent = datos.unidadActualTitulo;
+    document.getElementById("descripcionUnidadActual").textContent = datos.descripcion;
 
-    document.title = datos.nombre + " | DOA";
-
-    tituloAsignatura.textContent = datos.nombre;
-    profesorAsignatura.textContent = datos.profesor;
-
-    // Ojo: En tu HTML tienes una etiqueta <strong>, para no romperla podemos usar innerHTML o dejarlo texto plano
-    unidadActualTextoAsignatura.textContent = datos.unidadActualTexto;
-
-    tituloUnidadActual.textContent = datos.unidadActualTitulo;
-    descripcionUnidadActual.textContent = datos.descripcion;
-
-    rutaProgresoAsignatura.style.setProperty("--progreso-escritorio", datos.progresoEscritorio);
-    rutaProgresoAsignatura.style.setProperty("--progreso-movil", datos.progresoMovil);
-    rutaProgresoAsignatura.setAttribute("aria-label", "Ruta de progreso de " + datos.nombre);
-
-    tituloEvaluacionAsignatura.textContent = datos.evaluacion.titulo;
-    fechaEvaluacionAsignatura.textContent = datos.evaluacion.fecha;
-    horaEvaluacionAsignatura.textContent = datos.evaluacion.hora;
-    lugarEvaluacionAsignatura.textContent = datos.evaluacion.lugar;
-
-    tituloTareaAsignatura.textContent = datos.tarea.titulo;
-    vencimientoTareaAsignatura.textContent = datos.tarea.vencimiento;
-
-    const linkPestanaRecursos = document.getElementById("linkPestanaRecursos");
-    const linkBotonRecursos = document.getElementById("linkBotonRecursos");
-    const urlDestino = "Recursosdoaalumno.html?materia=" + idAsignatura;
-
-    if (linkPestanaRecursos !== null) {
-        linkPestanaRecursos.href = urlDestino;
+    const rutaProgreso = document.getElementById("rutaProgresoAsignatura");
+    if(rutaProgreso) {
+        rutaProgreso.style.setProperty("--progreso-escritorio", datos.progresoEscritorio);
+        rutaProgreso.style.setProperty("--progreso-movil", datos.progresoMovil);
     }
 
-    if (linkBotonRecursos !== null) {
-        linkBotonRecursos.href = urlDestino;
-    }
+    document.getElementById("tituloEvaluacionAsignatura").textContent = datos.evaluacion.titulo;
+    document.getElementById("fechaEvaluacionAsignatura").textContent = datos.evaluacion.fecha;
+    document.getElementById("horaEvaluacionAsignatura").textContent = datos.evaluacion.hora;
+    document.getElementById("lugarEvaluacionAsignatura").textContent = datos.evaluacion.lugar;
+    document.getElementById("tituloTareaAsignatura").textContent = datos.tarea.titulo;
+    document.getElementById("vencimientoTareaAsignatura").textContent = datos.tarea.vencimiento;
+
+    // ==========================================
+    // REDIRECCIÓN INTELIGENTE (EVITA EL CRUCE)
+    // ==========================================
+    // Miramos el nombre del usuario en el header para saber si es profe
+    const nombreUsuario = document.getElementById('nombreUsuarioHeader').textContent.toLowerCase();
+    const esProfesor = nombreUsuario.includes('kevan') ||
+        nombreUsuario.includes('pepito') ||
+        nombreUsuario.includes('eolande');
+
+    // Si es profe, va a recursosdoa.html, si es alumno a Recursosdoaalumno.html
+    const paginaDestino = esProfesor ? 'recursosdoa.html' : 'Recursosdoaalumno.html';
+    const urlDestino = `${paginaDestino}?materia=${idAsignatura}`;
+
+    const linkPestanaRecursos = document.getElementById('linkPestanaRecursos');
+    const linkBotonRecursos = document.getElementById('linkBotonRecursos');
+
+    if (linkPestanaRecursos) linkPestanaRecursos.href = urlDestino;
+    if (linkBotonRecursos) linkBotonRecursos.href = urlDestino;
 }
