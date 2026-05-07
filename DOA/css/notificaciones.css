@@ -453,7 +453,6 @@
     .notificaciones-grid {
         grid-template-columns: 1fr;
         gap: var(--space-4);
-        grid-template-columns: 1fr;
     }
 
     .filtros-notificaciones {
