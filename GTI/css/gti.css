@@ -1,31 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
+
+/* Reiniciar márgenes y rellenos para todos los elementos y usar el box-sizing a border-box
+   para que el ancho y alto incluyan borde y relleno en todos los contenedores. */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Efecto de desplazamiento suave para anclas dentro de la página. */
 html {
     scroll-behavior: smooth;
 }
 
+/* Estilos globales del body: tipografía base, fondo oscuro y texto claro. */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+    font-weight: 700;
     background-color: #000;
     color: #f5f5f5;
 }
 
+/* Variables CSS para mantener una paleta de colores consistente en todo el sitio. */
 :root {
-    --orange: #d97706;
-    --cream: #f3d6b0;
-    --dark: #111111;
-    --section: #1b1b1b;
+    --naranja: #d97706;
+    --naranja-claro: #f89119;
+    --cream: #FCD8AD;
+    --negro: #00000000;;
+    --gris-fondo: #1b1b1b;
     --faq: #3a3a3a;
-    --blue: #0059d6;
+    --azul: #0059d6;
+    --gris-letras: #d7d7d7;
+
 }
 
+/* Cabecera fija superior con distribución horizontal y separación entre elementos. */
 header {
     width: 100%;
-    min-height: 88px;
+    height: 72px;
     background-color: #1a1a1a;
     display: flex;
     align-items: center;
@@ -34,40 +46,22 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
+    color: var(--gris-letras);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    min-width: 185px;
+header a,
+header button,
+header .header-actions button {
+    color: var(--gris-letras);
 }
 
-.logo-main {
-    font-size: 56px;
-    line-height: 1;
-    letter-spacing: -4px;
-    font-weight: 400;
-    color: #fff;
+/* Ajuste del logo para que encaje en el alto del header y ocupe más espacio útil. */
+header .about-image img {
+    max-height: 100px;
+    width: auto;
 }
 
-.logo-main span {
-    color: var(--orange);
-}
-
-.logo-text {
-    margin-left: 8px;
-    font-size: 11px;
-    line-height: 10px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    color: var(--orange);
-}
-
-.logo-text .grado {
-    color: #fff;
-    font-weight: 500;
-}
-
+/* Navegación principal con enlaces distribuidos uniformemente. */
 nav {
     flex: 1;
     display: flex;
@@ -76,21 +70,19 @@ nav {
     gap: 20px;
 }
 
+/* Estilo base para enlaces del menú: color neutro y transición suave. */
 nav a {
-    color: #bdbdbd;
+    color: var(--gris-letras);
     text-decoration: none;
     font-size: 17px;
     font-weight: 600;
     transition: color 0.2s ease;
 }
 
-nav a:hover {
-    color: var(--orange);
-}
-
+/* Botón de login con fondo naranja y texto blanco para llamar la atención. */
 .login-btn {
-    background-color: var(--orange);
-    color: #fff;
+    background-color: var(--naranja);
+    color: var(--gris-letras);
     border: none;
     min-width: 120px;
     padding: 17px 28px;
@@ -99,12 +91,33 @@ nav a:hover {
     cursor: pointer;
 }
 
+/* Botón de registro con borde naranja y fondo transparente para diferenciar la acción. */
+.register-btn {
+    background-color: transparent;
+    color: var(--gris-letras);
+    border: 2px solid var(--naranja);
+    min-width: 120px;
+    padding: 15px 24px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Contenedor de acciones del header con separación entre botones. */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Sección hero principal con espacio superior e inferior y fondo negro. */
 .hero {
     min-height: 710px;
     background-color: #000;
     padding: 110px 8% 80px;
 }
 
+/* Estilo de título principal: tamaños fluidos, mayúsculas y espaciado amplio. */
 .hero h1 {
     max-width: 1080px;
     font-size: clamp(44px, 6vw, 78px);
@@ -114,10 +127,9 @@ nav a:hover {
     text-transform: uppercase;
 }
 
-.orange {
-    color: var(--orange);
-}
+/* Clase reutilizable para texto en color naranja de marca. */
 
+/* Párrafo de introducción con ancho limitado y color crema para mejor lectura. */
 .hero p {
     max-width: 700px;
     margin-top: 54px;
@@ -127,6 +139,7 @@ nav a:hover {
     font-weight: 600;
 }
 
+/* Contenedor de acciones del hero con espacio entre elementos y ajuste en pantallas pequeñas. */
 .hero-actions {
     margin-top: 42px;
     display: flex;
@@ -135,16 +148,18 @@ nav a:hover {
     flex-wrap: wrap;
 }
 
+/* Botón principal de módulo con borde naranja y texto oscuro para contraste. */
 .module-btn {
-    background-color: var(--orange);
+    background-color: var(--naranja);
     color: #272727;
-    border: 2px solid var(--orange);
+    border: 2px solid var(--naranja);
     padding: 22px 10px;
     min-width: 250px;
     font-size: 20px;
     cursor: pointer;
 }
 
+/* Indicador de licencia que usa un diseño en línea flexible para icono y texto. */
 .license {
     display: flex;
     align-items: center;
@@ -153,6 +168,7 @@ nav a:hover {
     font-size: 17px;
 }
 
+/* Estilo del icono de licencia redondo con borde azul para destacarlo. */
 .license-icon {
     width: 34px;
     height: 34px;
@@ -166,21 +182,24 @@ nav a:hover {
     font-weight: 900;
 }
 
+/* Sección sobre nosotros con fondo de sección oscura y bordes superiores/inferiores. */
 .about {
-    background-color: var(--section);
+    background-color: var(--gris-fondo);
     padding: 50px 8% 65px;
     min-height: 730px;
-    border-top: 1px solid #242424;
-    border-bottom: 1px solid #242424;
+    border-top: 1px solid var(--gris-fondo);
+    border-bottom: 1px solid var(--gris-fondo);
 }
 
+/* Títulos de sección resaltados con color de marca. */
 .section-title {
-    color: var(--orange);
+    color: var(--naranja);
     font-size: 31px;
     font-weight: 500;
     margin-bottom: 55px;
 }
 
+/* Subtítulo de la sección sobre nosotros con tamaño grande y separación inferior. */
 .about h2 {
     font-size: 43px;
     line-height: 1.2;
@@ -188,6 +207,7 @@ nav a:hover {
     margin-bottom: 35px;
 }
 
+/* Diseño de la cuadrícula de la sección about con dos columnas. */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -195,14 +215,16 @@ nav a:hover {
     align-items: center;
 }
 
+/* Estilo del texto central de la sección about, con buena legibilidad y ancho controlado. */
 .about-text p {
     color: var(--cream);
-    font-size: 30px;
+    font-size: 31px;
     line-height: 1.1;
     max-width: 585px;
     font-weight: 500;
 }
 
+/* Botón de contacto con borde claro y diseño tipo tarjeta. */
 .contact-btn {
     margin-top: 120px;
     width: 250px;
@@ -218,222 +240,62 @@ nav a:hover {
     cursor: pointer;
 }
 
+/* Flecha decorativa en el botón de contacto, más grande para resaltar la acción. */
 .arrow {
     font-size: 42px;
     line-height: 1;
 }
 
-.image-frame {
-    width: 100%;
-    max-width: 610px;
-    height: 520px;
-    margin-left: auto;
-    position: relative;
-    background: radial-gradient(circle at center, #747474 0%, #414141 42%, #202020 75%);
-    overflow: hidden;
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    filter: grayscale(1);
-}
-
-.image-frame::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -16px;
-    width: 180px;
-    height: 175px;
-    border-top: 8px solid var(--orange);
-    border-left: 8px solid var(--orange);
-}
-
-.table {
-    position: absolute;
-    bottom: 98px;
-    width: 90%;
-    height: 18px;
-    background: #eeeeee;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
-}
-
-.table::before,
-.table::after {
-    content: "";
-    position: absolute;
-    top: 18px;
-    width: 12px;
-    height: 96px;
-    background-color: #9d9d9d;
-}
-
-.table::before {
-    left: 35px;
-}
-
-.table::after {
-    right: 35px;
-}
-
-.person {
-    position: absolute;
-    bottom: 115px;
-    left: 48%;
-    transform: translateX(-50%);
-    width: 46px;
-    height: 130px;
-}
-
-.person .head {
-    width: 22px;
-    height: 24px;
-    background: #1c1c1c;
-    border-radius: 45% 45% 55% 55%;
-    margin: 0 auto;
-}
-
-.person .body {
-    width: 34px;
-    height: 65px;
-    background: #191919;
-    margin: 2px auto 0;
-    border-radius: 4px;
-}
-
-.person .arm-left,
-.person .arm-right {
-    position: absolute;
-    top: 40px;
-    width: 8px;
-    height: 48px;
-    background: #1b1b1b;
-    transform-origin: top center;
-}
-
-.person .arm-left {
-    left: 2px;
-    transform: rotate(-28deg);
-}
-
-.person .arm-right {
-    right: -2px;
-    transform: rotate(-45deg);
-}
-
-.person .leg-left,
-.person .leg-right {
-    position: absolute;
-    bottom: 0;
-    width: 9px;
-    height: 48px;
-    background: #1a1a1a;
-    transform-origin: top center;
-}
-
-.person .leg-left {
-    left: 15px;
-    transform: rotate(9deg);
-}
-
-.person .leg-right {
-    right: 15px;
-    transform: rotate(-9deg);
-}
-
-.easel {
-    position: absolute;
-    bottom: 120px;
-    width: 105px;
-    height: 155px;
-}
-
-.easel.left {
-    left: 78px;
-}
-
-.easel.right {
-    right: 82px;
-}
-
-.easel .canvas {
-    position: absolute;
-    top: 20px;
-    left: 22px;
-    width: 62px;
-    height: 48px;
-    background: #d8d8d8;
-}
-
-.easel .leg-a,
-.easel .leg-b,
-.easel .leg-c {
-    position: absolute;
-    top: 65px;
-    width: 8px;
-    height: 92px;
-    background: #e6e6e6;
-    transform-origin: top center;
-}
-
-.easel .leg-a {
-    left: 30px;
-    transform: rotate(14deg);
-}
-
-.easel .leg-b {
-    right: 30px;
-    transform: rotate(-14deg);
-}
-
-.easel .leg-c {
-    left: 50px;
-}
-
-.bucket {
-    position: absolute;
-    bottom: 115px;
-    right: 206px;
-    width: 54px;
-    height: 48px;
-    background: #202020;
-}
-
+/* Sección de FAQ con fondo oscuro y mayor espaciado vertical. */
 .faq {
-    background-color: #000;
+    background-color: var(--negro);
     padding: 55px 8% 95px;
 }
 
+/* Ajuste de margen específico para el subtítulo dentro de faq. */
 .faq .section-title {
     margin-bottom: 38px;
 }
 
+/* Contenedor de la lista de preguntas frecuentes con ancho máximo y margen lateral. */
 .faq-list {
     width: 100%;
     max-width: 1040px;
     margin-left: 46px;
 }
 
+/* Estilo de cada pregunta expandible: fondo gris y borde izquierdo azul. */
 details {
     background-color: var(--faq);
-    border-left: 4px solid var(--blue);
+    border-left: 4px solid var(--azul);
     margin-bottom: 34px;
     min-height: 60px;
 }
 
+.faq,
+.faq summary,
+.faq p,
+.faq .section-title {
+    color: var(--gris-letras);
+}
+
+/* Resumen clickable con estilo de texto claro y espacio interior. */
 summary {
     list-style: none;
     cursor: pointer;
     padding: 21px 72px 21px 18px;
-    color: #d6d6d6;
+    color: var(--gris-letras);
     font-size: 17px;
     font-weight: 700;
     position: relative;
 }
 
+/* Ocultar el marcador predeterminado del elemento details en navegadores WebKit. */
 summary::-webkit-details-marker {
     display: none;
 }
 
+/* Símbolo de expansión personalizado en el lado derecho del resumen. */
 summary::after {
     content: "+";
     position: absolute;
@@ -443,8 +305,8 @@ summary::after {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #222;
-    color: var(--blue);
+    background-color: var(--gris-fondo);
+    color: var(--azul);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -454,17 +316,20 @@ summary::after {
     box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.08);
 }
 
+/* Cambiar el símbolo cuando el panel está abierto. */
 details[open] summary::after {
     content: "−";
 }
 
+/* Estilo del texto de respuesta en los detalles, con espacio interior y legibilidad. */
 details p {
-    color: #e8e8e8;
+    color: var(--gris-letras);
     font-size: 16px;
     line-height: 1.5;
     padding: 0 72px 22px 18px;
 }
 
+/* Diseño adaptable para pantallas medianas, reorganizando la cabecera y secciones. */
 @media (max-width: 950px) {
     header {
         flex-wrap: wrap;
@@ -501,7 +366,21 @@ details p {
     }
 }
 
+/* Ajustes para móviles pequeños: tipografías más pequeñas y elementos gráficos escalados. */
 @media (max-width: 600px) {
+    nav {
+        display: none;
+    }
+
+    header {
+        justify-content: space-between;
+        padding: 18px;
+    }
+
+    .header-actions {
+        order: 2;
+    }
+
     .logo-main {
         font-size: 44px;
     }

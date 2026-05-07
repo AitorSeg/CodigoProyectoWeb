@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Definición de codificación y vista para que la página se muestre correctamente en diferentes dispositivos -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GTI - Educational Software</title>
+    <!-- Enlace al archivo CSS que contiene los estilos para esta página -->
     <link rel="stylesheet" href="../css/gti.css" />
 </head>
 <body>
+    <!-- Cabecera principal con logo, navegación y botón de acceso -->
     <header>
-        <div class="logo">
-            <div class="logo-main">g<span>t</span>i</div>
-            <div class="logo-text">
-                <div class="grado">Grado en</div>
-                <div>tecnologías</div>
-                <div>interactivas</div>
-            </div>
+        <div class="about-image">
+            <!-- Logo o imagen de presentación en la cabecera -->
+            <img src="../imagenes/logoGTI_blanco.png" alt="Imagen sobre nosotros" />
         </div>
 
         <nav>
+            <!-- Enlaces de navegación interna hacia secciones de la misma página -->
             <a href="#faq">FAQ</a>
             <a href="#sobre-nosotros">Sobre Nosotros</a>
             <a href="#contacto">Contactanos</a>
             <a href="#catalogo">Catalogo de Modulos</a>
-            <a href="#registro">Registro</a>
         </nav>
 
-        <button class="login-btn">Log in</button>
+        <div class="header-actions">
+            <!-- Botones de acceso rápido al registrarse y al iniciar sesión -->
+                <button class="register-btn">Registro</button>
+            <button class="login-btn">Log in</button>
+        </div>
     </header>
 
     <main>
+        <!-- Sección principal de bienvenida, con mensaje de marca y llamada a la acción -->
         <section class="hero">
             <h1>
                 GTI: <span class="orange">Educational</span><br />
@@ -41,14 +45,20 @@
             </p>
 
             <div class="hero-actions">
+                <!-- Botón destacado para promocionar el módulo más reciente -->
                 <button class="module-btn">Nuestro Último Modulo</button>
                 <div class="license">
-                    <div class="license-icon">✓</div>
+                    <!-- Indicador visual de beneficios incluido con el producto -->
+                <div class="about-image">
+                    <!-- Imagen que refuerza visualmente el mensaje de la sección "Sobre Nosotros" -->
+                    <img src="../imagenes/verificacion.svg" alt="Imagen sobre nosotros" />
+                
                     <span>Acceso a licencia permanente</span>
                 </div>
             </div>
         </section>
 
+        <!-- Sección «Sobre Nosotros» con información institucional y llamada al contacto -->
         <section class="about" id="sobre-nosotros">
             <h3 class="section-title">Sobre Nosotros</h3>
             <h2>Arquitectura Digital con Rigor Institucional.</h2>
@@ -57,45 +67,23 @@
                 <div class="about-text">
                     <p>
                         GTI nace de la necesidad de cerrar la brecha entre el software comercial y la educación técnica de alto rendimiento.
-                        No solo creamos herramientas diseñamos ecosistemas de aprendizaje donde el rigor se encuentra con la eficiencia digital.
+                        No solo creamos herramientas, diseñamos ecosistemas de aprendizaje donde el rigor se encuentra con la eficiencia digital.
                     </p>
 
+                    <!-- Botón que lleva al usuario a la sección de contacto o que puede abrir un formulario de contacto -->
                     <button class="contact-btn" id="contacto">
                         Contactanos <span class="arrow">→</span>
                     </button>
                 </div>
 
-                <div class="image-frame" aria-label="Ilustración de arquitectura digital">
-                    <div class="table"></div>
-
-                    <div class="easel left">
-                        <div class="canvas"></div>
-                        <div class="leg-a"></div>
-                        <div class="leg-b"></div>
-                        <div class="leg-c"></div>
-                    </div>
-
-                    <div class="person">
-                        <div class="head"></div>
-                        <div class="body"></div>
-                        <div class="arm-left"></div>
-                        <div class="arm-right"></div>
-                        <div class="leg-left"></div>
-                        <div class="leg-right"></div>
-                    </div>
-
-                    <div class="bucket"></div>
-
-                    <div class="easel right">
-                        <div class="canvas"></div>
-                        <div class="leg-a"></div>
-                        <div class="leg-b"></div>
-                        <div class="leg-c"></div>
-                    </div>
+                <div class="about-image">
+                    <!-- Imagen que refuerza visualmente el mensaje de la sección "Sobre Nosotros" -->
+                    <img src="../imagenes/imagen_quienes_somos.png" alt="Imagen sobre nosotros" />
                 </div>
             </div>
         </section>
 
+        <!-- Sección de preguntas frecuentes con elementos <details> que permiten expandir y contraer respuestas -->
         <section class="faq" id="faq">
             <h3 class="section-title">FAQ</h3>
 
