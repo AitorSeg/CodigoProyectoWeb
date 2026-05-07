@@ -54,26 +54,6 @@
     </form>
   </div>
 </div>
-
-<script type="text/javascript">
-  const regForm = document.getElementById('registerForm');
-
-  regForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const pass = document.getElementById('pass').value;
-    const passConfirm = document.getElementById('passConfirm').value;
-    const passError = document.getElementById('passError');
-
-    if(pass !== passConfirm) {
-      passError.style.display = 'block';
-      document.getElementById('passConfirm').style.borderColor = 'var(--error)';
-    } else {
-      passError.style.display = 'none';
-      document.getElementById('passConfirm').style.borderColor = 'transparent';
-      alert("¡Registro exitoso! Bienvenido a GTI.");
-    }
-  });
-</script>
+<script src="../js/registro.js"></script>
 </body>
 </html>
