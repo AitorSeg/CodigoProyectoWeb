@@ -1,338 +1,407 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel del profesor | DOA</title>
-
-    <link rel="stylesheet" href="../css/doa.css">
-    <link rel="stylesheet" href="../css/doa-layout.css">
-    <link rel="stylesheet" href="../css/doa-componentes.css">
-    <link rel="stylesheet" href="../css/panel_profesor.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-</head>
-
-<body class="pagina-doa pagina-panel-profesor">
-    <header class="cabecera-panel-doa">
-        <div class="cabecera-panel-doa__logo">
-            <div class="marca-doa">
-                <a class="marca-doa__link" href="panel_profesor.html" aria-label="Ir al panel del profesor de DOA">
-                    <img
-                        src="../img/LogoDoaAzulRecortado.png"
-                        alt="Logo de DOA"
-                        class="logo-doa"
-                    >
-                </a>
-
-                <div class="marca-doa__powered">
-                    <span class="marca-doa__powered-text">Powered by</span>
-                    <img
-                        src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
-                        alt="Grado en Tecnologías Interactivas"
-                        class="marca-doa__powered-logo"
-                    >
-                </div>
-            </div>
-        </div>
-
-        <div class="cabecera-panel-doa__buscador">
-            <div
-                class="buscador-header buscador-header--desactivado"
-                aria-label="Buscador visual pendiente de activar"
-                title="El buscador se activará cuando se conecte la base de datos"
-            >
-                <span class="buscador-header__icono" aria-hidden="true">
-                    <img src="../img/iconos/grey-search.svg" alt="">
-                </span>
-
-                <input
-                    type="search"
-                    placeholder="Buscar asignatura, tarea..."
-                    disabled
-                >
-            </div>
-        </div>
-
-        <div class="cabecera-panel-doa__perfil">
-            <div class="perfil-header">
-                <span class="perfil-header__icono" aria-hidden="true">
-                    <img src="../img/iconos/grey-user.svg" alt="">
-                </span>
-
-                <span class="perfil-header__texto">
-                    <strong id="nombreUsuarioHeader">Kevan Pounds Mainston</strong>
-                    <small id="rolUsuarioHeader">Profesor</small>
-                </span>
-            </div>
-
-            <a class="boton-cerrar-sesion-movil" href="elegir_perfil.html" aria-label="Cerrar sesión">
-                <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
-                    <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
-                    <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
-                </span>
-            </a>
-        </div>
-    </header>
-
-    <div class="layout-doa">
-        <div class="barra-lateral-doa">
-            <div class="tarjeta-modo-prueba">
-                <div class="tarjeta-modo-prueba__cabecera">
-                    <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
-                        <img src="../img/iconos/grey-info.svg" alt="">
-                    </span>
-
-                    <strong>Modo de prueba</strong>
-                </div>
-
-                <p>
-                    Estás usando DOA con datos de prueba. Las acciones no afectan a usuarios reales
-                    y los permisos dependen del perfil elegido.
-                </p>
-            </div>
-
-            <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
-                <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="panel_profesor.html">
-                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
-                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
-                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
-                    </span>
-
-                    <span>Panel Principal</span>
-                </a>
-
-                <a class="navegacion-lateral-doa__item" href="asignaturas_profesor.html">
-                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
-                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-notebook.svg" alt="">
-                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-notebook.svg" alt="">
-                    </span>
-
-                    <span>Mis Asignaturas</span>
-                </a>
-
-                <a class="navegacion-lateral-doa__item" href="notificaciones.html">
-                    <span class="navegacion-lateral-doa__icono" aria-hidden="true">
-                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-bell.svg" alt="">
-                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-bell.svg" alt="">
-                    </span>
-
-                    <span>Notificaciones</span>
-                </a>
-            </nav>
-
-            <div class="barra-lateral-doa__salida">
-                <a class="boton-cerrar-sesion" href="elegir_perfil.html">
-                    <span class="boton-cerrar-sesion__icono" aria-hidden="true">
-                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
-                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
-                    </span>
-
-                    <span>Cerrar sesión</span>
-                </a>
-            </div>
-        </div>
-
-        <main class="contenido-doa contenido-panel-profesor">
-            <section class="cabecera-panel-profesor">
-                <div class="cabecera-panel-profesor__texto">
-                    <p class="cabecera-panel-profesor__eyebrow">Panel del profesor</p>
-
-                    <h1>Buenos días, Kevan</h1>
-
-                    <p>
-                        Gestiona tus asignaturas, revisa entregas pendientes y consulta el estado
-                        actual de tus grupos.
-                    </p>
-                </div>
-            </section>
-
-            <section class="resumen-panel-profesor" aria-label="Resumen general del profesor">
-                <article class="dato-panel-profesor">
-                    <span class="dato-panel-profesor__label">Asignaturas</span>
-                    <strong class="dato-panel-profesor__valor">3</strong>
-                </article>
-
-                <article class="dato-panel-profesor">
-                    <span class="dato-panel-profesor__label">Tareas activas</span>
-                    <strong class="dato-panel-profesor__valor">7</strong>
-                </article>
-
-                <article class="dato-panel-profesor">
-                    <span class="dato-panel-profesor__label">Entregas pendientes</span>
-                    <strong class="dato-panel-profesor__valor">29</strong>
-                </article>
-
-                <article class="dato-panel-profesor">
-                    <span class="dato-panel-profesor__label">Recursos publicados</span>
-                    <strong class="dato-panel-profesor__valor">18</strong>
-                </article>
-            </section>
-
-            <div class="panel-profesor-grid">
-                <section class="panel-profesor-principal">
-                    <article class="bloque-panel-profesor">
-                        <div class="bloque-panel-profesor__cabecera">
-                            <div>
-                                <h2>Asignaturas destacadas</h2>
-                                <p>
-                                    Vista rápida de las asignaturas con más actividad reciente.
-                                </p>
-                            </div>
-
-                            <a href="asignaturas_profesor.html" class="bloque-panel-profesor__enlace">
-                                Ver mis asignaturas
-                            </a>
-                        </div>
-
-                        <div class="grid-asignaturas-profesor">
-                            <article class="tarjeta-asignatura-profesor tarjeta-asignatura-profesor--activa">
-                                <div class="tarjeta-asignatura-profesor__cabecera">
-                                    <div>
-                                        <h3>Programación II</h3>
-                                        <p>Unidad 03 · Recursividad</p>
-                                    </div>
-
-                                    <span class="estado-asignatura-docente">Activa</span>
-                                </div>
-
-                                <div class="tarjeta-asignatura-profesor__stats">
-                                    <div class="mini-stat-profesor">
-                                        <span>Alumnos</span>
-                                        <strong>32</strong>
-                                    </div>
-
-                                    <div class="mini-stat-profesor">
-                                        <span>Tareas</span>
-                                        <strong>3</strong>
-                                    </div>
-
-                                    <div class="mini-stat-profesor">
-                                        <span>Entregas</span>
-                                        <strong>14</strong>
-                                    </div>
-                                </div>
-
-                                <div class="tarjeta-asignatura-profesor__acciones">
-                                    <a href="detalle_asignatura_profesor.html?asignatura=programacion" class="boton-docente boton-docente--principal">
-                                        Entrar
-                                    </a>
-                                </div>
-                            </article>
-
-                            <article class="tarjeta-asignatura-profesor">
-                                <div class="tarjeta-asignatura-profesor__cabecera">
-                                    <div>
-                                        <h3>Matemáticas</h3>
-                                        <p>Unidad 03 · Límites</p>
-                                    </div>
-                                </div>
-
-                                <div class="tarjeta-asignatura-profesor__stats">
-                                    <div class="mini-stat-profesor">
-                                        <span>Alumnos</span>
-                                        <strong>28</strong>
-                                    </div>
-
-                                    <div class="mini-stat-profesor">
-                                        <span>Tareas</span>
-                                        <strong>2</strong>
-                                    </div>
-
-                                    <div class="mini-stat-profesor">
-                                        <span>Entregas</span>
-                                        <strong>9</strong>
-                                    </div>
-                                </div>
-
-                                <div class="tarjeta-asignatura-profesor__acciones">
-                                    <a href="detalle_asignatura_profesor.html?asignatura=matematicas" class="boton-docente boton-docente--principal">
-                                        Entrar
-                                    </a>
-                                </div>
-                            </article>
-                        </div>
-                    </article>
-                </section>
-
-                <aside class="panel-profesor-lateral">
-                    <article class="tarjeta-panel-lateral">
-                        <div class="tarjeta-panel-lateral__cabecera">
-                            <h3>Tareas activas</h3>
-                        </div>
-
-                        <div class="lista-panel-lateral">
-                            <a href="crear_tarea.html?asignatura=programacion" class="item-panel-lateral">
-                                <div class="item-panel-lateral__texto">
-                                    <strong>Ejercicio de recursividad</strong>
-                                    <span>Programación II · 14 entregas pendientes</span>
-                                </div>
-
-                                <small>Vence en 2 días</small>
-                            </a>
-
-                            <a href="crear_tarea.html?asignatura=matematicas" class="item-panel-lateral">
-                                <div class="item-panel-lateral__texto">
-                                    <strong>Hoja de límites</strong>
-                                    <span>Matemáticas · 9 entregas pendientes</span>
-                                </div>
-
-                                <small>Vence mañana</small>
-                            </a>
-
-                            <a href="crear_tarea.html?asignatura=fisica" class="item-panel-lateral">
-                                <div class="item-panel-lateral__texto">
-                                    <strong>Ejercicios de MRU</strong>
-                                    <span>Física · 6 entregas pendientes</span>
-                                </div>
-
-                                <small>Vence en 4 días</small>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="tarjeta-panel-lateral">
-                        <div class="tarjeta-panel-lateral__cabecera">
-                            <h3>Próximos exámenes</h3>
-                        </div>
-
-                        <div class="lista-panel-lateral">
-                            <a href="examenes_profesor.html?asignatura=matematicas" class="item-panel-lateral">
-                                <div class="item-panel-lateral__texto">
-                                    <strong>Parcial 01</strong>
-                                    <span>Matemáticas</span>
-                                </div>
-
-                                <small>15 Nov</small>
-                            </a>
-
-                            <a href="examenes_profesor.html?asignatura=programacion" class="item-panel-lateral">
-                                <div class="item-panel-lateral__texto">
-                                    <strong>Quiz de punteros</strong>
-                                    <span>Programación II</span>
-                                </div>
-
-                                <small>18 Nov</small>
-                            </a>
-
-                            <a href="examenes_profesor.html?asignatura=fisica" class="item-panel-lateral">
-                                <div class="item-panel-lateral__texto">
-                                    <strong>Control de cinemática</strong>
-                                    <span>Física</span>
-                                </div>
-
-                                <small>22 Nov</small>
-                            </a>
-                        </div>
-                    </article>
-                </aside>
-            </div>
-        </main>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Panel del profesor | DOA
+  </title>
+  <!-- Enlaces a hojas de estilo -->
+  <link href="../css/doa.css" rel="stylesheet"/>
+  <link href="../css/doa-layout.css" rel="stylesheet"/>
+  <link href="../css/doa-componentes.css" rel="stylesheet"/>
+  <link href="../css/panel_profesor.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet"/>
+  <!-- Fin enlaces a hojas de estilo -->
+ </head>
+ <body class="pagina-doa pagina-panel-profesor">
+  <!-- Inicio de el header -->
+  <header class="cabecera-panel-doa">
+   <!-- Inicio del logo -->
+   <div class="cabecera-panel-doa__logo">
+    <div class="marca-doa">
+     <a aria-label="Ir al panel del profesor de DOA" class="marca-doa__link" href="panel_profesor.html">
+      <img alt="Logo de DOA" class="logo-doa" src="../img/LogoDoaAzulRecortado.png"/>
+     </a>
+     <div class="marca-doa__powered">
+      <span class="marca-doa__powered-text">
+       Powered by
+      </span>
+      <img alt="Grado en Tecnolog&iacute;as Interactivas" class="marca-doa__powered-logo" src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"/>
+     </div>
     </div>
-
-    <script src="../js/doa-datos.js"></script>
-    <script src="../js/doa-layout.js"></script>
-</body>
+   </div>
+   <!-- Final del logo -->
+   <!-- Inicio del buscador -->
+   <div class="cabecera-panel-doa__buscador">
+    <div aria-label="Buscador visual pendiente de activar" class="buscador-header buscador-header--desactivado" title="El buscador se activar&aacute; cuando se conecte la base de datos">
+     <span aria-hidden="true" class="buscador-header__icono">
+      <img alt="" src="../img/iconos/grey-search.svg"/>
+     </span>
+     <input disabled="" placeholder="Buscar asignatura, tarea..." type="search"/>
+    </div>
+   </div>
+   <!-- Final del buscador -->
+   <!-- Inicio del perfil de usuario -->
+   <div class="cabecera-panel-doa__perfil">
+    <div class="perfil-header">
+     <span aria-hidden="true" class="perfil-header__icono">
+      <img alt="" src="../img/iconos/grey-user.svg"/>
+     </span>
+     <span class="perfil-header__texto">
+      <strong id="nombreUsuarioHeader">
+       Kevan Pounds Mainston
+      </strong>
+      <small id="rolUsuarioHeader">
+       Profesor
+      </small>
+     </span>
+    </div>
+    <!-- Inicio del botón cerrar sesión en móvil -->
+    <a aria-label="Cerrar sesi&oacute;n" class="boton-cerrar-sesion-movil" href="elegir_perfil.html">
+     <span aria-hidden="true" class="boton-cerrar-sesion-movil__icono">
+      <img alt="" class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg"/>
+      <img alt="" class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg"/>
+     </span>
+    </a>
+    <!-- Final del botón cerrar sesión en móvil -->
+   </div>
+   <!-- Final del perfil de usuario -->
+  </header>
+  <!-- Final de el header -->
+  <!-- Inicio del contenido principal -->
+  <div class="layout-doa">
+   <!-- Inicio de la barra lateral -->
+   <div class="barra-lateral-doa">
+    <!-- Inicio de la tarjeta de modo de prueba -->
+    <div class="tarjeta-modo-prueba">
+     <div class="tarjeta-modo-prueba__cabecera">
+      <span aria-hidden="true" class="tarjeta-modo-prueba__icono">
+       <img alt="" src="../img/iconos/grey-info.svg"/>
+      </span>
+      <strong>
+       Modo de prueba
+      </strong>
+     </div>
+     <p>
+      Est&aacute;s usando DOA con datos de prueba. Las acciones no afectan a usuarios reales
+                    y los permisos dependen del perfil elegido.
+     </p>
+    </div>
+    <!-- Final de la tarjeta de modo de prueba -->
+    <!-- Inicio de la navegación lateral -->
+    <nav aria-label="Navegaci&oacute;n principal de DOA" class="navegacion-lateral-doa">
+     <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="panel_profesor.html">
+      <span aria-hidden="true" class="navegacion-lateral-doa__icono">
+       <img alt="" class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg"/>
+       <img alt="" class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg"/>
+      </span>
+      <span>
+       Panel Principal
+      </span>
+     </a>
+     <a class="navegacion-lateral-doa__item" href="asignaturas_profesor.html">
+      <span aria-hidden="true" class="navegacion-lateral-doa__icono">
+       <img alt="" class="icono-estado icono-estado--gris" src="../img/iconos/grey-notebook.svg"/>
+       <img alt="" class="icono-estado icono-estado--azul" src="../img/iconos/blue-notebook.svg"/>
+      </span>
+      <span>
+       Mis Asignaturas
+      </span>
+     </a>
+     <a class="navegacion-lateral-doa__item" href="notificaciones.html">
+      <span aria-hidden="true" class="navegacion-lateral-doa__icono">
+       <img alt="" class="icono-estado icono-estado--gris" src="../img/iconos/grey-bell.svg"/>
+       <img alt="" class="icono-estado icono-estado--azul" src="../img/iconos/blue-bell.svg"/>
+      </span>
+      <span>
+       Notificaciones
+      </span>
+     </a>
+    </nav>
+    <!-- Final de la navegación lateral -->
+    <!-- Inicio del botón cerrar sesión en escritorio -->
+    <div class="barra-lateral-doa__salida">
+     <a class="boton-cerrar-sesion" href="elegir_perfil.html">
+      <span aria-hidden="true" class="boton-cerrar-sesion__icono">
+       <img alt="" class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg"/>
+       <img alt="" class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg"/>
+      </span>
+      <span>
+       Cerrar sesi&oacute;n
+      </span>
+     </a>
+    </div>
+    <!-- Final del botón cerrar sesión en escritorio -->
+   </div>
+   <!-- Final de la barra lateral -->
+   <!-- Inicio del contenido principal de la página -->
+   <main class="contenido-doa contenido-panel-profesor">
+    <section class="cabecera-panel-profesor">
+     <div class="cabecera-panel-profesor__texto">
+      <p class="cabecera-panel-profesor__eyebrow">
+       Panel del profesor
+      </p>
+      <h1>
+       Buenos d&iacute;as, Kevan
+      </h1>
+      <p>
+       Gestiona tus asignaturas, revisa entregas pendientes y consulta el estado
+                        actual de tus grupos.
+      </p>
+     </div>
+    </section>
+    <section aria-label="Resumen general del profesor" class="resumen-panel-profesor">
+     <article class="dato-panel-profesor">
+      <span class="dato-panel-profesor__label">
+       Asignaturas
+      </span>
+      <strong class="dato-panel-profesor__valor">
+       3
+      </strong>
+     </article>
+     <article class="dato-panel-profesor">
+      <span class="dato-panel-profesor__label">
+       Tareas activas
+      </span>
+      <strong class="dato-panel-profesor__valor">
+       7
+      </strong>
+     </article>
+     <article class="dato-panel-profesor">
+      <span class="dato-panel-profesor__label">
+       Entregas pendientes
+      </span>
+      <strong class="dato-panel-profesor__valor">
+       29
+      </strong>
+     </article>
+     <article class="dato-panel-profesor">
+      <span class="dato-panel-profesor__label">
+       Recursos publicados
+      </span>
+      <strong class="dato-panel-profesor__valor">
+       18
+      </strong>
+     </article>
+    </section>
+    <div class="panel-profesor-grid">
+     <section class="panel-profesor-principal">
+      <article class="bloque-panel-profesor">
+       <div class="bloque-panel-profesor__cabecera">
+        <div>
+         <h2>
+          Asignaturas destacadas
+         </h2>
+         <p>
+          Vista r&aacute;pida de las asignaturas con m&aacute;s actividad reciente.
+         </p>
+        </div>
+        <a class="bloque-panel-profesor__enlace" href="asignaturas_profesor.html">
+         Ver mis asignaturas
+        </a>
+       </div>
+       <div class="grid-asignaturas-profesor">
+        <article class="tarjeta-asignatura-profesor tarjeta-asignatura-profesor--activa">
+         <div class="tarjeta-asignatura-profesor__cabecera">
+          <div>
+           <h3>
+            Programaci&oacute;n II
+           </h3>
+           <p>
+            Unidad 03 &middot; Recursividad
+           </p>
+          </div>
+          <span class="estado-asignatura-docente">
+           Activa
+          </span>
+         </div>
+         <div class="tarjeta-asignatura-profesor__stats">
+          <div class="mini-stat-profesor">
+           <span>
+            Alumnos
+           </span>
+           <strong>
+            32
+           </strong>
+          </div>
+          <div class="mini-stat-profesor">
+           <span>
+            Tareas
+           </span>
+           <strong>
+            3
+           </strong>
+          </div>
+          <div class="mini-stat-profesor">
+           <span>
+            Entregas
+           </span>
+           <strong>
+            14
+           </strong>
+          </div>
+         </div>
+         <div class="tarjeta-asignatura-profesor__acciones">
+          <a class="boton-docente boton-docente--principal" href="detalle_asignatura_profesor.html?asignatura=programacion">
+           Entrar
+          </a>
+         </div>
+        </article>
+        <article class="tarjeta-asignatura-profesor">
+         <div class="tarjeta-asignatura-profesor__cabecera">
+          <div>
+           <h3>
+            Matem&aacute;ticas
+           </h3>
+           <p>
+            Unidad 03 &middot; L&iacute;mites
+           </p>
+          </div>
+         </div>
+         <div class="tarjeta-asignatura-profesor__stats">
+          <div class="mini-stat-profesor">
+           <span>
+            Alumnos
+           </span>
+           <strong>
+            28
+           </strong>
+          </div>
+          <div class="mini-stat-profesor">
+           <span>
+            Tareas
+           </span>
+           <strong>
+            2
+           </strong>
+          </div>
+          <div class="mini-stat-profesor">
+           <span>
+            Entregas
+           </span>
+           <strong>
+            9
+           </strong>
+          </div>
+         </div>
+         <div class="tarjeta-asignatura-profesor__acciones">
+          <a class="boton-docente boton-docente--principal" href="detalle_asignatura_profesor.html?asignatura=matematicas">
+           Entrar
+          </a>
+         </div>
+        </article>
+       </div>
+      </article>
+     </section>
+     <aside class="panel-profesor-lateral">
+      <article class="tarjeta-panel-lateral">
+       <div class="tarjeta-panel-lateral__cabecera">
+        <h3>
+         Tareas activas
+        </h3>
+       </div>
+       <div class="lista-panel-lateral">
+        <a class="item-panel-lateral" href="crear_tarea.html?asignatura=programacion">
+         <div class="item-panel-lateral__texto">
+          <strong>
+           Ejercicio de recursividad
+          </strong>
+          <span>
+           Programaci&oacute;n II &middot; 14 entregas pendientes
+          </span>
+         </div>
+         <small>
+          Vence en 2 d&iacute;as
+         </small>
+        </a>
+        <a class="item-panel-lateral" href="crear_tarea.html?asignatura=matematicas">
+         <div class="item-panel-lateral__texto">
+          <strong>
+           Hoja de l&iacute;mites
+          </strong>
+          <span>
+           Matem&aacute;ticas &middot; 9 entregas pendientes
+          </span>
+         </div>
+         <small>
+          Vence ma&ntilde;ana
+         </small>
+        </a>
+        <a class="item-panel-lateral" href="crear_tarea.html?asignatura=fisica">
+         <div class="item-panel-lateral__texto">
+          <strong>
+           Ejercicios de MRU
+          </strong>
+          <span>
+           F&iacute;sica &middot; 6 entregas pendientes
+          </span>
+         </div>
+         <small>
+          Vence en 4 d&iacute;as
+         </small>
+        </a>
+       </div>
+      </article>
+      <article class="tarjeta-panel-lateral">
+       <div class="tarjeta-panel-lateral__cabecera">
+        <h3>
+         Pr&oacute;ximos ex&aacute;menes
+        </h3>
+       </div>
+       <div class="lista-panel-lateral">
+        <a class="item-panel-lateral" href="examenes_profesor.html?asignatura=matematicas">
+         <div class="item-panel-lateral__texto">
+          <strong>
+           Parcial 01
+          </strong>
+          <span>
+           Matem&aacute;ticas
+          </span>
+         </div>
+         <small>
+          15 Nov
+         </small>
+        </a>
+        <a class="item-panel-lateral" href="examenes_profesor.html?asignatura=programacion">
+         <div class="item-panel-lateral__texto">
+          <strong>
+           Quiz de punteros
+          </strong>
+          <span>
+           Programaci&oacute;n II
+          </span>
+         </div>
+         <small>
+          18 Nov
+         </small>
+        </a>
+        <a class="item-panel-lateral" href="examenes_profesor.html?asignatura=fisica">
+         <div class="item-panel-lateral__texto">
+          <strong>
+           Control de cinem&aacute;tica
+          </strong>
+          <span>
+           F&iacute;sica
+          </span>
+         </div>
+         <small>
+          22 Nov
+         </small>
+        </a>
+       </div>
+      </article>
+     </aside>
+    </div>
+   </main>
+   <!-- Final del contenido principal de la página -->
+  </div>
+  <!-- Final del contenido principal -->
+  <script src="../js/doa-datos.js">
+  </script>
+  <script src="../js/doa-layout.js">
+  </script>
+ </body>
 </html>
