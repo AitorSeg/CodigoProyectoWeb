@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calificaciones | DOA</title>
+    <title>Exámenes | DOA</title>
 
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
     <link rel="stylesheet" href="../css/doa-componentes.css">
-    <link rel="stylesheet" href="../css/calificaciones.css">
+    <link rel="stylesheet" href="../css/detalle_asignatura.css">
+    <link rel="stylesheet" href="../css/examenes.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="pagina-doa pagina-calificaciones">
+<body class="pagina-doa pagina-examenes">
     <header class="cabecera-panel-doa">
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
@@ -50,7 +51,7 @@
 
                 <input
                     type="search"
-                    placeholder="Buscar calificación..."
+                    placeholder="Buscar examen..."
                     disabled
                 >
             </div>
@@ -135,133 +136,130 @@
             </div>
         </div>
 
-        <main class="contenido-doa contenido-calificaciones">
-            <section class="cabecera-calificaciones">
-                <div class="cabecera-calificaciones__texto">
-                    <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
-                        <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
-                            <img src="../img/iconos/grey-chevron-right.svg" alt="">
-                        </span>
-                        <span>Volver a detalles de la asignatura</span>
-                    </a>
-
-                    <h1 id="tituloCalificaciones">Matemáticas</h1>
-
-                    <ul class="metadatos-asignatura">
-                        <li>
-                            <img src="../img/iconos/grey-user.svg" alt="">
-                            <span id="profesorAsignatura">Don Pepito</span>
-                        </li>
-
-                        <li>
-                            <img src="../img/iconos/grey-notebook.svg" alt="">
-                            <span id="unidadActualAsignatura">Unidad 03: Límites</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="cabecera-calificaciones__pestanas">
-                    <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
-                        <a href="recursosdoa.html" class="pestanas-asignatura__item">Recursos</a>
-                        <a href="listado_tareas.html" class="pestanas-asignatura__item">Tareas</a>
-                        <a href="examenes.html" class="pestanas-asignatura__item">Exámenes</a>
-                        <a href="calificaciones.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Calificaciones</a>
-                    </nav>
-                </div>
-            </section>
-
-            <section class="resumen-calificaciones" aria-label="Resumen de calificaciones">
-                <article class="tarjeta-resumen-nota">
-                    <span>Nota media</span>
-                    <strong id="notaMedia">5,9</strong>
-                </article>
-
-                <article class="tarjeta-resumen-nota">
-                    <span>Nota media exámenes</span>
-                    <strong id="notaMediaExamenes">3,7</strong>
-                </article>
-
-                <article class="tarjeta-resumen-nota">
-                    <span>Nota media tareas</span>
-                    <strong id="notaMediaTareas">8,3</strong>
-                </article>
-
-                <article class="tarjeta-resumen-nota">
-                    <span>Nota media prácticas</span>
-                    <strong id="notaMediaPracticas">5,7</strong>
-                </article>
-            </section>
-
-            <section class="seccion-calificaciones">
-                <div class="cabecera-tabla-calificaciones">
-                    <h2>Calificaciones</h2>
-
-                    <div class="filtros-calificaciones">
-                        <label class="filtro-calificaciones">
-                            <select id="filtroTipoCalificacion">
-                                <option value="todas">Tipo: todas</option>
-                                <option value="examen">Exámenes</option>
-                                <option value="tarea">Tareas</option>
-                                <option value="practica">Prácticas</option>
-                            </select>
-
-                            <span class="filtro-calificaciones__icono" aria-hidden="true">
+        <main class="contenido-doa contenido-detalle-asignatura contenido-examenes">
+            <section class="detalle-asignatura-principal">
+                <div class="cabecera-detalle-asignatura">
+                    <div class="cabecera-detalle-asignatura__texto">
+                        <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
+                            <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
                                 <img src="../img/iconos/grey-chevron-right.svg" alt="">
                             </span>
-                        </label>
+                            <span>Volver a detalles de la asignatura</span>
+                        </a>
 
-                        <label class="filtro-calificaciones">
-                            <select id="filtroEstadoCalificacion">
-                                <option value="todos">Estado</option>
-                                <option value="corregido">Corregidas</option>
-                                <option value="proxima">Próximas</option>
-                            </select>
+                        <h1 id="tituloAsignatura">Programación II</h1>
 
-                            <span class="filtro-calificaciones__icono" aria-hidden="true">
-                                <img src="../img/iconos/grey-chevron-right.svg" alt="">
-                            </span>
-                        </label>
+                        <ul class="metadatos-asignatura">
+                            <li>
+                                <img src="../img/iconos/grey-user.svg" alt="">
+                                <span id="profesorAsignatura">Don Pepito</span>
+                            </li>
 
-                        <label class="filtro-calificaciones">
-                            <select id="ordenCalificacion">
-                                <option value="fecha">Ordenar por fecha</option>
-                                <option value="nota">Ordenar por nota</option>
-                                <option value="nombre">Ordenar por nombre</option>
-                            </select>
+                            <li>
+                                <img src="../img/iconos/grey-notebook.svg" alt="">
+                                <span id="unidadActualTextoAsignatura">Unidad 03: Recursividad</span>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <span class="filtro-calificaciones__icono" aria-hidden="true">
-                                <img src="../img/iconos/grey-chevron-right.svg" alt="">
-                            </span>
-                        </label>
+                    <div class="cabecera-detalle-asignatura__pestanas">
+                        <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
+                            <a href="recursosdoa.html" class="pestanas-asignatura__item">Recursos</a>
+                            <a href="listado_tareas.html" class="pestanas-asignatura__item">Tareas</a>
+                            <a href="examenes.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Exámenes</a>
+                            <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
+                        </nav>
                     </div>
                 </div>
 
-                <div class="tabla-calificaciones">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Actividad</th>
-                                <th>Tipo</th>
-                                <th>Unidad</th>
-                                <th>Peso</th>
-                                <th>Nota</th>
-                                <th>Estado</th>
-                                <th>Fecha</th>
-                                <th>Acción</th>
-                            </tr>
-                        </thead>
+                <section class="resumen-examenes" aria-label="Resumen de exámenes">
+                    <article class="tarjeta-resumen-examen">
+                        <span>Exámenes abiertos</span>
+                        <strong id="totalExamenesAbiertos">1</strong>
+                    </article>
 
-                        <tbody id="tablaCalificaciones">
-                            <!-- JS carga las filas -->
-                        </tbody>
-                    </table>
-                </div>
+                    <article class="tarjeta-resumen-examen">
+                        <span>Próximo examen</span>
+                        <strong id="proximoExamenTexto">15 Nov</strong>
+                    </article>
+
+                    <article class="tarjeta-resumen-examen">
+                        <span>Completados</span>
+                        <strong id="totalExamenesRealizados">2</strong>
+                    </article>
+                </section>
+
+                <section class="examen-destacado" id="examenDestacado">
+                    <div class="examen-destacado__contenido">
+                        <span class="etiqueta-examen etiqueta-examen--abierto">Abierto</span>
+
+                        <h2 id="tituloExamenDestacado">Examen unidad 03</h2>
+
+                        <p id="descripcionExamenDestacado">
+                            Examen tipo test sobre los contenidos de la unidad actual.
+                        </p>
+                    </div>
+
+                    <div class="examen-destacado__accion">
+                        <p>
+                            <span>Disponible hasta</span>
+                            <strong id="fechaLimiteExamenDestacado">15 Nov, 2026</strong>
+                        </p>
+
+                        <a
+                            href="detalle_examen.html"
+                            class="boton-entrar-examen"
+                            id="botonExamenDestacado"
+                            data-examen="examen_unidad_03"
+                        >
+                            Entrar
+                        </a>
+                    </div>
+                </section>
+
+                <section class="bloque-listado-examenes">
+                    <div class="cabecera-listado-examenes">
+                        <h2>Exámenes de la asignatura</h2>
+
+                        <div class="filtros-examenes" aria-label="Filtros visuales de exámenes">
+                            <button type="button" class="filtro-examen filtro-examen--activo" data-filtro="todos">
+                                Todos
+                            </button>
+
+                            <button type="button" class="filtro-examen" data-filtro="abierto">
+                                Abiertos
+                            </button>
+
+                            <button type="button" class="filtro-examen" data-filtro="cerrado">
+                                Cerrados
+                            </button>
+
+                            <button type="button" class="filtro-examen" data-filtro="proximo">
+                                Próximos
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tabla-examenes">
+                        <div class="tabla-examenes__cabecera">
+                            <p>Examen</p>
+                            <p>Fecha</p>
+                            <p>Duración</p>
+                            <p>Estado</p>
+                            <p>Acción</p>
+                        </div>
+
+                        <div class="tabla-examenes__contenido" id="listadoExamenes">
+                            <!-- JS carga los exámenes -->
+                        </div>
+                    </div>
+                </section>
             </section>
         </main>
     </div>
 
     <script src="../js/doa-layout.js"></script>
     <script src="../js/doa-datos.js"></script>
-    <script src="../js/calificaciones.js"></script>
+    <script src="../js/examenes.js"></script>
 </body>
 </html>
