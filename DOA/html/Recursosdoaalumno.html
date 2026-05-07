@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../css/doa.css">
   <link rel="stylesheet" href="../css/doa-layout.css">
   <link rel="stylesheet" href="../css/doa-componentes.css">
+  <link rel="stylesheet" href="../css/detalle_asignatura.css">
   <link rel="stylesheet" href="../css/Recursosdoaalumno.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +58,7 @@
       </a>
       <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="asignaturas.html">
         <span class="navegacion-lateral-doa__icono"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>
-        <span style="color: #00E5FF;">Mis Asignaturas</span>
+        <span>Mis Asignaturas</span>
       </a>
       <a class="navegacion-lateral-doa__item" href="notificaciones.html">
                     <span class="navegacion-lateral-doa__icono">
@@ -80,14 +81,24 @@
 
       <div class="cabecera-detalle-asignatura">
         <div class="cabecera-detalle-asignatura__texto">
-          <a href="detalle_asignatura.html" class="enlace-volver-asignaturas" style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
-            <span><img src="../img/iconos/grey-chevron-right.svg" alt="" style="transform: rotate(180deg); width: 14px;"> Volver a detalles de la asignatura</span>
+          <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
+            <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
+                <img src="../img/iconos/grey-chevron-right.svg" alt="">
+            </span>
+            <span>Volver a detalles de la asignatura</span>
           </a>
           <h1 id="tituloAsignatura">Cargando...</h1>
           <ul class="metadatos-asignatura">
-            <li><span id="profesorAsignatura">Cargando...</span></li>
-            <li><span id="unidadActualTextoAsignatura">Unidad Actual</span></li>
-          </ul>
+            <li>
+                <img src="../img/iconos/grey-user.svg" alt="">
+                <span id="profesorAsignatura">Cargando...</span>
+            </li>
+
+            <li>
+                <img src="../img/iconos/grey-notebook.svg" alt="">
+                <span id="unidadActualTextoAsignatura">Unidad Actual</span>
+            </li>
+        </ul>
         </div>
         <div class="cabecera-detalle-asignatura__pestanas">
           <nav class="pestanas-asignatura">
@@ -140,7 +151,7 @@
                 <strong id="textoBreadcrumb">UNIDAD 03</strong>
                 <svg class="icono-desplegable-movil" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </div>
-              <div class="contenedor-filtros-wrapper" style="position: relative; display: flex;">
+              <div class="contenedor-filtros-wrapper">
                 <button class="btn-filtrar-movil" id="btnFiltrarMovil">FILTRAR <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></button>
                 <div class="biblioteca-filtros" id="contenedorFiltros">
                   <select class="input-filtro" id="filtroTipo">
@@ -166,6 +177,7 @@
     </section>
   </main>
 </div>
+<acript src="../js/doa-datos.js"></acript>
 <script src="../js/doa-layout.js"></script>
 <script src="../js/Recursosdoaalumno.js"></script>
 </body>
