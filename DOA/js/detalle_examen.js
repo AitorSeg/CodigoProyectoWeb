@@ -27,7 +27,6 @@ function cargarDetalleExamen(examen) {
     ponerTexto("asignaturaExamen", examen.asignatura);
     ponerTexto("fechaExamen", examen.fechaCompleta);
 
-    ponerTexto("nombreExamen", examen.nombre);
     ponerTexto("descripcionExamen", examen.descripcion);
     ponerTexto("estadoExamen", examen.estado);
 
