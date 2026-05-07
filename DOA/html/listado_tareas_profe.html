@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear tarea | DOA</title>
+    <title>Listado de tareas | DOA</title>
 
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
     <link rel="stylesheet" href="../css/doa-componentes.css">
     <link rel="stylesheet" href="../css/detalle_asignatura.css">
-    <link rel="stylesheet" href="../css/crear_tarea.css">
+    <link rel="stylesheet" href="../css/listado_tareas.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="pagina-doa pagina-crear-tarea">
+<body class="pagina-doa pagina-listado-tareas pagina-listado-tareas-profe">
     <header class="cabecera-panel-doa">
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
-                <a class="marca-doa__link" href="panel_profesor.html" aria-label="Ir al panel principal de DOA">
+                <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
                     <img
                         src="../img/LogoDoaAzulRecortado.png"
                         alt="Logo de DOA"
@@ -96,7 +96,7 @@
             </div>
 
             <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
-                <a class="navegacion-lateral-doa__item" href="panel_profesor.html">
+                <a class="navegacion-lateral-doa__item" href="panel_principal.html">
                     <span class="navegacion-lateral-doa__icono" aria-hidden="true">
                         <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
                         <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
@@ -136,15 +136,15 @@
             </div>
         </div>
 
-        <main class="contenido-doa contenido-detalle-asignatura contenido-crear-tarea">
+        <main class="contenido-doa contenido-detalle-asignatura contenido-listado-tareas">
             <section class="detalle-asignatura-principal">
                 <div class="cabecera-detalle-asignatura">
                     <div class="cabecera-detalle-asignatura__texto">
-                        <a href="asignaturas.html" class="enlace-volver-asignaturas">
+                        <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
                             <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
                                 <img src="../img/iconos/grey-chevron-right.svg" alt="">
                             </span>
-                            <span>Volver a mis asignaturas</span>
+                            <span>Volver a detalles de la asignatura</span>
                         </a>
 
                         <h1 id="tituloAsignatura">Programación II</h1>
@@ -157,7 +157,7 @@
 
                             <li>
                                 <img src="../img/iconos/grey-notebook.svg" alt="">
-                                <span id="unidadActualTextoAsignatura">Unidad 03: <strong>Recursividad</strong></span>
+                                <span id="unidadActualTextoAsignatura">Unidad 03: Recursividad</span>
                             </li>
                         </ul>
                     </div>
@@ -171,93 +171,108 @@
                         </nav>
                     </div>
                 </div>
+ 
+                <div class="acciones-superiores-tareas">
+                    <button type="button" class="boton-secundario boton-crear-tarea" onclick="window.location.href='crear_tarea.html'">
+                        Crear tarea
+                    </button>
+                </div>
 
-                <form class="formulario-crear-tarea">
-                    <div class="campo-titulo-tarea">
-                        <input
-                            type="text"
-                            id="nombreTarea"
-                            name="nombreTarea"
-                            value="Nombre de la tarea"
-                            aria-label="Nombre de la tarea"
-                        >
+                <section class="proxima-entrega">
+                    <div class="proxima-entrega__contenido">
+                        <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
 
-                        <button type="button" class="boton-editar-campo" aria-label="Editar nombre de la tarea">
-                            <img src="../img/iconos/blue-pencil.svg" alt="">
+                        <h2>PRÓXIMA ENTREGA</h2>
+
+                        <p class="proxima-entrega__titulo">
+                            Tarea 1: Desarrollo de APIs
+                        </p>
+
+                        <p class="proxima-entrega__descripcion">
+                            Descripción de la tarea: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed ac eros metus. Mauris id tortor ut nibh viverra rhoncus. Maecenas tincidunt
+                            sem dapibus, rhoncus ligula a, ultricies sapien. Phasellus venenatis risus feugiat,
+                            tempus elit nec, imperdiet sapien.
+                        </p>
+                    </div>
+
+                    <div class="proxima-entrega__accion">
+                        <p class="proxima-entrega__tiempo">
+                            Tiempo restante: 3 días
+                        </p>
+
+                        <a href="detalle_tarea_profe.html" class="boton-ver-detalles">
+                            Ver detalles
+                        </a>
+                    </div>
+                </section>
+
+                <section class="bloque-listado-tareas">
+                    <div class="filtros-tareas">
+                        <button type="button" class="filtro-tarea">
+                            <span>Tipo: Todas</span>
+                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
+                        </button>
+
+                        <button type="button" class="filtro-tarea">
+                            <span>Estado</span>
+                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
+                        </button>
+
+                        <button type="button" class="filtro-tarea">
+                            <span>Ordenar por</span>
+                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
                         </button>
                     </div>
 
-                    <div class="campo-descripcion-tarea">
-                        <textarea
-                            id="descripcionTarea"
-                            name="descripcionTarea"
-                            aria-label="Descripción de la tarea"
-                        >Descripción de la tarea:</textarea>
-
-                        <button type="button" class="boton-editar-campo boton-editar-campo--area" aria-label="Editar descripción de la tarea">
-                            <img src="../img/iconos/blue-pencil.svg" alt="">
-                        </button>
-                    </div>
-
-                    <div class="separador-crear-tarea"></div>
-
-                    <div class="fechas-crear-tarea">
-                        <div class="fecha-crear-tarea">
-                            <label for="fechaEmision">Fecha de emisión:</label>
-                            <input
-                                type="text"
-                                id="fechaEmision"
-                                name="fechaEmision"
-                                value="Lunes, 14 de Abril"
-                            >
+                    <div class="tabla-tareas">
+                        <div class="tabla-tareas__cabecera">
+                            <p>Tareas</p>
+                            <p>Fecha de emisión</p>
+                            <p>Fecha de entrega</p>
+                            <p>Estado</p>
+                            <p>Calificación</p>
                         </div>
-
-                        <div class="fecha-crear-tarea fecha-crear-tarea--editable">
-                            <label for="fechaEntrega">Fecha de entrega:</label>
-
-                            <div class="fecha-crear-tarea__campo ">
-                                <input
-                                type="date"
-                                id="fechaEntrega"
-                                name="fechaEntrega"
-                                >
-
-                                <button type="button" class="boton-editar-campo" aria-label="Editar fecha de entrega">
-                                    <img src="../img/iconos/blue-pencil.svg" alt="">
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="zona-crear-tarea">
-                        <section class="entregas-tarea">
-                            <h2>Entregas</h2>
-
-                            <div class="tabla-entregas">
-                                <div class="tabla-entregas__cabecera">
-                                    <p>Nombre</p>
-                                    <p>Etiquetas</p>
-                                    <p>Fecha</p>
-                                    <p>Calificación</p>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="recursos-subidos">
-                            <h2>Recursos Subidos</h2>
-
-                            <button type="button" class="boton-anadir-recurso">
-                                Añadir recurso
+                        <article class="fila-tarea">
+                            <a href="detalle_tarea_profe.html" class="fila-tarea__nombre">Tarea 2: Implementación de APIs</a>
+                            <p><strong>16 Abr, 2026</strong></p>
+                            <p><strong>19 Abr, 2026</strong></p>
+                            <p>
+                                <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
+                            </p>
+                            <p class="fila-tarea__nota"><strong>/</strong></p>
+                            <button type="button" class="boton-secundario boton-editar-tarea" onclick="window.location.href='crear_tarea.html'">
+                                Editar tarea
                             </button>
-                        </section>
+                        </article>
 
-                        <div class="acciones-crear-tarea">
-                            <button type="button" class="boton-secundario">Guardar cambios</button>
-                            <button type="button" class="boton-principal" onclick="window.location.href='listado_tareas_profe.html'">Crear</button>
-                            <button type="button" class="boton-secundario"onclick="window.location.href='listado_tareas_profe.html'">Cancelar</button>
-                        </div>
+                        <article class="fila-tarea">
+                            <a href="detalle_tarea_profe.html" class="fila-tarea__nombre">Tarea 3: Cooperación de webs</a>
+                            <p><strong>22 Abr, 2026</strong></p>
+                            <p><strong>24 Abr, 2026</strong></p>
+                            <p>
+                                <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
+                            </p>
+                            <p class="fila-tarea__nota"><strong>/</strong></p>
+                            <button type="button" class="boton-secundario boton-editar-tarea" onclick="window.location.href='crear_tarea.html'">
+                                Editar tarea
+                            </button>
+                        </article>
+
+                        <article class="fila-tarea">
+                            <a href="detalle_tarea_profe.html" class="fila-tarea__nombre">Tarea 4: Seguimiento de mapas</a>
+                            <p><strong>30 Abr, 2026</strong></p>
+                            <p><strong>02 May, 2026</strong></p>
+                            <p>
+                                <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
+                            </p>
+                            <p class="fila-tarea__nota"><strong>/</strong></p>
+                            <button type="button" class="boton-secundario boton-editar-tarea" onclick="window.location.href='crear_tarea.html'">
+                                Editar tarea
+                            </button>
+                        </article>
                     </div>
-                </form>
+                </section>
             </section>
         </main>
     </div>
