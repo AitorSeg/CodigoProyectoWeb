@@ -89,13 +89,6 @@ nav a.active {
     border-left-color: var(--azul);
 }
 
-.feature-icon {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-    margin-bottom: 24px;
-}
-
 .feature-title {
     font-size: 17px;
     margin-bottom: 65px;
@@ -236,6 +229,16 @@ nav a.active {
         gap: 40px;
     }
 
+    @media (max-width: 950px) {
+    .module-actions {
+        align-items: center;
+    }
+
+    .module-actions .trial-btn {
+        margin-top: 40px !important;
+    }
+}
+
     .buy-btn,
     .trial-btn {
         width: 275px;
@@ -359,4 +362,124 @@ nav a.active {
     .license-item {
         font-size: 18px;
     }
+}
+
+/* Botones de la página Nuestro Último Módulo */
+.buy-btn,
+.trial-btn,
+.buy-now-btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Botón Comprar */
+.buy-btn {
+    width: 250px;
+    height: 68px;
+    background-color: var(--naranja);
+    color: #1b1b1b;
+    border: 2px solid var(--naranja);
+}
+
+/* Botón Prueba Gratuita */
+.trial-btn {
+    width: 250px;
+    height: 68px;
+    background-color: transparent;
+    color: var(--cream);
+    border: 4px solid var(--cream);
+}
+
+/* Botón Comprar ahora */
+.buy-now-btn {
+    width: 250px;
+    height: 68px;
+    margin: 0 auto;
+    background-color: var(--naranja);
+    color: #1b1b1b;
+    border: none;
+}
+
+/* Tamaño y posición de los iconos del catálogo */
+.feature-card img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 34px;
+}
+
+/* Ajuste del título debajo del icono en ordenador */
+.feature-card h3 {
+    font-size: 17px;
+    margin-bottom: 65px;
+}
+
+/* Ajuste para móvil: icono y título en la misma línea */
+@media (max-width: 950px) {
+    .feature-card {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 22px;
+        row-gap: 34px;
+        align-items: center;
+    }
+
+    .feature-card img {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 0;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .feature-card h3 {
+        margin-bottom: 0;
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 17px;
+    }
+
+    .feature-card p {
+        grid-column: 1 / 3;
+        grid-row: 2;
+        font-size: 17px;
+        line-height: 1.15;
+    }
+}
+
+/* Ajustes sección de pago catálogo */
+
+/* Pone el precio en naranja */
+.price-row strong {
+    color: var(--naranja);
+}
+
+/* El incluido se queda blanco */
+.price-row:last-child strong {
+    color: white;
+}
+
+/* Sube el bloque de precio y soporte técnico */
+.price-list {
+    margin-top: -350px;
+}
+
+/* Hace que la tarjeta de licencia pueda colocar el botón abajo */
+.license-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Centra el botón y lo manda abajo dentro de la tarjeta */
+.buy-now-btn {
+    align-self: center;
+    margin-top: auto;
 }

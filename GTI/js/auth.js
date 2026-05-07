@@ -36,8 +36,17 @@ if (loginForm !== null) {
             isValid = false;
         }
 
-        if (isValid) {
-            alert('Sesión iniciada correctamente en la demo de GTI.');
-        }
+if (isValid) {
+    localStorage.setItem("gtiSesionIniciada", "true");
+
+    const paginaAnterior = localStorage.getItem("paginaAnterior");
+
+    if (paginaAnterior !== null) {
+        localStorage.removeItem("paginaAnterior");
+        window.location.href = paginaAnterior;
+    } else {
+        window.location.href = "../html/index.html";
+    }
+}
     });
 }

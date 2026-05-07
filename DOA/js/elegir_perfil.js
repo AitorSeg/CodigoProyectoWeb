@@ -106,6 +106,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         sessionStorage.setItem("usuarioDemoDOA", JSON.stringify(usuarioEncontrado));
 
+        if (usuarioEncontrado.rol === "Profesor") {
+            window.location.href = "panel_profesor.html";
+            return;
+        }
+
         window.location.href = "panel_principal.html";
     }
 
