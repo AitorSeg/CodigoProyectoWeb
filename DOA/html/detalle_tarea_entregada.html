@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,35 +13,47 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="pagina-doa pagina-detalle-tarea pagina-detalle-tarea-profe">
+<body class="pagina-doa pagina-detalle-tarea">
     <header class="cabecera-panel-doa">
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
                 <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
-                    <img src="../img/LogoDoaAzulRecortado.png" alt="Logo de DOA" class="logo-doa">
+                    <img
+                        src="../img/LogoDoaAzulRecortado.png"
+                        alt="Logo de DOA"
+                        class="logo-doa"
+                    >
                 </a>
 
                 <div class="marca-doa__powered">
                     <span class="marca-doa__powered-text">Powered by</span>
-                    <img src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
-                        alt="Grado en Tecnologías Interactivas" class="marca-doa__powered-logo">
+                    <img
+                        src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
+                        alt="Grado en Tecnologías Interactivas"
+                        class="marca-doa__powered-logo"
+                    >
                 </div>
             </div>
         </div>
 
         <div class="cabecera-panel-doa__buscador">
-            <div class="buscador-header buscador-header--desactivado" aria-label="Buscador visual pendiente de activar"
-                title="El buscador se activará cuando se conecte la base de datos">
+            <div
+                class="buscador-header buscador-header--desactivado"
+                aria-label="Buscador visual pendiente de activar"
+                title="El buscador se activará cuando se conecte la base de datos"
+            >
                 <span class="buscador-header__icono" aria-hidden="true">
                     <img src="../img/iconos/grey-search.svg" alt="">
                 </span>
 
-                <input type="search" placeholder="Buscar recurso, tarea..." disabled>
+                <input
+                    type="search"
+                    placeholder="Buscar recurso, tarea..."
+                    disabled
+                >
             </div>
         </div>
 
@@ -87,10 +98,8 @@
             <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
                 <a class="navegacion-lateral-doa__item" href="panel_principal.html">
                     <span class="navegacion-lateral-doa__icono" aria-hidden="true">
-                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg"
-                            alt="">
-                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg"
-                            alt="">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
                     </span>
 
                     <span>Panel Principal</span>
@@ -149,15 +158,14 @@
                     <div class="cabecera-detalle-asignatura__pestanas">
                         <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
                             <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item">Recursos</a>
-                            <a href="listado_tareas.html"
-                                class="pestanas-asignatura__item pestanas-asignatura__item--activo">Tareas</a>
+                            <a href="listado_tareas.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Tareas</a>
                             <a href="examenes.html" class="pestanas-asignatura__item">Exámenes</a>
                             <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
                         </nav>
                     </div>
                 </div>
 
-                <a href="listado_tareas_profe.html" class="enlace-volver">
+                <a href="detalle_tarea_profe.html" class="enlace-volver">
                     <span aria-hidden="true">←</span>
                     Volver
                 </a>
@@ -191,62 +199,23 @@
                         </div>
                     </div>
 
-                    <div class="zona-entrega zona-entrega-profe">
-                        <section class="entregas-profe">
-                            <h3>Entregas</h3>
+                    <div class="zona-entrega">
+                        <section class="archivos-subidos">
+                            <ul class="lista-archivos">
+                                <li>
+                                    <a href="#">
+                                        <img src="../img/iconos/grey-file.svg" alt="">
+                                        informe_de_API.pdf
+                                    </a>
+                                </li>
 
-                            <div class="tabla-entregas-profe">
-                                <div class="tabla-entregas-profe__cabecera">
-                                    <p>Nombre</p>
-                                    <p>Etiquetas</p>
-                                    <p>Fecha</p>
-                                    <p>Calificación</p>
-                                </div>
-
-                                <article class="fila-entrega-profe">
-                                    <p><a href="detalle_tarea_entregada.html" class="tarea_alumno">Pedro Fernández</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span></p>
-                                    <p>19/03/2025</p>
-                                    <p>9/10</p>
-                                </article>
-
-                                <article class="fila-entrega-profe">
-                                    <p><a href="detalle_tarea_entregada.html" class="tarea_alumno">Pablo Barceló</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span></p>
-                                    <p>26/08/2025</p>
-                                    <p>8.75/10</p>
-                                </article>
-
-                                <article class="fila-entrega-profe">
-                                    <p><a class="tarea_alumno">Aitor Segura</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--no-entregada">No Entregada</span>
-                                    </p>
-                                    <p>20/08/2025</p>
-                                    <p>/</p>
-                                </article>
-
-                                <article class="fila-entrega-profe">
-                                    <p><a href="detalle_tarea_entregada.html" class="tarea_alumno">Juan Diego</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--tardia">Tardía</span></p>
-                                    <p>19/03/2025</p>
-                                    <p>/</p>
-                                </article>
-
-                                <article class="fila-entrega-profe">
-                                    <p><a class="tarea_alumno">Paloma García</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--no-entregada">No Entregada</span>
-                                    </p>
-                                    <p>26/08/2025</p>
-                                    <p>/</p>
-                                </article>
-
-                                <article class="fila-entrega-profe">
-                                    <p><a href="detalle_tarea_entregada.html" class="tarea_alumno">Oscar Herrera</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span></p>
-                                    <p>20/08/2025</p>
-                                    <p>5.15/10</p>
-                                </article>
-                            </div>
+                                <li>
+                                    <a href="#">
+                                        <img src="../img/iconos/grey-file.svg" alt="">
+                                        diagrama_corregido.xls
+                                    </a>
+                                </li>
+                            </ul>
                         </section>
 
                         <section class="recursos-adjuntos">
@@ -296,5 +265,4 @@
     <script src="../js/doa-layout.js"></script>
     <script src="../js/doa-datos.js"></script>
 </body>
-
 </html>
