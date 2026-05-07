@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="pagina-doa pagina-listado-tareas pagina-listado-tareas-profe">
@@ -21,39 +24,25 @@
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
                 <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
-                    <img
-                        src="../img/LogoDoaAzulRecortado.png"
-                        alt="Logo de DOA"
-                        class="logo-doa"
-                    >
+                    <img src="../img/LogoDoaAzulRecortado.png" alt="Logo de DOA" class="logo-doa">
                 </a>
 
                 <div class="marca-doa__powered">
                     <span class="marca-doa__powered-text">Powered by</span>
-                    <img
-                        src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
-                        alt="Grado en Tecnologías Interactivas"
-                        class="marca-doa__powered-logo"
-                    >
+                    <img src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
+                        alt="Grado en Tecnologías Interactivas" class="marca-doa__powered-logo">
                 </div>
             </div>
         </div>
 
         <div class="cabecera-panel-doa__buscador">
-            <div
-                class="buscador-header buscador-header--desactivado"
-                aria-label="Buscador visual pendiente de activar"
-                title="El buscador se activará cuando se conecte la base de datos"
-            >
+            <div class="buscador-header buscador-header--desactivado" aria-label="Buscador visual pendiente de activar"
+                title="El buscador se activará cuando se conecte la base de datos">
                 <span class="buscador-header__icono" aria-hidden="true">
                     <img src="../img/iconos/grey-search.svg" alt="">
                 </span>
 
-                <input
-                    type="search"
-                    placeholder="Buscar recurso, tarea..."
-                    disabled
-                >
+                <input type="search" placeholder="Buscar recurso, tarea..." disabled>
             </div>
         </div>
 
@@ -98,8 +87,10 @@
             <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
                 <a class="navegacion-lateral-doa__item" href="panel_principal.html">
                     <span class="navegacion-lateral-doa__icono" aria-hidden="true">
-                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
-                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg"
+                            alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg"
+                            alt="">
                     </span>
 
                     <span>Panel Principal</span>
@@ -165,15 +156,17 @@
                     <div class="cabecera-detalle-asignatura__pestanas">
                         <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
                             <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item">Recursos</a>
-                            <a href="listado_tareas.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Tareas</a>
+                            <a href="listado_tareas.html"
+                                class="pestanas-asignatura__item pestanas-asignatura__item--activo">Tareas</a>
                             <a href="examenes.html" class="pestanas-asignatura__item">Exámenes</a>
                             <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
                         </nav>
                     </div>
                 </div>
- 
+
                 <div class="acciones-superiores-tareas">
-                    <button type="button" class="boton-secundario boton-crear-tarea" onclick="window.location.href='crear_tarea.html'">
+                    <button type="button" class="boton-secundario boton-crear-tarea"
+                        onclick="window.location.href='crear_tarea.html'">
                         Crear tarea
                     </button>
                 </div>
@@ -209,20 +202,33 @@
 
                 <section class="bloque-listado-tareas">
                     <div class="filtros-tareas">
-                        <button type="button" class="filtro-tarea">
-                            <span>Tipo: Todas</span>
-                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
-                        </button>
+                        <label class="filtro-tarea">
+                            <span>Tipo:</span>
+                            <select id="filtroTipo">
+                                <option value="todas">Todas</option>
+                                <option value="tarea">Tareas</option>
+                                <option value="practica">Prácticas</option>
+                            </select>
+                        </label>
 
-                        <button type="button" class="filtro-tarea">
-                            <span>Estado</span>
-                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
-                        </button>
+                        <label class="filtro-tarea">
+                            <span>Estado:</span>
+                            <select id="filtroEstado">
+                                <option value="todos">Todos</option>
+                                <option value="entregada">Entregada</option>
+                                <option value="pendiente">Pendiente</option>
+                                <option value="tardia">Tardía</option>
+                            </select>
+                        </label>
 
-                        <button type="button" class="filtro-tarea">
-                            <span>Ordenar por</span>
-                            <img src="../img/iconos/grey-down-arrow.svg" alt="">
-                        </button>
+                        <label class="filtro-tarea">
+                            <span>Ordenar:</span>
+                            <select id="ordenTareas">
+                                <option value="ninguno">Sin ordenar</option>
+                                <option value="cercana">Más reciente</option>
+                                <option value="tarde">Más antigua</option>
+                            </select>
+                        </label>
                     </div>
 
                     <div class="tabla-tareas">
@@ -233,41 +239,50 @@
                             <p>Estado</p>
                             <p>Calificación</p>
                         </div>
-                        <article class="fila-tarea">
-                            <a href="detalle_tarea_profe.html" class="fila-tarea__nombre">Tarea 2: Implementación de APIs</a>
+                        <article class="fila-tarea" data-tipo="tarea" data-estado="entregada"
+                            data-fecha-entrega="2026-04-19">
+                            <a href="detalle_tarea_profe.html" class="fila-tarea__nombre">Tarea 2: Implementación de
+                                APIs</a>
                             <p><strong>16 Abr, 2026</strong></p>
                             <p><strong>19 Abr, 2026</strong></p>
                             <p>
                                 <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
                             </p>
                             <p class="fila-tarea__nota"><strong>/</strong></p>
-                            <button type="button" class="boton-secundario boton-editar-tarea" onclick="window.location.href='crear_tarea.html'">
+                            <button type="button" class="boton-secundario boton-editar-tarea"
+                                onclick="window.location.href='crear_tarea.html'">
                                 Editar tarea
                             </button>
                         </article>
 
-                        <article class="fila-tarea">
-                            <a href="detalle_tarea_profe.html" class="fila-tarea__nombre">Tarea 3: Cooperación de webs</a>
+                        <article class="fila-tarea" data-tipo="tarea" data-estado="pendiente"
+                            data-fecha-entrega="2026-04-24">
+                            <a href="detalle_tarea_profe.html" class="fila-tarea__nombre">Tarea 3: Cooperación de
+                                webs</a>
                             <p><strong>22 Abr, 2026</strong></p>
                             <p><strong>24 Abr, 2026</strong></p>
                             <p>
                                 <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
                             </p>
                             <p class="fila-tarea__nota"><strong>/</strong></p>
-                            <button type="button" class="boton-secundario boton-editar-tarea" onclick="window.location.href='crear_tarea.html'">
+                            <button type="button" class="boton-secundario boton-editar-tarea"
+                                onclick="window.location.href='crear_tarea.html'">
                                 Editar tarea
                             </button>
                         </article>
 
-                        <article class="fila-tarea">
-                            <a href="detalle_tarea_profe.html" class="fila-tarea__nombre">Tarea 4: Seguimiento de mapas</a>
+                        <article class="fila-tarea" data-tipo="tarea" data-estado="pendiente"
+                            data-fecha-entrega="2026-05-02">
+                            <a href="detalle_tarea_profe.html" class="fila-tarea__nombre">Tarea 4: Seguimiento de
+                                mapas</a>
                             <p><strong>30 Abr, 2026</strong></p>
                             <p><strong>02 May, 2026</strong></p>
                             <p>
                                 <span class="etiqueta-estado etiqueta-estado--pendiente">Pendiente</span>
                             </p>
                             <p class="fila-tarea__nota"><strong>/</strong></p>
-                            <button type="button" class="boton-secundario boton-editar-tarea" onclick="window.location.href='crear_tarea.html'">
+                            <button type="button" class="boton-secundario boton-editar-tarea"
+                                onclick="window.location.href='crear_tarea.html'">
                                 Editar tarea
                             </button>
                         </article>
@@ -279,5 +294,7 @@
 
     <script src="../js/doa-layout.js"></script>
     <script src="../js/doa-datos.js"></script>
+    <script src="../js/listado_tareas.js"></script>
 </body>
+
 </html>
