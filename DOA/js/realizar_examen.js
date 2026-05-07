@@ -164,12 +164,27 @@ function corregirExamen() {
         const retroalimentacion = tarjetaPregunta.querySelector(".retroalimentacion-pregunta");
 
         const respuestaCorrecta = respuestaSeleccionada.value === pregunta.correcta;
+        const opcionSeleccionada = respuestaSeleccionada.closest(".opcion-pregunta");
+        const inputCorrecto = tarjetaPregunta.querySelector('input[value="' + pregunta.correcta + '"]');
+        const opcionCorrecta = inputCorrecto !== null ? inputCorrecto.closest(".opcion-pregunta") : null;
 
         if (respuestaCorrecta) {
             correctas++;
             tarjetaPregunta.classList.add("pregunta-examen--correcta");
+
+            if (opcionSeleccionada !== null) {
+                opcionSeleccionada.classList.add("opcion-pregunta--correcta");
+            }
         } else {
             tarjetaPregunta.classList.add("pregunta-examen--incorrecta");
+
+            if (opcionSeleccionada !== null) {
+                opcionSeleccionada.classList.add("opcion-pregunta--incorrecta");
+            }
+
+            if (opcionCorrecta !== null) {
+                opcionCorrecta.classList.add("opcion-pregunta--correcta");
+            }
         }
 
         tarjetaPregunta.classList.add("pregunta-examen--corregida");

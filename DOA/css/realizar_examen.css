@@ -149,6 +149,58 @@
     color: var(--color-text);
 }
 
+/*
+    Corrección de respuestas
+*/
+
+.pregunta-examen--correcta {
+    border-color: var(--color-success);
+}
+
+.pregunta-examen--incorrecta {
+    border-color: var(--color-error);
+}
+
+.pregunta-examen--corregida .opcion-pregunta {
+    cursor: default;
+}
+
+.pregunta-examen--corregida .opcion-pregunta:hover {
+    border-color: var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-muted);
+}
+
+.opcion-pregunta--correcta {
+    border-color: var(--color-success);
+    color: var(--color-text);
+    background: var(--color-surface-alt);
+}
+
+.opcion-pregunta--correcta::after {
+    content: "Correcta";
+    margin-left: auto;
+    color: var(--color-success);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.opcion-pregunta--incorrecta {
+    border-color: var(--color-error);
+    color: var(--color-text);
+    background: var(--color-surface-alt);
+}
+
+.opcion-pregunta--incorrecta::after {
+    content: "Incorrecta";
+    margin-left: auto;
+    color: var(--color-error);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
 .pregunta-examen--correcta {
     border-color: var(--color-primary);
 }
