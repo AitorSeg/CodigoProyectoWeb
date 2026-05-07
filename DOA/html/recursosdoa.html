@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
     <link rel="stylesheet" href="../css/doa-componentes.css">
+    <link rel="stylesheet" href="../css/detalle_asignatura.css">
     <link rel="stylesheet" href="../css/Recursosdoaalumno.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +58,7 @@
                 </a>
                 <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="asignaturas.html">
                     <span class="navegacion-lateral-doa__icono"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>
-                    <span style="color: #00E5FF;">Mis Asignaturas</span>
+                    <span>Mis Asignaturas</span>
                 </a>
                 <a class="navegacion-lateral-doa__item" href="notificaciones.html">
                     <span class="navegacion-lateral-doa__icono"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></span>
@@ -78,13 +79,23 @@
 
                 <div class="cabecera-detalle-asignatura">
                     <div class="cabecera-detalle-asignatura__texto">
-                        <a href="detalle_asignatura.html" class="enlace-volver-asignaturas" style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
-                            <span><img src="../img/iconos/grey-chevron-right.svg" alt="" style="transform: rotate(180deg); width: 14px;"> Volver a detalles de la asignatura</span>
+                        <a href="detalle_asignatura.html" class="enlace-volver-asignaturas">
+                            <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
+                                <img src="../img/iconos/grey-chevron-right.svg" alt="">
+                            </span>
+                            <span>Volver a detalles de la asignatura</span>
                         </a>
                         <h1 id="tituloAsignatura">Cargando...</h1>
                         <ul class="metadatos-asignatura">
-                            <li><span id="profesorAsignatura">Kevan Pounds</span></li>
-                            <li><span id="unidadActualTextoAsignatura">Unidad Actual</span></li>
+                            <li>
+                                <img src="../img/iconos/grey-user.svg" alt="">
+                                <span id="profesorAsignatura">Kevan Pounds</span>
+                            </li>
+
+                            <li>
+                                <img src="../img/iconos/grey-notebook.svg" alt="">
+                                <span id="unidadActualTextoAsignatura">Unidad Actual</span>
+                            </li>
                         </ul>
                     </div>
                     <div class="cabecera-detalle-asignatura__pestanas">
@@ -99,20 +110,36 @@
 
                 <section class="bloque-recursos">
                     <div class="card tarjeta-subida-recurso">
-                        <h2 style="margin-bottom: 8px;">Subir recurso</h2>
-                        <p style="color: var(--color-muted); font-size: 13px; margin-bottom: 16px;">Añade un nuevo recurso a la biblioteca de la unidad actual.</p>
+                        <h2 class="tarjeta-subida-recurso__titulo">Subir recurso</h2>
+
+                        <p class="tarjeta-subida-recurso__texto">
+                            Añade un nuevo recurso a la biblioteca de la unidad actual.
+                        </p>
 
                         <form id="formSubirRecurso" class="formulario-recursos-grid">
                             <div>
-                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Título del recurso *</label>
-                                <input type="text" id="tituloRecurso" style="width: 100%; padding: 10px; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); color: white;" placeholder="Ej. Presentación Unidad 03">
+                                <label class="form-label" for="tituloRecurso">Título del recurso *</label>
+                                <input
+                                    type="text"
+                                    id="tituloRecurso"
+                                    class="input"
+                                    placeholder="Ej. Presentación Unidad 03"
+                                >
                             </div>
+
                             <div>
-                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Archivo *</label>
-                                <input type="file" id="archivoRecurso" style="width: 100%; padding: 7px; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); color: white;">
+                                <label class="form-label" for="archivoRecurso">Archivo *</label>
+                                <input
+                                    type="file"
+                                    id="archivoRecurso"
+                                    class="input input-archivo-recurso"
+                                >
                             </div>
-                            <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end; margin-top: 8px;">
-                                <button type="submit" style="background: var(--color-primary); color: black; font-weight: 700; padding: 10px 24px; border: none; border-radius: var(--radius-md); cursor: pointer;">Guardar recurso</button>
+
+                            <div class="formulario-recursos-grid__acciones">
+                                <button type="submit" class="btn btn-primary boton-guardar-recurso">
+                                    Guardar recurso
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -171,6 +198,7 @@
             </section>
         </main>
     </div>
+    <script src="../js/doa-datos.js"></script>
     <script src="../js/doa-layout.js"></script>
     <script src="../js/recursosdoa.js"></script>
 </body>

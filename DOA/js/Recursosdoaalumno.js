@@ -7,15 +7,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let materiaSeleccionada = "programacion";
     if (typeof window.obtenerAsignaturaSeleccionada === 'function') { materiaSeleccionada = window.obtenerAsignaturaSeleccionada() || "programacion"; }
-    else { materiaSeleccionada = localStorage.getItem("asignaturaSeleccionada") || new URLSearchParams(window.location.search).get('materia') || "programacion"; }
+    else { materiaSeleccionada = localStorage.getItem("doaAsignaturaSeleccionada") || new URLSearchParams(window.location.search).get('materia') || "programacion"; }
     materiaSeleccionada = materiaSeleccionada.toLowerCase().trim();
 
     const datosMateria = baseDatosLocal[materiaSeleccionada] || baseDatosLocal["programacion"];
 
+    const datosAsignaturaComun = window.DOA_ASIGNATURAS && window.DOA_ASIGNATURAS[materiaSeleccionada]
+        ? window.DOA_ASIGNATURAS[materiaSeleccionada]
+        : null;
+
     const titHTML = document.getElementById('tituloAsignatura');
     const profHTML = document.getElementById('profesorAsignatura');
-    if(titHTML) titHTML.textContent = datosMateria.titulo;
-    if(profHTML) profHTML.textContent = datosMateria.profesor;
+    const unidadHTML = document.getElementById('unidadActualTextoAsignatura');
+
+    if (titHTML) {
+        titHTML.textContent = datosAsignaturaComun ? datosAsignaturaComun.nombre : datosMateria.titulo;
+    }
+
+    if (profHTML) {
+        profHTML.textContent = datosAsignaturaComun ? datosAsignaturaComun.profesor : datosMateria.profesor;
+    }
+
+    if (unidadHTML && datosAsignaturaComun) {
+        unidadHTML.textContent = datosAsignaturaComun.unidadActualTexto;
+    }
 
     let unidadGlobalActual = 'UNIDAD 03';
     const listaCarpetas = document.querySelectorAll('.carpeta-click');
@@ -33,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const archivosFiltrados = archivos.filter(a => { return (tipoSel === "TODOS" || a.tipo === tipoSel) && (etiSel === "TODAS" || a.etiqueta === etiSel); });
 
         if (archivosFiltrados.length === 0) {
-            cuerpoTablaArchivos.innerHTML = '<div style="padding:24px;text-align:center;color:var(--color-muted);font-size:13px;">No hay archivos aquí.</div>';
+            cuerpoTablaArchivos.innerHTML = '<p class="mensaje-tabla-vacia">No hay archivos aquí.</p>';
             return;
         }
 
