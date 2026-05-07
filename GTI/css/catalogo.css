@@ -86,7 +86,13 @@ nav a.active {
 }
 
 .feature-card.blue {
-    border-left-color: var(--azul);
+    min-height: 270px;
+    background-color: #333;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 7px solid var(--azul);
 }
 
 .feature-title {

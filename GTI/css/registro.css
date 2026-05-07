@@ -24,6 +24,7 @@
       min-height: 100vh;
     }
 
+    
     /* Estructura a dos columnas */
     .auth-container {
       display: flex;

@@ -31,7 +31,7 @@ function actualizarHeaderSesion() {
                 localStorage.removeItem("gtiUsuarioActual");
                 localStorage.removeItem("paginaAnterior");
 
-                window.location.href = "../html/index.html";
+                window.location.href = "../../../index.html";
             });
 
             headerActions.appendChild(botonCerrarSesion);
