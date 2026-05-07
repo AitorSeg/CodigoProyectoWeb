@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GTI - Contacto</title>
+
+    <link rel="stylesheet" href="../css/gti.css" />
+    <link rel="stylesheet" href="../css/contacto.css" />
+</head>
+<body>
+
+    <main class="contact-page">
+        <section class="contact-card">
+            <h1>Contactanos</h1>
+            <p class="contact-subtitle">
+                Escríbenos tu duda y te responderemos lo antes posible.
+            </p>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="ejemplo@correo.com" 
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="titulo">Título de la duda</label>
+                    <input 
+                        type="text" 
+                        id="titulo" 
+                        name="titulo" 
+                        placeholder="Escribe el título de tu duda" 
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="duda">Escribe tu duda</label>
+                    <textarea 
+                        id="duda" 
+                        name="duda" 
+                        placeholder="Explica aquí tu duda..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="send-btn">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="../js/contacto.js"></script>
+</body>
+</html>

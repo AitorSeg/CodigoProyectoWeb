@@ -7,8 +7,7 @@ if (trialBtn !== null) {
         if (sesionIniciada === "true") {
             window.location.href = "../../DOA/html/elegir_perfil.html";
         } else {
-            localStorage.setItem("paginaAnterior", window.location.href);
-            window.location.href = "../HTML/login.html";
+            window.location.href = "../html/registro.html";
         }
     });
 }
