@@ -1,25 +1,37 @@
 <!DOCTYPE html>
+<!-- Página de Contacto - Formulario para enviar consultas y dudas -->
 <html lang="es">
 <head>
+    <!-- Configuración de caracteres y viewport para responsividad -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Título de la página -->
     <title>GTI - Contacto</title>
 
+    <!-- Estilos globales de GTI -->
     <link rel="stylesheet" href="../css/gti.css" />
+    <!-- Estilos específicos para la página de contacto -->
     <link rel="stylesheet" href="../css/contacto.css" />
 </head>
 <body>
 
+    <!-- Contenido principal de la página de contacto -->
     <main class="contact-page">
-            <section class="contact-card">
-                <a href="../../../index.html" class="back-btn">← Volver al inicio</a>
+        <!-- Tarjeta con formulario de contacto -->
+        <section class="contact-card">
+            <!-- Botón para volver a la página principal -->
+            <a href="../../../index.html" class="back-btn">← Volver al inicio</a>
 
-                <h1>Contactanos</h1>
-                <p class="contact-subtitle">
+            <!-- Título de la sección de contacto -->
+            <h1>Contactanos</h1>
+            <!-- Subtítulo descriptivo -->
+            <p class="contact-subtitle">
                 Escríbenos tu duda y te responderemos lo antes posible.
-                 </p>
+            </p>
 
-                <form id="contactForm">
+            <!-- Formulario de contacto con validación -->
+            <form id="contactForm">
+                <!-- Campo para correo electrónico -->
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
                     <input 
@@ -31,6 +43,7 @@
                     />
                 </div>
 
+                <!-- Campo para el título de la duda -->
                 <div class="form-group">
                     <label for="titulo">Título de la duda</label>
                     <input 
@@ -42,6 +55,7 @@
                     />
                 </div>
 
+                <!-- Campo textarea para la descripción de la duda -->
                 <div class="form-group">
                     <label for="duda">Escribe tu duda</label>
                     <textarea 
@@ -52,11 +66,13 @@
                     ></textarea>
                 </div>
 
+                <!-- Botón para enviar el formulario -->
                 <button type="submit" class="send-btn">Enviar</button>
             </form>
         </section>
     </main>
 
+    <!-- Script para manejar la lógica de contacto -->
     <script src="../js/contacto.js"></script>
 </body>
 </html>
