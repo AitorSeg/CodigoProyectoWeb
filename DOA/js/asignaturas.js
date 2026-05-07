@@ -4,6 +4,7 @@
 */
 
 document.addEventListener("DOMContentLoaded", function () {
+    // 1. Acordeón de tarjetas de resumen superior
     const botonesResumen = document.querySelectorAll(".dato-asignaturas__boton");
 
     botonesResumen.forEach(function (boton) {
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // 2. Enlaces del detalle (en el acordeón superior)
     const enlacesDetalleAsignatura = document.querySelectorAll(".enlace-detalle-asignatura");
 
     enlacesDetalleAsignatura.forEach(function (enlace) {
@@ -24,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // 3. Botones principales de ENTRAR en las tarjetas grandes
     const botonesEntrarDetalle = document.querySelectorAll(".boton-asignatura--principal");
 
     botonesEntrarDetalle.forEach(function (boton) {
@@ -37,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-
+    // 4. Botones secundarios de RECURSOS en las tarjetas grandes
     const enlacesRecursoAsignatura = document.querySelectorAll(".enlace-recurso-asignatura");
 
     enlacesRecursoAsignatura.forEach(function (enlace) {
@@ -50,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Función para el acordeón
     function cambiarEstadoTarjetaResumen(boton) {
         const tarjeta = boton.closest(".dato-asignaturas");
         const idDetalle = boton.getAttribute("aria-controls");
