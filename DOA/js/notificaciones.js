@@ -199,7 +199,10 @@ function renderizarListadoNotificaciones() {
     }
 
     filtradas.forEach(function (notificacion) {
+        const bloque = document.createElement("article");
         const item = document.createElement("button");
+
+        bloque.className = "bloque-notificacion";
 
         item.type = "button";
         item.className = "notificacion-item";
@@ -210,6 +213,7 @@ function renderizarListadoNotificaciones() {
 
         if (notificacionSeleccionada !== null && notificacionSeleccionada.id === notificacion.id) {
             item.classList.add("notificacion-item--activa");
+            bloque.classList.add("bloque-notificacion--activa");
         }
 
         item.innerHTML =
@@ -224,8 +228,49 @@ function renderizarListadoNotificaciones() {
             seleccionarNotificacion(notificacion.id);
         });
 
-        contenedor.appendChild(item);
+        bloque.appendChild(item);
+
+        if (notificacionSeleccionada !== null && notificacionSeleccionada.id === notificacion.id) {
+            const detalleMovil = document.createElement("div");
+
+            detalleMovil.className = "detalle-notificacion-movil";
+            detalleMovil.innerHTML = crearDetalleMovilNotificacion(notificacion);
+
+            const enlaceMovil = detalleMovil.querySelector(".boton-accion-notificacion-movil");
+
+            if (enlaceMovil !== null) {
+                enlaceMovil.addEventListener("click", function () {
+                    guardarAsignaturaDeNotificacion(notificacion);
+                });
+            }
+
+            bloque.appendChild(detalleMovil);
+        }
+
+        contenedor.appendChild(bloque);
     });
+}
+
+function crearDetalleMovilNotificacion(notificacion) {
+    let botonAccion = "";
+
+    if (notificacion.accionHref !== "") {
+        botonAccion =
+            '<a href="' + notificacion.accionHref + '" class="boton-accion-notificacion boton-accion-notificacion-movil">' +
+                notificacion.accionTexto +
+            '</a>';
+    }
+
+    return (
+        '<div class="detalle-notificacion-movil__cabecera">' +
+            '<span class="etiqueta-notificacion">' + notificacion.tipoTexto + '</span>' +
+            '<p>' + notificacion.remitente + " · " + notificacion.fecha + '</p>' +
+        '</div>' +
+        '<p class="detalle-notificacion-movil__texto">' + notificacion.contenido + '</p>' +
+        '<div class="detalle-notificacion-movil__acciones">' +
+            botonAccion +
+        '</div>'
+    );
 }
 
 function obtenerNotificacionesFiltradas() {
@@ -253,7 +298,13 @@ function seleccionarNotificacion(idNotificacion) {
 
     notificacionSeleccionada = notificacion;
 
+    if (!notificacion.leida) {
+        notificacion.leida = true;
+        guardarEstadoLectura();
+    }
+
     cargarDetalleNotificacion(notificacion);
+    renderizarResumenNotificaciones();
     renderizarListadoNotificaciones();
 }
 

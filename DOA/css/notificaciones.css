@@ -159,6 +159,14 @@
     flex-direction: column;
 }
 
+.bloque-notificacion {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.bloque-notificacion:last-child {
+    border-bottom: 0;
+}
+
 /*
     Item de notificación
 */
@@ -171,7 +179,6 @@
     gap: var(--space-2) var(--space-3);
     padding: var(--space-4);
     border: 0;
-    border-bottom: 1px solid var(--color-border);
     background: transparent;
     color: var(--color-text);
     font-family: inherit;
@@ -185,10 +192,6 @@
 .notificacion-item:hover,
 .notificacion-item--activa {
     background: var(--color-surface-alt);
-}
-
-.notificacion-item:last-child {
-    border-bottom: 0;
 }
 
 .notificacion-item__titulo {
@@ -360,6 +363,48 @@
 }
 
 /*
+    Detalle móvil desplegable
+*/
+
+.detalle-notificacion-movil {
+    display: none;
+    padding: 0 var(--space-4) var(--space-4);
+    background: var(--color-surface-alt);
+}
+
+.detalle-notificacion-movil__cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-top: var(--space-3);
+    margin-bottom: var(--space-3);
+    border-top: 1px solid var(--color-border);
+}
+
+.detalle-notificacion-movil__cabecera p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.detalle-notificacion-movil__texto {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.detalle-notificacion-movil__acciones {
+    margin-top: var(--space-4);
+}
+
+.boton-accion-notificacion-movil {
+    width: 100%;
+}
+
+/*
     Responsive
 */
 
@@ -408,6 +453,7 @@
     .notificaciones-grid {
         grid-template-columns: 1fr;
         gap: var(--space-4);
+        grid-template-columns: 1fr;
     }
 
     .filtros-notificaciones {
@@ -421,6 +467,11 @@
     .detalle-notificacion {
         padding: var(--space-4);
         min-height: auto;
+        display: none;
+    }
+
+    .detalle-notificacion-movil {
+        display: block;
     }
 
     .detalle-notificacion h2 {
@@ -430,6 +481,10 @@
     .detalle-notificacion__acciones {
         display: grid;
         grid-template-columns: 1fr;
+    }
+
+    .panel-listado-notificaciones {
+        width: 100%;
     }
 
     .boton-lectura-notificacion,
