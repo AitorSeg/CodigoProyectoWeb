@@ -397,6 +397,32 @@
 }
 
 /*
+    Utilidades de progreso sin estilos inline
+*/
+
+.relleno-progreso--58 {
+    width: 58%;
+}
+
+.relleno-progreso--46 {
+    width: 46%;
+}
+
+.relleno-progreso--42 {
+    width: 42%;
+}
+
+.progreso-asignatura--avance-40-33 {
+    --progreso-escritorio: 40%;
+    --progreso-movil: 33%;
+}
+
+.progreso-asignatura--avance-40-333 {
+    --progreso-escritorio: 40%;
+    --progreso-movil: 33.333%;
+}
+
+/*
     Responsive
 */
 

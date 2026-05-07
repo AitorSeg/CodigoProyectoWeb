@@ -16,9 +16,14 @@ function renderizarDetalleAsignatura(datos, idAsignatura) {
     document.getElementById("descripcionUnidadActual").textContent = datos.descripcion;
 
     const rutaProgreso = document.getElementById("rutaProgresoAsignatura");
-    if(rutaProgreso) {
-        rutaProgreso.style.setProperty("--progreso-escritorio", datos.progresoEscritorio);
-        rutaProgreso.style.setProperty("--progreso-movil", datos.progresoMovil);
+
+    if (rutaProgreso) {
+        rutaProgreso.classList.remove(
+            "progreso-asignatura--avance-40-33",
+            "progreso-asignatura--avance-40-333"
+        );
+
+        rutaProgreso.classList.add(datos.progresoClase || "progreso-asignatura--avance-40-33");
     }
 
     document.getElementById("tituloEvaluacionAsignatura").textContent = datos.evaluacion.titulo;
