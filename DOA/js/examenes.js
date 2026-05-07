@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const idAsignatura = window.obtenerAsignaturaSeleccionada();
     const asignatura = window.DOA_ASIGNATURAS[idAsignatura] || window.DOA_ASIGNATURAS.matematicas;
 
-    examenesActuales = obtenerExamenesAsignatura(idAsignatura);
+    examenesActuales = window.obtenerExamenesAsignatura(idAsignatura);
 
     cargarCabeceraAsignatura(asignatura);
     cargarResumenExamenes(examenesActuales);
@@ -39,7 +39,7 @@ function cargarResumenExamenes(examenes) {
         return examen.estadoFiltro === "abierto";
     }).length;
 
-    const realizados = examenes.filter(function (examen) {
+    const completados = examenes.filter(function (examen) {
         return examen.estadoFiltro === "cerrado";
     }).length;
 
@@ -48,7 +48,7 @@ function cargarResumenExamenes(examenes) {
     });
 
     ponerTexto("totalExamenesAbiertos", abiertos);
-    ponerTexto("totalExamenesRealizados", realizados);
+    ponerTexto("totalExamenesRealizados", completados);
     ponerTexto("proximoExamenTexto", proximo ? proximo.fechaCorta : "---");
 }
 
@@ -79,7 +79,7 @@ function cargarExamenDestacado(examenes) {
         boton.textContent = examenDestacado.estadoFiltro === "abierto" ? "Entrar" : "Ver detalles";
 
         boton.addEventListener("click", function () {
-            guardarExamenSeleccionado(examenDestacado.id);
+            window.guardarExamenSeleccionado(examenDestacado.id);
         });
     }
 }
@@ -150,116 +150,9 @@ function renderizarExamenes() {
         const enlace = fila.querySelector(".fila-examen__accion");
 
         enlace.addEventListener("click", function () {
-            guardarExamenSeleccionado(examen.id);
+            window.guardarExamenSeleccionado(examen.id);
         });
 
         contenedor.appendChild(fila);
     });
-}
-
-function guardarExamenSeleccionado(idExamen) {
-    localStorage.setItem("doaExamenSeleccionado", idExamen);
-}
-
-function obtenerExamenesAsignatura(idAsignatura) {
-    const datos = {
-        matematicas: [
-            {
-                id: "matematicas_parcial_01",
-                nombre: "Parcial 01",
-                descripcion: "Examen tipo test sobre límites, derivadas e introducción a integrales.",
-                descripcionCorta: "Límites y derivadas",
-                fechaCompleta: "15 Nov, 2026",
-                fechaCorta: "15 Nov",
-                duracion: "45 min",
-                estado: "Abierto",
-                estadoFiltro: "abierto"
-            },
-            {
-                id: "matematicas_quiz_derivadas",
-                nombre: "Quiz de derivadas",
-                descripcion: "Cuestionario breve de repaso sobre derivadas básicas.",
-                descripcionCorta: "Cuestionario corregido",
-                fechaCompleta: "12 Oct, 2026",
-                fechaCorta: "12 Oct",
-                duracion: "20 min",
-                estado: "Cerrado",
-                estadoFiltro: "cerrado"
-            },
-            {
-                id: "matematicas_parcial_02",
-                nombre: "Parcial 02",
-                descripcion: "Segundo examen parcial de la asignatura.",
-                descripcionCorta: "Integrales y aplicaciones",
-                fechaCompleta: "28 Nov, 2026",
-                fechaCorta: "28 Nov",
-                duracion: "50 min",
-                estado: "Próximo",
-                estadoFiltro: "proximo"
-            }
-        ],
-
-        programacion: [
-            {
-                id: "programacion_recursividad",
-                nombre: "Examen unidad 03",
-                descripcion: "Examen tipo test sobre recursividad, caso base y llamadas recursivas.",
-                descripcionCorta: "Recursividad",
-                fechaCompleta: "15 Nov, 2026",
-                fechaCorta: "15 Nov",
-                duracion: "35 min",
-                estado: "Abierto",
-                estadoFiltro: "abierto"
-            },
-            {
-                id: "programacion_arrays",
-                nombre: "Quiz arrays",
-                descripcion: "Cuestionario de repaso de arrays y estructuras básicas.",
-                descripcionCorta: "Arrays y bucles",
-                fechaCompleta: "10 Oct, 2026",
-                fechaCorta: "10 Oct",
-                duracion: "20 min",
-                estado: "Cerrado",
-                estadoFiltro: "cerrado"
-            },
-            {
-                id: "programacion_grafos",
-                nombre: "Examen grafos",
-                descripcion: "Examen próximo sobre grafos y recorridos básicos.",
-                descripcionCorta: "Grafos",
-                fechaCompleta: "22 Nov, 2026",
-                fechaCorta: "22 Nov",
-                duracion: "45 min",
-                estado: "Próximo",
-                estadoFiltro: "proximo"
-            }
-        ],
-
-        fisica: [
-            {
-                id: "fisica_cinematica",
-                nombre: "Control de cinemática",
-                descripcion: "Examen tipo test sobre movimiento, velocidad y aceleración.",
-                descripcionCorta: "Movimiento y fuerzas",
-                fechaCompleta: "19 Nov, 2026",
-                fechaCorta: "19 Nov",
-                duracion: "40 min",
-                estado: "Abierto",
-                estadoFiltro: "abierto"
-            },
-            {
-                id: "fisica_fuerzas",
-                nombre: "Cuestionario de fuerzas",
-                descripcion: "Cuestionario corregido sobre fuerzas y leyes básicas.",
-                descripcionCorta: "Fuerzas",
-                fechaCompleta: "11 Oct, 2026",
-                fechaCorta: "11 Oct",
-                duracion: "25 min",
-                estado: "Cerrado",
-                estadoFiltro: "cerrado"
-            }
-        ]
-    };
-
-    return datos[idAsignatura] || datos.matematicas;
 }
