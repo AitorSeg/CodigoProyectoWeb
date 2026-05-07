@@ -13,6 +13,7 @@ window.DOA_ASIGNATURAS = {
             "En esta unidad trabajaremos el concepto de límite y su aplicación al análisis de funciones. Veremos cómo estudiar el comportamiento de una función y resolver ejercicios básicos paso a paso.",
         progresoEscritorio: "40%",
         progresoMovil: "33%",
+        progresoClase: "progreso-asignatura--avance-40-33",
         evaluacion: {
             titulo: "Parcial 1",
             fecha: "15 Oct, 2025",
@@ -35,6 +36,7 @@ window.DOA_ASIGNATURAS = {
             "En esta unidad aprenderás qué es la recursividad y cómo usarla para resolver problemas paso a paso. Veremos cómo una función puede llamarse a sí misma de forma controlada mediante un caso base y una llamada recursiva.",
         progresoEscritorio: "40%",
         progresoMovil: "33%",
+        progresoClase: "progreso-asignatura--avance-40-33",
         evaluacion: {
             titulo: "Parcial 1",
             fecha: "15 Oct, 2025",
@@ -57,6 +59,7 @@ window.DOA_ASIGNATURAS = {
             "En esta unidad repasaremos los conceptos básicos de movimiento y fuerzas. Estudiaremos cómo describir trayectorias, interpretar magnitudes físicas y resolver problemas sencillos.",
         progresoEscritorio: "40%",
         progresoMovil: "33%",
+        progresoClase: "progreso-asignatura--avance-40-33",
         evaluacion: {
             titulo: "Control de unidad",
             fecha: "22 Oct, 2025",

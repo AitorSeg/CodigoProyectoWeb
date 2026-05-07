@@ -12,9 +12,13 @@
     padding: var(--space-6) var(--space-8) var(--space-8);
 }
 
+/*
+    Estructura principal
+*/
+
 .detalle-examen-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 280px;
+    grid-template-columns: minmax(0, 1fr) 300px;
     gap: var(--space-6);
     align-items: start;
 }
@@ -31,19 +35,33 @@
     padding: var(--space-5);
 }
 
+/*
+    Cabecera de la tarjeta principal
+*/
+
 .tarjeta-detalle-examen__cabecera {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "titulo estado"
+        "descripcion descripcion";
+    gap: var(--space-2) var(--space-4);
     margin-bottom: var(--space-5);
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .tarjeta-detalle-examen__cabecera h2 {
-    margin: var(--space-3) 0 var(--space-2);
+    grid-area: titulo;
+    margin: 0;
     color: var(--color-text);
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 800;
     line-height: 1.2;
 }
 
 .tarjeta-detalle-examen__cabecera p {
+    grid-area: descripcion;
     max-width: 780px;
     margin: 0;
     color: var(--color-muted);
@@ -52,6 +70,8 @@
 }
 
 .estado-detalle-examen {
+    grid-area: estado;
+    align-self: start;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -72,18 +92,23 @@
     color: var(--color-muted);
 }
 
+/*
+    Datos principales del examen
+*/
+
 .datos-examen {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(120px, 1fr));
     gap: var(--space-3);
     margin-bottom: var(--space-5);
 }
 
 .dato-examen {
+    min-height: 76px;
     padding: var(--space-4);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    background: var(--color-bg);
+    background: var(--color-surface);
 }
 
 .dato-examen span {
@@ -93,6 +118,7 @@
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
 .dato-examen strong {
@@ -101,6 +127,10 @@
     font-size: 14px;
     font-weight: 800;
 }
+
+/*
+    Bloques internos
+*/
 
 .bloque-detalle-examen {
     padding-top: var(--space-5);
@@ -117,7 +147,7 @@
     font-size: 15px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
 }
 
 .bloque-detalle-examen p {
@@ -138,16 +168,25 @@
 }
 
 .lista-temas-examen li {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
     padding: var(--space-3);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     color: var(--color-muted);
-    background: var(--color-bg);
+    background: var(--color-surface-alt);
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
+/*
+    Panel lateral de acción
+*/
+
 .panel-accion-examen {
+    position: sticky;
+    top: var(--space-6);
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
@@ -164,6 +203,7 @@
     font-size: 14px;
     font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
 .tarjeta-accion-examen__texto {
@@ -186,11 +226,18 @@
     font-weight: 800;
     text-transform: uppercase;
     text-decoration: none;
+    transition:
+        background-color 0.15s ease,
+        transform 0.08s ease;
 }
 
 .boton-realizar-examen:hover {
     background: var(--color-primary-hover);
     color: var(--color-dark);
+}
+
+.boton-realizar-examen:active {
+    transform: translateY(1px);
 }
 
 .boton-realizar-examen--desactivado {
@@ -215,39 +262,98 @@
     line-height: 1.5;
 }
 
+/*
+    Responsive
+*/
+
 @media (max-width: 900px) {
     .contenido-detalle-examen {
         padding: var(--space-5);
-        padding-bottom: calc(72px + var(--space-5));
+        padding-bottom: calc(88px + var(--space-6));
     }
 
     .detalle-examen-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: var(--space-4);
     }
 
-    .tarjeta-detalle-examen {
+    /*
+        En móvil subimos el acceso al examen.
+        Así el botón importante no queda enterrado tras toda la explicación.
+    */
+
+    .panel-accion-examen {
+        position: static;
+        order: -1;
+        width: 100%;
+        gap: var(--space-3);
+    }
+
+    .tarjeta-accion-examen {
         padding: var(--space-4);
     }
 
+    .tarjeta-aviso-examen {
+        display: none;
+    }
+
+    .tarjeta-detalle-examen {
+        width: 100%;
+        padding: var(--space-4);
+    }
+
+    .tarjeta-detalle-examen__cabecera {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "estado"
+            "titulo"
+            "descripcion";
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+        padding-bottom: var(--space-4);
+    }
+
+    .estado-detalle-examen {
+        justify-self: start;
+    }
+
     .tarjeta-detalle-examen__cabecera h2 {
-        font-size: 24px;
+        font-size: 20px;
+    }
+
+    .tarjeta-detalle-examen__cabecera p {
+        font-size: 14px;
     }
 
     .datos-examen {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--space-2);
+        margin-bottom: var(--space-4);
     }
 
     .dato-examen {
+        min-height: 72px;
         padding: var(--space-3);
+    }
+
+    .dato-examen:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .bloque-detalle-examen {
+        padding-top: var(--space-4);
+    }
+
+    .bloque-detalle-examen + .bloque-detalle-examen {
+        margin-top: var(--space-4);
     }
 
     .lista-temas-examen {
         grid-template-columns: 1fr;
     }
 
-    .panel-accion-examen {
-        gap: var(--space-3);
+    .lista-temas-examen li {
+        min-height: 40px;
     }
 }

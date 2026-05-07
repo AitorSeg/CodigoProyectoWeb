@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles de la tarea | DOA</title>
+    <title>Crear tarea | DOA</title>
 
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
     <link rel="stylesheet" href="../css/doa-componentes.css">
     <link rel="stylesheet" href="../css/detalle_asignatura.css">
-    <link rel="stylesheet" href="../css/detalle_tarea.css">
+    <link rel="stylesheet" href="../css/crear_tarea.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="pagina-doa pagina-detalle-tarea">
+<body class="pagina-doa pagina-crear-tarea">
     <header class="cabecera-panel-doa">
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
@@ -136,10 +136,17 @@
             </div>
         </div>
 
-        <main class="contenido-doa contenido-detalle-asignatura contenido-detalle-tarea">
+        <main class="contenido-doa contenido-detalle-asignatura contenido-crear-tarea">
             <section class="detalle-asignatura-principal">
                 <div class="cabecera-detalle-asignatura">
                     <div class="cabecera-detalle-asignatura__texto">
+                        <a href="asignaturas.html" class="enlace-volver-asignaturas">
+                            <span class="enlace-volver-asignaturas__icono" aria-hidden="true">
+                                <img src="../img/iconos/grey-chevron-right.svg" alt="">
+                            </span>
+                            <span>Volver a mis asignaturas</span>
+                        </a>
+
                         <h1 id="tituloAsignatura">Programación II</h1>
 
                         <ul class="metadatos-asignatura">
@@ -150,7 +157,7 @@
 
                             <li>
                                 <img src="../img/iconos/grey-notebook.svg" alt="">
-                                <span id="unidadActualTextoAsignatura">Unidad 03: Recursividad</span>
+                                <span id="unidadActualTextoAsignatura">Unidad 03: <strong>Recursividad</strong></span>
                             </li>
                         </ul>
                     </div>
@@ -165,119 +172,92 @@
                     </div>
                 </div>
 
-                <a href="listado_tareas.html" class="enlace-volver">
-                    <span aria-hidden="true">←</span>
-                    Volver
-                </a>
+                <form class="formulario-crear-tarea">
+                    <div class="campo-titulo-tarea">
+                        <input
+                            type="text"
+                            id="nombreTarea"
+                            name="nombreTarea"
+                            value="Nombre de la tarea"
+                            aria-label="Nombre de la tarea"
+                        >
 
-                <section class="detalle-tarea">
-                    <h2>Tarea 1: Desarrollo de APIs</h2>
-
-                    <div class="descripcion-tarea">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac eros metus.
-                            Mauris id tortor ut nibh viverra rhoncus. Maecenas tincidunt sem dapibus,
-                            rhoncus ligula a, ultricies sapien. Phasellus venenatis risus feugiat,
-                            tempus elit nec, imperdiet sapien. Vestibulum finibus a ligula nec ultricies.
-                            Sed ac eros metus. Mauris id tortor ut nibh viverra rhoncus. Maecenas
-                            tincidunt sem dapibus, rhoncus ligula a, ultricies sapien. Phasellus venenatis
-                            risus feugiat, tempus elit nec, imperdiet sapien.
-                        </p>
+                        <button type="button" class="boton-editar-campo" aria-label="Editar nombre de la tarea">
+                            <img src="../img/iconos/blue-pencil.svg" alt="">
+                        </button>
                     </div>
 
-                    <div class="separador"></div>
+                    <div class="campo-descripcion-tarea">
+                        <textarea
+                            id="descripcionTarea"
+                            name="descripcionTarea"
+                            aria-label="Descripción de la tarea"
+                        >Descripción de la tarea:</textarea>
 
-                    <div class="fechas-tarea">
-                        <div class="fecha-tarea">
-                            <span>Fecha de emisión:</span>
-                            <p class="fecha-tarea__valor">Lunes, 14 de Abril</p>
-                        </div>
-
-                        <div class="fecha-tarea">
-                            <span>Fecha de entrega:</span>
-                            <p class="fecha-tarea__valor">Viernes, 19 de Abril</p>
-                        </div>
+                        <button type="button" class="boton-editar-campo boton-editar-campo--area" aria-label="Editar descripción de la tarea">
+                            <img src="../img/iconos/blue-pencil.svg" alt="">
+                        </button>
                     </div>
 
-                    <div class="zona-entrega">
-                        <section class="archivos-subidos">
-                            <ul class="lista-archivos">
-                                <li>
-                                    <a href="#">
-                                        <img src="../img/iconos/grey-file.svg" alt="">
-                                        informe_de_API.pdf
-                                    </a>
+                    <div class="separador-crear-tarea"></div>
 
-                                    <button type="button" aria-label="Eliminar archivo">
-                                        <img src="../img/iconos/grey-trash.svg" alt="">
-                                    </button>
-                                </li>
+                    <div class="fechas-crear-tarea">
+                        <div class="fecha-crear-tarea">
+                            <label for="fechaEmision">Fecha de emisión:</label>
+                            <input
+                                type="text"
+                                id="fechaEmision"
+                                name="fechaEmision"
+                                value="Lunes, 14 de Abril"
+                            >
+                        </div>
 
-                                <li>
-                                    <a href="#">
-                                        <img src="../img/iconos/grey-file.svg" alt="">
-                                        diagrama_corregido.xls
-                                    </a>
+                        <div class="fecha-crear-tarea fecha-crear-tarea--editable">
+                            <label for="fechaEntrega">Fecha de entrega:</label>
 
-                                    <button type="button" aria-label="Eliminar archivo">
-                                        <img src="../img/iconos/grey-trash.svg" alt="">
-                                    </button>
-                                </li>
-                            </ul>
+                            <div class="fecha-crear-tarea__campo ">
+                                <input
+                                type="date"
+                                id="fechaEntrega"
+                                name="fechaEntrega"
+                                >
 
-                            <div class="subida-archivo">
-                                <button type="button" class="boton-subir">
-                                    Subir archivo/s
+                                <button type="button" class="boton-editar-campo" aria-label="Editar fecha de entrega">
+                                    <img src="../img/iconos/blue-pencil.svg" alt="">
                                 </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="zona-crear-tarea">
+                        <section class="entregas-tarea">
+                            <h2>Entregas</h2>
+
+                            <div class="tabla-entregas">
+                                <div class="tabla-entregas__cabecera">
+                                    <p>Nombre</p>
+                                    <p>Etiquetas</p>
+                                    <p>Fecha</p>
+                                    <p>Calificación</p>
+                                </div>
                             </div>
                         </section>
 
-                        <section class="recursos-adjuntos">
-                            <h3>Recursos Adjuntos</h3>
+                        <section class="recursos-subidos">
+                            <h2>Recursos Subidos</h2>
 
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <span>
-                                            <img src="../img/iconos/grey-file.svg" alt="">
-                                            Historia de computadores
-                                        </span>
-
-                                        <img src="../img/iconos/grey-download.svg" alt="">
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <span>
-                                            <img src="../img/iconos/grey-file.svg" alt="">
-                                            Diagrama de tiempo
-                                        </span>
-
-                                        <img src="../img/iconos/grey-download.svg" alt="">
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <span>
-                                            <img src="../img/iconos/grey-file.svg" alt="">
-                                            Rúbrica de la tarea
-                                        </span>
-
-                                        <img src="../img/iconos/grey-download.svg" alt="">
-                                    </a>
-                                </li>
-                            </ul>
+                            <button type="button" class="boton-anadir-recurso">
+                                Añadir recurso
+                            </button>
                         </section>
 
-                        <div class="acciones-tarea">
-                            <button type="button" class="boton-secundario">Guardar</button>
-                            <button type="button" class="boton-principal">Entregar</button>
+                        <div class="acciones-crear-tarea">
+                            <button type="button" class="boton-secundario">Guardar cambios</button>
+                            <button type="button" class="boton-principal">Crear</button>
                             <button type="button" class="boton-secundario">Cancelar</button>
                         </div>
                     </div>
-                </section>
+                </form>
             </section>
         </main>
     </div>

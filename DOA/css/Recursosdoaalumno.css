@@ -1,368 +1,131 @@
 /* =========================================================
-   VISTA ALUMNO: RECURSOS Y BIBLIOTECA
+   VISTA ALUMNO / DOCENTE: RECURSOS Y BIBLIOTECA
    ========================================================= */
+.bloque-recursos { margin-top: var(--space-8); }
 
-.bloque-recursos {
-    margin-top: var(--space-8);
-}
+/* --- TARJETAS MINI --- */
+.recursos-tema-cabecera { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); }
+.enlace-ver-todos { color: var(--color-primary); font-size: 13px; font-weight: 600; text-decoration: none; transition: color 0.2s; }
+.enlace-ver-todos:hover { color: var(--color-primary-hover); }
 
-/* --- TARJETAS MINI (Recursos del tema) --- */
-.recursos-tema-cabecera {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-4);
-}
+.grid-recursos-tema { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-4); }
+.tarjeta-recurso-mini { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); text-decoration: none; transition: border-color 0.2s, background-color 0.2s; }
+.tarjeta-recurso-mini:hover { border-color: var(--color-primary); background: var(--color-surface-alt); }
+.tarjeta-recurso-mini__icono { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-sm); flex-shrink: 0; }
+.tarjeta-recurso-mini__info h4 { margin: 0 0 2px 0; color: var(--color-text); font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tarjeta-recurso-mini__info span { color: var(--color-muted); font-size: 12px; }
 
-.enlace-ver-todos {
-    color: var(--color-primary);
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.enlace-ver-todos:hover {
-    color: var(--color-primary-hover);
-}
-
-.grid-recursos-tema {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: var(--space-4);
-}
-
-.tarjeta-recurso-mini {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-3);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    transition: border-color 0.2s, background-color 0.2s;
-}
-
-.tarjeta-recurso-mini:hover {
-    border-color: var(--color-primary);
-    background: var(--color-surface-alt);
-}
-
-.tarjeta-recurso-mini__icono {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    flex-shrink: 0;
-}
-
-.tarjeta-recurso-mini__info h4 {
-    margin: 0 0 2px 0;
-    color: var(--color-text);
-    font-size: 14px;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.tarjeta-recurso-mini__info span {
-    color: var(--color-muted);
-    font-size: 12px;
-}
+/* --- FORMULARIO DOCENTE --- */
+.tarjeta-subida-recurso { border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); padding: var(--space-5); }
+.formulario-recursos-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-4); align-items: start; }
+.mensaje-error-campo { color: var(--color-error); font-size: 12px; margin-top: 4px; }
 
 /* --- LAYOUT DE BIBLIOTECA --- */
-.biblioteca-layout {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    align-items: stretch;
-    margin-top: var(--space-4);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-}
+.biblioteca-layout { display: grid; grid-template-columns: 250px 1fr; align-items: stretch; margin-top: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+.biblioteca-sidebar { padding: var(--space-4); border-right: 1px solid var(--color-border); background: var(--color-surface); border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+.biblioteca-carpeta { margin-bottom: var(--space-2); }
+.biblioteca-carpeta__titulo { display: flex; align-items: center; gap: var(--space-2); color: var(--color-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; padding: 10px var(--space-3); border-radius: var(--radius-md); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.biblioteca-carpeta__titulo svg { width: 18px; height: 18px; }
+.biblioteca-carpeta__titulo.activo { color: var(--color-primary); background: rgba(0, 229, 255, 0.08); border-radius: 999px; }
+.biblioteca-menu-lista { list-style: none; padding: 0 0 0 var(--space-4); margin: var(--space-2) 0; display: flex; flex-direction: column; gap: 4px; }
+.biblioteca-menu-lista a { display: block; padding: 8px var(--space-3); color: var(--color-muted); font-size: 13px; font-weight: 500; border-radius: var(--radius-sm); text-decoration: none; transition: all 0.2s; }
+.biblioteca-menu-lista a:hover { background: var(--color-surface-alt); color: var(--color-text); }
+.biblioteca-menu-lista a.activo { background: rgba(0, 229, 255, 0.08); color: var(--color-primary); border-left: none; border-radius: 999px; font-weight: 600; }
 
-/* Menú lateral de Biblioteca */
-.biblioteca-sidebar {
-    padding: var(--space-4);
-    border-right: 1px solid var(--color-border);
-    background: var(--color-surface);
-    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-}
+/* --- TABLA Y FILTROS --- */
+.biblioteca-contenido { display: flex; flex-direction: column; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+.biblioteca-toolbar { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); }
+.biblioteca-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-muted); }
+.biblioteca-breadcrumb strong { color: var(--color-text); }
+.flecha-breadcrumb { width: 14px; height: 14px; opacity: 0.6; }
 
-.biblioteca-carpeta {
-    margin-bottom: var(--space-2);
-}
+.biblioteca-filtros { display: flex; gap: var(--space-3); }
+.btn-filtrar-movil { display: none; background: transparent; border: 1px solid var(--color-border); color: var(--color-text); padding: 6px 12px; border-radius: var(--radius-md); font-size: 11px; font-weight: 600; align-items: center; gap: 6px; cursor: pointer; }
+.input-filtro { background: var(--color-bg); border: 1px solid var(--color-border); color: var(--color-muted); padding: 6px 12px; border-radius: var(--radius-sm); font-size: 12px; outline: none; cursor: pointer; }
 
-.biblioteca-carpeta__titulo {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    color: var(--color-muted);
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 10px var(--space-3);
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-}
+.biblioteca-tabla { border: none; border-radius: 0; background: transparent; }
+.biblioteca-tabla-header, .biblioteca-tabla-fila { display: grid; grid-template-columns: 3fr 1fr 1fr 1.5fr 1fr; padding: var(--space-3) var(--space-4); align-items: center; }
+.biblioteca-tabla-header { background: var(--color-surface-alt); border-bottom: 1px solid var(--color-border); color: var(--color-muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.biblioteca-tabla-fila { border-bottom: 1px solid var(--color-border); font-size: 13px; color: var(--color-muted); transition: background 0.2s; }
+.biblioteca-tabla-fila:last-child { border-bottom: none; }
+.biblioteca-tabla-fila:hover { background: var(--color-bg); }
+.biblioteca-tabla-fila a { color: var(--color-text); text-decoration: underline; font-weight: 600; text-underline-offset: 2px; }
+.biblioteca-tabla-fila a:hover { color: var(--color-primary); }
 
-.biblioteca-carpeta__titulo svg {
-    width: 18px;
-    height: 18px;
-}
-
-/* CARPETAS ACTIVAS TIPO PÍLDORA (OVALADAS) */
-.biblioteca-carpeta__titulo.activo {
-    color: var(--color-primary);
-    background: rgba(0, 229, 255, 0.08);
-    border-radius: 999px;
-}
-
-.biblioteca-menu-lista {
-    list-style: none;
-    padding: 0 0 0 var(--space-4);
-    margin: var(--space-2) 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.biblioteca-menu-lista a {
-    display: block;
-    padding: 8px var(--space-3);
-    color: var(--color-muted);
-    font-size: 13px;
-    font-weight: 500;
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    transition: all 0.2s;
-}
-
-.biblioteca-menu-lista a:hover {
-    background: var(--color-surface-alt);
-    color: var(--color-text);
-}
-
-/* SUB-CARPETAS ACTIVAS TIPO PÍLDORA (OVALADAS) */
-.biblioteca-menu-lista a.activo {
-    background: rgba(0, 229, 255, 0.08);
-    color: var(--color-primary);
-    border-left: none;
-    border-radius: 999px;
-    font-weight: 600;
-}
-
-/* Contenido / Tabla de Biblioteca */
-.biblioteca-contenido {
-    display: flex;
-    flex-direction: column;
-    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-}
-
-.biblioteca-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-3) var(--space-4);
-    border-bottom: 1px solid var(--color-border);
-}
-
-/* Breadcrumb con flecha */
-.biblioteca-breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--color-muted);
-}
-
-.biblioteca-breadcrumb strong {
-    color: var(--color-text);
-}
-
-.flecha-breadcrumb {
-    width: 14px;
-    height: 14px;
-    opacity: 0.6;
-}
-
-/* ESTILOS DE ESCRITORIO PARA LOS FILTROS */
-.biblioteca-filtros {
-    display: flex;
-    gap: var(--space-3);
-}
-
-.btn-filtrar-movil {
-    display: none;
-    background: transparent;
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
-    padding: 6px 12px;
-    border-radius: var(--radius-md);
-    font-size: 11px;
-    font-weight: 600;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-}
-
-.input-filtro {
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    color: var(--color-muted);
-    padding: 6px 12px;
-    border-radius: var(--radius-sm);
-    font-size: 12px;
-    outline: none;
-    cursor: pointer;
-}
-
-.biblioteca-tabla {
-    border: none;
-    border-radius: 0;
-    background: transparent;
-}
-
-.biblioteca-tabla-header,
-.biblioteca-tabla-fila {
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1.5fr 1fr;
-    padding: var(--space-3) var(--space-4);
-    align-items: center;
-}
-
-.biblioteca-tabla-header {
-    background: var(--color-surface-alt);
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-muted);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.biblioteca-tabla-fila {
-    border-bottom: 1px solid var(--color-border);
-    font-size: 13px;
-    color: var(--color-muted);
-    transition: background 0.2s;
-}
-
-.biblioteca-tabla-fila:last-child {
-    border-bottom: none;
-}
-
-.biblioteca-tabla-fila:hover {
-    background: var(--color-bg);
-}
-
-.biblioteca-tabla-fila a {
-    color: var(--color-text);
-    text-decoration: underline;
-    font-weight: 600;
-    text-underline-offset: 2px;
-}
-
-.biblioteca-tabla-fila a:hover {
-    color: var(--color-primary);
-}
-
-/* Badges / Etiquetas */
-.badge-etiqueta {
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    border: 1px solid transparent;
-    display: inline-block;
-}
-
+.badge-etiqueta { padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; border: 1px solid transparent; display: inline-block; }
 .etiqueta-actual { border-color: var(--color-primary); color: var(--color-primary); background: rgba(0, 229, 255, 0.05); }
 .etiqueta-importante { border-color: var(--color-success); color: var(--color-success); background: rgba(152, 239, 106, 0.05); }
 .etiqueta-alerta { border-color: var(--color-error); color: var(--color-error); background: rgba(255, 64, 85, 0.05); }
 .etiqueta-neutral { border-color: var(--color-muted); color: var(--color-text); background: rgba(168, 183, 200, 0.1); }
 
 /* =========================================================
-   ESTILOS EXCLUSIVOS PARA MÓVIL (Magia Responsive)
+   MÓVIL (MENÚS FLOTANTES BLINDADOS)
    ========================================================= */
-
-.icono-desplegable-movil {
-    display: none;
-    margin-left: 4px;
-    color: var(--color-primary);
-}
+.icono-desplegable-movil { display: none; margin-left: 4px; color: var(--color-primary); }
 
 @media (max-width: 900px) {
     .ocultar-movil { display: none; }
+
     .recursos-tema-cabecera h2 { font-size: 16px; margin: 0; }
-    .enlace-ver-todos { font-size: 13px; }
     .grid-recursos-tema { grid-template-columns: 1fr; }
+    .formulario-recursos-grid { grid-template-columns: 1fr; }
 
-    .biblioteca-layout {
-        grid-template-columns: 1fr;
-        position: relative;
-        overflow: visible;
-    }
+    .biblioteca-layout { grid-template-columns: 1fr; position: relative; z-index: 10; }
 
-    /* El sidebar flotante en móvil con Scroll */
-    .biblioteca-sidebar {
-        display: none;
-        position: absolute;
-        top: 55px;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        max-height: 350px;
-        overflow-y: auto;
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    }
-
+    .biblioteca-sidebar { display: none; position: absolute; top: 55px; left: 0; width: 100%; z-index: 9999; max-height: 60vh; overflow-y: auto; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 0 0 var(--radius-lg) var(--radius-lg); box-shadow: 0 20px 40px rgba(0,0,0,0.9); }
     .biblioteca-sidebar.mostrar-movil { display: block; }
     #btnNavegacionMovil { cursor: pointer; position: relative; z-index: 102; }
     .icono-desplegable-movil { display: inline-block; }
 
-    /* ---- FILTROS FLOTANTES EN MÓVIL ---- */
-    .btn-filtrar-movil { display: flex; }
+    .btn-filtrar-movil { display: flex; position: relative; z-index: 102; }
+    .biblioteca-filtros { display: none; position: absolute; top: 45px; right: 0; background: var(--color-surface); padding: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-md); z-index: 9999; box-shadow: 0 20px 40px rgba(0,0,0,0.9); flex-direction: column; min-width: 200px; }
+    .biblioteca-filtros.mostrar-movil { display: flex; }
+    .input-filtro { width: 100%; margin-bottom: 12px; display: block; }
 
-    .biblioteca-filtros {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        margin-top: 8px;
-        background: var(--color-surface);
-        padding: 16px;
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-md);
-        z-index: 1001;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        flex-direction: column;
-        min-width: 180px;
-    }
-
-    .biblioteca-filtros.mostrar-movil {
-        display: flex;
-    }
-
-    .input-filtro {
-        width: 100%;
-        margin-bottom: 12px;
-    }
-    .input-filtro:last-child { margin-bottom: 0; }
-
-    /* Ajustes tabla móvil */
     .biblioteca-tabla-header { display: none; }
     .biblioteca-tabla-fila { grid-template-columns: 1fr auto; gap: var(--space-4); padding: var(--space-4); }
     .col-movil-oculta { display: none !important; }
-    .biblioteca-tabla-fila a { font-size: 14px; text-decoration: none; }
-    .col-tipo { color: var(--color-muted); font-size: 13px; }
+
+}
+
+/*
+    Limpieza de estilos inline en recursos
+*/
+
+.contenedor-filtros-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.mensaje-tabla-vacia {
+    margin: 0;
+    padding: var(--space-6);
+    color: var(--color-muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+.tarjeta-subida-recurso__titulo {
+    margin-bottom: var(--space-2);
+}
+
+.tarjeta-subida-recurso__texto {
+    margin-bottom: var(--space-4);
+    color: var(--color-muted);
+    font-size: 13px;
+}
+
+.formulario-recursos-grid__acciones {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--space-2);
+}
+
+.input-archivo-recurso {
+    padding-top: 7px;
+}
+
+.boton-guardar-recurso {
+    padding-inline: var(--space-6);
 }

@@ -1,0 +1,401 @@
+/*
+    Pantalla: Crear tarea DOA
+*/
+
+.pagina-crear-tarea {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.contenido-crear-tarea {
+    padding: var(--space-6) var(--space-8) var(--space-8);
+}
+
+.formulario-crear-tarea {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+/*
+    Campos principales
+*/
+
+.campo-titulo-tarea {
+    min-height: 38px;
+    width: min(100%, 360px);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0 var(--space-4);
+    border: 1px solid var(--color-border);
+    transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+}
+.campo-titulo-tarea:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.18);
+}
+
+.campo-titulo-tarea input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 400;
+    outline: none;
+}
+.boton-editar-campo {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.boton-editar-campo img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.campo-descripcion-tarea {
+    position: relative;
+}
+
+.campo-descripcion-tarea textarea {
+    width: 100%;
+    height: 86px;
+    resize: none;
+    overflow: auto;
+    padding: var(--space-4) calc(var(--space-5) + 28px) var(--space-4) var(--space-5);
+    border: 1px solid var(--color-border);
+    transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1.5;
+    outline: none;
+}
+.campo-descripcion-tarea textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.18);
+}
+
+.boton-editar-campo--area {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+}
+
+.separador-crear-tarea {
+    height: 1px;
+    background: var(--color-border);
+}
+
+/*
+    Fechas
+*/
+
+.fechas-crear-tarea {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-3);
+}
+
+.fecha-crear-tarea {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.fecha-crear-tarea label {
+    color: var(--color-muted);
+    font-size: 12px;
+    font-weight: 500;
+}
+.fecha-crear-tarea input {
+    min-height: 38px;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+}
+
+
+.fecha-crear-tarea__campo {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0 var(--space-3);
+    border: 1px solid var(--color-border);
+    transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+}
+.fecha-crear-tarea__campo:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.18);
+}
+
+.fecha-crear-tarea__campo input {
+    flex: 1;
+    min-width: 0;
+    min-height: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+}
+.fecha-crear-tarea__campo input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+}
+.fecha-crear-tarea__campo input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*
+    Zona inferior
+*/
+
+.zona-crear-tarea {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    grid-template-areas:
+        "entregas recursos"
+        "entregas acciones";
+    gap: var(--space-4);
+    align-items: start;
+}
+
+.entregas-tarea {
+    grid-area: entregas;
+    min-height: 250px;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+.entregas-tarea h2,
+.recursos-subidos h2 {
+    margin: 0 0 var(--space-5);
+    color: var(--color-muted);
+    font-size: 22px;
+    line-height: 1.1;
+    font-weight: 400;
+}
+
+.tabla-entregas__cabecera {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) 90px 80px 90px;
+    gap: var(--space-3);
+}
+
+.tabla-entregas__cabecera p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.recursos-subidos {
+    grid-area: recursos;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+.recursos-subidos h2 {
+    margin-bottom: auto;
+    text-align: center;
+}
+
+.boton-anadir-recurso {
+    min-width: 106px;
+    min-height: 30px;
+    padding: 0 var(--space-3);
+    border: 1px solid rgba(168, 183, 200, 0.55);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.boton-anadir-recurso:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: rgba(0, 229, 255, 0.06);
+}
+
+/*
+    Botones finales
+*/
+
+.acciones-crear-tarea {
+    grid-area: acciones;
+    display: flex;
+    justify-content: flex-end;
+    align-self: end;
+    gap: var(--space-2);
+    margin-top: 0;
+}
+
+.boton-principal,
+.boton-secundario {
+    min-width: 118px;
+    min-height: 36px;
+    padding: 0 var(--space-4);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.08s ease;
+}
+
+.boton-principal {
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-dark);
+}
+
+.boton-principal:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+.boton-secundario {
+    border: 1px solid rgba(168, 183, 200, 0.55);
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+.boton-secundario:hover {
+    border-color: var(--color-primary);
+    background: rgba(0, 229, 255, 0.06);
+    color: var(--color-primary);
+}
+
+.boton-principal:active,
+.boton-secundario:active,
+.boton-anadir-recurso:active {
+    transform: translateY(1px);
+}
+
+/*
+    Responsive
+*/
+
+@media (max-width: 1180px) {
+    .zona-crear-tarea {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "recursos"
+            "entregas"
+            "acciones";
+    }
+
+    .recursos-subidos {
+        min-height: 140px;
+    }
+}
+
+@media (max-width: 900px) {
+    .contenido-crear-tarea {
+        padding: var(--space-5);
+        padding-bottom: calc(72px + var(--space-5));
+    }
+
+    .campo-titulo-tarea {
+        max-width: 100%;
+    }
+
+    .campo-titulo-tarea input {
+        font-size: 17px;
+    }
+
+    .fechas-crear-tarea {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .fecha-crear-tarea input {
+        width: 100%;
+    }
+
+    .fecha-crear-tarea__campo {
+        width: 100%;
+    }
+
+    .fecha-crear-tarea__campo input {
+        flex: 1;
+    }
+
+    .entregas-tarea {
+        min-height: 220px;
+        padding: var(--space-5);
+    }
+
+    .tabla-entregas {
+        overflow-x: auto;
+    }
+
+    .tabla-entregas__cabecera {
+        min-width: 520px;
+    }
+
+    .acciones-crear-tarea {
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .boton-principal,
+    .boton-secundario {
+        width: 100%;
+        min-height: 42px;
+    }
+}
