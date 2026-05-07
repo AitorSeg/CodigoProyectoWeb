@@ -4,13 +4,15 @@
 */
 
 document.addEventListener("DOMContentLoaded", function () {
-    const idAsignatura = window.obtenerAsignaturaSeleccionada();
+    // Obtenemos el ID (ej: "matematicas") o ponemos "programacion" por si hay error
+    const idAsignatura = window.obtenerAsignaturaSeleccionada() || "programacion";
     const datosAsignatura = window.DOA_ASIGNATURAS[idAsignatura] || window.DOA_ASIGNATURAS.programacion;
 
-    renderizarDetalleAsignatura(datosAsignatura);
+    // Le pasamos también el idAsignatura a la función
+    renderizarDetalleAsignatura(datosAsignatura, idAsignatura);
 });
 
-function renderizarDetalleAsignatura(datos) {
+function renderizarDetalleAsignatura(datos, idAsignatura) {
     const tituloAsignatura = document.getElementById("tituloAsignatura");
     const profesorAsignatura = document.getElementById("profesorAsignatura");
     const unidadActualTextoAsignatura = document.getElementById("unidadActualTextoAsignatura");
@@ -30,7 +32,10 @@ function renderizarDetalleAsignatura(datos) {
 
     tituloAsignatura.textContent = datos.nombre;
     profesorAsignatura.textContent = datos.profesor;
+
+    // Ojo: En tu HTML tienes una etiqueta <strong>, para no romperla podemos usar innerHTML o dejarlo texto plano
     unidadActualTextoAsignatura.textContent = datos.unidadActualTexto;
+
     tituloUnidadActual.textContent = datos.unidadActualTitulo;
     descripcionUnidadActual.textContent = datos.descripcion;
 
@@ -45,4 +50,21 @@ function renderizarDetalleAsignatura(datos) {
 
     tituloTareaAsignatura.textContent = datos.tarea.titulo;
     vencimientoTareaAsignatura.textContent = datos.tarea.vencimiento;
+
+    // ==========================================
+    // NUEVA MAGIA: ENLAZAR CON RECURSOS (URL)
+    // ==========================================
+    const linkPestanaRecursos = document.getElementById('linkPestanaRecursos');
+    const linkBotonRecursos = document.getElementById('linkBotonRecursos');
+
+    // Armamos el link con la materia correcta (ej: Recursosdoaalumno.html?materia=matematicas)
+    const urlDestino = `Recursosdoaalumno.html?materia=${idAsignatura}`;
+
+    if (linkPestanaRecursos) {
+        linkPestanaRecursos.href = urlDestino;
+    }
+
+    if (linkBotonRecursos) {
+        linkBotonRecursos.href = urlDestino;
+    }
 }
