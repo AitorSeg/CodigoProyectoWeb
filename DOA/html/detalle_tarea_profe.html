@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles de la tarea | DOA</title>
 
+    <!-- Enlaces a hojas de estilo -->
+
     <link rel="stylesheet" href="../css/doa.css">
     <link rel="stylesheet" href="../css/doa-layout.css">
     <link rel="stylesheet" href="../css/doa-componentes.css">
     <link rel="stylesheet" href="../css/detalle_asignatura.css">
     <link rel="stylesheet" href="../css/detalle_tarea.css">
+
+    <!-- Fin enlaces a hojas de estilo -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,32 +24,54 @@
 </head>
 
 <body class="pagina-doa pagina-detalle-tarea pagina-detalle-tarea-profe">
+
+    <!-- Inicio de el header -->
     <header class="cabecera-panel-doa">
+
+        <!-- Inicio del logo -->
         <div class="cabecera-panel-doa__logo">
             <div class="marca-doa">
-                <a class="marca-doa__link" href="panel_principal.html" aria-label="Ir al panel principal de DOA">
-                    <img src="../img/LogoDoaAzulRecortado.png" alt="Logo de DOA" class="logo-doa">
+                <a class="marca-doa__link" href="panel_profesor.html" aria-label="Ir al panel principal de DOA">
+                    <img
+                        src="../img/LogoDoaAzulRecortado.png"
+                        alt="Logo de DOA"
+                        class="logo-doa"
+                    >
                 </a>
 
                 <div class="marca-doa__powered">
                     <span class="marca-doa__powered-text">Powered by</span>
-                    <img src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
-                        alt="Grado en Tecnologías Interactivas" class="marca-doa__powered-logo">
+                    <img
+                        src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"
+                        alt="Grado en Tecnologías Interactivas"
+                        class="marca-doa__powered-logo"
+                    >
                 </div>
             </div>
         </div>
+        <!-- Final del logo -->
 
+        <!-- Inicio del buscador -->
         <div class="cabecera-panel-doa__buscador">
-            <div class="buscador-header buscador-header--desactivado" aria-label="Buscador visual pendiente de activar"
-                title="El buscador se activará cuando se conecte la base de datos">
+            <div
+                class="buscador-header buscador-header--desactivado"
+                aria-label="Buscador visual pendiente de activar"
+                title="El buscador se activará cuando se conecte la base de datos"
+            >
                 <span class="buscador-header__icono" aria-hidden="true">
                     <img src="../img/iconos/grey-search.svg" alt="">
                 </span>
 
-                <input type="search" placeholder="Buscar recurso, tarea..." disabled>
+                <input
+                    type="search"
+                    placeholder="Buscar recurso, tarea..."
+                    disabled
+                >
             </div>
         </div>
+        <!-- Final del buscador -->
 
+        <!-- Inicio del perfil de usuario -->
         <div class="cabecera-panel-doa__perfil">
             <div class="perfil-header">
                 <span class="perfil-header__icono" aria-hidden="true">
@@ -58,17 +84,26 @@
                 </span>
             </div>
 
+            <!-- Inicio del botón cerrar sesión en móvil -->
             <a class="boton-cerrar-sesion-movil" href="elegir_perfil.html" aria-label="Cerrar sesión">
                 <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
                     <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-log-out.svg" alt="">
                     <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-log-out.svg" alt="">
                 </span>
             </a>
+            <!-- Final del botón cerrar sesión en móvil -->
         </div>
+        <!-- Final del perfil de usuario -->
     </header>
+    <!-- Final de el header -->
 
+    <!-- Inicio del contenido principal -->
     <div class="layout-doa">
+
+        <!-- Inicio de la barra lateral -->
         <div class="barra-lateral-doa">
+
+            <!-- Inicio de la tarjeta de modo de prueba -->
             <div class="tarjeta-modo-prueba">
                 <div class="tarjeta-modo-prueba__cabecera">
                     <span class="tarjeta-modo-prueba__icono" aria-hidden="true">
@@ -83,14 +118,14 @@
                     y los permisos dependen del perfil elegido.
                 </p>
             </div>
+            <!-- Final de la tarjeta de modo de prueba -->
 
+            <!-- Inicio de la navegación lateral -->
             <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
-                <a class="navegacion-lateral-doa__item" href="panel_principal.html">
+                <a class="navegacion-lateral-doa__item" href="panel_profesor.html">
                     <span class="navegacion-lateral-doa__icono" aria-hidden="true">
-                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg"
-                            alt="">
-                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg"
-                            alt="">
+                        <img class="icono-estado icono-estado--gris" src="../img/iconos/grey-layout-dashboard.svg" alt="">
+                        <img class="icono-estado icono-estado--azul" src="../img/iconos/blue-layout-dashboard.svg" alt="">
                     </span>
 
                     <span>Panel Principal</span>
@@ -114,7 +149,9 @@
                     <span>Notificaciones</span>
                 </a>
             </nav>
+            <!-- Final de la navegación lateral -->
 
+            <!-- Inicio del botón cerrar sesión en escritorio -->
             <div class="barra-lateral-doa__salida">
                 <a class="boton-cerrar-sesion" href="elegir_perfil.html">
                     <span class="boton-cerrar-sesion__icono" aria-hidden="true">
@@ -125,11 +162,18 @@
                     <span>Cerrar sesión</span>
                 </a>
             </div>
+            <!-- Final del botón cerrar sesión en escritorio -->
         </div>
+        <!-- Final de la barra lateral -->
 
+        <!-- Inicio del contenido principal de la asignatura -->
         <main class="contenido-doa contenido-detalle-asignatura contenido-detalle-tarea">
             <section class="detalle-asignatura-principal">
+
+                <!-- Inicio de la cabecera de detalles de asignatura -->
                 <div class="cabecera-detalle-asignatura">
+
+                    <!-- Inicio de la información de la asignatura -->
                     <div class="cabecera-detalle-asignatura__texto">
                         <h1 id="tituloAsignatura">Programación II</h1>
 
@@ -145,26 +189,36 @@
                             </li>
                         </ul>
                     </div>
+                    <!-- Final de la información de la asignatura -->
 
+                    <!-- Inicio de las pestañas de navegación entre secciones de la asignatura -->
                     <div class="cabecera-detalle-asignatura__pestanas">
                         <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
                             <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item">Recursos</a>
-                            <a href="listado_tareas.html"
-                                class="pestanas-asignatura__item pestanas-asignatura__item--activo">Tareas</a>
+                            <a href="listado_tareas_profe.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Tareas</a>
                             <a href="examenes.html" class="pestanas-asignatura__item">Exámenes</a>
                             <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
                         </nav>
                     </div>
+                    <!-- Final de las pestañas de navegación entre secciones de la asignatura -->
                 </div>
+                <!-- Final de la cabecera de detalles de asignatura -->
 
+                <!-- Inicio del enlace para volver al listado de tareas del profesor -->
                 <a href="listado_tareas_profe.html" class="enlace-volver">
                     <span aria-hidden="true">←</span>
                     Volver
                 </a>
+                <!-- Final del enlace para volver al listado de tareas del profesor -->
 
+                <!-- Inicio del detalle de la tarea -->
                 <section class="detalle-tarea">
-                    <h2>Tarea 1: Desarrollo de APIs</h2>
 
+                    <!-- Inicio del título de la tarea -->
+                    <h2>Tarea 1: Desarrollo de APIs</h2>
+                    <!-- Final del título de la tarea -->
+
+                    <!-- Inicio de la descripción de la tarea -->
                     <div class="descripcion-tarea">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac eros metus.
@@ -176,9 +230,12 @@
                             risus feugiat, tempus elit nec, imperdiet sapien.
                         </p>
                     </div>
+                    <!-- Final de la descripción de la tarea -->
 
+                    <!-- Separador visual entre descripción y fechas -->
                     <div class="separador"></div>
 
+                    <!-- Inicio del bloque de fechas de la tarea -->
                     <div class="fechas-tarea">
                         <div class="fecha-tarea">
                             <span>Fecha de emisión:</span>
@@ -190,8 +247,12 @@
                             <p class="fecha-tarea__valor">Viernes, 19 de Abril</p>
                         </div>
                     </div>
+                    <!-- Final del bloque de fechas de la tarea -->
 
+                    <!-- Inicio de la zona de entregas y recursos adjuntos -->
                     <div class="zona-entrega zona-entrega-profe">
+
+                        <!-- Inicio del bloque de entregas de alumnos -->
                         <section class="entregas-profe">
                             <h3>Entregas</h3>
 
@@ -203,53 +264,109 @@
                                     <p>Calificación</p>
                                 </div>
 
+                                <!-- Inicio entrega 1 -->
                                 <article class="fila-entrega-profe">
-                                    <p><a href="detalle_tarea_entregada.html" class="tarea_alumno">Pedro Fernández</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span></p>
+                                    <p>
+                                        <a href="detalle_tarea_entregada.html" class="tarea_alumno">
+                                            Pedro Fernández
+                                        </a>
+                                    </p>
+
+                                    <p>
+                                        <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
+                                    </p>
+
                                     <p>19/03/2025</p>
                                     <p>9/10</p>
                                 </article>
+                                <!-- Final entrega 1 -->
 
+                                <!-- Inicio entrega 2 -->
                                 <article class="fila-entrega-profe">
-                                    <p><a href="detalle_tarea_entregada.html" class="tarea_alumno">Pablo Barceló</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span></p>
+                                    <p>
+                                        <a href="detalle_tarea_entregada.html" class="tarea_alumno">
+                                            Pablo Barceló
+                                        </a>
+                                    </p>
+
+                                    <p>
+                                        <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
+                                    </p>
+
                                     <p>26/08/2025</p>
                                     <p>8.75/10</p>
                                 </article>
+                                <!-- Final entrega 2 -->
 
+                                <!-- Inicio entrega 3 -->
                                 <article class="fila-entrega-profe">
-                                    <p><a class="tarea_alumno">Aitor Segura</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--no-entregada">No Entregada</span>
+                                    <p>
+                                        <span class="tarea_alumno">Aitor Segura</span>
                                     </p>
+
+                                    <p>
+                                        <span class="etiqueta-estado etiqueta-estado--no-entregada">No Entregada</span>
+                                    </p>
+
                                     <p>20/08/2025</p>
                                     <p>/</p>
                                 </article>
+                                <!-- Final entrega 3 -->
 
+                                <!-- Inicio entrega 4 -->
                                 <article class="fila-entrega-profe">
-                                    <p><a href="detalle_tarea_entregada.html" class="tarea_alumno">Juan Diego</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--tardia">Tardía</span></p>
+                                    <p>
+                                        <a href="detalle_tarea_entregada.html" class="tarea_alumno">
+                                            Juan Diego
+                                        </a>
+                                    </p>
+
+                                    <p>
+                                        <span class="etiqueta-estado etiqueta-estado--tardia">Tardía</span>
+                                    </p>
+
                                     <p>19/03/2025</p>
                                     <p>/</p>
                                 </article>
+                                <!-- Final entrega 4 -->
 
+                                <!-- Inicio entrega 5 -->
                                 <article class="fila-entrega-profe">
-                                    <p><a class="tarea_alumno">Paloma García</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--no-entregada">No Entregada</span>
+                                    <p>
+                                        <span class="tarea_alumno">Paloma García</span>
                                     </p>
+
+                                    <p>
+                                        <span class="etiqueta-estado etiqueta-estado--no-entregada">No Entregada</span>
+                                    </p>
+
                                     <p>26/08/2025</p>
                                     <p>/</p>
                                 </article>
+                                <!-- Final entrega 5 -->
 
+                                <!-- Inicio entrega 6 -->
                                 <article class="fila-entrega-profe">
-                                    <p><a href="detalle_tarea_entregada.html" class="tarea_alumno">Oscar Herrera</a></p>
-                                    <p><span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span></p>
+                                    <p>
+                                        <a href="detalle_tarea_entregada.html" class="tarea_alumno">
+                                            Oscar Herrera
+                                        </a>
+                                    </p>
+
+                                    <p>
+                                        <span class="etiqueta-estado etiqueta-estado--entregada">Entregada</span>
+                                    </p>
+
                                     <p>20/08/2025</p>
                                     <p>5.15/10</p>
                                 </article>
+                                <!-- Final entrega 6 -->
                             </div>
                         </section>
+                        <!-- Final del bloque de entregas de alumnos -->
 
-                        <section class="recursos-adjuntos">
+                        <!-- Inicio del bloque de recursos adjuntos -->
+                        <section class="recursos-adjuntos recursos-adjuntos-profe">
                             <h3>Recursos Adjuntos</h3>
 
                             <ul>
@@ -286,12 +403,24 @@
                                     </a>
                                 </li>
                             </ul>
+
+                            <div class="recursos-adjuntos-profe__accion">
+                                <button type="button" class="boton-adjuntar">
+                                    Añadir recurso
+                                </button>
+                            </div>
                         </section>
+                        <!-- Final del bloque de recursos adjuntos -->
                     </div>
+                    <!-- Final de la zona de entregas y recursos adjuntos -->
                 </section>
+                <!-- Final del detalle de la tarea -->
             </section>
+            <!-- Final del detalle de asignatura principal -->
         </main>
+        <!-- Final del contenido principal de la asignatura -->
     </div>
+    <!-- Final del contenido principal -->
 
     <script src="../js/doa-layout.js"></script>
     <script src="../js/doa-datos.js"></script>
