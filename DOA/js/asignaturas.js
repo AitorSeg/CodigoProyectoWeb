@@ -37,6 +37,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+
+    const enlacesRecursoAsignatura = document.querySelectorAll(".enlace-recurso-asignatura");
+
+    enlacesRecursoAsignatura.forEach(function (enlace) {
+        enlace.addEventListener("click", function () {
+            const tarjeta = enlace.closest(".tarjeta-asignatura");
+
+            if (tarjeta !== null && tarjeta.dataset.asignatura) {
+                window.guardarAsignaturaSeleccionada(tarjeta.dataset.asignatura);
+            }
+        });
+    });
+
     function cambiarEstadoTarjetaResumen(boton) {
         const tarjeta = boton.closest(".dato-asignaturas");
         const idDetalle = boton.getAttribute("aria-controls");
