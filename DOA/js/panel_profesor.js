@@ -165,11 +165,8 @@ function renderizarAsignaturasProfesor() {
             '</ul>' +
 
             '<div class="acciones-asignatura-profesor">' +
-                '<a href="recursosdoa.html" class="boton-asignatura-profesor" data-accion="recursos" data-asignatura="' + idAsignatura + '">' +
-                    'Recursos' +
-                '</a>' +
-                '<a href="crear_tarea.html" class="boton-asignatura-profesor" data-accion="tarea" data-asignatura="' + idAsignatura + '">' +
-                    'Crear tarea' +
+                '<a href="recursosdoa.html" class="boton-asignatura-profesor boton-asignatura-profesor--principal" data-asignatura="' + idAsignatura + '">' +
+                    'Entrar' +
                 '</a>' +
             '</div>';
 
