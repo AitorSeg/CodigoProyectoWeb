@@ -13,9 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    seleccionarAsignatura("matematicas");
+    seleccionarAsignatura(window.obtenerAsignaturaSeleccionada() || "matematicas");
 
     function seleccionarAsignatura(asignaturaSeleccionada) {
+        window.guardarAsignaturaSeleccionada(asignaturaSeleccionada);
         actualizarTarjetasResumen(asignaturaSeleccionada);
         actualizarTarjetasProgreso(asignaturaSeleccionada);
     }
@@ -55,4 +56,17 @@ document.addEventListener("DOMContentLoaded", function () {
             icono.src = "../img/iconos/" + color + "-play.svg";
         });
     }
+
+    const botonesEntrarAsignatura = document.querySelectorAll(".tarjeta-progreso-asignatura .boton-entrar-asignatura");
+
+    botonesEntrarAsignatura.forEach(function (boton) {
+        boton.addEventListener("click", function () {
+            const tarjeta = boton.closest(".tarjeta-progreso-asignatura");
+            const asignatura = tarjeta.dataset.asignatura;
+
+            if (asignatura) {
+                window.guardarAsignaturaSeleccionada(asignatura);
+            }
+        });
+    });
 });

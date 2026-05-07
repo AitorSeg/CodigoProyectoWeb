@@ -26,4 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
         tarjeta.classList.toggle("dato-asignaturas--abierta", !estaAbierta);
         detalle.hidden = estaAbierta;
     }
+
+    const botonesEntrarDetalle = document.querySelectorAll(".boton-asignatura--principal");
+
+    botonesEntrarDetalle.forEach(function (boton) {
+        boton.addEventListener("click", function () {
+            const tarjeta = boton.closest(".tarjeta-asignatura");
+            const asignatura = tarjeta.dataset.asignatura;
+
+            if (asignatura) {
+                window.guardarAsignaturaSeleccionada(asignatura);
+            }
+        });
+    });
 });
