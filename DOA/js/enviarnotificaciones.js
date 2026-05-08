@@ -9,24 +9,55 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function configurarNavegacionEnvioNotificaciones() {
-    const usuario = obtenerUsuarioDemoEnvioNotificaciones();
+    const rol = obtenerRolEnvioNotificaciones();
 
-    if (usuario === null) {
-        return;
+    const enlaceAsignaciones = document.getElementById("enlaceAsignacionesEnvioNotificaciones");
+
+    document.body.classList.remove("pagina-enviar-notificaciones--secretaria");
+
+    if (enlaceAsignaciones !== null) {
+        enlaceAsignaciones.hidden = true;
     }
 
-    const rol = usuario.rol;
-
-    if (rol === "Secretaría" || rol === "PAS") {
+    if (rol === "secretaria") {
         document.body.classList.add("pagina-enviar-notificaciones--secretaria");
 
-        configurarRutasEnvioNotificaciones("panel_secretaria.html", "asignaturas_secretaria.html", "Asignaturas");
-        mostrarElementoEnvioNotificaciones("enlaceAsignacionesEnvioNotificaciones");
+        configurarRutasEnvioNotificaciones(
+            "panel_secretaria.html",
+            "asignaturas_secretaria.html",
+            "Asignaturas"
+        );
 
+        mostrarElementoEnvioNotificaciones("enlaceAsignacionesEnvioNotificaciones");
         return;
     }
 
-    configurarRutasEnvioNotificaciones("panel_profesor.html", "asignaturas_profesor.html", "Mis Asignaturas");
+    configurarRutasEnvioNotificaciones(
+        "panel_profesor.html",
+        "asignaturas_profesor.html",
+        "Mis Asignaturas"
+    );
+}
+
+function obtenerRolEnvioNotificaciones() {
+    const parametros = new URLSearchParams(window.location.search);
+    const rolURL = parametros.get("rol");
+
+    if (rolURL === "secretaria" || rolURL === "secretaría" || rolURL === "pas") {
+        return "secretaria";
+    }
+
+    if (rolURL === "profesor") {
+        return "profesor";
+    }
+
+    const usuario = obtenerUsuarioDemoEnvioNotificaciones();
+
+    if (usuario !== null && (usuario.rol === "Secretaría" || usuario.rol === "PAS")) {
+        return "secretaria";
+    }
+
+    return "profesor";
 }
 
 function configurarRutasEnvioNotificaciones(rutaPanel, rutaAsignaturas, textoAsignaturas) {
