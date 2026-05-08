@@ -51,12 +51,6 @@ function obtenerRolEnvioNotificaciones() {
         return "profesor";
     }
 
-    const usuario = obtenerUsuarioDemoEnvioNotificaciones();
-
-    if (usuario !== null && (usuario.rol === "Secretaría" || usuario.rol === "PAS")) {
-        return "secretaria";
-    }
-
     return "profesor";
 }
 
