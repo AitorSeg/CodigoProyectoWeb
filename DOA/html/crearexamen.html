@@ -1,199 +1,286 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Examen | DOA</title>
-
-    <link rel="stylesheet" href="../css/doa.css">
-    <link rel="stylesheet" href="../css/doa-layout.css">
-    <link rel="stylesheet" href="../css/doa-componentes.css">
-    <link rel="stylesheet" href="../css/crearexamen.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-</head>
-
-<body class="pagina-doa pagina-crear-examen">
-<header class="cabecera-panel-doa">
-    <div class="cabecera-panel-doa__logo">
-        <div class="marca-doa">
-            <a class="marca-doa__link" href="panel_principal.html">
-                <img src="../img/LogoDoaAzulRecortado.png" alt="DOA" class="logo-doa">
-            </a>
-            <div class="marca-doa__powered">
-                <span class="marca-doa__powered-text">Powered by</span>
-                <img src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png" alt="GTI" class="marca-doa__powered-logo">
-            </div>
-        </div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Crear Examen | DOA
+  </title>
+  <!-- Enlaces a hojas de estilo -->
+  <link href="../css/doa.css" rel="stylesheet"/>
+  <link href="../css/doa-layout.css" rel="stylesheet"/>
+  <link href="../css/doa-componentes.css" rel="stylesheet"/>
+  <link href="../css/crearexamen.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <!-- Fin enlaces a hojas de estilo -->
+ </head>
+ <body class="pagina-doa pagina-crear-examen">
+  <!-- Inicio de el header -->
+  <header class="cabecera-panel-doa">
+   <!-- Inicio del logo -->
+   <div class="cabecera-panel-doa__logo">
+    <div class="marca-doa">
+     <a class="marca-doa__link" href="panel_principal.html">
+      <img alt="DOA" class="logo-doa" src="../img/LogoDoaAzulRecortado.png"/>
+     </a>
+     <div class="marca-doa__powered">
+      <span class="marca-doa__powered-text">
+       Powered by
+      </span>
+      <img alt="GTI" class="marca-doa__powered-logo" src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"/>
+     </div>
     </div>
-
-    <div class="cabecera-panel-doa__buscador">
-        <div class="buscador-header">
-                <span class="buscador-header__icono">
-                    <img src="../img/iconos/grey-search.svg" alt="">
-                </span>
-            <input type="search" placeholder="Buscar examen...">
-        </div>
+   </div>
+   <!-- Final del logo -->
+   <!-- Inicio del buscador -->
+   <div class="cabecera-panel-doa__buscador">
+    <div class="buscador-header">
+     <span class="buscador-header__icono">
+      <img alt="" src="../img/iconos/grey-search.svg"/>
+     </span>
+     <input placeholder="Buscar examen..." type="search"/>
     </div>
-
-    <div class="cabecera-panel-doa__perfil">
-        <div class="perfil-header">
-                <span class="perfil-header__icono">
-                    <img src="../img/iconos/grey-user.svg" alt="">
-                </span>
-            <div class="perfil-header__texto">
-                <strong>Kevan Pounds</strong>
-                <small>Profesor GTI</small>
-            </div>
-        </div>
+   </div>
+   <!-- Final del buscador -->
+   <!-- Inicio del perfil de usuario -->
+   <div class="cabecera-panel-doa__perfil">
+    <div class="perfil-header">
+     <span class="perfil-header__icono">
+      <img alt="" src="../img/iconos/grey-user.svg"/>
+     </span>
+     <div class="perfil-header__texto">
+      <strong>
+       Kevan Pounds
+      </strong>
+      <small>
+       Profesor GTI
+      </small>
+     </div>
     </div>
-</header>
-
-<div class="layout-doa">
-    <aside class="barra-lateral-doa">
-        <div class="tarjeta-modo-prueba">
-            <div class="tarjeta-modo-prueba__cabecera">
-                    <span class="tarjeta-modo-prueba__icono">
-                        <img src="../img/iconos/grey-info.svg" alt="">
-                    </span>
-                <strong>Modo Profesor</strong>
-            </div>
-            <p>Estás configurando un nuevo examen para tus alumnos. Los cambios se guardarán localmente en tu navegador.</p>
+   </div>
+   <!-- Final del perfil de usuario -->
+  </header>
+  <!-- Final de el header -->
+  <!-- Inicio del contenido principal -->
+  <div class="layout-doa">
+   <!-- Inicio de la barra lateral -->
+   <aside class="barra-lateral-doa">
+    <!-- Inicio de la tarjeta de modo de prueba -->
+    <div class="tarjeta-modo-prueba">
+     <div class="tarjeta-modo-prueba__cabecera">
+      <span class="tarjeta-modo-prueba__icono">
+       <img alt="" src="../img/iconos/grey-info.svg"/>
+      </span>
+      <strong>
+       Modo Profesor
+      </strong>
+     </div>
+     <p>
+      Est&aacute;s configurando un nuevo examen para tus alumnos. Los cambios se guardar&aacute;n localmente en tu navegador.
+     </p>
+    </div>
+    <!-- Final de la tarjeta de modo de prueba -->
+    <!-- Inicio de la navegación lateral -->
+    <nav class="navegacion-lateral-doa">
+     <a class="navegacion-lateral-doa__item" href="panel_principal.html">
+      <span class="navegacion-lateral-doa__icono">
+       <img alt="" src="../img/iconos/grey-layout-dashboard.svg"/>
+      </span>
+      <span>
+       Inicio
+      </span>
+     </a>
+     <a class="navegacion-lateral-doa__item" href="asignaturas.html">
+      <span class="navegacion-lateral-doa__icono">
+       <img alt="" src="../img/iconos/grey-notebook.svg"/>
+      </span>
+      <span>
+       Mis Asignaturas
+      </span>
+     </a>
+     <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="examenes.html">
+      <span class="navegacion-lateral-doa__icono">
+       <img alt="" onerror="this.src='../img/iconos/blue-notebook.svg'" src="../img/iconos/blue-file-text.svg"/>
+      </span>
+      <span style="color: var(--color-primary);">
+       Ex&aacute;menes
+      </span>
+     </a>
+     <a class="navegacion-lateral-doa__item" href="notificaciones.html">
+      <span class="navegacion-lateral-doa__icono">
+       <img alt="" src="../img/iconos/grey-bell.svg"/>
+      </span>
+      <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+       <span>
+        Notificaciones
+       </span>
+       <span class="badge-notificaciones">
+        2
+       </span>
+      </div>
+     </a>
+    </nav>
+    <!-- Final de la navegación lateral -->
+    <!-- Inicio del botón cerrar sesión en escritorio -->
+    <div class="barra-lateral-doa__salida">
+     <a class="boton-cerrar-sesion" href="elegir_perfil.html">
+      <span class="boton-cerrar-sesion__icono">
+       <img alt="" src="../img/iconos/grey-log-out.svg"/>
+      </span>
+      <span>
+       Cerrar sesi&oacute;n
+      </span>
+     </a>
+    </div>
+    <!-- Final del botón cerrar sesión en escritorio -->
+   </aside>
+   <!-- Final de la barra lateral -->
+   <!-- Inicio del contenido principal de la página -->
+   <main class="contenido-doa">
+    <!-- Inicio del detalle de asignatura principal -->
+    <section class="detalle-asignatura-principal">
+     <!-- Inicio de la cabecera de detalles de asignatura -->
+     <div class="cabecera-detalle-asignatura">
+      <!-- Inicio de la información de la asignatura -->
+      <div class="cabecera-detalle-asignatura__texto">
+       <a class="enlace-volver-asignaturas" href="examenes.html">
+        <span class="enlace-volver-asignaturas__icono">
+         <img alt="" src="../img/iconos/grey-chevron-right.svg" style="transform: rotate(180deg);"/>
+        </span>
+        <span>
+         Volver a ex&aacute;menes
+        </span>
+       </a>
+       <h1>
+        Nuevo Examen
+       </h1>
+       <ul class="metadatos-asignatura">
+        <li>
+         <img alt="" src="../img/iconos/grey-user.svg"/>
+         <span>
+          Kevan Pounds
+         </span>
+        </li>
+        <li>
+         <img alt="" src="../img/iconos/grey-notebook.svg"/>
+         <span>
+          Unidad 03: Recursividad
+         </span>
+        </li>
+       </ul>
+      </div>
+      <!-- Final de la información de la asignatura -->
+     </div>
+     <!-- Final de la cabecera de detalles de asignatura -->
+     <form class="crear-examen-grid" id="formularioCrearExamen">
+      <div class="columna-principal-formulario">
+       <div class="tarjeta-formulario">
+        <h2 class="titulo-tarjeta">
+         Configuraci&oacute;n del Examen
+        </h2>
+        <div class="grupo-campo-formulario">
+         <label>
+          Nombre del Examen
+         </label>
+         <input id="inputNombre" placeholder="Ej: Parcial 2 - Algoritmos" required="" type="text">
+         </input>
         </div>
-
-        <nav class="navegacion-lateral-doa">
-            <a class="navegacion-lateral-doa__item" href="panel_principal.html">
-                    <span class="navegacion-lateral-doa__icono">
-                        <img src="../img/iconos/grey-layout-dashboard.svg" alt="">
-                    </span>
-                <span>Inicio</span>
-            </a>
-            <a class="navegacion-lateral-doa__item" href="asignaturas.html">
-                    <span class="navegacion-lateral-doa__icono">
-                        <img src="../img/iconos/grey-notebook.svg" alt="">
-                    </span>
-                <span>Mis Asignaturas</span>
-            </a>
-            <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="examenes.html">
-                    <span class="navegacion-lateral-doa__icono">
-                        <img src="../img/iconos/blue-file-text.svg" alt="" onerror="this.src='../img/iconos/blue-notebook.svg'">
-                    </span>
-                <span style="color: var(--color-primary);">Exámenes</span>
-            </a>
-            <a class="navegacion-lateral-doa__item" href="notificaciones.html">
-                    <span class="navegacion-lateral-doa__icono">
-                        <img src="../img/iconos/grey-bell.svg" alt="">
-                    </span>
-                <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-                    <span>Notificaciones</span>
-                    <span class="badge-notificaciones">2</span>
-                </div>
-            </a>
-        </nav>
-
-        <div class="barra-lateral-doa__salida">
-            <a class="boton-cerrar-sesion" href="elegir_perfil.html">
-                    <span class="boton-cerrar-sesion__icono">
-                        <img src="../img/iconos/grey-log-out.svg" alt="">
-                    </span>
-                <span>Cerrar sesión</span>
-            </a>
+        <div class="formulario-doble">
+         <div class="grupo-campo-formulario">
+          <label>
+           Asignatura
+          </label>
+          <select id="selectAsignatura" required="">
+           <option value="programacion">
+            Programaci&oacute;n II
+           </option>
+           <option value="matematicas">
+            Matem&aacute;ticas
+           </option>
+           <option value="fisica">
+            F&iacute;sica
+           </option>
+          </select>
+         </div>
+         <div class="grupo-campo-formulario">
+          <label>
+           Unidad
+          </label>
+          <input id="inputUnidad" placeholder="Ej: Unidad 4" required="" type="text"/>
+         </div>
         </div>
-    </aside>
-
-    <main class="contenido-doa">
-        <section class="detalle-asignatura-principal">
-            <div class="cabecera-detalle-asignatura">
-                <div class="cabecera-detalle-asignatura__texto">
-                    <a href="examenes.html" class="enlace-volver-asignaturas">
-                            <span class="enlace-volver-asignaturas__icono">
-                                <img src="../img/iconos/grey-chevron-right.svg" alt="" style="transform: rotate(180deg);">
-                            </span>
-                        <span>Volver a exámenes</span>
-                    </a>
-                    <h1>Nuevo Examen</h1>
-                    <ul class="metadatos-asignatura">
-                        <li><img src="../img/iconos/grey-user.svg" alt=""> <span>Kevan Pounds</span></li>
-                        <li><img src="../img/iconos/grey-notebook.svg" alt=""> <span>Unidad 03: Recursividad</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <form id="formularioCrearExamen" class="crear-examen-grid">
-                <div class="columna-principal-formulario">
-                    <div class="tarjeta-formulario">
-                        <h2 class="titulo-tarjeta">Configuración del Examen</h2>
-                        <div class="grupo-campo-formulario">
-                            <label>Nombre del Examen</label>
-                            <input type="text" id="inputNombre" placeholder="Ej: Parcial 2 - Algoritmos" required />
-                        </div>
-                        <div class="formulario-doble">
-                            <div class="grupo-campo-formulario">
-                                <label>Asignatura</label>
-                                <select id="selectAsignatura" required>
-                                    <option value="programacion">Programación II</option>
-                                    <option value="matematicas">Matemáticas</option>
-                                    <option value="fisica">Física</option>
-                                </select>
-                            </div>
-                            <div class="grupo-campo-formulario">
-                                <label>Unidad</label>
-                                <input type="text" id="inputUnidad" placeholder="Ej: Unidad 4" required />
-                            </div>
-                        </div>
-                        <div class="grupo-campo-formulario">
-                            <label>Descripción / Instrucciones</label>
-                            <textarea id="inputDescripcion" rows="3" placeholder="Reglas del examen..." required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="tarjeta-formulario">
-                        <h2 class="titulo-tarjeta">Ajustes de Evaluación</h2>
-                        <div class="formulario-doble">
-                            <div class="grupo-campo-formulario">
-                                <label>Duración (min)</label>
-                                <input type="number" id="inputDuracion" placeholder="60" required />
-                            </div>
-                            <div class="grupo-campo-formulario">
-                                <label>Intentos Permitidos</label>
-                                <input type="number" id="inputIntentos" value="1" min="1" required />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tarjeta-formulario">
-                        <h2 class="titulo-tarjeta">Preguntas del Examen</h2>
-                        <p style="color: var(--color-muted); font-size: 13px; margin-bottom: 16px;">
-                            Añade las preguntas tipo test. Selecciona el círculo de la opción que será la correcta.
-                        </p>
-
-                        <div id="contenedorPreguntas">
-                        </div>
-
-                        <button type="button" id="btnAnadirPregunta" class="boton-anadir-pregunta">
-                            + Añadir Nueva Pregunta
-                        </button>
-                    </div>
-                </div>
-
-                <aside class="columna-lateral-formulario">
-                    <div class="tarjeta-ayuda-crear">
-                        <p class="tarjeta-ayuda-crear__titulo">Publicación</p>
-                        <p class="tarjeta-ayuda-crear__texto">Al publicar, el examen y sus preguntas quedarán disponibles para los alumnos de la asignatura.</p>
-                        <button type="submit" class="boton-publicar">Publicar Examen</button>
-                        <button type="button" class="boton-descartar" onclick="window.location.href='examenes.html'">Descartar</button>
-                    </div>
-                </aside>
-            </form>
-        </section>
-    </main>
-</div>
-
-<script src="../js/doa-layout.js"></script>
-<script src="../js/doa-datos.js"></script>
-<script src="../js/doa-examenes-datos.js"></script>
-<script src="../js/crearexamen.js"></script>
-</body>
+        <div class="grupo-campo-formulario">
+         <label>
+          Descripci&oacute;n / Instrucciones
+         </label>
+         <textarea id="inputDescripcion" placeholder="Reglas del examen..." required="" rows="3"></textarea>
+        </div>
+       </div>
+       <div class="tarjeta-formulario">
+        <h2 class="titulo-tarjeta">
+         Ajustes de Evaluaci&oacute;n
+        </h2>
+        <div class="formulario-doble">
+         <div class="grupo-campo-formulario">
+          <label>
+           Duraci&oacute;n (min)
+          </label>
+          <input id="inputDuracion" placeholder="60" required="" type="number"/>
+         </div>
+         <div class="grupo-campo-formulario">
+          <label>
+           Intentos Permitidos
+          </label>
+          <input id="inputIntentos" min="1" required="" type="number" value="1"/>
+         </div>
+        </div>
+       </div>
+       <div class="tarjeta-formulario">
+        <h2 class="titulo-tarjeta">
+         Preguntas del Examen
+        </h2>
+        <p style="color: var(--color-muted); font-size: 13px; margin-bottom: 16px;">
+         A&ntilde;ade las preguntas tipo test. Selecciona el c&iacute;rculo de la opci&oacute;n que ser&aacute; la correcta.
+        </p>
+        <div id="contenedorPreguntas">
+        </div>
+        <button class="boton-anadir-pregunta" id="btnAnadirPregunta" type="button">
+         + A&ntilde;adir Nueva Pregunta
+        </button>
+       </div>
+      </div>
+      <aside class="columna-lateral-formulario">
+       <div class="tarjeta-ayuda-crear">
+        <p class="tarjeta-ayuda-crear__titulo">
+         Publicaci&oacute;n
+        </p>
+        <p class="tarjeta-ayuda-crear__texto">
+         Al publicar, el examen y sus preguntas quedar&aacute;n disponibles para los alumnos de la asignatura.
+        </p>
+        <button class="boton-publicar" type="submit">
+         Publicar Examen
+        </button>
+        <button class="boton-descartar" onclick="window.location.href='examenes.html'" type="button">
+         Descartar
+        </button>
+       </div>
+      </aside>
+     </form>
+    </section>
+    <!-- Final del detalle de asignatura principal -->
+   </main>
+   <!-- Final del contenido principal de la página -->
+  </div>
+  <!-- Final del contenido principal -->
+  <script src="../js/doa-layout.js">
+  </script>
+  <script src="../js/doa-datos.js">
+  </script>
+  <script src="../js/doa-examenes-datos.js">
+  </script>
+  <script src="../js/crearexamen.js">
+  </script>
+ </body>
 </html>

@@ -72,7 +72,129 @@
                 </span>
             </a>
         </div>
-    </header>
+       </form>
+      </div>
+     </section>
+     <section class="bloque-recursos">
+      <h2>
+       Biblioteca de la Asignatura
+      </h2>
+      <div class="biblioteca-layout">
+       <aside class="biblioteca-sidebar" id="menuCarpetasGeneral">
+        <div class="biblioteca-carpeta">
+         <div class="biblioteca-carpeta__titulo activo">
+          <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+           <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+           </path>
+          </svg>
+          TEMARIO
+         </div>
+         <ul class="biblioteca-menu-lista">
+          <li>
+           <a class="carpeta-click" data-unidad="UNIDAD 01" href="#">
+            UNIDAD 01
+           </a>
+          </li>
+          <li>
+           <a class="carpeta-click" data-unidad="UNIDAD 02" href="#">
+            UNIDAD 02
+           </a>
+          </li>
+          <li>
+           <a class="carpeta-click activo" data-unidad="UNIDAD 03" href="#">
+            UNIDAD 03
+           </a>
+          </li>
+         </ul>
+        </div>
+        <div class="biblioteca-carpeta">
+         <div class="biblioteca-carpeta__titulo carpeta-click" data-unidad="PR&Aacute;CTICAS">
+          <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+           <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+           </path>
+          </svg>
+          PR&Aacute;CTICAS
+         </div>
+        </div>
+        <div class="biblioteca-carpeta">
+         <div class="biblioteca-carpeta__titulo carpeta-click" data-unidad="EX&Aacute;MENES">
+          <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+           <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+           </path>
+          </svg>
+          EX&Aacute;MENES
+         </div>
+        </div>
+       </aside>
+       <div class="biblioteca-contenido">
+        <div class="biblioteca-toolbar">
+         <div class="biblioteca-breadcrumb" id="btnNavegacionMovil">
+          <span id="textoCarpetaPadre">
+           TEMARIO
+          </span>
+          <svg class="flecha-breadcrumb" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+           <polyline points="9 18 15 12 9 6">
+           </polyline>
+          </svg>
+          <strong id="textoBreadcrumb">
+           UNIDAD 03
+          </strong>
+         </div>
+         <div class="contenedor-filtros-wrapper">
+          <select class="input-filtro" id="filtroTipo">
+           <option value="TODOS">
+            TIPO: TODOS
+           </option>
+           <option value="PDF">
+            PDF
+           </option>
+          </select>
+          <select class="input-filtro" id="filtroEtiqueta">
+           <option value="TODAS">
+            ETIQUETAS: TODAS
+           </option>
+           <option value="Unidad actual">
+            Unidad actual
+           </option>
+          </select>
+         </div>
+        </div>
+        <div class="biblioteca-tabla">
+         <div class="biblioteca-tabla-header">
+          <span>
+           NOMBRE
+          </span>
+          <span>
+           TIPO
+          </span>
+          <span>
+           TAMA&Ntilde;O
+          </span>
+          <span>
+           ETIQUETAS
+          </span>
+          <span>
+           FECHA
+          </span>
+         </div>
+         <div id="cuerpoTablaArchivos">
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </section>
+    <!-- Final del detalle de asignatura principal -->
+   </main>
+   <!-- Final del contenido principal de la página -->
+  </div>
+  <!-- Final del contenido principal -->
+  <script src="../js/doa-layout.js">
+  </script>
+  <script src="../js/recursosdoa.js">
+  </script>
+ </body>
+</html>
 
     <div class="layout-doa">
         <div class="barra-lateral-doa">

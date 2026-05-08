@@ -1,228 +1,327 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notificaciones Docente | DOA</title>
-
-  <link rel="stylesheet" href="../css/doa.css">
-  <link rel="stylesheet" href="../css/doa-layout.css">
-  <link rel="stylesheet" href="../css/doa-componentes.css">
-  <link rel="stylesheet" href="../css/enviarnotificaciones.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-</head>
-
-<body class="pagina-doa pagina-notificaciones">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Notificaciones Docente | DOA
+  </title>
+  <!-- Enlaces a hojas de estilo -->
+  <link href="../css/doa.css" rel="stylesheet"/>
+  <link href="../css/doa-layout.css" rel="stylesheet"/>
+  <link href="../css/doa-componentes.css" rel="stylesheet"/>
+  <link href="../css/enviarnotificaciones.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <!-- Fin enlaces a hojas de estilo -->
+ </head>
+ <body class="pagina-doa pagina-notificaciones">
+  <!-- Inicio de el header -->
   <header class="cabecera-panel-doa">
-    <div class="cabecera-panel-doa__logo">
-      <div class="marca-doa">
-        <a class="marca-doa__link" href="panel_principal.html">
-          <img src="../img/LogoDoaAzulRecortado.png" alt="DOA" class="logo-doa">
-        </a>
-        <div class="marca-doa__powered">
-          <span class="marca-doa__powered-text">Powered by</span>
-          <img src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png" alt="GTI" class="marca-doa__powered-logo">
-        </div>
-      </div>
+   <!-- Inicio del logo -->
+   <div class="cabecera-panel-doa__logo">
+    <div class="marca-doa">
+     <a class="marca-doa__link" href="panel_principal.html">
+      <img alt="DOA" class="logo-doa" src="../img/LogoDoaAzulRecortado.png"/>
+     </a>
+     <div class="marca-doa__powered">
+      <span class="marca-doa__powered-text">
+       Powered by
+      </span>
+      <img alt="GTI" class="marca-doa__powered-logo" src="../img/logoGTI_blanco_fondo_negro-removebg-preview.png"/>
+     </div>
     </div>
-
-    <div class="cabecera-panel-doa__buscador">
-      <div class="buscador-header">
-        <span class="buscador-header__icono">
-          <img src="../img/iconos/grey-search.svg" alt="">
-        </span>
-        <input type="search" placeholder="Buscar notificación...">
-      </div>
+   </div>
+   <!-- Final del logo -->
+   <!-- Inicio del buscador -->
+   <div class="cabecera-panel-doa__buscador">
+    <div class="buscador-header">
+     <span class="buscador-header__icono">
+      <img alt="" src="../img/iconos/grey-search.svg"/>
+     </span>
+     <input placeholder="Buscar notificaci&oacute;n..." type="search"/>
     </div>
-
-    <div class="cabecera-panel-doa__perfil">
-      <div class="perfil-header">
-        <span class="perfil-header__icono">
-          <img src="../img/iconos/grey-user.svg" alt="">
-        </span>
-        <div class="perfil-header__texto">
-          <strong>Kevan Pounds</strong>
-          <small>Profesor GTI</small>
-        </div>
-      </div>
+   </div>
+   <!-- Final del buscador -->
+   <!-- Inicio del perfil de usuario -->
+   <div class="cabecera-panel-doa__perfil">
+    <div class="perfil-header">
+     <span class="perfil-header__icono">
+      <img alt="" src="../img/iconos/grey-user.svg"/>
+     </span>
+     <div class="perfil-header__texto">
+      <strong>
+       Kevan Pounds
+      </strong>
+      <small>
+       Profesor GTI
+      </small>
+     </div>
     </div>
+   </div>
+   <!-- Final del perfil de usuario -->
   </header>
-
+  <!-- Final de el header -->
+  <!-- Inicio del contenido principal -->
   <div class="layout-doa">
-    <aside class="barra-lateral-doa">
-      <div class="tarjeta-modo-prueba">
-        <div class="tarjeta-modo-prueba__cabecera">
-          <span class="tarjeta-modo-prueba__icono">
-            <img src="../img/iconos/grey-info.svg" alt="">
-          </span>
-          <strong>Modo Profesor</strong>
-        </div>
-        <p>Estás usando DOA con datos de prueba. Centro de avisos y anuncios para tus alumnos.</p>
+   <!-- Inicio de la barra lateral -->
+   <aside class="barra-lateral-doa">
+    <!-- Inicio de la tarjeta de modo de prueba -->
+    <div class="tarjeta-modo-prueba">
+     <div class="tarjeta-modo-prueba__cabecera">
+      <span class="tarjeta-modo-prueba__icono">
+       <img alt="" src="../img/iconos/grey-info.svg"/>
+      </span>
+      <strong>
+       Modo Profesor
+      </strong>
+     </div>
+     <p>
+      Est&aacute;s usando DOA con datos de prueba. Centro de avisos y anuncios para tus alumnos.
+     </p>
+    </div>
+    <!-- Final de la tarjeta de modo de prueba -->
+    <!-- Inicio de la navegación lateral -->
+    <nav class="navegacion-lateral-doa">
+     <a class="navegacion-lateral-doa__item" href="panel_principal.html">
+      <span class="navegacion-lateral-doa__icono">
+       <img alt="" src="../img/iconos/grey-layout-dashboard.svg"/>
+      </span>
+      <span>
+       Inicio
+      </span>
+     </a>
+     <a class="navegacion-lateral-doa__item" href="asignaturas.html">
+      <span class="navegacion-lateral-doa__icono">
+       <img alt="" src="../img/iconos/grey-notebook.svg"/>
+      </span>
+      <span>
+       Mis Asignaturas
+      </span>
+     </a>
+     <a class="navegacion-lateral-doa__item" href="examenes.html">
+      <span class="navegacion-lateral-doa__icono">
+       <img alt="" src="../img/iconos/grey-file-text.svg"/>
+      </span>
+      <span>
+       Ex&aacute;menes
+      </span>
+     </a>
+     <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="notificaciones.html">
+      <span class="navegacion-lateral-doa__icono">
+       <img alt="" src="../img/iconos/blue-bell.svg"/>
+      </span>
+      <div class="nav-item-notificacion">
+       <span class="texto-activo">
+        Notificaciones
+       </span>
+       <span class="badge-notificaciones">
+        1
+       </span>
       </div>
-
-      <nav class="navegacion-lateral-doa">
-        <a class="navegacion-lateral-doa__item" href="panel_principal.html">
-          <span class="navegacion-lateral-doa__icono"><img src="../img/iconos/grey-layout-dashboard.svg" alt=""></span>
-          <span>Inicio</span>
-        </a>
-        <a class="navegacion-lateral-doa__item" href="asignaturas.html">
-          <span class="navegacion-lateral-doa__icono"><img src="../img/iconos/grey-notebook.svg" alt=""></span>
-          <span>Mis Asignaturas</span>
-        </a>
-        <a class="navegacion-lateral-doa__item" href="examenes.html">
-          <span class="navegacion-lateral-doa__icono"><img src="../img/iconos/grey-file-text.svg" alt=""></span>
-          <span>Exámenes</span>
-        </a>
-        <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="notificaciones.html">
-          <span class="navegacion-lateral-doa__icono">
-            <img src="../img/iconos/blue-bell.svg" alt="">
-          </span>
-          <div class="nav-item-notificacion">
-            <span class="texto-activo">Notificaciones</span>
-            <span class="badge-notificaciones">1</span>
-          </div>
-        </a>
-      </nav>
-
-      <div class="barra-lateral-doa__salida">
-        <a class="boton-cerrar-sesion" href="elegir_perfil.html">
-          <span class="boton-cerrar-sesion__icono"><img src="../img/iconos/grey-log-out.svg" alt=""></span>
-          <span>Cerrar sesión</span>
-        </a>
+     </a>
+    </nav>
+    <!-- Final de la navegación lateral -->
+    <!-- Inicio del botón cerrar sesión en escritorio -->
+    <div class="barra-lateral-doa__salida">
+     <a class="boton-cerrar-sesion" href="elegir_perfil.html">
+      <span class="boton-cerrar-sesion__icono">
+       <img alt="" src="../img/iconos/grey-log-out.svg"/>
+      </span>
+      <span>
+       Cerrar sesi&oacute;n
+      </span>
+     </a>
+    </div>
+    <!-- Final del botón cerrar sesión en escritorio -->
+   </aside>
+   <!-- Final de la barra lateral -->
+   <!-- Inicio del contenido principal de la página -->
+   <main class="contenido-doa">
+    <div class="cabecera-notificaciones">
+     <div class="textos-cabecera-noti">
+      <h1>
+       Notificaciones
+      </h1>
+      <p>
+       Avisos del centro y gesti&oacute;n de anuncios enviados a tus asignaturas.
+      </p>
+     </div>
+     <div class="acciones-cabecera-noti">
+      <button class="boton-secundario-noti">
+       MARCAR TODAS COMO LE&Iacute;DAS
+      </button>
+      <button class="boton-primario-noti" id="btnNuevaNoti">
+       + NUEVA NOTIFICACI&Oacute;N
+      </button>
+     </div>
+    </div>
+    <section class="resumen-notificaciones">
+     <div class="tarjeta-resumen-noti">
+      <span>
+       NO LE&Iacute;DAS
+      </span>
+      <strong>
+       1
+      </strong>
+     </div>
+     <div class="tarjeta-resumen-noti">
+      <span>
+       ENVIADAS
+      </span>
+      <strong id="contadorEnviadas">
+       2
+      </strong>
+     </div>
+     <div class="tarjeta-resumen-noti">
+      <span>
+       AVISOS CENTRO
+      </span>
+      <strong>
+       1
+      </strong>
+     </div>
+    </section>
+    <section class="notificaciones-grid">
+     <div class="columna-lista-noti">
+      <div class="pestanas-noti">
+       <button class="pestana-noti activa">
+        TODAS
+       </button>
+       <button class="pestana-noti">
+        NO LE&Iacute;DAS
+       </button>
+       <button class="pestana-noti">
+        ENVIADAS
+       </button>
       </div>
-    </aside>
-
-    <main class="contenido-doa">
-      <div class="cabecera-notificaciones">
-        <div class="textos-cabecera-noti">
-          <h1>Notificaciones</h1>
-          <p>Avisos del centro y gestión de anuncios enviados a tus asignaturas.</p>
-        </div>
-        <div class="acciones-cabecera-noti">
-          <button class="boton-secundario-noti">MARCAR TODAS COMO LEÍDAS</button>
-          <button id="btnNuevaNoti" class="boton-primario-noti">+ NUEVA NOTIFICACIÓN</button>
-        </div>
+      <div class="lista-tarjetas-noti" id="listaNotificaciones">
       </div>
-
-      <section class="resumen-notificaciones">
-        <div class="tarjeta-resumen-noti">
-          <span>NO LEÍDAS</span>
-          <strong>1</strong>
+     </div>
+     <aside class="columna-detalle-noti">
+      <div class="panel-detalle-noti" id="panelDetalle">
+       <span class="badge-noti badge-centro" id="detalleBadge">
+        CENTRO
+       </span>
+       <h2 id="detalleTitulo">
+        Selecciona una notificaci&oacute;n
+       </h2>
+       <p class="detalle-meta" id="detalleMeta">
+        ---
+       </p>
+       <div class="detalle-cuerpo" id="detalleCuerpo">
+        Haz clic en una notificaci&oacute;n de la lista para ver su contenido aqu&iacute;.
+       </div>
+       <div class="detalle-acciones" id="detalleAcciones">
+        <button class="boton-secundario-noti" id="btnAccionNoti">
+         MARCAR COMO LE&Iacute;DA
+        </button>
+       </div>
+      </div>
+      <div class="panel-detalle-noti oculto" id="panelRedactar">
+       <h2 class="titulo-redactar">
+        Redactar Notificaci&oacute;n
+       </h2>
+       <p class="subtitulo-redactar">
+        Env&iacute;a un aviso, recordatorio o mensaje importante a tus alumnos.
+       </p>
+       <form id="formularioNotificacion">
+        <div class="formulario-doble">
+         <div class="campo-formulario">
+          <label>
+           Asignatura destino
+          </label>
+          <select id="selectAsignaturaNoti" required="">
+           <option disabled="" selected="" value="">
+            Selecciona...
+           </option>
+           <option value="Programaci&oacute;n II">
+            Programaci&oacute;n II
+           </option>
+           <option value="Matem&aacute;ticas">
+            Matem&aacute;ticas
+           </option>
+           <option value="F&iacute;sica">
+            F&iacute;sica
+           </option>
+          </select>
+         </div>
+         <div class="campo-formulario">
+          <label>
+           Enviar a:
+          </label>
+          <select id="selectAudiencia" required="">
+           <option value="todos">
+            Todos los alumnos
+           </option>
+           <option value="pendientes">
+            Con tareas pendientes
+           </option>
+          </select>
+         </div>
         </div>
-        <div class="tarjeta-resumen-noti">
-          <span>ENVIADAS</span>
-          <strong id="contadorEnviadas">2</strong>
+        <div class="campo-formulario">
+         <label>
+          Asunto
+         </label>
+         <input id="inputAsunto" placeholder="Ej: Cambio de fecha para el Parcial 2" required="" type="text">
+         </input>
         </div>
-        <div class="tarjeta-resumen-noti">
-          <span>AVISOS CENTRO</span>
-          <strong>1</strong>
+        <div class="campo-formulario">
+         <label>
+          Mensaje
+         </label>
+         <textarea id="inputMensaje" placeholder="Escribe aqu&iacute; los detalles del anuncio..." required="" rows="5"></textarea>
         </div>
-      </section>
-
-      <section class="notificaciones-grid">
-
-        <div class="columna-lista-noti">
-          <div class="pestanas-noti">
-            <button class="pestana-noti activa">TODAS</button>
-            <button class="pestana-noti">NO LEÍDAS</button>
-            <button class="pestana-noti">ENVIADAS</button>
-          </div>
-
-          <div class="lista-tarjetas-noti" id="listaNotificaciones">
-          </div>
+        <div class="campo-formulario">
+         <label>
+          Nivel de importancia
+         </label>
+         <div class="contenedor-radios-importancia">
+          <label class="radio-importancia neutral">
+           <input checked="" name="importancia" type="radio" value="Informativo"/>
+           <span>
+            Informativo
+           </span>
+          </label>
+          <label class="radio-importancia recordatorio">
+           <input name="importancia" type="radio" value="Recordatorio"/>
+           <span>
+            Recordatorio
+           </span>
+          </label>
+          <label class="radio-importancia urgente">
+           <input name="importancia" type="radio" value="Urgente"/>
+           <span>
+            Urgente
+           </span>
+          </label>
+         </div>
         </div>
-
-        <aside class="columna-detalle-noti">
-
-          <div class="panel-detalle-noti" id="panelDetalle">
-            <span class="badge-noti badge-centro" id="detalleBadge">CENTRO</span>
-            <h2 id="detalleTitulo">Selecciona una notificación</h2>
-            <p class="detalle-meta" id="detalleMeta">---</p>
-
-            <div class="detalle-cuerpo" id="detalleCuerpo">
-              Haz clic en una notificación de la lista para ver su contenido aquí.
-            </div>
-
-            <div class="detalle-acciones" id="detalleAcciones">
-              <button class="boton-secundario-noti" id="btnAccionNoti">MARCAR COMO LEÍDA</button>
-            </div>
-          </div>
-
-          <div class="panel-detalle-noti oculto" id="panelRedactar">
-            <h2 class="titulo-redactar">Redactar Notificación</h2>
-            <p class="subtitulo-redactar">Envía un aviso, recordatorio o mensaje importante a tus alumnos.</p>
-
-            <form id="formularioNotificacion">
-              <div class="formulario-doble">
-                <div class="campo-formulario">
-                  <label>Asignatura destino</label>
-                  <select id="selectAsignaturaNoti" required>
-                    <option value="" disabled selected>Selecciona...</option>
-                    <option value="Programación II">Programación II</option>
-                    <option value="Matemáticas">Matemáticas</option>
-                    <option value="Física">Física</option>
-                  </select>
-                </div>
-                <div class="campo-formulario">
-                  <label>Enviar a:</label>
-                  <select id="selectAudiencia" required>
-                    <option value="todos">Todos los alumnos</option>
-                    <option value="pendientes">Con tareas pendientes</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="campo-formulario">
-                <label>Asunto</label>
-                <input type="text" id="inputAsunto" placeholder="Ej: Cambio de fecha para el Parcial 2" required />
-              </div>
-
-              <div class="campo-formulario">
-                <label>Mensaje</label>
-                <textarea id="inputMensaje" rows="5" placeholder="Escribe aquí los detalles del anuncio..."
-                  required></textarea>
-              </div>
-
-              <div class="campo-formulario">
-                <label>Nivel de importancia</label>
-                <div class="contenedor-radios-importancia">
-                  <label class="radio-importancia neutral">
-                    <input type="radio" name="importancia" value="Informativo" checked>
-                    <span>Informativo</span>
-                  </label>
-                  <label class="radio-importancia recordatorio">
-                    <input type="radio" name="importancia" value="Recordatorio">
-                    <span>Recordatorio</span>
-                  </label>
-                  <label class="radio-importancia urgente">
-                    <input type="radio" name="importancia" value="Urgente">
-                    <span>Urgente</span>
-                  </label>
-                </div>
-              </div>
-
-              <div id="alertaExito" class="alerta-exito oculto">✓ Notificación enviada con éxito.</div>
-
-              <div class="acciones-redactar">
-                <button type="submit" class="boton-primario-noti btn-ancho-total" id="btnEnviarNoti">Enviar
-                  Notificación</button>
-                <button type="button" class="boton-secundario-noti btn-ancho-total"
-                  id="btnCancelarNoti">Cancelar</button>
-              </div>
-            </form>
-          </div>
-
-        </aside>
-      </section>
-    </main>
+        <div class="alerta-exito oculto" id="alertaExito">
+         &checkmark; Notificaci&oacute;n enviada con &eacute;xito.
+        </div>
+        <div class="acciones-redactar">
+         <button class="boton-primario-noti btn-ancho-total" id="btnEnviarNoti" type="submit">
+          Enviar
+                  Notificaci&oacute;n
+         </button>
+         <button class="boton-secundario-noti btn-ancho-total" id="btnCancelarNoti" type="button">
+          Cancelar
+         </button>
+        </div>
+       </form>
+      </div>
+     </aside>
+    </section>
+   </main>
+   <!-- Final del contenido principal de la página -->
   </div>
-
-  <script src="../js/doa-layout.js"></script>
-  <script src="../js/enviarnotificaciones.js"></script>
-</body>
-
+  <!-- Final del contenido principal -->
+  <script src="../js/doa-layout.js">
+  </script>
+  <script src="../js/enviarnotificaciones.js">
+  </script>
+ </body>
 </html>
