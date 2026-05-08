@@ -132,11 +132,84 @@
     .fila-examen-profesor .acciones-fila-examen-profesor {
         grid-area: accion;
         width: 100%;
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .acciones-fila-examen-profesor .fila-examen__accion {
         width: 100%;
         min-height: 38px;
     }
+}
+
+.examen-destacado-profesor {
+    overflow: hidden;
+}
+
+.examen-destacado-profesor .examen-destacado__accion {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.acciones-fila-examen-profesor {
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.acciones-fila-examen-profesor .fila-examen__accion {
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+
+    height: 38px;
+    padding: 0 var(--space-3);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .acciones-fila-examen-profesor {
+        flex-direction: row !important;
+    }
+
+    .acciones-fila-examen-profesor .fila-examen__accion {
+        width: auto !important;
+        min-width: auto !important;
+        flex: 0 0 auto !important;
+    }
+}
+
+.examen-destacado__accion {
+    min-width: 280px !important;
+    width: 280px !important;
+    max-width: 280px !important;
+}
+
+.acciones-fila-examen-profesor--destacado {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+}
+
+.acciones-fila-examen-profesor--destacado .fila-examen__accion {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+    padding: 0 12px !important;
+    white-space: nowrap !important;
 }

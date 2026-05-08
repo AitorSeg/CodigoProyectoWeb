@@ -163,7 +163,7 @@ function renderizarExamenesProfesor() {
             '</p>' +
             '<div class="acciones-fila-examen-profesor">' +
                 '<a href="crearexamen.html" class="fila-examen__accion fila-examen__accion--principal" data-accion="editar" data-examen="' + examen.id + '">Editar</a>' +
-                '<button type="button" class="fila-examen__accion" data-accion="resultados" data-examen="' + examen.id + '">Resultados</button>' +
+                '<button type="button" class="fila-examen__accion" data-accion="resultados" data-examen="' + examen.id + '">Notas</button>' +
             '</div>';
 
         const acciones = fila.querySelectorAll("[data-examen]");
