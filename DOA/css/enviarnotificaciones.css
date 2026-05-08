@@ -199,3 +199,69 @@
     .formulario-doble { grid-template-columns: 1fr; gap: 0; }
     .columna-detalle-noti { display: none; } /* En móvil requiere otra lógica o modales */
 }
+/*
+    Ajustes específicos para la pantalla separada de envío de notificaciones
+*/
+
+.contenido-enviar-notificaciones {
+    padding-bottom: var(--space-8);
+}
+
+.notificaciones-grid--envio {
+    align-items: stretch;
+}
+
+.panel-ayuda-envio,
+.panel-formulario-envio {
+    height: fit-content;
+}
+
+.panel-formulario-envio .detalle-meta {
+    margin-bottom: var(--space-5);
+}
+
+.acciones-redactar {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+}
+
+.btn-ancho-total {
+    width: 100%;
+    min-height: 44px;
+}
+
+.mensaje-error-campo {
+    min-height: 16px;
+    margin: 0;
+    color: var(--color-error);
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+    .pagina-enviar-notificaciones--secretaria .navegacion-lateral-doa {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .pagina-enviar-notificaciones--secretaria .navegacion-lateral-doa__item {
+        min-width: 0;
+        padding-inline: var(--space-1);
+        gap: var(--space-1);
+    }
+
+    .pagina-enviar-notificaciones--secretaria .navegacion-lateral-doa__item span:last-child {
+        font-size: 11px;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .notificaciones-grid--envio {
+        grid-template-columns: 1fr;
+    }
+
+    .acciones-redactar {
+        flex-direction: column;
+    }
+}
