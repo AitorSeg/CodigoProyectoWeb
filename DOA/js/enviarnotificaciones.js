@@ -19,6 +19,11 @@ function configurarNavegacionEnvioNotificaciones() {
         enlaceAsignaciones.hidden = true;
     }
 
+    if (rol === "alumno") {
+        window.location.href = "notificaciones.html";
+        return;
+    }
+
     if (rol === "secretaria") {
         document.body.classList.add("pagina-enviar-notificaciones--secretaria");
 
@@ -40,15 +45,30 @@ function configurarNavegacionEnvioNotificaciones() {
 }
 
 function obtenerRolEnvioNotificaciones() {
-    const parametros = new URLSearchParams(window.location.search);
-    const rolURL = parametros.get("rol");
+    const usuario = obtenerUsuarioDemoEnvioNotificaciones();
 
-    if (rolURL === "secretaria" || rolURL === "secretaría" || rolURL === "pas") {
+    if (usuario !== null) {
+        return normalizarRolEnvioNotificaciones(usuario.rol);
+    }
+
+    return "profesor";
+}
+
+function normalizarRolEnvioNotificaciones(rol) {
+    const rolNormalizado = String(rol || "")
+        .trim()
+        .toLowerCase();
+
+    if (rolNormalizado === "secretaria" || rolNormalizado === "pas") {
         return "secretaria";
     }
 
-    if (rolURL === "profesor") {
+    if (rolNormalizado === "profesor") {
         return "profesor";
+    }
+
+    if (rolNormalizado === "alumno") {
+        return "alumno";
     }
 
     return "profesor";

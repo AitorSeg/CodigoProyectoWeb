@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        if (usuarioEncontrado.rol === "Secretaría" || usuarioEncontrado.rol === "PAS") {
+        if (usuarioEncontrado.rol === "Secretaria" || usuarioEncontrado.rol === "PAS") {
             window.location.href = "panel_secretaria.html";
             return;
         }
