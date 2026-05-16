@@ -1,153 +1,96 @@
 /*
     Pantalla: Enviar notificaciones
-    Uso: Profesor y Secretaría.
 */
 
-document.addEventListener("DOMContentLoaded", function () {
-  prepararFormularioEnvioNotificaciones();
+const formulario_notificacion = document.getElementById("formularioNotificacion");
+const boton_cancelar_notificacion = document.getElementById("btnCancelarNoti");
+
+formulario_notificacion.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    procesar_envio_notificacion();
 });
 
-function prepararFormularioEnvioNotificaciones() {
-  const formulario = document.getElementById("formularioNotificacion");
-  const botonCancelar = document.getElementById("btnCancelarNoti");
+boton_cancelar_notificacion.addEventListener("click", function () {
+    limpiar_formulario_envio_notificaciones();
+});
 
-  if (formulario !== null) {
-    formulario.addEventListener("submit", function (evento) {
-      evento.preventDefault();
-      procesarEnvioNotificacion(formulario);
+function procesar_envio_notificacion() {
+    limpiar_errores_envio_notificaciones();
+
+    const asignatura = document.getElementById("selectAsignaturaNoti").value.trim();
+    const audiencia = document.getElementById("selectAudiencia").value.trim();
+    const asunto = document.getElementById("inputAsunto").value.trim();
+    const mensaje = document.getElementById("inputMensaje").value.trim();
+
+    let formulario_valido = true;
+
+    if (asignatura === "") {
+        mostrar_error_envio_notificaciones("errorAsignaturaNoti", "Selecciona una asignatura o ámbito.");
+        formulario_valido = false;
+    }
+
+    if (audiencia === "") {
+        mostrar_error_envio_notificaciones("errorAudienciaNoti", "Selecciona los destinatarios.");
+        formulario_valido = false;
+    }
+
+    if (asunto === "") {
+        mostrar_error_envio_notificaciones("errorAsuntoNoti", "Introduce un asunto.");
+        formulario_valido = false;
+    }
+
+    if (mensaje === "") {
+        mostrar_error_envio_notificaciones("errorMensajeNoti", "Escribe el mensaje de la notificación.");
+        formulario_valido = false;
+    }
+
+    if (!formulario_valido) {
+        return;
+    }
+
+    guardar_ultima_notificacion_simulada(asignatura, audiencia, asunto, mensaje);
+    mostrar_confirmacion_envio_notificaciones();
+    limpiar_formulario_envio_notificaciones();
+}
+
+function mostrar_error_envio_notificaciones(id_elemento, texto) {
+    document.getElementById(id_elemento).textContent = texto;
+}
+
+function limpiar_errores_envio_notificaciones() {
+    const errores = document.querySelectorAll(".mensaje-error-campo");
+
+    errores.forEach(function (error) {
+        error.textContent = "";
     });
-  }
-
-  if (botonCancelar !== null) {
-    botonCancelar.addEventListener("click", function () {
-      limpiarFormularioEnvioNotificaciones(formulario);
-    });
-  }
 }
 
-function procesarEnvioNotificacion(formulario) {
-  limpiarErroresEnvioNotificaciones();
+function guardar_ultima_notificacion_simulada(asignatura, audiencia, asunto, mensaje) {
+    const importancia = document.querySelector('input[name="importancia"]:checked').value;
 
-  const asignatura = obtenerValorCampoEnvioNotificaciones(
-    "selectAsignaturaNoti",
-  );
-  const audiencia = obtenerValorCampoEnvioNotificaciones("selectAudiencia");
-  const asunto = obtenerValorCampoEnvioNotificaciones("inputAsunto");
-  const mensaje = obtenerValorCampoEnvioNotificaciones("inputMensaje");
+    const notificacion = {
+        asignatura: asignatura,
+        audiencia: audiencia,
+        asunto: asunto,
+        mensaje: mensaje,
+        importancia: importancia,
+        fecha_simulada: new Date().toISOString()
+    };
 
-  let formularioValido = true;
-
-  if (asignatura === "") {
-    mostrarErrorEnvioNotificaciones(
-      "errorAsignaturaNoti",
-      "Selecciona una asignatura o ámbito.",
-    );
-    formularioValido = false;
-  }
-
-  if (audiencia === "") {
-    mostrarErrorEnvioNotificaciones(
-      "errorAudienciaNoti",
-      "Selecciona los destinatarios.",
-    );
-    formularioValido = false;
-  }
-
-  if (asunto === "") {
-    mostrarErrorEnvioNotificaciones("errorAsuntoNoti", "Introduce un asunto.");
-    formularioValido = false;
-  }
-
-  if (mensaje === "") {
-    mostrarErrorEnvioNotificaciones(
-      "errorMensajeNoti",
-      "Escribe el mensaje de la notificación.",
-    );
-    formularioValido = false;
-  }
-
-  if (!formularioValido) {
-    return;
-  }
-
-  guardarUltimaNotificacionSimulada(asignatura, audiencia, asunto, mensaje);
-  mostrarConfirmacionEnvioNotificaciones();
-  limpiarFormularioEnvioNotificaciones(formulario);
+    localStorage.setItem("doaUltimaNotificacionSimulada", JSON.stringify(notificacion));
 }
 
-function obtenerValorCampoEnvioNotificaciones(idCampo) {
-  const campo = document.getElementById(idCampo);
+function mostrar_confirmacion_envio_notificaciones() {
+    const alerta = document.getElementById("alertaExito");
 
-  if (campo === null) {
-    return "";
-  }
+    alerta.classList.remove("oculto");
 
-  return campo.value.trim();
+    setTimeout(function () {
+        alerta.classList.add("oculto");
+    }, 3500);
 }
 
-function mostrarErrorEnvioNotificaciones(idElemento, texto) {
-  const elemento = document.getElementById(idElemento);
-
-  if (elemento !== null) {
-    elemento.textContent = texto;
-  }
-}
-
-function limpiarErroresEnvioNotificaciones() {
-  const errores = document.querySelectorAll(".mensaje-error-campo");
-
-  errores.forEach(function (error) {
-    error.textContent = "";
-  });
-}
-
-function guardarUltimaNotificacionSimulada(
-  asignatura,
-  audiencia,
-  asunto,
-  mensaje,
-) {
-  const importanciaSeleccionada = document.querySelector(
-    'input[name="importancia"]:checked',
-  );
-  const importancia =
-    importanciaSeleccionada !== null
-      ? importanciaSeleccionada.value
-      : "Informativo";
-
-  const notificacion = {
-    asignatura: asignatura,
-    audiencia: audiencia,
-    asunto: asunto,
-    mensaje: mensaje,
-    importancia: importancia,
-    fechaSimulada: new Date().toISOString(),
-  };
-
-  localStorage.setItem(
-    "doaUltimaNotificacionSimulada",
-    JSON.stringify(notificacion),
-  );
-}
-
-function mostrarConfirmacionEnvioNotificaciones() {
-  const alerta = document.getElementById("alertaExito");
-
-  if (alerta === null) {
-    return;
-  }
-
-  alerta.classList.remove("oculto");
-
-  setTimeout(function () {
-    alerta.classList.add("oculto");
-  }, 3500);
-}
-
-function limpiarFormularioEnvioNotificaciones(formulario) {
-  if (formulario !== null) {
-    formulario.reset();
-  }
-
-  limpiarErroresEnvioNotificaciones();
+function limpiar_formulario_envio_notificaciones() {
+    formulario_notificacion.reset();
+    limpiar_errores_envio_notificaciones();
 }

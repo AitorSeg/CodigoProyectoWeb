@@ -6,18 +6,16 @@ let notificaciones = [];
 let filtroActivo = "todas";
 let notificacionSeleccionada = null;
 
-document.addEventListener("DOMContentLoaded", function () {
-    notificaciones = cargarNotificacionesDemo();
+notificaciones = cargarNotificacionesDemo();
 
-    prepararFiltrosNotificaciones();
-    prepararAccionesNotificaciones();
-    renderizarResumenNotificaciones();
-    renderizarListadoNotificaciones();
+prepararFiltrosNotificaciones();
+prepararAccionesNotificaciones();
+renderizarResumenNotificaciones();
+renderizarListadoNotificaciones();
 
-    if (notificaciones.length > 0) {
-        seleccionarNotificacion(notificaciones[0].id);
-    }
-});
+if (notificaciones.length > 0) {
+    seleccionarNotificacion(notificaciones[0].id);
+}
 
 function cargarNotificacionesDemo() {
     const estadoLectura = obtenerEstadoLecturaGuardado();

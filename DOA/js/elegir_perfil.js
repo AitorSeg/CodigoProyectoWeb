@@ -71,7 +71,7 @@ function seleccionarUsuario(usuarioSeleccionado) {
 
   perfilNombre.textContent = usuarioSeleccionado.dataset.nombre;
   perfilDni.textContent = usuarioSeleccionado.dataset.dni;
-  perfilRol.textContent = usuarioSeleccionado.dataset.rol;
+  perfilRol.textContent = usuarioSeleccionado.dataset.rolTexto;
 
   ocultarError();
   bajarAlLoginEnMovil();
