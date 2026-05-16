@@ -1,3 +1,9 @@
+<?php
+    $rol_pagina = "profesor";
+    $pagina_activa = "panel";
+    $enlace_panel = "panel_profesor.php";
+    $placeholder_buscador = "Buscar asignatura, tarea...";
+?>
 <!DOCTYPE html>
 <html lang="es">
  <head>
@@ -18,124 +24,12 @@
  </head>
  <body class="pagina-doa pagina-panel-profesor">
   <!-- Inicio de el header -->
-  <header class="cabecera-panel-doa">
-   <!-- Inicio del logo -->
-   <div class="cabecera-panel-doa__logo">
-    <div class="marca-doa">
-     <a aria-label="Ir al panel del profesor de DOA" class="marca-doa__link" href="panel_profesor.html">
-      <img alt="Logo de DOA" class="logo-doa" src="img/LogoDoaAzulRecortado.png"/>
-     </a>
-     <div class="marca-doa__powered">
-      <span class="marca-doa__powered-text">
-       Powered by
-      </span>
-      <img alt="Grado en Tecnologías Interactivas" class="marca-doa__powered-logo" src="img/logoGTI_blanco_fondo_negro-removebg-preview.png"/>
-     </div>
-    </div>
-   </div>
-   <!-- Final del logo -->
-   <!-- Inicio del buscador -->
-   <div class="cabecera-panel-doa__buscador">
-    <div aria-label="Buscador visual pendiente de activar" class="buscador-header buscador-header--desactivado" title="El buscador se activará cuando se conecte la base de datos">
-     <span aria-hidden="true" class="buscador-header__icono">
-      <img alt="" src="img/iconos/grey-search.svg"/>
-     </span>
-     <input disabled="" placeholder="Buscar asignatura, tarea..." type="search"/>
-    </div>
-   </div>
-   <!-- Final del buscador -->
-   <!-- Inicio del perfil de usuario -->
-   <div class="cabecera-panel-doa__perfil">
-    <div class="perfil-header">
-     <span aria-hidden="true" class="perfil-header__icono">
-      <img alt="" src="img/iconos/grey-user.svg"/>
-     </span>
-     <span class="perfil-header__texto">
-      <strong id="nombreUsuarioHeader">
-       Kevan Pounds Mainston
-      </strong>
-      <small id="rolUsuarioHeader">
-       Profesor
-      </small>
-     </span>
-    </div>
-    <!-- Inicio del botón cerrar sesión en móvil -->
-    <a aria-label="Cerrar sesión" class="boton-cerrar-sesion-movil" href="elegir_perfil.html">
-     <span aria-hidden="true" class="boton-cerrar-sesion-movil__icono">
-      <img alt="" class="icono-estado icono-estado--gris" src="img/iconos/grey-log-out.svg"/>
-      <img alt="" class="icono-estado icono-estado--azul" src="img/iconos/blue-log-out.svg"/>
-     </span>
-    </a>
-    <!-- Final del botón cerrar sesión en móvil -->
-   </div>
-   <!-- Final del perfil de usuario -->
-  </header>
+    <?php include "includes/header-doa.php"; ?>
   <!-- Final de el header -->
   <!-- Inicio del contenido principal -->
   <div class="layout-doa">
    <!-- Inicio de la barra lateral -->
-   <div class="barra-lateral-doa">
-    <!-- Inicio de la tarjeta de modo de prueba -->
-    <div class="tarjeta-modo-prueba">
-     <div class="tarjeta-modo-prueba__cabecera">
-      <span aria-hidden="true" class="tarjeta-modo-prueba__icono">
-       <img alt="" src="img/iconos/grey-info.svg"/>
-      </span>
-      <strong>
-       Modo de prueba
-      </strong>
-     </div>
-     <p>
-      Estás usando DOA con datos de prueba. Las acciones no afectan a usuarios reales
-                    y los permisos dependen del perfil elegido.
-     </p>
-    </div>
-    <!-- Final de la tarjeta de modo de prueba -->
-    <!-- Inicio de la navegación lateral -->
-    <nav aria-label="Navegación principal de DOA" class="navegacion-lateral-doa">
-     <a class="navegacion-lateral-doa__item navegacion-lateral-doa__item--activo" href="panel_profesor.html">
-      <span aria-hidden="true" class="navegacion-lateral-doa__icono">
-       <img alt="" class="icono-estado icono-estado--gris" src="img/iconos/grey-layout-dashboard.svg"/>
-       <img alt="" class="icono-estado icono-estado--azul" src="img/iconos/blue-layout-dashboard.svg"/>
-      </span>
-      <span>
-       Panel Principal
-      </span>
-     </a>
-     <a class="navegacion-lateral-doa__item" href="asignaturas_profesor.html">
-      <span aria-hidden="true" class="navegacion-lateral-doa__icono">
-       <img alt="" class="icono-estado icono-estado--gris" src="img/iconos/grey-notebook.svg"/>
-       <img alt="" class="icono-estado icono-estado--azul" src="img/iconos/blue-notebook.svg"/>
-      </span>
-      <span>
-       Mis Asignaturas
-      </span>
-     </a>
-     <a class="navegacion-lateral-doa__item" href="enviarnotificaciones.html">
-      <span aria-hidden="true" class="navegacion-lateral-doa__icono">
-       <img alt="" class="icono-estado icono-estado--gris" src="img/iconos/grey-bell.svg"/>
-       <img alt="" class="icono-estado icono-estado--azul" src="img/iconos/blue-bell.svg"/>
-      </span>
-      <span>
-       Notificaciones
-      </span>
-     </a>
-    </nav>
-    <!-- Final de la navegación lateral -->
-    <!-- Inicio del botón cerrar sesión en escritorio -->
-    <div class="barra-lateral-doa__salida">
-     <a class="boton-cerrar-sesion" href="elegir_perfil.html">
-      <span aria-hidden="true" class="boton-cerrar-sesion__icono">
-       <img alt="" class="icono-estado icono-estado--gris" src="img/iconos/grey-log-out.svg"/>
-       <img alt="" class="icono-estado icono-estado--azul" src="img/iconos/blue-log-out.svg"/>
-      </span>
-      <span>
-       Cerrar sesión
-      </span>
-     </a>
-    </div>
-    <!-- Final del botón cerrar sesión en escritorio -->
-   </div>
+    <?php include "includes/barra-lateral-doa.php"; ?>
    <!-- Final de la barra lateral -->
    <!-- Inicio del contenido principal de la página -->
         <main class="contenido-doa contenido-panel-profesor">
