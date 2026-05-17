@@ -53,13 +53,13 @@ $placeholder_buscador = "Buscar asignatura...";
                         </span>
                     </button>
                     <div class="dato-asignaturas__detalle" hidden="" id="detalleAsignaturasActivas">
-                        <a class="enlace-detalle-asignatura" data-asignatura="matematicas" href="detalle_asignatura.html">
+                        <a class="enlace-detalle-asignatura" data-asignatura="matematicas" href="detalle_asignatura.php">
                             Matemáticas
                         </a>
-                        <a class="enlace-detalle-asignatura" data-asignatura="programacion" href="detalle_asignatura.html">
+                        <a class="enlace-detalle-asignatura" data-asignatura="programacion" href="detalle_asignatura.php">
                             Programación
                         </a>
-                        <a class="enlace-detalle-asignatura" data-asignatura="fisica" href="detalle_asignatura.html">
+                        <a class="enlace-detalle-asignatura" data-asignatura="fisica" href="detalle_asignatura.php">
                             Física
                         </a>
                     </div>
@@ -145,7 +145,7 @@ $placeholder_buscador = "Buscar asignatura...";
                         </strong>
                     </div>
                     <div class="tarjeta-asignatura__acciones">
-                        <a class="boton-asignatura boton-asignatura--principal" href="detalle_asignatura.html">
+                        <a class="boton-asignatura boton-asignatura--principal" href="detalle_asignatura.php">
                             Entrar
                         </a>
                         <a class="boton-asignatura enlace-recurso-asignatura" href="Recursosdoaalumno.html?materia=matematicas">
@@ -190,7 +190,7 @@ $placeholder_buscador = "Buscar asignatura...";
                         </strong>
                     </div>
                     <div class="tarjeta-asignatura__acciones">
-                        <a class="boton-asignatura boton-asignatura--principal" href="detalle_asignatura.html">
+                        <a class="boton-asignatura boton-asignatura--principal" href="detalle_asignatura.php">
                             Entrar
                         </a>
                         <a class="boton-asignatura enlace-recurso-asignatura" href="Recursosdoaalumno.html?materia=programacion">
@@ -235,7 +235,7 @@ $placeholder_buscador = "Buscar asignatura...";
                         </strong>
                     </div>
                     <div class="tarjeta-asignatura__acciones">
-                        <a class="boton-asignatura boton-asignatura--principal" href="detalle_asignatura.html">
+                        <a class="boton-asignatura boton-asignatura--principal" href="detalle_asignatura.php">
                             Entrar
                         </a>
                         <a class="boton-asignatura enlace-recurso-asignatura" href="Recursosdoaalumno.html?materia=fisica">

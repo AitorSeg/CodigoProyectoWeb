@@ -85,7 +85,7 @@ $placeholder_buscador = "Buscar asignatura...";
                                 <h2>
                                     Progreso Matemáticas
                                 </h2>
-                                <a class="boton-entrar-asignatura" href="detalle_asignatura.html">
+                                <a class="boton-entrar-asignatura" href="detalle_asignatura.php">
                                     Entrar
                                 </a>
                             </div>
@@ -149,7 +149,7 @@ $placeholder_buscador = "Buscar asignatura...";
                                 <h2>
                                     Progreso Programación
                                 </h2>
-                                <a class="boton-entrar-asignatura" href="detalle_asignatura.html">
+                                <a class="boton-entrar-asignatura" href="detalle_asignatura.php">
                                     Entrar
                                 </a>
                             </div>
@@ -213,7 +213,7 @@ $placeholder_buscador = "Buscar asignatura...";
                                 <h2>
                                     Progreso Física
                                 </h2>
-                                <a class="boton-entrar-asignatura" href="detalle_asignatura.html">
+                                <a class="boton-entrar-asignatura" href="detalle_asignatura.php">
                                     Entrar
                                 </a>
                             </div>

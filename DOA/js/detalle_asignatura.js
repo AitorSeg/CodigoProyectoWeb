@@ -1,54 +1,52 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const idAsignatura = window.obtenerAsignaturaSeleccionada() || "programacion";
-    const datosAsignatura = window.DOA_ASIGNATURAS[idAsignatura] || window.DOA_ASIGNATURAS.programacion;
+/*
+    Pantalla: Detalle de asignatura
+    Carga la asignatura seleccionada y actualiza el contenido principal.
+*/
 
-    renderizarDetalleAsignatura(datosAsignatura, idAsignatura);
-});
+const id_asignatura = window.obtenerAsignaturaSeleccionada() || "programacion";
+const datos_asignatura = window.DOA_ASIGNATURAS[id_asignatura] || window.DOA_ASIGNATURAS.programacion;
 
-function renderizarDetalleAsignatura(datos, idAsignatura) {
-    document.getElementById("tituloAsignatura").textContent = datos.nombre;
-    document.getElementById("profesorAsignatura").textContent = datos.profesor;
+window.guardarAsignaturaSeleccionada(id_asignatura);
 
-    const unidadTexto = document.getElementById("unidadActualTextoAsignatura");
-    if (unidadTexto) unidadTexto.innerHTML = datos.unidadActualTexto;
+renderizar_detalle_asignatura(datos_asignatura, id_asignatura);
 
-    document.getElementById("tituloUnidadActual").textContent = datos.unidadActualTitulo;
-    document.getElementById("descripcionUnidadActual").textContent = datos.descripcion;
+function renderizar_detalle_asignatura(datos, id_asignatura) {
+  document.getElementById("tituloAsignatura").textContent = datos.nombre;
+  document.getElementById("profesorAsignatura").textContent = datos.profesor;
+  document.getElementById("unidadActualTextoAsignatura").textContent = datos.unidadActualTexto;
 
-    const rutaProgreso = document.getElementById("rutaProgresoAsignatura");
+  document.getElementById("tituloUnidadActual").textContent = datos.unidadActualTitulo;
+  document.getElementById("descripcionUnidadActual").textContent = datos.descripcion;
 
-    if (rutaProgreso) {
-        rutaProgreso.classList.remove(
-            "progreso-asignatura--avance-40-33",
-            "progreso-asignatura--avance-40-333"
-        );
+  actualizar_ruta_progreso(datos);
+  actualizar_panel_lateral(datos);
+  actualizar_enlaces_asignatura(id_asignatura);
+}
 
-        rutaProgreso.classList.add(datos.progresoClase || "progreso-asignatura--avance-40-33");
-    }
+function actualizar_ruta_progreso(datos) {
+  const ruta_progreso = document.getElementById("rutaProgresoAsignatura");
 
-    document.getElementById("tituloEvaluacionAsignatura").textContent = datos.evaluacion.titulo;
-    document.getElementById("fechaEvaluacionAsignatura").textContent = datos.evaluacion.fecha;
-    document.getElementById("horaEvaluacionAsignatura").textContent = datos.evaluacion.hora;
-    document.getElementById("lugarEvaluacionAsignatura").textContent = datos.evaluacion.lugar;
-    document.getElementById("tituloTareaAsignatura").textContent = datos.tarea.titulo;
-    document.getElementById("vencimientoTareaAsignatura").textContent = datos.tarea.vencimiento;
+  ruta_progreso.classList.remove(
+    "progreso-asignatura--avance-40-33",
+    "progreso-asignatura--avance-40-333"
+  );
 
-    // ==========================================
-    // REDIRECCIÓN INTELIGENTE (EVITA EL CRUCE)
-    // ==========================================
-    // Miramos el nombre del usuario en el header para saber si es profe
-    const nombreUsuario = document.getElementById('nombreUsuarioHeader').textContent.toLowerCase();
-    const esProfesor = nombreUsuario.includes('kevan') ||
-        nombreUsuario.includes('pepito') ||
-        nombreUsuario.includes('eolande');
+  ruta_progreso.classList.add(datos.progresoClase);
+}
 
-    // Si es profe, va a recursosdoa.html, si es alumno a Recursosdoaalumno.html
-    const paginaDestino = esProfesor ? 'recursosdoa.html' : 'Recursosdoaalumno.html';
-    const urlDestino = `${paginaDestino}?materia=${idAsignatura}`;
+function actualizar_panel_lateral(datos) {
+  document.getElementById("tituloEvaluacionAsignatura").textContent = datos.evaluacion.titulo;
+  document.getElementById("fechaEvaluacionAsignatura").textContent = datos.evaluacion.fecha;
+  document.getElementById("horaEvaluacionAsignatura").textContent = datos.evaluacion.hora;
+  document.getElementById("lugarEvaluacionAsignatura").textContent = datos.evaluacion.lugar;
 
-    const linkPestanaRecursos = document.getElementById('linkPestanaRecursos');
-    const linkBotonRecursos = document.getElementById('linkBotonRecursos');
+  document.getElementById("tituloTareaAsignatura").textContent = datos.tarea.titulo;
+  document.getElementById("vencimientoTareaAsignatura").textContent = datos.tarea.vencimiento;
+}
 
-    if (linkPestanaRecursos) linkPestanaRecursos.href = urlDestino;
-    if (linkBotonRecursos) linkBotonRecursos.href = urlDestino;
+function actualizar_enlaces_asignatura(id_asignatura) {
+  const url_recursos = "Recursosdoaalumno.html?materia=" + id_asignatura;
+
+  document.getElementById("linkPestanaRecursos").href = url_recursos;
+  document.getElementById("linkBotonRecursos").href = url_recursos;
 }
