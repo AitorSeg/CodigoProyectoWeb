@@ -5,7 +5,7 @@ if (trialBtn !== null) {
         const sesionIniciada = localStorage.getItem("gtiSesionIniciada");
 
         if (sesionIniciada === "true") {
-            window.location.href = "../../DOA/html/elegir_perfil.html";
+            window.location.href = "../../DOA/html/elegir_perfil.php";
         } else {
             window.location.href = "../html/registro.html";
         }

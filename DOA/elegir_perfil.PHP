@@ -23,7 +23,7 @@
           <a
             aria-label="Volver a elegir perfil de prueba"
             class="marca-doa__link"
-            href="elegir_perfil.html"
+            href="elegir_perfil.php"
           >
             <img
               alt="Logo de DOA"
@@ -121,7 +121,7 @@
                 <small> (3) </small>
               </span>
             </button>
-            <button class="filtro-perfil" data-filtro="pas" type="button">
+            <button class="filtro-perfil" data-filtro="secretaria" type="button">
               <span aria-hidden="true" class="filtro-perfil__icono">
                 <img
                   alt=""
@@ -381,7 +381,7 @@
                 </span>
               </button>
             </section>
-            <section class="grupo-usuarios-demo" data-grupo="pas">
+            <section class="grupo-usuarios-demo" data-grupo="secretaria">
               <h3>Secretaría</h3>
               <button
                 class="usuario-demo"
