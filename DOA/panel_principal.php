@@ -40,7 +40,7 @@ $placeholder_buscador = "Buscar asignatura...";
                         <h1>
                             Mis asignaturas
                         </h1>
-                        <a class="cabecera-bloque-panel__enlace" href="asignaturas.html">
+                        <a class="cabecera-bloque-panel__enlace" href="asignaturas.php">
                             VER TODAS LAS ASIGNATURAS
                         </a>
                     </div>

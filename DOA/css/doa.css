@@ -10,6 +10,7 @@
   --color-surface: #0e1622;
   --color-surface-alt: #151f2d;
   --color-border: #243246;
+  --color-bg-rgb: 7, 11, 18;
 
   --color-primary: #00e5ff;
   --color-primary-hover: #33e9ff;
@@ -183,7 +184,7 @@ a:hover {
 
 .input:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.15);
 }
 
 .text-muted {

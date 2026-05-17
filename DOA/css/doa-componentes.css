@@ -134,73 +134,78 @@
 }
 
 .tarjeta-progreso-asignatura--activa .progreso-asignatura::after {
-    top: 43px;
-    height: 3px;
-    background: linear-gradient(
-        90deg,
-        var(--color-primary),
-        var(--color-primary-hover)
-    );
-    box-shadow:
-        0 0 8px rgba(var(--color-primary-rgb), 0.45),
-        0 0 16px rgba(var(--color-primary-rgb), 0.22);
+  top: 43px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-primary-hover)
+  );
+  box-shadow:
+    0 0 8px rgba(var(--color-primary-rgb), 0.45),
+    0 0 16px rgba(var(--color-primary-rgb), 0.22);
 }
 
 .progreso-asignatura__destello {
-    display: none;
-    position: absolute;
-    top: 45px;
-    left: 10%;
-    width: var(--progreso-escritorio, 0%);
-    height: 0;
-    z-index: 1;
-    pointer-events: none;
+  display: none;
+  position: absolute;
+  top: 45px;
+  left: 10%;
+  width: var(--progreso-escritorio, 0%);
+  height: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .tarjeta-progreso-asignatura--activa .progreso-asignatura__destello {
-    display: block;
+  display: block;
+}
+
+.tarjeta-progreso-asignatura--activa .progreso-asignatura {
+  --duracion-animacion-progreso: 4200ms;
 }
 
 .progreso-asignatura__destello::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 30px;
-    height: 3px;
-    border-radius: 999px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--color-primary-hover),
-        transparent
-    );
-    box-shadow:
-        0 0 8px rgba(var(--color-primary-hover-rgb), 0.9),
-        0 0 18px rgba(var(--color-primary-rgb), 0.62),
-        0 0 30px rgba(var(--color-primary-rgb), 0.34);
-    transform: translate(-50%, -50%);
-    animation: destello-progreso-asignatura 4200ms linear infinite;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 30px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary-hover),
+    transparent
+  );
+  box-shadow:
+    0 0 8px rgba(var(--color-primary-hover-rgb), 0.9),
+    0 0 18px rgba(var(--color-primary-rgb), 0.62),
+    0 0 30px rgba(var(--color-primary-rgb), 0.34);
+  transform: translate(-50%, -50%);
+  animation: destello-progreso-asignatura var(--duracion-animacion-progreso)
+    linear infinite;
 }
 
 @keyframes destello-progreso-asignatura {
-    from {
-        left: 0;
-        opacity: 0;
-    }
+  from {
+    left: 0;
+    opacity: 0;
+  }
 
-    10% {
-        opacity: 1;
-    }
+  10% {
+    opacity: 1;
+  }
 
-    90% {
-        opacity: 1;
-    }
+  90% {
+    opacity: 1;
+  }
 
-    to {
-        left: 100%;
-        opacity: 0;
-    }
+  to {
+    left: 100%;
+    opacity: 0;
+  }
 }
 
 .tarjeta-progreso-asignatura--activa
@@ -209,19 +214,23 @@
 .tarjeta-progreso-asignatura--activa
   .progreso-asignatura__unidad--actual
   .progreso-asignatura__estado {
-  animation: pulso-unidad-actual-caja 4200ms ease-in-out infinite;
+  animation: pulso-unidad-actual-caja var(--duracion-animacion-progreso)
+    ease-in-out infinite;
 }
 
 .tarjeta-progreso-asignatura--activa
   .progreso-asignatura__unidad--actual
   .progreso-asignatura__nombre {
-  animation: pulso-unidad-actual-texto 4200ms ease-in-out infinite;
+  animation: pulso-unidad-actual-texto var(--duracion-animacion-progreso)
+    ease-in-out infinite;
 }
 
 .tarjeta-progreso-asignatura--activa
   .progreso-asignatura__unidad--actual
-  .progreso-asignatura__estado img {
-  animation: pulso-unidad-actual-icono 4200ms ease-in-out infinite;
+  .progreso-asignatura__estado
+  img {
+  animation: pulso-unidad-actual-icono var(--duracion-animacion-progreso)
+    ease-in-out infinite;
 }
 
 @keyframes pulso-unidad-actual-caja {
@@ -296,20 +305,17 @@
   }
 
   84% {
-    filter:
-      drop-shadow(0 0 4px rgba(var(--color-primary-hover-rgb), 0.45))
+    filter: drop-shadow(0 0 4px rgba(var(--color-primary-hover-rgb), 0.45))
       drop-shadow(0 0 10px rgba(var(--color-primary-rgb), 0.28));
   }
 
   90% {
-    filter:
-      drop-shadow(0 0 6px rgba(var(--color-primary-hover-rgb), 0.75))
+    filter: drop-shadow(0 0 6px rgba(var(--color-primary-hover-rgb), 0.75))
       drop-shadow(0 0 16px rgba(var(--color-primary-rgb), 0.48));
   }
 
   96% {
-    filter:
-      drop-shadow(0 0 5px rgba(var(--color-primary-hover-rgb), 0.55))
+    filter: drop-shadow(0 0 5px rgba(var(--color-primary-hover-rgb), 0.55))
       drop-shadow(0 0 12px rgba(var(--color-primary-rgb), 0.34));
   }
 }
@@ -663,7 +669,7 @@
     top: 46px;
     left: 16.666%;
     width: var(--progreso-movil, var(--progreso-escritorio, 0%));
-}
+  }
 
   .progreso-asignatura__unidad--ocultar-movil {
     display: none;
