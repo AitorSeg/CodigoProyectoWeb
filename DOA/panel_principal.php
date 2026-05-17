@@ -90,6 +90,7 @@ $placeholder_buscador = "Buscar asignatura...";
                                 </a>
                             </div>
                             <div aria-label="Progreso de Matemáticas" class="progreso-asignatura progreso-asignatura--avance-40-33">
+                                <span class="progreso-asignatura__destello" aria-hidden="true"></span>
                                 <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
                                     <span class="progreso-asignatura__badge">
                                     </span>
@@ -153,6 +154,7 @@ $placeholder_buscador = "Buscar asignatura...";
                                 </a>
                             </div>
                             <div aria-label="Progreso de Programación" class="progreso-asignatura progreso-asignatura--avance-40-333">
+                                <span class="progreso-asignatura__destello" aria-hidden="true"></span>
                                 <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
                                     <span class="progreso-asignatura__badge">
                                     </span>
@@ -216,6 +218,7 @@ $placeholder_buscador = "Buscar asignatura...";
                                 </a>
                             </div>
                             <div aria-label="Progreso de Física" class="progreso-asignatura progreso-asignatura--avance-40-333">
+                                <span class="progreso-asignatura__destello" aria-hidden="true"></span>
                                 <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
                                     <span class="progreso-asignatura__badge">
                                     </span>

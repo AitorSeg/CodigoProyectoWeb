@@ -4,208 +4,210 @@
    ========================================================= */
 
 :root {
-    --font-main: "Inter", Arial, Helvetica, sans-serif;
+  --font-main: "Inter", Arial, Helvetica, sans-serif;
 
-    --color-bg: #070B12;
-    --color-surface: #0E1622;
-    --color-surface-alt: #151F2D;
-    --color-border: #243246;
+  --color-bg: #070b12;
+  --color-surface: #0e1622;
+  --color-surface-alt: #151f2d;
+  --color-border: #243246;
 
-    --color-primary: #00E5FF;
-    --color-primary-hover: #33E9FF;
-    --color-primary-dark: #004A54;
+  --color-primary: #00e5ff;
+  --color-primary-hover: #33e9ff;
+  --color-primary-dark: #004a54;
+  --color-primary-rgb: 0, 229, 255;
+  --color-primary-hover-rgb: 51, 233, 255;
 
-    --color-text: #F2F6FA;
-    --color-muted: #A8B7C8;
-    --color-soft: #6F7F91;
-    --color-dark: #04131A;
+  --color-text: #f2f6fa;
+  --color-muted: #a8b7c8;
+  --color-soft: #6f7f91;
+  --color-dark: #04131a;
 
-    --color-error: #FF4055;
-    --color-success: #98EF6A;
-    --color-warning: #FF945C;
+  --color-error: #ff4055;
+  --color-success: #98ef6a;
+  --color-warning: #ff945c;
 
-    --space-1: 4px;
-    --space-2: 8px;
-    --space-3: 12px;
-    --space-4: 16px;
-    --space-5: 20px;
-    --space-6: 24px;
-    --space-8: 32px;
-    --space-10: 40px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
 
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 
-    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    min-height: 100%;
-    font-size: 16px;
+  min-height: 100%;
+  font-size: 16px;
 }
 
 body {
-    min-height: 100vh;
-    margin: 0;
-    font-family: var(--font-main);
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--color-text);
-    background: var(--color-bg);
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
 }
 
 img,
 svg {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 button,
 input,
 textarea,
 select {
-    font: inherit;
+  font: inherit;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 h1,
 h2,
 h3,
 p {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 h1 {
-    margin-bottom: var(--space-3);
-    font-size: 40px;
-    line-height: 1.15;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+  margin-bottom: var(--space-3);
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 h2 {
-    margin-bottom: var(--space-3);
-    font-size: 24px;
-    line-height: 1.25;
-    font-weight: 700;
+  margin-bottom: var(--space-3);
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 700;
 }
 
 h3 {
-    margin-bottom: var(--space-3);
-    font-size: 14px;
-    line-height: 1.3;
-    font-weight: 700;
-    color: var(--color-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+  margin-bottom: var(--space-3);
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 p {
-    margin-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
 a {
-    color: var(--color-primary);
-    text-decoration: none;
+  color: var(--color-primary);
+  text-decoration: none;
 }
 
 a:hover {
-    color: var(--color-primary-hover);
+  color: var(--color-primary-hover);
 }
 
 .card {
-    padding: var(--space-6);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface);
-    box-shadow: var(--shadow-soft);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
 }
 
 .btn {
-    min-height: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    padding: 0 var(--space-4);
-    border: 1px solid transparent;
-    border-radius: var(--radius-md);
-    font-weight: 700;
-    text-align: center;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-align: center;
 }
 
 .btn-primary {
-    color: var(--color-dark);
-    background: var(--color-primary);
+  color: var(--color-dark);
+  background: var(--color-primary);
 }
 
 .btn-primary:hover {
-    background: var(--color-primary-hover);
+  background: var(--color-primary-hover);
 }
 
 .form-group {
-    margin-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
 .form-label {
-    display: block;
-    margin-bottom: var(--space-2);
-    font-weight: 700;
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: 700;
 }
 
 .input {
-    width: 100%;
-    min-height: 42px;
-    padding: 0 var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    color: var(--color-text);
-    background: var(--color-surface-alt);
-    outline: none;
+  width: 100%;
+  min-height: 42px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  background: var(--color-surface-alt);
+  outline: none;
 }
 
 .input::placeholder {
-    color: var(--color-soft);
+  color: var(--color-soft);
 }
 
 .input:focus {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15);
 }
 
 .text-muted {
-    color: var(--color-muted);
+  color: var(--color-muted);
 }
 
 .text-soft {
-    color: var(--color-soft);
+  color: var(--color-soft);
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /*
@@ -213,74 +215,74 @@ a:hover {
 */
 
 .marca-doa {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
-    min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
 }
 
 .marca-doa__link {
-    display: inline-flex;
-    align-items: center;
-    flex-shrink: 0;
-    text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
 }
 
 .logo-doa {
-    width: 122px;
-    height: 52px;
-    display: block;
-    object-fit: contain;
+  width: 122px;
+  height: 52px;
+  display: block;
+  object-fit: contain;
 }
 
 .marca-doa__powered {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-    min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
 }
 
 .marca-doa__powered-text {
-    font-size: 9px;
-    line-height: 1;
-    font-weight: 600;
-    color: var(--color-muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .marca-doa__powered-logo {
-    width: 92px;
-    height: auto;
-    max-height: 34px;
-    object-fit: contain;
+  width: 92px;
+  height: auto;
+  max-height: 34px;
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {
-    h1 {
-        font-size: 32px;
-    }
+  h1 {
+    font-size: 32px;
+  }
 
-    .card {
-        padding: var(--space-5);
-    }
+  .card {
+    padding: var(--space-5);
+  }
 
-    .marca-doa {
-        gap: var(--space-2);
-    }
+  .marca-doa {
+    gap: var(--space-2);
+  }
 
-    .logo-doa {
-        width: 96px;
-        height: auto;
-    }
+  .logo-doa {
+    width: 96px;
+    height: auto;
+  }
 
-    .marca-doa__powered-text {
-        font-size: 8px;
-    }
+  .marca-doa__powered-text {
+    font-size: 8px;
+  }
 
-    .marca-doa__powered-logo {
-        width: 64px;
-        max-height: 26px;
-    }
+  .marca-doa__powered-logo {
+    width: 64px;
+    max-height: 26px;
+  }
 }
