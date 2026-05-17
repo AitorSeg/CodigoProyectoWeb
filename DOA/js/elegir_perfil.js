@@ -115,7 +115,7 @@ function validar_acceso() {
     return;
   }
 
-  window.location.href = "panel_principal.html";
+  window.location.href = "panel_principal.php";
 }
 
 function buscar_usuario(correo, password) {

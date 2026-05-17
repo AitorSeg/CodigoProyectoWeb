@@ -15,7 +15,7 @@
 
     <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
         <?php if ($rol_pagina === "alumno") { ?>
-            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "panel" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="panel_principal.html">
+            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "panel" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="panel_principal.php">
                 <span class="navegacion-lateral-doa__icono" aria-hidden="true">
                     <img class="icono-estado icono-estado--gris" src="img/iconos/grey-layout-dashboard.svg" alt="">
                     <img class="icono-estado icono-estado--azul" src="img/iconos/blue-layout-dashboard.svg" alt="">

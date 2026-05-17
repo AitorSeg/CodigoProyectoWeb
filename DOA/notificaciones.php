@@ -1,7 +1,7 @@
 <?php
     $rol_pagina = "alumno";
     $pagina_activa = "notificaciones";
-    $enlace_panel = "panel_principal.html";
+    $enlace_panel = "panel_principal.php";
     $placeholder_buscador = "Buscar notificación...";
 ?>
 <!DOCTYPE html>
