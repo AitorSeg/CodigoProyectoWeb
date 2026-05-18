@@ -1,3 +1,7 @@
+/*
+    Pantalla: Listado Tareas
+*/
+
 const filtroTipo = document.getElementById("filtroTipo");
 const filtroEstado = document.getElementById("filtroEstado");
 const ordenTareas = document.getElementById("ordenTareas");

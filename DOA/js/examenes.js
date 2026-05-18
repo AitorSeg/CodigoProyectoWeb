@@ -5,18 +5,16 @@
 let examenesActuales = [];
 let filtroActivo = "todos";
 
-document.addEventListener("DOMContentLoaded", function () {
-    const idAsignatura = window.obtenerAsignaturaSeleccionada();
-    const asignatura = window.DOA_ASIGNATURAS[idAsignatura] || window.DOA_ASIGNATURAS.matematicas;
+const idAsignatura = window.obtenerAsignaturaSeleccionada();
+const asignatura = window.DOA_ASIGNATURAS[idAsignatura] || window.DOA_ASIGNATURAS.matematicas;
 
-    examenesActuales = window.obtenerExamenesAsignatura(idAsignatura);
+examenesActuales = window.obtenerExamenesAsignatura(idAsignatura);
 
-    cargarCabeceraAsignatura(asignatura);
-    cargarResumenExamenes(examenesActuales);
-    cargarExamenDestacado(examenesActuales);
-    prepararFiltrosExamenes();
-    renderizarExamenes();
-});
+cargarCabeceraAsignatura(asignatura);
+cargarResumenExamenes(examenesActuales);
+cargarExamenDestacado(examenesActuales);
+prepararFiltrosExamenes();
+renderizarExamenes();
 
 function ponerTexto(idElemento, texto) {
     const elemento = document.getElementById(idElemento);
