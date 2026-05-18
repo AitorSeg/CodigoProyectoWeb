@@ -148,7 +148,7 @@ $placeholder_buscador = "Buscar asignatura...";
                         <a class="boton-asignatura boton-asignatura--principal" href="detalle_asignatura.php">
                             Entrar
                         </a>
-                        <a class="boton-asignatura enlace-recurso-asignatura" href="Recursosdoaalumno.html?materia=matematicas">
+                        <a class="boton-asignatura enlace-recurso-asignatura" href="recursos_alumno.php?materia=matematicas">
                             Recursos
                         </a>
                         <a class="boton-asignatura enlace-detalle-asignatura" data-asignatura="matematicas" href="listado_tareas.html">
@@ -193,7 +193,7 @@ $placeholder_buscador = "Buscar asignatura...";
                         <a class="boton-asignatura boton-asignatura--principal" href="detalle_asignatura.php">
                             Entrar
                         </a>
-                        <a class="boton-asignatura enlace-recurso-asignatura" href="Recursosdoaalumno.html?materia=programacion">
+                        <a class="boton-asignatura enlace-recurso-asignatura" href="recursos_alumno.php?materia=programacion">
                             Recursos
                         </a>
                         <a class="boton-asignatura enlace-detalle-asignatura" data-asignatura="programacion" href="listado_tareas.html">
@@ -238,7 +238,7 @@ $placeholder_buscador = "Buscar asignatura...";
                         <a class="boton-asignatura boton-asignatura--principal" href="detalle_asignatura.php">
                             Entrar
                         </a>
-                        <a class="boton-asignatura enlace-recurso-asignatura" href="Recursosdoaalumno.html?materia=fisica">
+                        <a class="boton-asignatura enlace-recurso-asignatura" href="recursos_alumno.php?materia=fisica">
                             Recursos
                         </a>
                         <a class="boton-asignatura enlace-detalle-asignatura" data-asignatura="fisica" href="listado_tareas.html">

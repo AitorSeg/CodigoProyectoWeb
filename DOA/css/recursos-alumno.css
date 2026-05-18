@@ -1,0 +1,440 @@
+/* =========================================================
+   PANTALLA RECURSOS (UNIFICADA: ALUMNO Y DOCENTE)
+   ========================================================= */
+
+/* --- CABECERA Y PESTAÑAS (Alineadas a la derecha) --- */
+.cabecera-detalle-asignatura {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-6);
+  padding-bottom: 0;
+}
+
+.cabecera-detalle-asignatura__texto {
+  padding-bottom: var(--space-3);
+}
+
+.enlace-volver-asignaturas {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.enlace-volver-asignaturas:hover {
+  color: var(--color-text);
+}
+.icono-volver {
+  transform: rotate(180deg);
+  width: 14px;
+}
+
+.pestanas-asignatura {
+  display: flex;
+  gap: var(--space-6);
+}
+.pestanas-asignatura__item {
+  color: var(--color-muted);
+  text-decoration: none;
+  padding-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.pestanas-asignatura__item:hover {
+  color: var(--color-text);
+}
+.pestanas-asignatura__item--activo {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* --- BLOQUE DE SUBIDA (DOCENTE) --- */
+.bloque-recursos {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+.bloque-recursos h2 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  color: var(--color-text);
+}
+
+.tarjeta-subida-recurso {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.titulo-subida {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+}
+.desc-subida {
+  color: var(--color-muted);
+  font-size: 13px;
+  margin: 0 0 24px 0;
+}
+
+.formulario-recursos-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.label-recurso {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+.input-recurso {
+  width: 100%;
+  padding: 12px;
+  background: var(--color-bg);
+  outline: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  box-sizing: border-box;
+}
+.input-recurso:focus {
+  border-color: var(--color-primary);
+}
+.input-recurso[type="file"] {
+  padding: 9px;
+}
+
+.acciones-subida {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.boton-guardar-recurso {
+  background: var(--color-primary);
+  color: var(--color-dark);
+  font-weight: 800;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.boton-guardar-recurso:hover {
+  background: var(--color-primary-hover);
+}
+
+/* --- TARJETAS MINI (ALUMNO) --- */
+.recursos-tema-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+.enlace-ver-todos {
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.enlace-ver-todos:hover {
+  text-decoration: underline;
+}
+
+.grid-recursos-tema {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+.tarjeta-recurso-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: 0.2s;
+}
+.tarjeta-recurso-mini:hover {
+  border-color: var(--color-primary);
+  background: var(--color-surface-alt);
+}
+.tarjeta-recurso-mini__icono {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+.tarjeta-recurso-mini__icono svg {
+  stroke: var(--color-primary);
+}
+.tarjeta-recurso-mini__info h4 {
+  margin: 0 0 4px 0;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 700;
+}
+.tarjeta-recurso-mini__info span {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* --- BIBLIOTECA GENERAL --- */
+.biblioteca-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.biblioteca-sidebar {
+  padding: var(--space-4);
+  border-right: 1px solid var(--color-border);
+}
+.biblioteca-carpeta__titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.biblioteca-carpeta__titulo svg {
+  stroke: currentColor;
+}
+.biblioteca-carpeta__titulo.activo {
+  color: var(--color-primary);
+  background: rgba(0, 229, 255, 0.08);
+}
+.biblioteca-menu-lista {
+  list-style: none;
+  padding-left: 12px;
+  margin: 8px 0;
+}
+.biblioteca-menu-lista a {
+  display: block;
+  padding: 8px 12px;
+  color: var(--color-muted);
+  font-size: 13px;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+.biblioteca-menu-lista a:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+.biblioteca-menu-lista a.activo {
+  background: rgba(0, 229, 255, 0.08);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.biblioteca-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.biblioteca-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+.biblioteca-breadcrumb strong {
+  color: var(--color-text);
+}
+.flecha-breadcrumb {
+  width: 14px;
+  opacity: 0.6;
+}
+
+.contenedor-filtros-wrapper {
+  display: flex;
+  gap: 12px;
+}
+.input-filtro {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.biblioteca-tabla {
+  border: none;
+  background: transparent;
+}
+.biblioteca-tabla-header,
+.biblioteca-tabla-fila {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1.5fr 1fr;
+  padding: 12px 16px;
+  align-items: center;
+}
+.biblioteca-tabla-header {
+  background: var(--color-surface-alt);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+.biblioteca-tabla-fila {
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-muted);
+}
+.biblioteca-tabla-fila:last-child {
+  border-bottom: none;
+}
+.biblioteca-tabla-fila a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.biblioteca-tabla-fila a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.badge-etiqueta {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  display: inline-block;
+}
+.etiqueta-actual {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(0, 229, 255, 0.05);
+}
+
+/* --- BOTÓN BARRA LATERAL (DOCENTE) --- */
+.boton-vista-alumno-lateral {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+.boton-vista-alumno-lateral svg {
+  stroke: var(--color-primary);
+  width: 18px;
+  height: 18px;
+}
+.boton-vista-alumno-lateral:hover {
+  background: rgba(0, 229, 255, 0.1);
+}
+
+/* --- BANNER DE VISTA PREVIA --- */
+.banner-vista-previa {
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid var(--color-primary);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+}
+.banner-vista-previa__contenido {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+.banner-vista-previa__contenido svg {
+  stroke: var(--color-primary);
+}
+.enlace-volver-docente {
+  color: var(--color-primary);
+  font-weight: 800;
+  margin-left: 12px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* --- RESPONSIVE --- */
+.icono-desplegable-movil {
+  display: none;
+  margin-left: 4px;
+  color: var(--color-primary);
+}
+.btn-filtrar-movil {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .cabecera-detalle-asignatura {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .pestanas-asignatura {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .formulario-recursos-grid {
+    grid-template-columns: 1fr;
+  }
+  .biblioteca-layout {
+    grid-template-columns: 1fr;
+  }
+  .biblioteca-sidebar {
+    display: none;
+  }
+  .biblioteca-tabla-header {
+    display: none;
+  }
+  .biblioteca-tabla-fila {
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    padding: 16px;
+  }
+  .ocultar-movil {
+    display: none;
+  }
+}

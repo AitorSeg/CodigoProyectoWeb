@@ -45,7 +45,7 @@ function actualizar_panel_lateral(datos) {
 }
 
 function actualizar_enlaces_asignatura(id_asignatura) {
-  const url_recursos = "Recursosdoaalumno.html?materia=" + id_asignatura;
+  const url_recursos = "recursos_alumno.php?materia=" + id_asignatura;
 
   document.getElementById("linkPestanaRecursos").href = url_recursos;
   document.getElementById("linkBotonRecursos").href = url_recursos;

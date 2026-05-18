@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/doa-layout.css">
     <link rel="stylesheet" href="css/doa-componentes.css">
     <link rel="stylesheet" href="css/detalle_asignatura.css">
-    <link rel="stylesheet" href="css/Recursosdoaalumno.css">
+    <link rel="stylesheet" href="css/recursos-alumno.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,7 +161,7 @@
 
                     <div class="cabecera-detalle-asignatura__pestanas">
                         <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
-                            <a href="Recursosdoaalumno.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Recursos</a>
+                            <a href="recursos_alumno.php" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Recursos</a>
                             <a href="listado_tareas.html" class="pestanas-asignatura__item">Tareas</a>
                             <a href="examenes.html" class="pestanas-asignatura__item">Exámenes</a>
                             <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
@@ -309,6 +309,6 @@
 
     <script src="js/doa-datos.js"></script>
     <script src="js/doa_layout.js"></script>
-    <script src="js/Recursosdoaalumno.js"></script>
+    <script src="js/recursos_alumno.js"></script>
 </body>
 </html>

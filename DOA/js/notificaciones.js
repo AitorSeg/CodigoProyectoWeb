@@ -73,7 +73,7 @@ function cargarNotificacionesDemo() {
             fecha: "Vie",
             asignatura: "fisica",
             accionTexto: "Ver recursos",
-            accionHref: "Recursosdoaalumno.html",
+            accionHref: "recursos_alumno.php",
             leida: estadoLectura.notificacion_recurso_fisica === true ? true : false
         },
         {
