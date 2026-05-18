@@ -1,14 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const filtroTipo = document.getElementById("filtroTipo");
-    const filtroEstado = document.getElementById("filtroEstado");
-    const ordenTareas = document.getElementById("ordenTareas");
-    const tablaTareas = document.querySelector(".tabla-tareas");
+const filtroTipo = document.getElementById("filtroTipo");
+const filtroEstado = document.getElementById("filtroEstado");
+const ordenTareas = document.getElementById("ordenTareas");
+const tablaTareas = document.querySelector(".tabla-tareas");
 
-    if (!filtroTipo || !filtroEstado || !ordenTareas || !tablaTareas) {
-        return;
-    }
-
+if (filtroTipo && filtroEstado && ordenTareas && tablaTareas) {
     const filasOriginales = Array.from(tablaTareas.querySelectorAll(".fila-tarea"));
+
+    filtroTipo.addEventListener("change", actualizarListado);
+    filtroEstado.addEventListener("change", actualizarListado);
+    ordenTareas.addEventListener("change", actualizarListado);
 
     function actualizarListado() {
         const tipoSeleccionado = filtroTipo.value;
@@ -49,8 +49,4 @@ document.addEventListener("DOMContentLoaded", function () {
             fila.hidden = false;
         });
     }
-
-    filtroTipo.addEventListener("change", actualizarListado);
-    filtroEstado.addEventListener("change", actualizarListado);
-    ordenTareas.addEventListener("change", actualizarListado);
-});
+}
