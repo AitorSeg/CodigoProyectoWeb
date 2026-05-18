@@ -1,150 +1,171 @@
 /*
     Pantalla: Crear Examen
+    Reglas aplicadas: camelCase (funciones), snake_case (variables), Cero DOMContentLoaded, Cero funciones anónimas
 */
 
-document.addEventListener("DOMContentLoaded", function () {
-    const formulario = document.getElementById("formularioCrearExamen");
-    const contenedorPreguntas = document.getElementById("contenedorPreguntas");
-    const btnAnadirPregunta = document.getElementById("btnAnadirPregunta");
-    let contadorPreguntas = 0;
+let contador_preguntas_global = 0;
 
-    // Inyectar al menos una pregunta al iniciar
-    agregarBloquePregunta();
+function eliminarPregunta(id_bloque) {
+    const bloque_remover = document.getElementById(id_bloque);
+    if (bloque_remover) {
+        bloque_remover.remove();
+    }
+}
 
-    // Evento para añadir más preguntas
-    if (btnAnadirPregunta) {
-        btnAnadirPregunta.addEventListener("click", agregarBloquePregunta);
+function agregarBloquePregunta() {
+    contador_preguntas_global++;
+    const contenedor_preguntas = document.getElementById("contenedorPreguntas");
+
+    if (!contenedor_preguntas) return;
+
+    const id_pregunta = "preg_" + contador_preguntas_global;
+
+    let boton_eliminar_html = "";
+    if (contador_preguntas_global > 1) {
+        boton_eliminar_html = `<button type="button" class="btn-eliminar-pregunta" onclick="eliminarPregunta('bloque_${id_pregunta}')">Eliminar</button>`;
     }
 
-    function agregarBloquePregunta() {
-        contadorPreguntas++;
-        const idPregunta = `preg_${contadorPreguntas}`;
+    const html_pregunta = `
+        <div class="bloque-pregunta-crear" id="bloque_${id_pregunta}">
+            <div class="cabecera-pregunta">
+                <h3>Pregunta ${contador_preguntas_global}</h3>
+                ${boton_eliminar_html}
+            </div>
+            
+            <div class="grupo-campo-formulario">
+                <label>Enunciado de la pregunta</label>
+                <textarea class="input-enunciado" rows="2" placeholder="Ej: ¿Qué representa el límite de una función en un punto?" required></textarea>
+            </div>
 
-        const htmlPregunta = `
-            <div class="bloque-pregunta-crear" id="bloque_${idPregunta}">
-                <div class="cabecera-pregunta">
-                    <h3>Pregunta ${contadorPreguntas}</h3>
-                    ${contadorPreguntas > 1 ? `<button type="button" class="btn-eliminar-pregunta" onclick="eliminarPregunta('bloque_${idPregunta}')">Eliminar</button>` : ''}
-                </div>
+            <div class="opciones-contenedor">
+                <label class="label-secundario">Opciones (Selecciona la correcta)</label>
                 
-                <div class="grupo-campo-formulario">
-                    <label>Enunciado de la pregunta</label>
-                    <textarea class="input-enunciado" rows="2" placeholder="Ej: ¿Qué representa el límite de una función en un punto?" required></textarea>
+                <div class="fila-opcion-crear">
+                    <input type="radio" name="correcta_${id_pregunta}" value="a" required>
+                    <input type="text" class="input-opcion-a" placeholder="Opción A" required>
                 </div>
-
-                <div class="opciones-contenedor">
-                    <label style="font-size:12px; color:var(--color-muted); margin-bottom:8px; display:block;">Opciones (Selecciona la correcta)</label>
-                    
-                    <div class="fila-opcion-crear">
-                        <input type="radio" name="correcta_${idPregunta}" value="a" required>
-                        <input type="text" class="input-opcion-a" placeholder="Opción A" required>
-                    </div>
-                    <div class="fila-opcion-crear">
-                        <input type="radio" name="correcta_${idPregunta}" value="b">
-                        <input type="text" class="input-opcion-b" placeholder="Opción B" required>
-                    </div>
-                    <div class="fila-opcion-crear">
-                        <input type="radio" name="correcta_${idPregunta}" value="c">
-                        <input type="text" class="input-opcion-c" placeholder="Opción C" required>
-                    </div>
+                <div class="fila-opcion-crear">
+                    <input type="radio" name="correcta_${id_pregunta}" value="b">
+                    <input type="text" class="input-opcion-b" placeholder="Opción B" required>
                 </div>
-
-                <div class="grupo-campo-formulario" style="margin-top:16px; margin-bottom:0;">
-                    <label>Explicación de la respuesta (Retroalimentación)</label>
-                    <input type="text" class="input-explicacion" placeholder="Ej: El límite describe el valor al que se aproxima..." required>
+                <div class="fila-opcion-crear">
+                    <input type="radio" name="correcta_${id_pregunta}" value="c">
+                    <input type="text" class="input-opcion-c" placeholder="Opción C" required>
                 </div>
             </div>
-        `;
 
-        contenedorPreguntas.insertAdjacentHTML("beforeend", htmlPregunta);
-    }
+            <div class="grupo-campo-formulario grupo-campo-sin-margen">
+                <label>Explicación de la respuesta</label>
+                <input type="text" class="input-explicacion" placeholder="Ej: El límite describe el valor al que se aproxima..." required>
+            </div>
+        </div>
+    `;
 
-    // Hacer global la función eliminar para el botón onclick
-    window.eliminarPregunta = function(idBloque) {
-        const bloque = document.getElementById(idBloque);
-        if (bloque) bloque.remove();
-    };
+    contenedor_preguntas.insertAdjacentHTML("beforeend", html_pregunta);
+}
 
-    // AL ENVIAR EL FORMULARIO
-    if (formulario) {
-        formulario.addEventListener("submit", function (evento) {
-            evento.preventDefault();
+function procesarFormularioExamen(evento) {
+    evento.preventDefault();
 
-            // 1. Recoger datos generales
-            const nombre = document.getElementById("inputNombre").value;
-            const asignaturaSelect = document.getElementById("selectAsignatura");
-            const asignaturaClave = asignaturaSelect.value;
-            const asignaturaTexto = asignaturaSelect.options[asignaturaSelect.selectedIndex].text;
-            const unidad = document.getElementById("inputUnidad").value;
-            const descripcion = document.getElementById("inputDescripcion").value;
-            const duracion = document.getElementById("inputDuracion").value;
-            const intentos = document.getElementById("inputIntentos").value;
+    const input_nombre = document.getElementById("inputNombre").value;
+    const select_asignatura = document.getElementById("selectAsignatura");
+    const asignatura_clave = select_asignatura.value;
+    const asignatura_texto = select_asignatura.options[select_asignatura.selectedIndex].text;
+    const input_unidad = document.getElementById("inputUnidad").value;
+    const input_descripcion = document.getElementById("inputDescripcion").value;
+    const input_duracion = document.getElementById("inputDuracion").value;
+    const input_intentos = document.getElementById("inputIntentos").value;
 
-            // 2. RECOGER PREGUNTAS (Magia pura)
-            const arrayPreguntas = [];
-            const bloques = document.querySelectorAll(".bloque-pregunta-crear");
+    const array_preguntas = [];
+    const bloques_preguntas = document.querySelectorAll(".bloque-pregunta-crear");
 
-            bloques.forEach((bloque, index) => {
-                const enunciado = bloque.querySelector(".input-enunciado").value;
-                const explicacion = bloque.querySelector(".input-explicacion").value;
+    for (let i = 0; i < bloques_preguntas.length; i++) {
+        const bloque_actual = bloques_preguntas[i];
 
-                const textoA = bloque.querySelector(".input-opcion-a").value;
-                const textoB = bloque.querySelector(".input-opcion-b").value;
-                const textoC = bloque.querySelector(".input-opcion-c").value;
+        const enunciado_texto = bloque_actual.querySelector(".input-enunciado").value;
+        const explicacion_texto = bloque_actual.querySelector(".input-explicacion").value;
 
-                // Buscar qué radio está chequeado
-                const radioSeleccionado = bloque.querySelector(`input[type="radio"]:checked`);
-                const respuestaCorrecta = radioSeleccionado ? radioSeleccionado.value : "a";
+        const texto_a = bloque_actual.querySelector(".input-opcion-a").value;
+        const texto_b = bloque_actual.querySelector(".input-opcion-b").value;
+        const texto_c = bloque_actual.querySelector(".input-opcion-c").value;
 
-                // Formato idéntico a doa-examenes-datos.js
-                arrayPreguntas.push({
-                    id: `pregunta_creada_${index + 1}`,
-                    enunciado: enunciado,
-                    correcta: respuestaCorrecta,
-                    explicacion: explicacion,
-                    opciones: [
-                        { id: "a", texto: textoA },
-                        { id: "b", texto: textoB },
-                        { id: "c", texto: textoC }
-                    ]
-                });
-            });
+        const radio_seleccionado = bloque_actual.querySelector(`input[type="radio"]:checked`);
+        let respuesta_correcta = "a";
 
-            // 3. Fechas simuladas de hoy
-            const hoy = new Date();
-            const mesesCotos = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
-            const fechaFormateada = `${hoy.getDate()} ${mesesCotos[hoy.getMonth()]}, ${hoy.getFullYear()}`;
+        if (radio_seleccionado) {
+            respuesta_correcta = radio_seleccionado.value;
+        }
 
-            // 4. Armar el Examen Completo
-            const idNuevoExamen = asignaturaClave + "_creado_" + Date.now();
-            const nuevoExamen = {
-                id: idNuevoExamen,
-                nombre: nombre,
-                asignatura: asignaturaTexto,
-                asignaturaClave: asignaturaClave,
-                unidad: unidad,
-                descripcion: descripcion,
-                descripcionCorta: unidad,
-                fechaCompleta: fechaFormateada,
-                fechaCorta: `${hoy.getDate()} ${mesesCotos[hoy.getMonth()]}`,
-                fechaApertura: fechaFormateada,
-                fechaCierre: "Sin límite",
-                duracion: `${duracion} min`,
-                preguntas: `${arrayPreguntas.length} preguntas`,
-                intentos: `${intentos} intento(s)`,
-                estado: "Abierto",
-                estadoFiltro: "abierto",
-                temas: ["Tema General"],
-                preguntasArray: arrayPreguntas // <-- Guardamos el array de preguntas acá
-            };
-
-            // 5. Guardar en LocalStorage
-            let examenesCreados = JSON.parse(localStorage.getItem("doaExamenesCreados")) || [];
-            examenesCreados.unshift(nuevoExamen); // Meterlo de primero
-            localStorage.setItem("doaExamenesCreados", JSON.stringify(examenesCreados));
-
-            // 6. Volver a la lista
-            window.location.href = "examenes.html";
+        array_preguntas.push({
+            id: "pregunta_creada_" + (i + 1),
+            enunciado: enunciado_texto,
+            correcta: respuesta_correcta,
+            explicacion: explicacion_texto,
+            opciones: [
+                { id: "a", texto: texto_a },
+                { id: "b", texto: texto_b },
+                { id: "c", texto: texto_c }
+            ]
         });
     }
-});
+
+    const fecha_hoy = new Date();
+    const MESES_CORTOS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+    const mes_actual = MESES_CORTOS[fecha_hoy.getMonth()];
+    const fecha_formateada = fecha_hoy.getDate() + " " + mes_actual + ", " + fecha_hoy.getFullYear();
+    const id_nuevo_examen = asignatura_clave + "_creado_" + Date.now();
+
+    const nuevo_examen = {
+        id: id_nuevo_examen,
+        nombre: input_nombre,
+        asignatura: asignatura_texto,
+        asignaturaClave: asignatura_clave,
+        unidad: input_unidad,
+        descripcion: input_descripcion,
+        descripcionCorta: input_unidad,
+        fechaCompleta: fecha_formateada,
+        fechaCorta: fecha_hoy.getDate() + " " + mes_actual,
+        fechaApertura: fecha_formateada,
+        fechaCierre: "Sin límite",
+        duracion: input_duracion + " min",
+        preguntas: array_preguntas.length + " preguntas",
+        intentos: input_intentos + " intento(s)",
+        estado: "Abierto",
+        estadoFiltro: "abierto",
+        temas: ["Tema General"],
+        preguntasArray: array_preguntas
+    };
+
+    let examenes_creados = JSON.parse(localStorage.getItem("doaExamenesCreados"));
+    if (!examenes_creados) {
+        examenes_creados = [];
+    }
+
+    examenes_creados.unshift(nuevo_examen);
+    localStorage.setItem("doaExamenesCreados", JSON.stringify(examenes_creados));
+
+    window.location.href = "examenes.html";
+}
+
+function inicializarCrearExamen() {
+    const formulario_creacion = document.getElementById("formularioCrearExamen");
+    const boton_anadir_pregunta = document.getElementById("btnAnadirPregunta");
+
+    if (boton_anadir_pregunta) {
+        // Pasamos la función por referencia, no anónima
+        boton_anadir_pregunta.addEventListener("click", agregarBloquePregunta);
+    }
+
+    if (formulario_creacion) {
+        // Pasamos la función por referencia, no anónima
+        formulario_creacion.addEventListener("submit", procesarFormularioExamen);
+    }
+
+    const contenedor_preguntas = document.getElementById("contenedorPreguntas");
+    if (contenedor_preguntas) {
+        agregarBloquePregunta();
+    }
+}
+
+// Llamada directa al cargar el script en el HTML
+inicializarCrearExamen();
