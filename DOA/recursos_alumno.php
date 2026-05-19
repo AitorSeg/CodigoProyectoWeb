@@ -82,7 +82,7 @@ $placeholder_buscador = "Buscar recursos...";
 
                             <div class="tarjeta-recurso-mini__info">
                                 <h4>Material de la Unidad</h4>
-                                <span>PDF</span>
+                                <span>PDF · Unidad 03</span>
                             </div>
                         </a>
 
@@ -93,7 +93,7 @@ $placeholder_buscador = "Buscar recursos...";
 
                             <div class="tarjeta-recurso-mini__info">
                                 <h4>Clase Grabada</h4>
-                                <span>Vídeo</span>
+                                <span>Vídeo · 12 min</span>
                             </div>
                         </a>
                     </div>
@@ -105,7 +105,7 @@ $placeholder_buscador = "Buscar recursos...";
                     <div class="biblioteca-layout">
                         <aside class="biblioteca-sidebar" id="menuCarpetasGeneral">
                             <div class="biblioteca-carpeta">
-                                <div class="biblioteca-carpeta__titulo activo">
+                                <div class="biblioteca-carpeta__titulo">
                                     <img src="img/iconos/grey-notebook.svg" alt="" aria-hidden="true">
                                     TEMARIO
                                 </div>

@@ -241,11 +241,19 @@
   font-weight: 600;
   outline: none;
   cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
-.input-filtro:focus {
+.input-filtro:focus,
+.input-filtro:hover {
   border-color: var(--color-primary);
+  color: var(--color-text);
 }
+
+
 
 /*
     Tabla de biblioteca
@@ -274,10 +282,21 @@
   text-transform: uppercase;
 }
 
+#cuerpoTablaArchivos {
+  min-height: 96px;
+}
+
 .biblioteca-tabla-fila {
   border-bottom: 1px solid var(--color-border);
   color: var(--color-muted);
   font-size: 13px;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.biblioteca-tabla-fila:hover {
+  background: var(--color-surface-alt);
 }
 
 .biblioteca-tabla-fila:last-child {

@@ -178,8 +178,8 @@ function renderizar_tabla_recursos() {
   const etiqueta_seleccionada = filtro_etiqueta.value;
 
   const archivos_filtrados = archivos.filter(function (archivo) {
-  const coincide_tipo = tipo_seleccionado === "TODOS" || archivo.tipo === tipo_seleccionado;
-  const coincide_etiqueta = etiqueta_seleccionada === "TODAS" || archivo.etiqueta === etiqueta_seleccionada;
+    const coincide_tipo = tipo_seleccionado === "TODOS" || archivo.tipo === tipo_seleccionado;
+    const coincide_etiqueta = etiqueta_seleccionada === "TODAS" || archivo.etiqueta === etiqueta_seleccionada;
 
   return coincide_tipo && coincide_etiqueta;
 });
