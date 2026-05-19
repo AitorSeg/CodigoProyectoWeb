@@ -141,7 +141,7 @@ function renderizar_examenes() {
             </span>
           </p>
 
-          <a href="detalle_examen.html" class="${clase_accion}" data-examen="${examen.id}">
+          <a href="detalle_examen.php" class="${clase_accion}" data-examen="${examen.id}">
             ${texto_accion}
           </a>
         </article>

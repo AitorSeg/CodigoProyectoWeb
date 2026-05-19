@@ -1,112 +1,93 @@
 /*
     Pantalla: Detalle de examen
+    Carga el examen seleccionado y adapta la acción principal según su estado.
 */
 
-document.addEventListener("DOMContentLoaded", function () {
-    const examen = window.obtenerExamenActual();
+const examen_actual = window.obtenerExamenActual();
 
-    if (!examen) {
-        return;
-    }
+cargar_detalle_examen(examen_actual);
 
-    cargarDetalleExamen(examen);
-});
+function cargar_detalle_examen(examen) {
+  document.title = examen.nombre + " | DOA";
 
-function ponerTexto(idElemento, texto) {
-    const elemento = document.getElementById(idElemento);
+  document.getElementById("tituloExamen").textContent = examen.nombre;
+  document.getElementById("asignaturaExamen").textContent = examen.asignatura;
+  document.getElementById("fechaExamen").textContent = examen.fechaCompleta;
 
-    if (elemento !== null) {
-        elemento.textContent = texto;
-    }
+  document.getElementById("descripcionExamen").textContent = examen.descripcion;
+  document.getElementById("estadoExamen").textContent = examen.estado;
+
+  document.getElementById("aperturaExamen").textContent = examen.fechaApertura;
+  document.getElementById("cierreExamen").textContent = examen.fechaCierre;
+  document.getElementById("duracionExamen").textContent = examen.duracion;
+  document.getElementById("preguntasExamen").textContent = examen.preguntas;
+  document.getElementById("intentosExamen").textContent = examen.intentos;
+
+  actualizar_estado_examen(examen);
+  renderizar_temas_examen(examen.temas);
+  preparar_boton_realizar_examen(examen);
 }
 
-function cargarDetalleExamen(examen) {
-    document.title = examen.nombre + " | DOA";
+function actualizar_estado_examen(examen) {
+  const estado = document.getElementById("estadoExamen");
+  const tarjeta = document.getElementById("tarjetaDetalleExamen");
 
-    ponerTexto("tituloExamen", examen.nombre);
-    ponerTexto("asignaturaExamen", examen.asignatura);
-    ponerTexto("fechaExamen", examen.fechaCompleta);
+  estado.classList.remove(
+    "estado-detalle-examen--cerrado",
+    "estado-detalle-examen--proximo"
+  );
 
-    ponerTexto("descripcionExamen", examen.descripcion);
-    ponerTexto("estadoExamen", examen.estado);
+  tarjeta.dataset.estado = examen.estadoFiltro;
 
-    ponerTexto("aperturaExamen", examen.fechaApertura);
-    ponerTexto("cierreExamen", examen.fechaCierre);
-    ponerTexto("duracionExamen", examen.duracion);
-    ponerTexto("preguntasExamen", examen.preguntas);
-    ponerTexto("intentosExamen", examen.intentos);
+  if (examen.estadoFiltro === "cerrado") {
+    estado.classList.add("estado-detalle-examen--cerrado");
+  }
 
-    cargarEstadoExamen(examen);
-    cargarTemasExamen(examen.temas);
-    prepararBotonRealizarExamen(examen);
+  if (examen.estadoFiltro === "proximo") {
+    estado.classList.add("estado-detalle-examen--proximo");
+  }
 }
 
-function cargarEstadoExamen(examen) {
-    const estado = document.getElementById("estadoExamen");
+function renderizar_temas_examen(temas) {
+  const lista = document.getElementById("temasExamen");
 
-    if (estado === null) {
-        return;
-    }
+  lista.innerHTML = "";
 
-    estado.classList.remove("estado-detalle-examen--cerrado", "estado-detalle-examen--proximo");
+  temas.forEach(function (tema) {
+    const elemento = document.createElement("li");
 
-    if (examen.estadoFiltro === "cerrado") {
-        estado.classList.add("estado-detalle-examen--cerrado");
-    }
-
-    if (examen.estadoFiltro === "proximo") {
-        estado.classList.add("estado-detalle-examen--proximo");
-    }
+    elemento.textContent = tema;
+    lista.appendChild(elemento);
+  });
 }
 
-function cargarTemasExamen(temas) {
-    const lista = document.getElementById("temasExamen");
+function preparar_boton_realizar_examen(examen) {
+  const boton = document.getElementById("botonRealizarExamen");
+  const mensaje = document.getElementById("mensajeAccesoExamen");
 
-    if (lista === null) {
-        return;
-    }
+  if (examen.estadoFiltro === "abierto") {
+    boton.textContent = "Realizar examen";
+    boton.href = "realizar_examen.html";
+    boton.classList.remove("boton-realizar-examen--desactivado");
+    mensaje.textContent = "El examen está disponible. Puedes empezar cuando quieras.";
 
-    lista.innerHTML = "";
-
-    temas.forEach(function (tema) {
-        const elemento = document.createElement("li");
-
-        elemento.textContent = tema;
-        lista.appendChild(elemento);
+    boton.addEventListener("click", function () {
+      window.guardarExamenSeleccionado(examen.id);
     });
-}
 
-function prepararBotonRealizarExamen(examen) {
-    const boton = document.getElementById("botonRealizarExamen");
-    const mensaje = document.getElementById("mensajeAccesoExamen");
+    return;
+  }
 
-    if (boton === null || mensaje === null) {
-        return;
-    }
+  boton.removeAttribute("href");
+  boton.classList.add("boton-realizar-examen--desactivado");
 
-    if (examen.estadoFiltro === "abierto") {
-        boton.textContent = "Realizar examen";
-        boton.href = "realizar_examen.html";
-        boton.classList.remove("boton-realizar-examen--desactivado");
-        mensaje.textContent = "El examen está disponible. Puedes empezar cuando quieras.";
+  if (examen.estadoFiltro === "cerrado") {
+    boton.textContent = "Examen cerrado";
+    mensaje.textContent = "Este examen ya no está disponible para realizarse.";
+  }
 
-        boton.addEventListener("click", function () {
-            window.guardarExamenSeleccionado(examen.id);
-        });
-
-        return;
-    }
-
-    boton.removeAttribute("href");
-    boton.classList.add("boton-realizar-examen--desactivado");
-
-    if (examen.estadoFiltro === "cerrado") {
-        boton.textContent = "Examen cerrado";
-        mensaje.textContent = "Este examen ya no está disponible para realizarse.";
-    }
-
-    if (examen.estadoFiltro === "proximo") {
-        boton.textContent = "No disponible";
-        mensaje.textContent = "Este examen todavía no está disponible.";
-    }
+  if (examen.estadoFiltro === "proximo") {
+    boton.textContent = "No disponible";
+    mensaje.textContent = "Este examen todavía no está disponible.";
+  }
 }

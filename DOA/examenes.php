@@ -121,7 +121,7 @@ $placeholder_buscador = "Buscar examen...";
                             <strong id="fechaLimiteExamenDestacado">---</strong>
                         </p>
 
-                        <a class="boton-entrar-examen" href="detalle_examen.html" id="botonExamenDestacado">
+                        <a class="boton-entrar-examen" href="detalle_examen.php" id="botonExamenDestacado">
                             Entrar
                         </a>
                     </div>
