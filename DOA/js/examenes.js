@@ -1,156 +1,163 @@
 /*
-    Pantalla: Exámenes
+    Pantalla: Exámenes del alumno
+    Carga los exámenes de la asignatura seleccionada y permite filtrarlos.
 */
 
-let examenesActuales = [];
-let filtroActivo = "todos";
+let filtro_activo = "todos";
 
-const idAsignatura = window.obtenerAsignaturaSeleccionada();
-const asignatura = window.DOA_ASIGNATURAS[idAsignatura] || window.DOA_ASIGNATURAS.matematicas;
+const id_asignatura = window.obtenerAsignaturaSeleccionada();
+const asignatura = window.DOA_ASIGNATURAS[id_asignatura];
+const examenes_actuales = window.obtenerExamenesAsignatura(id_asignatura);
 
-examenesActuales = window.obtenerExamenesAsignatura(idAsignatura);
+cargar_cabecera_asignatura();
+cargar_resumen_examenes();
+cargar_examen_destacado();
+preparar_filtros_examenes();
+renderizar_examenes();
 
-cargarCabeceraAsignatura(asignatura);
-cargarResumenExamenes(examenesActuales);
-cargarExamenDestacado(examenesActuales);
-prepararFiltrosExamenes();
-renderizarExamenes();
+function cargar_cabecera_asignatura() {
+  document.title = "Exámenes · " + asignatura.nombre + " | DOA";
 
-function ponerTexto(idElemento, texto) {
-    const elemento = document.getElementById(idElemento);
-
-    if (elemento !== null) {
-        elemento.textContent = texto;
-    }
+  document.getElementById("tituloAsignatura").textContent = asignatura.nombre;
+  document.getElementById("profesorAsignatura").textContent =
+    asignatura.profesor;
+  document.getElementById("unidadActualTextoAsignatura").textContent =
+    asignatura.unidadActualTexto;
 }
 
-function cargarCabeceraAsignatura(asignatura) {
-    document.title = "Exámenes · " + asignatura.nombre + " | DOA";
+function cargar_resumen_examenes() {
+  const examenes_abiertos = examenes_actuales.filter(function (examen) {
+    return examen.estadoFiltro === "abierto";
+  }).length;
 
-    ponerTexto("tituloAsignatura", asignatura.nombre);
-    ponerTexto("profesorAsignatura", asignatura.profesor);
-    ponerTexto("unidadActualTextoAsignatura", asignatura.unidadActualTexto);
+  const examenes_completados = examenes_actuales.filter(function (examen) {
+    return examen.estadoFiltro === "cerrado";
+  }).length;
+
+  const proximo_examen = examenes_actuales.find(function (examen) {
+    return (
+      examen.estadoFiltro === "proximo" || examen.estadoFiltro === "abierto"
+    );
+  });
+
+  document.getElementById("totalExamenesAbiertos").textContent =
+    examenes_abiertos;
+  document.getElementById("totalExamenesRealizados").textContent =
+    examenes_completados;
+  document.getElementById("proximoExamenTexto").textContent =
+    proximo_examen.fechaCorta;
 }
 
-function cargarResumenExamenes(examenes) {
-    const abiertos = examenes.filter(function (examen) {
-        return examen.estadoFiltro === "abierto";
-    }).length;
+function cargar_examen_destacado() {
+  const examen_abierto = examenes_actuales.find(function (examen) {
+    return examen.estadoFiltro === "abierto";
+  });
 
-    const completados = examenes.filter(function (examen) {
-        return examen.estadoFiltro === "cerrado";
-    }).length;
+  const examen_destacado = examen_abierto || examenes_actuales[0];
+  const etiqueta_estado = document.getElementById("estadoExamenDestacado");
+  const boton_examen = document.getElementById("botonExamenDestacado");
 
-    const proximo = examenes.find(function (examen) {
-        return examen.estadoFiltro === "proximo" || examen.estadoFiltro === "abierto";
-    });
+  document.getElementById("tituloExamenDestacado").textContent =
+    examen_destacado.nombre;
+  document.getElementById("descripcionExamenDestacado").textContent =
+    examen_destacado.descripcion;
+  document.getElementById("fechaLimiteExamenDestacado").textContent =
+    examen_destacado.fechaCierre;
 
-    ponerTexto("totalExamenesAbiertos", abiertos);
-    ponerTexto("totalExamenesRealizados", completados);
-    ponerTexto("proximoExamenTexto", proximo ? proximo.fechaCorta : "---");
+  etiqueta_estado.textContent = examen_destacado.estado;
+  etiqueta_estado.className =
+    "etiqueta-examen etiqueta-examen--" + examen_destacado.estadoFiltro;
+
+  document.getElementById("examenDestacado").dataset.estado =
+    examen_destacado.estadoFiltro;
+
+  boton_examen.dataset.examen = examen_destacado.id;
+  boton_examen.textContent =
+    examen_destacado.estadoFiltro === "abierto" ? "Entrar" : "Ver detalles";
+
+  boton_examen.addEventListener("click", function () {
+    window.guardarExamenSeleccionado(examen_destacado.id);
+  });
 }
 
-function cargarExamenDestacado(examenes) {
-    const examenAbierto = examenes.find(function (examen) {
-        return examen.estadoFiltro === "abierto";
+function preparar_filtros_examenes() {
+  const filtros = document.querySelectorAll(".filtro-examen");
+
+  filtros.forEach(function (filtro) {
+    filtro.addEventListener("click", function () {
+      filtro_activo = filtro.dataset.filtro;
+
+      filtros.forEach(function (boton) {
+        boton.classList.toggle("filtro-examen--activo", boton === filtro);
+      });
+
+      renderizar_examenes();
     });
-
-    const examenDestacado = examenAbierto || examenes[0];
-
-    if (!examenDestacado) {
-        return;
-    }
-
-    const tarjeta = document.getElementById("examenDestacado");
-    const boton = document.getElementById("botonExamenDestacado");
-
-    ponerTexto("tituloExamenDestacado", examenDestacado.nombre);
-    ponerTexto("descripcionExamenDestacado", examenDestacado.descripcion);
-    ponerTexto("fechaLimiteExamenDestacado", examenDestacado.fechaCompleta);
-
-    if (tarjeta !== null) {
-        tarjeta.dataset.estado = examenDestacado.estadoFiltro;
-    }
-
-    if (boton !== null) {
-        boton.dataset.examen = examenDestacado.id;
-        boton.textContent = examenDestacado.estadoFiltro === "abierto" ? "Entrar" : "Ver detalles";
-
-        boton.addEventListener("click", function () {
-            window.guardarExamenSeleccionado(examenDestacado.id);
-        });
-    }
+  });
 }
 
-function prepararFiltrosExamenes() {
-    const filtros = document.querySelectorAll(".filtro-examen");
+function renderizar_examenes() {
+  const contenedor = document.getElementById("listadoExamenes");
 
-    filtros.forEach(function (filtro) {
-        filtro.addEventListener("click", function () {
-            filtroActivo = filtro.dataset.filtro || "todos";
+  contenedor.innerHTML = "";
 
-            filtros.forEach(function (boton) {
-                boton.classList.toggle("filtro-examen--activo", boton === filtro);
-            });
+  const examenes_filtrados = examenes_actuales.filter(function (examen) {
+    return filtro_activo === "todos" || examen.estadoFiltro === filtro_activo;
+  });
 
-            renderizarExamenes();
-        });
-    });
+  if (examenes_filtrados.length === 0) {
+    contenedor.innerHTML =
+      '<p class="mensaje-sin-examenes">No hay exámenes con este filtro.</p>';
+    return;
+  }
+
+  examenes_filtrados.forEach(function (examen) {
+    const es_abierto = examen.estadoFiltro === "abierto";
+    const texto_accion = es_abierto ? "Entrar" : "Ver detalles";
+    const clase_accion = es_abierto
+      ? "fila-examen__accion fila-examen__accion--principal"
+      : "fila-examen__accion";
+
+    contenedor.insertAdjacentHTML(
+      "beforeend",
+      `
+        <article class="fila-examen">
+          <div class="fila-examen__nombre">
+            <strong>${examen.nombre}</strong>
+            <span>${examen.descripcionCorta}</span>
+          </div>
+
+          <p class="fila-examen__fecha" data-duracion="${examen.duracion}">
+            ${examen.fechaCompleta}
+          </p>
+
+          <p class="fila-examen__duracion">
+            ${examen.duracion}
+          </p>
+
+          <p class="fila-examen__estado">
+            <span class="etiqueta-examen etiqueta-examen--${examen.estadoFiltro}">
+              ${examen.estado}
+            </span>
+          </p>
+
+          <a href="detalle_examen.html" class="${clase_accion}" data-examen="${examen.id}">
+            ${texto_accion}
+          </a>
+        </article>
+      `,
+    );
+  });
+
+  preparar_enlaces_examenes();
 }
 
-function renderizarExamenes() {
-    const contenedor = document.getElementById("listadoExamenes");
+function preparar_enlaces_examenes() {
+  const enlaces_examenes = document.querySelectorAll(".fila-examen__accion");
 
-    if (contenedor === null) {
-        return;
-    }
-
-    const examenesFiltrados = examenesActuales.filter(function (examen) {
-        return filtroActivo === "todos" || examen.estadoFiltro === filtroActivo;
+  enlaces_examenes.forEach(function (enlace) {
+    enlace.addEventListener("click", function () {
+      window.guardarExamenSeleccionado(enlace.dataset.examen);
     });
-
-    contenedor.innerHTML = "";
-
-    if (examenesFiltrados.length === 0) {
-        const mensaje = document.createElement("p");
-
-        mensaje.className = "mensaje-sin-examenes";
-        mensaje.textContent = "No hay exámenes con este filtro.";
-
-        contenedor.appendChild(mensaje);
-        return;
-    }
-
-    examenesFiltrados.forEach(function (examen) {
-        const fila = document.createElement("article");
-        const esAbierto = examen.estadoFiltro === "abierto";
-        const textoAccion = esAbierto ? "Entrar" : "Ver detalles";
-        const claseAccion = esAbierto
-            ? "fila-examen__accion fila-examen__accion--principal"
-            : "fila-examen__accion";
-
-        fila.className = "fila-examen";
-
-        fila.innerHTML =
-            '<div class="fila-examen__nombre">' +
-                '<strong>' + examen.nombre + '</strong>' +
-                '<span>' + examen.descripcionCorta + '</span>' +
-            '</div>' +
-            '<p class="fila-examen__fecha" data-duracion="' + examen.duracion + '">' + examen.fechaCompleta + '</p>' +
-            '<p class="fila-examen__duracion">' + examen.duracion + '</p>' +
-            '<p class="fila-examen__estado">' +
-                '<span class="etiqueta-examen etiqueta-examen--' + examen.estadoFiltro + '">' + examen.estado + '</span>' +
-            '</p>' +
-            '<a href="detalle_examen.html" class="' + claseAccion + '" data-examen="' + examen.id + '">' +
-                textoAccion +
-            '</a>';
-
-        const enlace = fila.querySelector(".fila-examen__accion");
-
-        enlace.addEventListener("click", function () {
-            window.guardarExamenSeleccionado(examen.id);
-        });
-
-        contenedor.appendChild(fila);
-    });
+  });
 }

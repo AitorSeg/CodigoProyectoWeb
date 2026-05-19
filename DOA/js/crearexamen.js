@@ -144,7 +144,7 @@ function procesarFormularioExamen(evento) {
     examenes_creados.unshift(nuevo_examen);
     localStorage.setItem("doaExamenesCreados", JSON.stringify(examenes_creados));
 
-    window.location.href = "examenes.html";
+    window.location.href = "examenes.php";
 }
 
 function inicializarCrearExamen() {

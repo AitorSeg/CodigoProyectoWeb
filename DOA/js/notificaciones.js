@@ -46,7 +46,7 @@ function cargarNotificacionesDemo() {
             fecha: "Ayer",
             asignatura: "programacion",
             accionTexto: "Ver exámenes",
-            accionHref: "examenes.html",
+            accionHref: "examenes.php",
             leida: estadoLectura.notificacion_examen_programacion === true ? true : false
         },
         {

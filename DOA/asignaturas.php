@@ -100,7 +100,7 @@ $placeholder_buscador = "Buscar asignatura...";
                         </span>
                     </button>
                     <div class="dato-asignaturas__detalle" hidden="" id="detalleProximaEvaluacion">
-                        <a class="enlace-detalle-asignatura" data-asignatura="matematicas" href="examenes.html">
+                        <a class="enlace-detalle-asignatura" data-asignatura="matematicas" href="examenes.php">
                             Parcial 1 · 15 Oct, 2025
                         </a>
                     </div>

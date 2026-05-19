@@ -3,13 +3,13 @@
 */
 
 .pagina-examenes {
-    min-height: 100vh;
-    background: var(--color-bg);
-    color: var(--color-text);
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 .contenido-examenes {
-    padding: var(--space-6) var(--space-8) var(--space-8);
+  padding: var(--space-6) var(--space-8) var(--space-8);
 }
 
 /*
@@ -17,36 +17,45 @@
 */
 
 .resumen-examenes {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-4);
-    margin-bottom: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
 .tarjeta-resumen-examen {
-    min-height: 92px;
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
+  min-height: 92px;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.tarjeta-resumen-examen:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-muted);
 }
 
 .tarjeta-resumen-examen span {
-    display: block;
-    margin-bottom: var(--space-3);
-    color: var(--color-text);
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .tarjeta-resumen-examen strong {
-    display: block;
-    color: var(--color-text);
-    font-size: 22px;
-    line-height: 1.1;
-    font-weight: 800;
+  display: block;
+  color: var(--color-text);
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 800;
 }
 
 /*
@@ -54,88 +63,99 @@
 */
 
 .examen-destacado {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 260px;
-    gap: var(--space-6);
-    align-items: center;
-    margin-bottom: var(--space-5);
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: var(--space-6);
+  align-items: center;
+  margin-bottom: var(--space-5);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .examen-destacado__contenido {
-    min-width: 0;
+  min-width: 0;
 }
 
 .examen-destacado h2 {
-    margin: var(--space-3) 0 var(--space-2);
-    color: var(--color-text);
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.2;
+  margin: var(--space-3) 0 var(--space-2);
+  color: var(--color-text);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .examen-destacado__contenido p {
-    max-width: 760px;
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 14px;
-    line-height: 1.5;
+  max-width: 760px;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .examen-destacado__accion {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
 .examen-destacado__accion p {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 12px;
-    text-align: center;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 12px;
+  text-align: center;
 }
 
 .examen-destacado__accion p span {
-    display: block;
-    margin-bottom: var(--space-1);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .examen-destacado__accion p strong {
-    display: block;
-    color: var(--color-text);
-    font-size: 18px;
+  display: block;
+  color: var(--color-text);
+  font-size: 18px;
+}
+
+.examen-destacado[data-estado="abierto"] {
+  border-color: var(--color-primary);
+  box-shadow:
+    0 0 0 1px rgba(var(--color-primary-rgb), 0.1),
+    0 18px 48px rgba(var(--color-primary-rgb), 0.05);
 }
 
 .boton-entrar-examen {
-    min-height: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 var(--space-5);
-    border-radius: var(--radius-md);
-    background: var(--color-primary);
-    color: var(--color-dark);
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition:
-        background-color 0.15s ease,
-        transform 0.08s ease;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-dark);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    transform 0.08s ease;
 }
 
 .boton-entrar-examen:hover {
-    background: var(--color-primary-hover);
-    color: var(--color-dark);
+  background: var(--color-primary-hover);
+  color: var(--color-dark);
 }
 
 .boton-entrar-examen:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 /*
@@ -143,30 +163,30 @@
 */
 
 .etiqueta-examen {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 18px;
-    padding: 0 var(--space-2);
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    background: var(--color-surface-alt);
-    color: var(--color-muted);
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 18px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface-alt);
+  color: var(--color-muted);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .etiqueta-examen--abierto {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .etiqueta-examen--cerrado,
 .etiqueta-examen--realizado,
 .etiqueta-examen--proximo {
-    border-color: var(--color-border);
-    color: var(--color-muted);
+  border-color: var(--color-border);
+  color: var(--color-muted);
 }
 
 /*
@@ -174,162 +194,169 @@
 */
 
 .bloque-listado-examenes {
-    margin-top: var(--space-5);
+  margin-top: var(--space-5);
 }
 
 .cabecera-listado-examenes {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
 .cabecera-listado-examenes h2 {
-    margin: 0;
-    color: var(--color-text);
-    font-size: 18px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+  margin: 0;
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .filtros-examenes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
 }
 
 .filtro-examen {
-    min-height: 34px;
-    padding: 0 var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background: var(--color-surface);
-    color: var(--color-muted);
-    font-family: inherit;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    transition:
-        border-color 0.15s ease,
-        color 0.15s ease,
-        background-color 0.15s ease,
-        transform 0.08s ease;
+  min-height: 34px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease,
+    transform 0.08s ease;
 }
 
 .filtro-examen:hover,
 .filtro-examen--activo {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    background: var(--color-surface-alt);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-surface-alt);
 }
 
 .filtro-examen:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .tabla-examenes {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .tabla-examenes__cabecera,
 .fila-examen {
-    display: grid;
-    grid-template-columns: minmax(260px, 1fr) 160px 120px 120px 120px;
-    align-items: center;
-    column-gap: var(--space-4);
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 160px 120px 120px 120px;
+  align-items: center;
+  column-gap: var(--space-4);
 }
 
 .tabla-examenes__cabecera {
-    padding: 0 var(--space-5) var(--space-1);
+  padding: 0 var(--space-5) var(--space-1);
 }
 
 .tabla-examenes__cabecera p {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.tabla-examenes__contenido {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .fila-examen {
-    min-height: 72px;
-    padding: 0 var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    transition:
-        border-color 0.15s ease,
-        background-color 0.15s ease;
+  min-height: 72px;
+  padding: 0 var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .fila-examen:hover {
-    border-color: var(--color-soft);
-    background: var(--color-surface-alt);
+  transform: translateY(-1px);
+  border-color: var(--color-soft);
+  background: var(--color-surface-alt);
 }
 
 .fila-examen__nombre {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
 }
 
 .fila-examen__nombre strong {
-    color: var(--color-text);
-    font-size: 15px;
-    font-weight: 800;
+  color: var(--color-text);
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .fila-examen__nombre span {
-    color: var(--color-muted);
-    font-size: 12px;
+  color: var(--color-muted);
+  font-size: 12px;
 }
 
 .fila-examen p {
-    margin: 0;
-    color: var(--color-text);
-    font-size: 13px;
-    font-weight: 700;
+  margin: 0;
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .fila-examen__accion {
-    min-height: 34px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text);
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition:
-        border-color 0.15s ease,
-        color 0.15s ease,
-        background-color 0.15s ease;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .fila-examen__accion:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    background: var(--color-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-bg);
 }
 
 .fila-examen__accion--principal {
-    border-color: var(--color-primary);
-    background: var(--color-primary);
-    color: var(--color-dark);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-dark);
 }
 
 .fila-examen__accion--principal:hover {
-    background: var(--color-primary-hover);
-    color: var(--color-dark);
+  background: var(--color-primary-hover);
+  color: var(--color-dark);
 }
 
 /*
@@ -337,140 +364,140 @@
 */
 
 .mensaje-sin-examenes {
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    color: var(--color-muted);
-    text-align: center;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  text-align: center;
 }
 
 @media (max-width: 900px) {
-    .contenido-examenes {
-        padding: var(--space-5);
-        padding-bottom: calc(72px + var(--space-5));
-    }
+  .contenido-examenes {
+    padding: var(--space-5);
+    padding-bottom: calc(72px + var(--space-5));
+  }
 
-    .resumen-examenes {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: var(--space-2);
-        margin-bottom: var(--space-4);
-    }
+  .resumen-examenes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
 
-    .tarjeta-resumen-examen {
-        min-height: 68px;
-        padding: var(--space-3);
-        border-radius: var(--radius-sm);
-    }
+  .tarjeta-resumen-examen {
+    min-height: 68px;
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+  }
 
-    .tarjeta-resumen-examen span {
-        margin-bottom: var(--space-1);
-        font-size: 10px;
-        line-height: 1.2;
-        color: var(--color-muted);
-    }
+  .tarjeta-resumen-examen span {
+    margin-bottom: var(--space-1);
+    font-size: 10px;
+    line-height: 1.2;
+    color: var(--color-muted);
+  }
 
-    .tarjeta-resumen-examen strong {
-        font-size: 18px;
-    }
+  .tarjeta-resumen-examen strong {
+    font-size: 18px;
+  }
 
-    .examen-destacado {
-        display: none;
-    }
+  .examen-destacado {
+    display: none;
+  }
 
-    .bloque-listado-examenes {
-        margin-top: var(--space-4);
-    }
+  .bloque-listado-examenes {
+    margin-top: var(--space-4);
+  }
 
-    .cabecera-listado-examenes {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: var(--space-3);
-        margin-bottom: var(--space-3);
-    }
+  .cabecera-listado-examenes {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
 
-    .cabecera-listado-examenes h2 {
-        font-size: 18px;
-        line-height: 1.2;
-    }
+  .cabecera-listado-examenes h2 {
+    font-size: 18px;
+    line-height: 1.2;
+  }
 
-    .filtros-examenes {
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        gap: var(--space-2);
-        overflow-x: auto;
-        padding-bottom: var(--space-1);
-    }
+  .filtros-examenes {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--space-2);
+    overflow-x: auto;
+    padding-bottom: var(--space-1);
+  }
 
-    .filtro-examen {
-        flex: 0 0 auto;
-        min-height: 32px;
-        padding: 0 var(--space-3);
-        font-size: 10px;
-    }
+  .filtro-examen {
+    flex: 0 0 auto;
+    min-height: 32px;
+    padding: 0 var(--space-3);
+    font-size: 10px;
+  }
 
-    .tabla-examenes {
-        gap: var(--space-3);
-    }
+  .tabla-examenes {
+    gap: var(--space-3);
+  }
 
-    .tabla-examenes__cabecera {
-        display: none;
-    }
+  .tabla-examenes__cabecera {
+    display: none;
+  }
 
-    .fila-examen {
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-            "nombre estado"
-            "fecha fecha"
-            "accion accion";
-        gap: var(--space-3);
-        min-height: auto;
-        padding: var(--space-4);
-    }
+  .fila-examen {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "nombre estado"
+      "fecha fecha"
+      "accion accion";
+    gap: var(--space-3);
+    min-height: auto;
+    padding: var(--space-4);
+  }
 
-    .fila-examen__nombre {
-        grid-area: nombre;
-    }
+  .fila-examen__nombre {
+    grid-area: nombre;
+  }
 
-    .fila-examen__nombre strong {
-        font-size: 16px;
-    }
+  .fila-examen__nombre strong {
+    font-size: 16px;
+  }
 
-    .fila-examen__nombre span {
-        font-size: 13px;
-    }
+  .fila-examen__nombre span {
+    font-size: 13px;
+  }
 
-    .fila-examen__fecha {
-        grid-area: fecha;
-        color: var(--color-muted);
-        font-size: 12px;
-    }
+  .fila-examen__fecha {
+    grid-area: fecha;
+    color: var(--color-muted);
+    font-size: 12px;
+  }
 
-    .fila-examen__fecha::after {
-        content: " · " attr(data-duracion);
-    }
+  .fila-examen__fecha::after {
+    content: " · " attr(data-duracion);
+  }
 
-    .fila-examen__duracion {
-        display: none;
-    }
+  .fila-examen__duracion {
+    display: none;
+  }
 
-    .fila-examen__estado {
-        grid-area: estado;
-        justify-self: end;
-    }
+  .fila-examen__estado {
+    grid-area: estado;
+    justify-self: end;
+  }
 
-    .fila-examen__accion {
-        grid-area: accion;
-        width: 100%;
-        min-height: 38px;
-    }
+  .fila-examen__accion {
+    grid-area: accion;
+    width: 100%;
+    min-height: 38px;
+  }
 
-    .fila-examen p {
-        margin: 0;
-    }
+  .fila-examen p {
+    margin: 0;
+  }
 
-    .fila-examen p::before {
-        display: none;
-    }
+  .fila-examen p::before {
+    display: none;
+  }
 }
