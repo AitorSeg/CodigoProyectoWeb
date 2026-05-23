@@ -8,10 +8,6 @@
   color: var(--color-text);
 }
 
-.contenido-examenes {
-  padding: var(--space-6) var(--space-8) var(--space-8);
-}
-
 /*
     Resumen superior
 */
@@ -145,8 +141,8 @@
   text-transform: uppercase;
   text-decoration: none;
   transition:
-    background-color 0.15s ease,
-    transform 0.08s ease;
+    background-color 180ms ease,
+    transform 180ms ease;
 }
 
 .boton-entrar-examen:hover {
@@ -232,10 +228,10 @@
   font-weight: 800;
   text-transform: uppercase;
   transition:
-    border-color 0.15s ease,
-    color 0.15s ease,
-    background-color 0.15s ease,
-    transform 0.08s ease;
+    border-color 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
 }
 
 .filtro-examen:hover,
@@ -288,8 +284,8 @@
   border-radius: var(--radius-md);
   background: var(--color-surface);
   transition:
-    border-color 0.15s ease,
-    background-color 0.15s ease;
+    border-color 180ms ease,
+    background-color 180ms ease;
 }
 
 .fila-examen:hover {
@@ -337,9 +333,9 @@
   text-transform: uppercase;
   text-decoration: none;
   transition:
-    border-color 0.15s ease,
-    color 0.15s ease,
-    background-color 0.15s ease;
+    border-color 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease;
 }
 
 .fila-examen__accion:hover {

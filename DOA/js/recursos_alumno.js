@@ -185,7 +185,7 @@ function renderizar_tabla_recursos() {
 });
 
   if (archivos_filtrados.length === 0) {
-    cuerpo_tabla_archivos.innerHTML = '<p class="mensaje-tabla-vacia">No hay recursos que coincidan con la búsqueda.</p>';
+    cuerpo_tabla_archivos.innerHTML = '<p class="mensaje-tabla-vacia">No hay recursos que coincidan con los filtros seleccionados.</p>';
     return;
   }
 
