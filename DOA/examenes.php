@@ -76,7 +76,7 @@ $placeholder_buscador = "Buscar examen...";
                             <a class="pestanas-asignatura__item" href="recursos_alumno.php">Recursos</a>
                             <a class="pestanas-asignatura__item" href="listado_tareas.html">Tareas</a>
                             <a class="pestanas-asignatura__item pestanas-asignatura__item--activo" href="examenes.php">Exámenes</a>
-                            <a class="pestanas-asignatura__item" href="calificaciones.html">Calificaciones</a>
+                            <a class="pestanas-asignatura__item" href="calificaciones.php">Calificaciones</a>
                         </nav>
                     </div>
                     <!-- Fin: pestañas internas de la asignatura -->

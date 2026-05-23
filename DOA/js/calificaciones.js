@@ -1,158 +1,128 @@
 /*
     Pantalla: Calificaciones
+    Carga el resumen y el historial de calificaciones de la asignatura seleccionada.
 */
 
-let historialCalificacionesActual = [];
+let historial_calificaciones_actual = [];
 
-document.addEventListener("DOMContentLoaded", function () {
-    const idAsignatura = window.obtenerAsignaturaSeleccionada();
-    const asignatura = window.DOA_ASIGNATURAS[idAsignatura] || window.DOA_ASIGNATURAS.matematicas;
-    const calificaciones = obtenerCalificacionesAsignatura(idAsignatura);
+const id_asignatura = window.obtenerAsignaturaSeleccionada();
+const asignatura = window.DOA_ASIGNATURAS[id_asignatura];
+const calificaciones = obtener_calificaciones_asignatura(id_asignatura);
 
-    historialCalificacionesActual = calificaciones.historial;
+historial_calificaciones_actual = calificaciones.historial;
 
-    cargarCabeceraAsignatura(asignatura);
-    cargarResumenCalificaciones(calificaciones);
-    prepararFiltrosCalificaciones();
-    aplicarFiltrosCalificaciones();
-});
+cargar_cabecera_asignatura(asignatura);
+cargar_resumen_calificaciones(calificaciones);
+preparar_filtros_calificaciones();
+aplicar_filtros_calificaciones();
 
-function ponerTexto(idElemento, texto) {
-    const elemento = document.getElementById(idElemento);
+function cargar_cabecera_asignatura(asignatura) {
+  document.title = "Calificaciones · " + asignatura.nombre + " | DOA";
 
-    if (elemento !== null) {
-        elemento.textContent = texto;
-    }
+  document.getElementById("tituloCalificaciones").textContent = asignatura.nombre;
+  document.getElementById("profesorAsignatura").textContent = asignatura.profesor;
+  document.getElementById("unidadActualAsignatura").textContent = asignatura.unidadActualTexto;
 }
 
-function cargarCabeceraAsignatura(asignatura) {
-    document.title = "Calificaciones · " + asignatura.nombre + " | DOA";
-
-    ponerTexto("tituloCalificaciones", asignatura.nombre);
-    ponerTexto("profesorAsignatura", asignatura.profesor);
-    ponerTexto("unidadActualAsignatura", asignatura.unidadActualTexto);
+function cargar_resumen_calificaciones(calificaciones) {
+  document.getElementById("notaMedia").textContent = calificaciones.notaMedia;
+  document.getElementById("notaMediaExamenes").textContent = calificaciones.notaMediaExamenes;
+  document.getElementById("notaMediaTareas").textContent = calificaciones.notaMediaTareas;
+  document.getElementById("notaMediaPracticas").textContent = calificaciones.notaMediaPracticas;
 }
 
-function cargarResumenCalificaciones(calificaciones) {
-    ponerTexto("notaMedia", calificaciones.notaMedia);
-    ponerTexto("notaMediaExamenes", calificaciones.notaMediaExamenes);
-    ponerTexto("notaMediaTareas", calificaciones.notaMediaTareas);
-    ponerTexto("notaMediaPracticas", calificaciones.notaMediaPracticas);
+function preparar_filtros_calificaciones() {
+  document.getElementById("filtroTipoCalificacion").addEventListener("change", aplicar_filtros_calificaciones);
+  document.getElementById("filtroEstadoCalificacion").addEventListener("change", aplicar_filtros_calificaciones);
+  document.getElementById("ordenCalificacion").addEventListener("change", aplicar_filtros_calificaciones);
 }
 
-function prepararFiltrosCalificaciones() {
-    const filtroTipo = document.getElementById("filtroTipoCalificacion");
-    const filtroEstado = document.getElementById("filtroEstadoCalificacion");
-    const orden = document.getElementById("ordenCalificacion");
+function aplicar_filtros_calificaciones() {
+  const tipo_seleccionado = document.getElementById("filtroTipoCalificacion").value;
+  const estado_seleccionado = document.getElementById("filtroEstadoCalificacion").value;
+  const orden_seleccionado = document.getElementById("ordenCalificacion").value;
 
-    if (filtroTipo !== null) {
-        filtroTipo.addEventListener("change", aplicarFiltrosCalificaciones);
-    }
+  let historial_filtrado = historial_calificaciones_actual.filter(function (actividad) {
+    const coincide_tipo = tipo_seleccionado === "todas" || actividad.tipoFiltro === tipo_seleccionado;
+    const coincide_estado = estado_seleccionado === "todos" || actividad.estadoFiltro === estado_seleccionado;
 
-    if (filtroEstado !== null) {
-        filtroEstado.addEventListener("change", aplicarFiltrosCalificaciones);
-    }
+    return coincide_tipo && coincide_estado;
+  });
 
-    if (orden !== null) {
-        orden.addEventListener("change", aplicarFiltrosCalificaciones);
-    }
+  historial_filtrado = ordenar_calificaciones(historial_filtrado, orden_seleccionado);
+
+  cargar_tabla_calificaciones(historial_filtrado);
 }
 
-function aplicarFiltrosCalificaciones() {
-    const filtroTipo = document.getElementById("filtroTipoCalificacion");
-    const filtroEstado = document.getElementById("filtroEstadoCalificacion");
-    const orden = document.getElementById("ordenCalificacion");
+function ordenar_calificaciones(historial, orden_seleccionado) {
+  const copia_historial = historial.slice();
 
-    const tipoSeleccionado = filtroTipo !== null ? filtroTipo.value : "todas";
-    const estadoSeleccionado = filtroEstado !== null ? filtroEstado.value : "todos";
-    const ordenSeleccionado = orden !== null ? orden.value : "fecha";
-
-    let historialFiltrado = historialCalificacionesActual.filter(function (actividad) {
-        const coincideTipo = tipoSeleccionado === "todas" || actividad.tipoFiltro === tipoSeleccionado;
-        const coincideEstado = estadoSeleccionado === "todos" || actividad.estadoFiltro === estadoSeleccionado;
-
-        return coincideTipo && coincideEstado;
+  if (orden_seleccionado === "nombre") {
+    copia_historial.sort(function (a, b) {
+      return a.nombre.localeCompare(b.nombre);
     });
+  }
 
-    historialFiltrado = ordenarCalificaciones(historialFiltrado, ordenSeleccionado);
+  if (orden_seleccionado === "nota") {
+    copia_historial.sort(function (a, b) {
+      const nota_a = a.notaNumero === null ? -1 : a.notaNumero;
+      const nota_b = b.notaNumero === null ? -1 : b.notaNumero;
 
-    cargarTablaCalificaciones(historialFiltrado);
-}
-
-function ordenarCalificaciones(historial, ordenSeleccionado) {
-    const copiaHistorial = historial.slice();
-
-    if (ordenSeleccionado === "nombre") {
-        copiaHistorial.sort(function (a, b) {
-            return a.nombre.localeCompare(b.nombre);
-        });
-    }
-
-    if (ordenSeleccionado === "nota") {
-        copiaHistorial.sort(function (a, b) {
-            const notaA = a.notaNumero === null ? -1 : a.notaNumero;
-            const notaB = b.notaNumero === null ? -1 : b.notaNumero;
-
-            return notaB - notaA;
-        });
-    }
-
-    if (ordenSeleccionado === "fecha") {
-        copiaHistorial.sort(function (a, b) {
-            return b.ordenFecha - a.ordenFecha;
-        });
-    }
-
-    return copiaHistorial;
-}
-
-function cargarTablaCalificaciones(historial) {
-    const tabla = document.getElementById("tablaCalificaciones");
-
-    if (tabla === null) {
-        return;
-    }
-
-    tabla.innerHTML = "";
-
-    if (historial.length === 0) {
-        const filaVacia = document.createElement("tr");
-
-        filaVacia.className = "fila-sin-resultados";
-        filaVacia.innerHTML = '<td colspan="8">No hay calificaciones con estos filtros.</td>';
-
-        tabla.appendChild(filaVacia);
-        return;
-    }
-
-    historial.forEach(function (actividad) {
-        const fila = document.createElement("tr");
-
-        const claseNota = actividad.notaNumero !== null && actividad.notaNumero < 5 ? "nota-negativa" : "nota-positiva";
-
-        const nota = actividad.nota === null
-            ? '<span class="barra-nota-pendiente"></span>'
-            : '<span class="' + claseNota + '">' + actividad.nota + '</span>';
-
-        const estadoClase = actividad.estadoFiltro === "proxima"
-            ? "estado-calificacion estado-calificacion--pendiente"
-            : "estado-calificacion";
-
-        fila.innerHTML =
-            '<td>' + actividad.nombre + '</td>' +
-            '<td>' + actividad.tipo + '</td>' +
-            '<td>' + actividad.unidad + '</td>' +
-            '<td>' + actividad.peso + '</td>' +
-            '<td>' + nota + '</td>' +
-            '<td><span class="' + estadoClase + '">' + actividad.estado + '</span></td>' +
-            '<td>' + actividad.fecha + '</td>' +
-            '<td><a href="#" class="enlace-tabla">' + actividad.accion + '</a></td>';
-
-        tabla.appendChild(fila);
+      return nota_b - nota_a;
     });
+  }
+
+  if (orden_seleccionado === "fecha") {
+    copia_historial.sort(function (a, b) {
+      return b.ordenFecha - a.ordenFecha;
+    });
+  }
+
+  return copia_historial;
 }
 
-function obtenerCalificacionesAsignatura(idAsignatura) {
+function cargar_tabla_calificaciones(historial) {
+  const tabla = document.getElementById("tablaCalificaciones");
+
+  tabla.innerHTML = "";
+
+  if (historial.length === 0) {
+    const fila_vacia = document.createElement("tr");
+
+    fila_vacia.className = "fila-sin-resultados";
+    fila_vacia.innerHTML = '<td colspan="8">No hay calificaciones con estos filtros.</td>';
+
+    tabla.appendChild(fila_vacia);
+    return;
+  }
+
+  historial.forEach(function (actividad) {
+    const fila = document.createElement("tr");
+    const clase_nota = actividad.notaNumero !== null && actividad.notaNumero < 5 ? "nota-negativa" : "nota-positiva";
+
+    const nota = actividad.nota === null
+      ? '<span class="barra-nota-pendiente"></span>'
+      : '<span class="' + clase_nota + '">' + actividad.nota + '</span>';
+
+    const estado_clase = actividad.estadoFiltro === "proxima"
+      ? "estado-calificacion estado-calificacion--pendiente"
+      : "estado-calificacion";
+
+    fila.innerHTML =
+      '<td>' + actividad.nombre + '</td>' +
+      '<td>' + actividad.tipo + '</td>' +
+      '<td>' + actividad.unidad + '</td>' +
+      '<td>' + actividad.peso + '</td>' +
+      '<td>' + nota + '</td>' +
+      '<td><span class="' + estado_clase + '">' + actividad.estado + '</span></td>' +
+      '<td>' + actividad.fecha + '</td>' +
+      '<td><button type="button" class="enlace-tabla">' + actividad.accion + '</button></td>';
+
+    tabla.appendChild(fila);
+  });
+}
+
+function obtener_calificaciones_asignatura(id_asignatura) {
     const datos = {
         matematicas: {
             notaMedia: "5,9",
@@ -336,5 +306,5 @@ function obtenerCalificacionesAsignatura(idAsignatura) {
         }
     };
 
-    return datos[idAsignatura] || datos.matematicas;
+    return datos[id_asignatura] || datos.matematicas;
 }

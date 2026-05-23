@@ -27,7 +27,7 @@ function enrutarPestanasAsignatura() {
             pestana_actual.href = 'examenes.php';
         }
         else if (nombre_pestana === 'calificaciones') {
-            pestana_actual.href = 'calificaciones.html';
+            pestana_actual.href = 'calificaciones.php';
         }
     }
 }

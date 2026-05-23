@@ -87,7 +87,7 @@ function cargarNotificacionesDemo() {
             fecha: "Jue",
             asignatura: "matematicas",
             accionTexto: "Ver calificaciones",
-            accionHref: "calificaciones.html",
+            accionHref: "calificaciones.php",
             leida: estadoLectura.notificacion_calificacion === true ? true : false
         }
     ];

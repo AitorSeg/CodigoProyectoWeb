@@ -60,7 +60,7 @@ $placeholder_buscador = "Buscar recursos...";
                             <a href="recursos_alumno.php" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Recursos</a>
                             <a href="listado_tareas.html" class="pestanas-asignatura__item">Tareas</a>
                             <a href="examenes.php" class="pestanas-asignatura__item">Exámenes</a>
-                            <a href="calificaciones.html" class="pestanas-asignatura__item">Calificaciones</a>
+                            <a href="calificaciones.php" class="pestanas-asignatura__item">Calificaciones</a>
                         </nav>
                     </div>
                 </div>
