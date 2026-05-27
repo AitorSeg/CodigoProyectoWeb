@@ -7,6 +7,7 @@ $placeholder_buscador = "Buscar recursos...";
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -105,8 +106,7 @@ $placeholder_buscador = "Buscar recursos...";
                                     id="tituloRecurso"
                                     type="text"
                                     placeholder="Ej. Presentación Unidad 03"
-                                    required
-                                >
+                                    required>
                             </div>
 
                             <div>
@@ -116,8 +116,7 @@ $placeholder_buscador = "Buscar recursos...";
                                     class="input input-archivo-recurso"
                                     id="archivoRecurso"
                                     type="file"
-                                    required
-                                >
+                                    required>
                             </div>
 
                             <div class="formulario-recursos-grid__acciones">
@@ -184,8 +183,7 @@ $placeholder_buscador = "Buscar recursos...";
                                         id="flechaBreadcrumb"
                                         src="img/iconos/grey-chevron-right.svg"
                                         alt=""
-                                        aria-hidden="true"
-                                    >
+                                        aria-hidden="true">
 
                                     <strong id="textoBreadcrumb">UNIDAD 03</strong>
 
@@ -193,8 +191,7 @@ $placeholder_buscador = "Buscar recursos...";
                                         class="icono-desplegable-movil"
                                         src="img/iconos/grey-down-arrow.svg"
                                         alt=""
-                                        aria-hidden="true"
-                                    >
+                                        aria-hidden="true">
                                 </div>
 
                                 <div class="contenedor-filtros-wrapper">
@@ -203,21 +200,25 @@ $placeholder_buscador = "Buscar recursos...";
                                         <img src="img/iconos/grey-down-arrow.svg" alt="" aria-hidden="true">
                                     </button>
 
-                                    <div class="biblioteca-filtros" id="contenedorFiltros">
-                                        <select class="input-filtro" id="filtroTipo">
-                                            <option value="TODOS">TIPO: TODOS</option>
-                                            <option value="PDF">PDF</option>
-                                            <option value="ZIP">ZIP</option>
-                                            <option value="PPTX">PPTX</option>
-                                        </select>
+                                    <div class="biblioteca-filtros grupo-filtros" id="contenedorFiltros">
+                                        <label class="filtro-select">
+                                            <select id="filtroTipo">
+                                                <option value="TODOS">Tipo: todos</option>
+                                                <option value="PDF">Tipo: PDF</option>
+                                                <option value="ZIP">Tipo: ZIP</option>
+                                                <option value="PPTX">Tipo: PPTX</option>
+                                            </select>
+                                        </label>
 
-                                        <select class="input-filtro" id="filtroEtiqueta">
-                                            <option value="TODAS">ETIQUETAS: TODAS</option>
-                                            <option value="Unidad actual">Unidad actual</option>
-                                            <option value="Práctica">Práctica</option>
-                                            <option value="Importante">Importante</option>
-                                            <option value="Nuevo">Nuevo</option>
-                                        </select>
+                                        <label class="filtro-select">
+                                            <select id="filtroEtiqueta">
+                                                <option value="TODAS">Etiquetas: todas</option>
+                                                <option value="Unidad actual">Unidad actual</option>
+                                                <option value="Práctica">Práctica</option>
+                                                <option value="Importante">Importante</option>
+                                                <option value="Nuevo">Nuevo</option>
+                                            </select>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -244,4 +245,5 @@ $placeholder_buscador = "Buscar recursos...";
     <script src="js/doa-datos.js"></script>
     <script src="js/recursos_profesor.js"></script>
 </body>
+
 </html>

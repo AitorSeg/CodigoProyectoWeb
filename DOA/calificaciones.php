@@ -25,6 +25,7 @@ $placeholder_buscador = "Buscar calificación...";
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
     <!-- Fin enlaces a hojas de estilo -->
 </head>
+
 <body class="pagina-doa pagina-calificaciones">
     <!-- Inclusión del header -->
     <?php include "includes/header-doa.php"; ?>
@@ -122,8 +123,8 @@ $placeholder_buscador = "Buscar calificación...";
                     <h2>
                         Calificaciones
                     </h2>
-                    <div class="filtros-calificaciones">
-                        <label class="filtro-calificaciones">
+                    <div class="grupo-filtros">
+                        <label class="filtro-select">
                             <select id="filtroTipoCalificacion">
                                 <option value="todas">
                                     Tipo: todas
@@ -138,14 +139,11 @@ $placeholder_buscador = "Buscar calificación...";
                                     Prácticas
                                 </option>
                             </select>
-                            <span aria-hidden="true" class="filtro-calificaciones__icono">
-                                <img alt="" src="img/iconos/grey-chevron-right.svg" />
-                            </span>
                         </label>
-                        <label class="filtro-calificaciones">
+                        <label class="filtro-select">
                             <select id="filtroEstadoCalificacion">
                                 <option value="todos">
-                                    Estado
+                                    Estado: todos
                                 </option>
                                 <option value="corregido">
                                     Corregidas
@@ -154,11 +152,8 @@ $placeholder_buscador = "Buscar calificación...";
                                     Próximas
                                 </option>
                             </select>
-                            <span aria-hidden="true" class="filtro-calificaciones__icono">
-                                <img alt="" src="img/iconos/grey-chevron-right.svg" />
-                            </span>
                         </label>
-                        <label class="filtro-calificaciones">
+                        <label class="filtro-select">
                             <select id="ordenCalificacion">
                                 <option value="fecha">
                                     Ordenar por fecha
@@ -170,9 +165,6 @@ $placeholder_buscador = "Buscar calificación...";
                                     Ordenar por nombre
                                 </option>
                             </select>
-                            <span aria-hidden="true" class="filtro-calificaciones__icono">
-                                <img alt="" src="img/iconos/grey-chevron-right.svg" />
-                            </span>
                         </label>
                     </div>
                 </div>

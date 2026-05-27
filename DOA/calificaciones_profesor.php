@@ -7,6 +7,7 @@ $placeholder_buscador = "Buscar alumno, calificación...";
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -110,30 +111,22 @@ $placeholder_buscador = "Buscar alumno, calificación...";
                 <div class="cabecera-tabla-calificaciones">
                     <h2>Seguimiento del alumnado</h2>
 
-                    <div class="filtros-calificaciones">
-                        <label class="filtro-calificaciones">
+                    <div class="grupo-filtros">
+                        <label class="filtro-select">
                             <select id="filtroEstadoCalificacion" aria-label="Filtrar por estado">
                                 <option value="todos">Estado: todos</option>
                                 <option value="aprobado">Aprobados</option>
                                 <option value="suspendido">Suspendidos</option>
                                 <option value="pendiente">Pendientes</option>
                             </select>
-
-                            <span class="filtro-calificaciones__icono" aria-hidden="true">
-                                <img src="img/iconos/grey-chevron-right.svg" alt="">
-                            </span>
                         </label>
 
-                        <label class="filtro-calificaciones">
+                        <label class="filtro-select">
                             <select id="ordenCalificacion" aria-label="Ordenar calificaciones">
                                 <option value="nota">Ordenar por nota</option>
                                 <option value="nombre">Ordenar por nombre</option>
                                 <option value="pendientes">Ordenar por pendientes</option>
                             </select>
-
-                            <span class="filtro-calificaciones__icono" aria-hidden="true">
-                                <img src="img/iconos/grey-chevron-right.svg" alt="">
-                            </span>
                         </label>
                     </div>
                 </div>
@@ -162,4 +155,5 @@ $placeholder_buscador = "Buscar alumno, calificación...";
     <script src="js/doa-datos.js"></script>
     <script src="js/calificaciones_profesor.js"></script>
 </body>
+
 </html>

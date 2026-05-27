@@ -6,6 +6,7 @@ $placeholder_buscador = "Buscar recursos...";
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,8 +151,7 @@ $placeholder_buscador = "Buscar recursos...";
                                         alt=""
                                         class="flecha-breadcrumb"
                                         id="flechaBreadcrumb"
-                                        aria-hidden="true"
-                                    >
+                                        aria-hidden="true">
 
                                     <strong id="textoBreadcrumb">UNIDAD 03</strong>
 
@@ -159,8 +159,7 @@ $placeholder_buscador = "Buscar recursos...";
                                         class="icono-desplegable-movil"
                                         src="img/iconos/grey-down-arrow.svg"
                                         alt=""
-                                        aria-hidden="true"
-                                    >
+                                        aria-hidden="true">
                                 </div>
 
                                 <div class="contenedor-filtros-wrapper">
@@ -169,18 +168,22 @@ $placeholder_buscador = "Buscar recursos...";
                                         <img src="img/iconos/grey-down-arrow.svg" alt="" aria-hidden="true">
                                     </button>
 
-                                    <div class="biblioteca-filtros" id="contenedorFiltros">
-                                        <select class="input-filtro" id="filtroTipo">
-                                            <option value="TODOS">TIPO: TODOS</option>
-                                            <option value="PDF">PDF</option>
-                                            <option value="ZIP">ZIP</option>
-                                        </select>
+                                    <div class="biblioteca-filtros grupo-filtros" id="contenedorFiltros">
+                                        <label class="filtro-select">
+                                            <select id="filtroTipo">
+                                                <option value="TODOS">Tipo: todos</option>
+                                                <option value="PDF">Tipo: PDF</option>
+                                                <option value="ZIP">Tipo: ZIP</option>
+                                            </select>
+                                        </label>
 
-                                        <select class="input-filtro" id="filtroEtiqueta">
-                                            <option value="TODAS">ETIQUETAS: TODAS</option>
-                                            <option value="Unidad actual">Unidad actual</option>
-                                            <option value="Práctica">Práctica</option>
-                                        </select>
+                                        <label class="filtro-select">
+                                            <select id="filtroEtiqueta">
+                                                <option value="TODAS">Etiquetas: todas</option>
+                                                <option value="Unidad actual">Unidad actual</option>
+                                                <option value="Práctica">Práctica</option>
+                                            </select>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -207,4 +210,5 @@ $placeholder_buscador = "Buscar recursos...";
     <script src="js/doa_layout.js"></script>
     <script src="js/recursos_alumno.js"></script>
 </body>
+
 </html>

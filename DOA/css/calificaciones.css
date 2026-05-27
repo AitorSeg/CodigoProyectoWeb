@@ -100,60 +100,6 @@
   margin: 0;
 }
 
-.filtros-calificaciones {
-  display: flex;
-  gap: var(--space-2);
-}
-
-.filtro-calificaciones {
-  position: relative;
-  display: inline-flex;
-  min-width: 128px;
-}
-
-.filtro-calificaciones select {
-  width: 100%;
-  min-height: 34px;
-  padding: 0 32px 0 var(--space-3);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--color-surface-alt);
-  color: var(--color-muted);
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  outline: none;
-  cursor: pointer;
-  appearance: none;
-  transition:
-    border-color 180ms ease,
-    color 180ms ease,
-    background-color 180ms ease;
-}
-
-.filtro-calificaciones select:hover,
-.filtro-calificaciones select:focus {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.filtro-calificaciones__icono {
-  position: absolute;
-  top: 50%;
-  right: var(--space-3);
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
-  transform: translateY(-50%) rotate(90deg);
-}
-
-.filtro-calificaciones__icono img {
-  width: 14px;
-  height: 14px;
-  display: block;
-}
-
 .tabla-calificaciones {
   overflow-x: auto;
   border: 1px solid var(--color-border);
@@ -284,11 +230,6 @@
   .cabecera-tabla-calificaciones {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .filtros-calificaciones {
-    width: 100%;
-    overflow-x: auto;
   }
 
   .filtros-calificaciones button {

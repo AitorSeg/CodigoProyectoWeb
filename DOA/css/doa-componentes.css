@@ -622,6 +622,71 @@
 }
 
 /*
+    Filtros reutilizables
+*/
+
+.grupo-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.filtro-select {
+  position: relative;
+  display: inline-flex;
+  min-width: 164px;
+}
+
+.filtro-select select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 42px 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
+  color: var(--color-muted);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.filtro-select select:hover,
+.filtro-select select:focus {
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.filtro-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: var(--space-4);
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--color-muted);
+  border-bottom: 2px solid var(--color-muted);
+  pointer-events: none;
+  transform: translateY(-70%) rotate(45deg);
+  transition: border-color 180ms ease;
+}
+
+.filtro-select:hover::after,
+.filtro-select:focus-within::after {
+  border-color: var(--color-primary);
+}
+
+/*
     Responsive
 */
 
@@ -709,4 +774,21 @@
   .cabecera-calificaciones__texto h1 {
     font-size: 28px;
   }
+
+  @media (max-width: 720px) {
+  .grupo-filtros {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .filtro-select {
+    flex: 1 1 160px;
+  }
+}
+
+@media (max-width: 560px) {
+  .filtro-select {
+    min-width: 100%;
+  }
+}
 }
