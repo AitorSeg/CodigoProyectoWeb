@@ -21,7 +21,7 @@ function enrutarPestanasAsignatura() {
             pestana_actual.href = es_profesor ? 'recursos_profesor.php' : 'Recursosdoaalumno.html';
         }
         else if (nombre_pestana === 'tareas') {
-            pestana_actual.href = 'listado_tareas.html';
+            pestana_actual.href = 'listado_tareas.php';
         }
         else if (nombre_pestana === 'exámenes' || nombre_pestana === 'examenes') {
             pestana_actual.href = 'examenes.php';

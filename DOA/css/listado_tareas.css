@@ -8,8 +8,19 @@
     color: var(--color-text);
 }
 
-.contenido-listado-tareas {
-    padding: var(--space-6) var(--space-8) var(--space-8);
+.cabecera-listado-tareas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.cabecera-listado-tareas h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 20px;
+  font-weight: 800;
 }
 
 /*
@@ -29,15 +40,15 @@
     font-weight: 800;
     cursor: pointer;
     transition:
-        border-color 0.15s ease,
-        background-color 0.15s ease,
-        color 0.15s ease,
-        transform 0.08s ease;
+        border-color 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
 }
 
 .boton-secundario:hover {
     border-color: var(--color-primary);
-    background: rgba(0, 229, 255, 0.06);
+    background: rgba(var(--color-primary-rgb), 0.06);
     color: var(--color-primary);
 }
 
@@ -181,8 +192,8 @@
     font-weight: 800;
     text-decoration: none;
     transition:
-        background-color 0.15s ease,
-        transform 0.08s ease;
+        background-color 180ms ease,
+        transform 180ms ease;
 }
 
 .boton-ver-detalles:hover {
@@ -284,8 +295,8 @@
     border-radius: var(--radius-md);
     background: var(--color-surface);
     transition:
-        border-color 0.15s ease,
-        background-color 0.15s ease;
+        border-color 180ms ease,
+        background-color 180ms ease;
 }
 
 .fila-tarea:hover {
@@ -358,6 +369,17 @@
     text-align: left;
 }
 
+.mensaje-tabla-vacia {
+  margin: 0;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 14px;
+  text-align: center;
+}
+
 /*
     Responsive
 */
@@ -380,11 +402,6 @@
 }
 
 @media (max-width: 900px) {
-    .contenido-listado-tareas {
-        padding: var(--space-5);
-        padding-bottom: calc(72px + var(--space-5));
-    }
-
     /*
         Próxima entrega móvil
     */

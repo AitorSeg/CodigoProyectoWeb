@@ -32,7 +32,7 @@ function cargarNotificacionesDemo() {
             fecha: "Hoy",
             asignatura: "matematicas",
             accionTexto: "Ver tareas",
-            accionHref: "listado_tareas.html",
+            accionHref: "listado_tareas.php",
             leida: estadoLectura.notificacion_tarea_derivadas === true ? true : false
         },
         {
