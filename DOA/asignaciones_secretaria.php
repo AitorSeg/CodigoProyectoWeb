@@ -45,7 +45,7 @@ $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
      </div>
     </section>
     <section aria-label="Resumen de asignaciones" class="resumen-secretaria">
-     <article class="dato-secretaria">
+     <article class="dato-secretaria dato-secretaria--principal">
       <span class="dato-secretaria__label">
        Asignaturas
       </span>
