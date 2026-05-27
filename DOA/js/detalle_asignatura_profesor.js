@@ -13,6 +13,7 @@ const datos_docentes_asignatura = {
       entregas: "14",
     },
     examen: {
+      id: "programacion_parcial_01",
       titulo: "Parcial 01",
       fecha: "18 Nov, 2026",
       hora: "10:00",
@@ -39,6 +40,7 @@ const datos_docentes_asignatura = {
       entregas: "9",
     },
     examen: {
+      id: "matematicas_parcial_01",
       titulo: "Parcial 01",
       fecha: "15 Nov, 2026",
       hora: "09:00",
@@ -65,6 +67,7 @@ const datos_docentes_asignatura = {
       entregas: "6",
     },
     examen: {
+      id: "fisica_control_unidad",
       titulo: "Control de unidad",
       fecha: "22 Nov, 2026",
       hora: "09:00",
@@ -160,18 +163,18 @@ function actualizar_enlaces_asignatura(id_asignatura) {
     "recursos_profesor.php" + parametro_materia;
 
   document.getElementById("linkPestanaTareas").href =
-    "listado_tareas_profe.html" + parametro_asignatura;
+    "listado_tareas_profe.html" + parametro_materia;
   document.getElementById("linkBotonCrearTarea").href =
-    "crear_tarea.html" + parametro_asignatura;
+    "crear_tarea.html" + parametro_materia;
   document.getElementById("linkTareaDestacada").href =
-    "listado_tareas_profe.html" + parametro_asignatura;
+    "listado_tareas_profe.html" + parametro_materia;
 
   document.getElementById("linkPestanaExamenes").href =
-    "examenes_profesor.php" + parametro_asignatura;
+    "examenes_profesor.php" + parametro_materia;
   document.getElementById("linkBotonCrearExamen").href =
-    "crearexamen.html" + parametro_asignatura;
+    "crearexamen.html" + parametro_materia;
   document.getElementById("linkExamenDestacado").href =
-    "detalle_examen_profesor.php" + parametro_asignatura;
+    "detalle_examen_profesor.php" + parametro_materia + "&examen=" + datos_docentes.examen.id;
 
   document.getElementById("linkPestanaCalificaciones").href =
     "calificaciones_profesor.php" + parametro_materia;

@@ -1,0 +1,109 @@
+/*
+    Pantalla: Detalle de examen del profesor
+*/
+
+.pagina-detalle-examen-profesor {
+  min-height: 100vh;
+}
+
+.datos-examen--profesor {
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+}
+
+.lista-preguntas-profesor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.pregunta-profesor {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
+}
+
+.pregunta-profesor span {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.pregunta-profesor p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.lista-seguimiento-examen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-seguimiento-examen li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.lista-seguimiento-examen li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.lista-seguimiento-examen span {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.lista-seguimiento-examen strong {
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.acciones-rapidas-examen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.acciones-rapidas-examen a {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.acciones-rapidas-examen a:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+  .datos-examen--profesor {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
