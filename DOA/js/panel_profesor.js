@@ -3,270 +3,294 @@
 */
 
 const DATOS_PANEL_PROFESOR = {
-    matematicas: {
-        estudiantes: 28,
-        tareasActivas: 2,
-        entregasPendientes: 11,
-        recursosPublicados: 6,
-        pendiente: "Revisar entregas de límites"
-    },
+  matematicas: {
+    estudiantes: 28,
+    tareasActivas: 2,
+    entregasPendientes: 11,
+    recursosPublicados: 6,
+    pendiente: "Revisar entregas de límites",
+  },
 
-    programacion: {
-        estudiantes: 32,
-        tareasActivas: 3,
-        entregasPendientes: 14,
-        recursosPublicados: 8,
-        pendiente: "Preparar tarea de recursividad"
-    },
+  programacion: {
+    estudiantes: 32,
+    tareasActivas: 3,
+    entregasPendientes: 14,
+    recursosPublicados: 8,
+    pendiente: "Preparar tarea de recursividad",
+  },
 
-    fisica: {
-        estudiantes: 24,
-        tareasActivas: 1,
-        entregasPendientes: 7,
-        recursosPublicados: 5,
-        pendiente: "Publicar recurso de movimiento"
-    }
+  fisica: {
+    estudiantes: 24,
+    tareasActivas: 1,
+    entregasPendientes: 7,
+    recursosPublicados: 5,
+    pendiente: "Publicar recurso de movimiento",
+  },
 };
 
 const ASIGNATURAS_POR_PROFESOR = {
-    "Kevan Pounds Mainston": ["programacion"],
-    "Luelle Pridmore Starsmeare": ["matematicas"],
-    "Eolande Merriton Mizzi": ["fisica"]
+  "Kevan Pounds Mainston": ["programacion"],
+  "Luelle Pridmore Starsmeare": ["matematicas"],
+  "Eolande Merriton Mizzi": ["fisica"],
 };
 
 let asignaturasProfesor = [];
 let asignaturaActivaProfesor = "programacion";
 
 document.addEventListener("DOMContentLoaded", function () {
-    asignaturasProfesor = obtenerAsignaturasDelProfesor();
-    asignaturaActivaProfesor = obtenerAsignaturaInicial();
+  asignaturasProfesor = obtenerAsignaturasDelProfesor();
+  asignaturaActivaProfesor = obtenerAsignaturaInicial();
 
-    cargarSaludoProfesor();
-    renderizarResumenProfesor();
-    renderizarAsignaturasProfesor();
-    renderizarPanelAsignaturaActiva();
-    renderizarPendientesProfesor();
-    prepararAccionesRapidasProfesor();
+  cargarSaludoProfesor();
+  renderizarResumenProfesor();
+  renderizarAsignaturasProfesor();
+  renderizarPanelAsignaturaActiva();
+  renderizarPendientesProfesor();
+  prepararAccionesRapidasProfesor();
 });
 
 function obtenerUsuarioDemo() {
-    const usuarioGuardado = sessionStorage.getItem("usuarioDemoDOA");
+  const usuarioGuardado = sessionStorage.getItem("usuarioDemoDOA");
 
-    if (usuarioGuardado === null) {
-        return null;
-    }
+  if (usuarioGuardado === null) {
+    return null;
+  }
 
-    try {
-        return JSON.parse(usuarioGuardado);
-    } catch (error) {
-        return null;
-    }
+  try {
+    return JSON.parse(usuarioGuardado);
+  } catch (error) {
+    return null;
+  }
 }
 
 function obtenerAsignaturasDelProfesor() {
-    const usuario = obtenerUsuarioDemo();
+  const usuario = obtenerUsuarioDemo();
 
-    if (usuario !== null && ASIGNATURAS_POR_PROFESOR[usuario.nombre]) {
-        return ASIGNATURAS_POR_PROFESOR[usuario.nombre];
-    }
+  if (usuario !== null && ASIGNATURAS_POR_PROFESOR[usuario.nombre]) {
+    return ASIGNATURAS_POR_PROFESOR[usuario.nombre];
+  }
 
-    return ["programacion"];
+  return ["programacion"];
 }
 
 function obtenerAsignaturaInicial() {
-    const asignaturaGuardada = window.obtenerAsignaturaSeleccionada
-        ? window.obtenerAsignaturaSeleccionada()
-        : localStorage.getItem("doaAsignaturaSeleccionada");
+  const asignaturaGuardada = window.obtenerAsignaturaSeleccionada
+    ? window.obtenerAsignaturaSeleccionada()
+    : localStorage.getItem("doaAsignaturaSeleccionada");
 
-    if (asignaturasProfesor.includes(asignaturaGuardada)) {
-        return asignaturaGuardada;
-    }
+  if (asignaturasProfesor.includes(asignaturaGuardada)) {
+    return asignaturaGuardada;
+  }
 
-    return asignaturasProfesor[0];
+  return asignaturasProfesor[0];
 }
 
 function cargarSaludoProfesor() {
-    const usuario = obtenerUsuarioDemo();
-    const nombre = usuario !== null ? usuario.nombre.split(" ")[0] : "profesor";
+  const usuario = obtenerUsuarioDemo();
+  const nombre = usuario !== null ? usuario.nombre.split(" ")[0] : "profesor";
 
-    ponerTexto("saludoProfesor", "Buenos días, " + nombre);
+  ponerTexto("saludoProfesor", "Buenos días, " + nombre);
 }
 
 function renderizarResumenProfesor() {
-    let totalTareas = 0;
-    let totalEntregas = 0;
-    let totalRecursos = 0;
+  let totalTareas = 0;
+  let totalEntregas = 0;
+  let totalRecursos = 0;
 
-    asignaturasProfesor.forEach(function (idAsignatura) {
-        const datos = DATOS_PANEL_PROFESOR[idAsignatura];
+  asignaturasProfesor.forEach(function (idAsignatura) {
+    const datos = DATOS_PANEL_PROFESOR[idAsignatura];
 
-        if (datos) {
-            totalTareas += datos.tareasActivas;
-            totalEntregas += datos.entregasPendientes;
-            totalRecursos += datos.recursosPublicados;
-        }
-    });
+    if (datos) {
+      totalTareas += datos.tareasActivas;
+      totalEntregas += datos.entregasPendientes;
+      totalRecursos += datos.recursosPublicados;
+    }
+  });
 
-    ponerTexto("totalAsignaturasProfesor", asignaturasProfesor.length);
-    ponerTexto("totalTareasActivasProfesor", totalTareas);
-    ponerTexto("totalEntregasPendientesProfesor", totalEntregas);
-    ponerTexto("totalRecursosProfesor", totalRecursos);
+  ponerTexto("totalAsignaturasProfesor", asignaturasProfesor.length);
+  ponerTexto("totalTareasActivasProfesor", totalTareas);
+  ponerTexto("totalEntregasPendientesProfesor", totalEntregas);
+  ponerTexto("totalRecursosProfesor", totalRecursos);
 }
 
 function renderizarAsignaturasProfesor() {
-    const contenedor = document.getElementById("listaAsignaturasProfesor");
+  const contenedor = document.getElementById("listaAsignaturasProfesor");
 
-    if (contenedor === null) {
-        return;
+  if (contenedor === null) {
+    return;
+  }
+
+  contenedor.innerHTML = "";
+
+  asignaturasProfesor.forEach(function (idAsignatura) {
+    const asignatura = window.DOA_ASIGNATURAS[idAsignatura];
+    const datosPanel = DATOS_PANEL_PROFESOR[idAsignatura];
+
+    if (!asignatura || !datosPanel) {
+      return;
     }
 
-    contenedor.innerHTML = "";
+    const tarjeta = document.createElement("article");
 
-    asignaturasProfesor.forEach(function (idAsignatura) {
-        const asignatura = window.DOA_ASIGNATURAS[idAsignatura];
-        const datosPanel = DATOS_PANEL_PROFESOR[idAsignatura];
+    tarjeta.className = "tarjeta-asignatura-profesor";
 
-        if (!asignatura || !datosPanel) {
-            return;
-        }
+    if (idAsignatura === asignaturaActivaProfesor) {
+      tarjeta.classList.add("tarjeta-asignatura-profesor--activa");
+    }
 
-        const tarjeta = document.createElement("article");
+    tarjeta.innerHTML =
+      '<div class="tarjeta-asignatura-profesor__cabecera">' +
+      "<div>" +
+      "<h3>" +
+      asignatura.nombre +
+      "</h3>" +
+      "<p>" +
+      asignatura.unidadActualTexto +
+      "</p>" +
+      "</div>" +
+      '<span class="etiqueta-asignatura-profesor">' +
+      (idAsignatura === asignaturaActivaProfesor ? "Activa" : "Asignatura") +
+      "</span>" +
+      "</div>" +
+      '<ul class="datos-asignatura-profesor">' +
+      "<li>" +
+      "<span>Alumnos</span>" +
+      "<strong>" +
+      datosPanel.estudiantes +
+      "</strong>" +
+      "</li>" +
+      "<li>" +
+      "<span>Tareas</span>" +
+      "<strong>" +
+      datosPanel.tareasActivas +
+      "</strong>" +
+      "</li>" +
+      "<li>" +
+      "<span>Entregas</span>" +
+      "<strong>" +
+      datosPanel.entregasPendientes +
+      "</strong>" +
+      "</li>" +
+      "</ul>" +
+      '<div class="acciones-asignatura-profesor">' +
+      '<a href="detalle_asignatura_profesor.php?materia=' +
+      idAsignatura +
+      '" class="boton-asignatura-profesor boton-asignatura-profesor--principal" data-asignatura="' +
+      idAsignatura +
+      '">' +
+      "Entrar" +
+      "</a>" +
+      "</div>";
 
-        tarjeta.className = "tarjeta-asignatura-profesor";
-
-        if (idAsignatura === asignaturaActivaProfesor) {
-            tarjeta.classList.add("tarjeta-asignatura-profesor--activa");
-        }
-
-        tarjeta.innerHTML =
-            '<div class="tarjeta-asignatura-profesor__cabecera">' +
-                '<div>' +
-                    '<h3>' + asignatura.nombre + '</h3>' +
-                    '<p>' + asignatura.unidadActualTexto + '</p>' +
-                '</div>' +
-                '<span class="etiqueta-asignatura-profesor">' +
-                    (idAsignatura === asignaturaActivaProfesor ? "Activa" : "Asignatura") +
-                '</span>' +
-            '</div>' +
-
-            '<ul class="datos-asignatura-profesor">' +
-                '<li>' +
-                    '<span>Alumnos</span>' +
-                    '<strong>' + datosPanel.estudiantes + '</strong>' +
-                '</li>' +
-                '<li>' +
-                    '<span>Tareas</span>' +
-                    '<strong>' + datosPanel.tareasActivas + '</strong>' +
-                '</li>' +
-                '<li>' +
-                    '<span>Entregas</span>' +
-                    '<strong>' + datosPanel.entregasPendientes + '</strong>' +
-                '</li>' +
-            '</ul>' +
-
-            '<div class="acciones-asignatura-profesor">' +
-                '<a href="recursosdoa.html" class="boton-asignatura-profesor boton-asignatura-profesor--principal" data-asignatura="' + idAsignatura + '">' +
-                    'Entrar' +
-                '</a>' +
-            '</div>';
-
-        tarjeta.addEventListener("click", function () {
-            seleccionarAsignaturaProfesor(idAsignatura);
-        });
-
-        const enlaces = tarjeta.querySelectorAll("a");
-
-        enlaces.forEach(function (enlace) {
-            enlace.addEventListener("click", function (evento) {
-                evento.stopPropagation();
-                guardarAsignaturaProfesor(idAsignatura);
-            });
-        });
-
-        contenedor.appendChild(tarjeta);
+    tarjeta.addEventListener("click", function () {
+      seleccionarAsignaturaProfesor(idAsignatura);
     });
+
+    const enlaces = tarjeta.querySelectorAll("a");
+
+    enlaces.forEach(function (enlace) {
+      enlace.addEventListener("click", function (evento) {
+        evento.stopPropagation();
+        guardarAsignaturaProfesor(idAsignatura);
+      });
+    });
+
+    contenedor.appendChild(tarjeta);
+  });
 }
 
 function seleccionarAsignaturaProfesor(idAsignatura) {
-    asignaturaActivaProfesor = idAsignatura;
+  asignaturaActivaProfesor = idAsignatura;
 
-    guardarAsignaturaProfesor(idAsignatura);
-    renderizarAsignaturasProfesor();
-    renderizarPanelAsignaturaActiva();
+  guardarAsignaturaProfesor(idAsignatura);
+  renderizarAsignaturasProfesor();
+  renderizarPanelAsignaturaActiva();
 }
 
 function renderizarPanelAsignaturaActiva() {
-    const asignatura = window.DOA_ASIGNATURAS[asignaturaActivaProfesor];
+  const asignatura = window.DOA_ASIGNATURAS[asignaturaActivaProfesor];
 
-    if (!asignatura) {
-        return;
-    }
+  if (!asignatura) {
+    return;
+  }
 
-    ponerTexto("asignaturaActivaProfesor", asignatura.nombre);
-    ponerTexto("unidadActivaProfesor", asignatura.unidadActualTexto);
+  ponerTexto("asignaturaActivaProfesor", asignatura.nombre);
+  ponerTexto("unidadActivaProfesor", asignatura.unidadActualTexto);
 
-    prepararEnlaceConAsignatura("botonRecursosAsignaturaActiva", asignaturaActivaProfesor);
-    prepararEnlaceConAsignatura("botonTareaAsignaturaActiva", asignaturaActivaProfesor);
+  prepararEnlaceConAsignatura(
+    "botonRecursosAsignaturaActiva",
+    asignaturaActivaProfesor,
+  );
+  prepararEnlaceConAsignatura(
+    "botonTareaAsignaturaActiva",
+    asignaturaActivaProfesor,
+  );
 }
 
 function renderizarPendientesProfesor() {
-    const contenedor = document.getElementById("listaPendientesProfesor");
+  const contenedor = document.getElementById("listaPendientesProfesor");
 
-    if (contenedor === null) {
-        return;
+  if (contenedor === null) {
+    return;
+  }
+
+  contenedor.innerHTML = "";
+
+  asignaturasProfesor.forEach(function (idAsignatura) {
+    const asignatura = window.DOA_ASIGNATURAS[idAsignatura];
+    const datosPanel = DATOS_PANEL_PROFESOR[idAsignatura];
+
+    if (!asignatura || !datosPanel) {
+      return;
     }
 
-    contenedor.innerHTML = "";
+    const pendiente = document.createElement("div");
 
-    asignaturasProfesor.forEach(function (idAsignatura) {
-        const asignatura = window.DOA_ASIGNATURAS[idAsignatura];
-        const datosPanel = DATOS_PANEL_PROFESOR[idAsignatura];
+    pendiente.className = "pendiente-profesor";
+    pendiente.innerHTML =
+      "<strong>" +
+      datosPanel.pendiente +
+      "</strong>" +
+      "<span>" +
+      asignatura.nombre +
+      " · " +
+      datosPanel.entregasPendientes +
+      " entregas pendientes</span>";
 
-        if (!asignatura || !datosPanel) {
-            return;
-        }
-
-        const pendiente = document.createElement("div");
-
-        pendiente.className = "pendiente-profesor";
-        pendiente.innerHTML =
-            '<strong>' + datosPanel.pendiente + '</strong>' +
-            '<span>' + asignatura.nombre + ' · ' + datosPanel.entregasPendientes + ' entregas pendientes</span>';
-
-        contenedor.appendChild(pendiente);
-    });
+    contenedor.appendChild(pendiente);
+  });
 }
 
 function prepararAccionesRapidasProfesor() {
-    prepararEnlaceConAsignatura("accionCrearTarea", asignaturaActivaProfesor);
-    prepararEnlaceConAsignatura("accionSubirRecurso", asignaturaActivaProfesor);
+  prepararEnlaceConAsignatura("accionCrearTarea", asignaturaActivaProfesor);
+  prepararEnlaceConAsignatura("accionSubirRecurso", asignaturaActivaProfesor);
 }
 
 function prepararEnlaceConAsignatura(idEnlace, idAsignatura) {
-    const enlace = document.getElementById(idEnlace);
+  const enlace = document.getElementById(idEnlace);
 
-    if (enlace === null) {
-        return;
-    }
+  if (enlace === null) {
+    return;
+  }
 
-    enlace.addEventListener("click", function () {
-        guardarAsignaturaProfesor(idAsignatura);
-    });
+  enlace.addEventListener("click", function () {
+    guardarAsignaturaProfesor(idAsignatura);
+  });
 }
 
 function guardarAsignaturaProfesor(idAsignatura) {
-    if (typeof window.guardarAsignaturaSeleccionada === "function") {
-        window.guardarAsignaturaSeleccionada(idAsignatura);
-        return;
-    }
+  if (typeof window.guardarAsignaturaSeleccionada === "function") {
+    window.guardarAsignaturaSeleccionada(idAsignatura);
+    return;
+  }
 
-    localStorage.setItem("doaAsignaturaSeleccionada", idAsignatura);
+  localStorage.setItem("doaAsignaturaSeleccionada", idAsignatura);
 }
 
 function ponerTexto(idElemento, texto) {
-    const elemento = document.getElementById(idElemento);
+  const elemento = document.getElementById(idElemento);
 
-    if (elemento !== null) {
-        elemento.textContent = texto;
-    }
+  if (elemento !== null) {
+    elemento.textContent = texto;
+  }
 }

@@ -113,7 +113,7 @@
                                 </div>
 
                                 <div class="tarjeta-asignatura-profesor__acciones">
-                                    <a href="recursosdoa.html?asignatura=programacion" class="boton-docente boton-docente--principal">
+                                    <a href="detalle_asignatura_profesor.php?materia=programacion" class="boton-docente boton-docente--principal">
                                         Entrar
                                     </a>
                                 </div>
@@ -145,7 +145,7 @@
                                 </div>
 
                                 <div class="tarjeta-asignatura-profesor__acciones">
-                                    <a href="recursosdoa.html?asignatura=matematicas" class="boton-docente boton-docente--principal">
+                                    <a href="detalle_asignatura_profesor.php?materia=matematicas" class="boton-docente boton-docente--principal">
                                         Entrar
                                     </a>
                                 </div>

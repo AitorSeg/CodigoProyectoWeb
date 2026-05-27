@@ -129,14 +129,14 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
 
                     <div class="tarjeta-asignatura-docente__acciones">
                         <a
-                            href="recursosdoa.html?asignatura=programacion"
+                            href="detalle_asignatura_profesor.php?materia=programacion"
                             class="boton-docente boton-docente--principal"
                             data-asignatura="programacion">
                             Entrar
                         </a>
 
                         <a
-                            href="recursosdoa.html?asignatura=programacion"
+                            href="recursosdoa.html?materia=programacion"
                             class="boton-docente"
                             data-asignatura="programacion">
                             Recursos
@@ -194,14 +194,14 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
 
                     <div class="tarjeta-asignatura-docente__acciones">
                         <a
-                            href="recursosdoa.html?asignatura=matematicas"
+                            href="detalle_asignatura_profesor.php?materia=matematicas"
                             class="boton-docente boton-docente--principal"
                             data-asignatura="matematicas">
                             Entrar
                         </a>
 
                         <a
-                            href="recursosdoa.html?asignatura=matematicas"
+                            href="recursosdoa.html?materia=matematicas"
                             class="boton-docente"
                             data-asignatura="matematicas">
                             Recursos
@@ -259,14 +259,14 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
 
                     <div class="tarjeta-asignatura-docente__acciones">
                         <a
-                            href="recursosdoa.html?asignatura=fisica"
+                            href="detalle_asignatura_profesor.php?materia=fisica"
                             class="boton-docente boton-docente--principal"
                             data-asignatura="fisica">
                             Entrar
                         </a>
 
                         <a
-                            href="recursosdoa.html?asignatura=fisica"
+                            href="recursosdoa.html?materia=fisica"
                             class="boton-docente"
                             data-asignatura="fisica">
                             Recursos
