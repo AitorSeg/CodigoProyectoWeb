@@ -49,7 +49,7 @@
                 <span>Panel Principal</span>
             </a>
 
-            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "asignaturas" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="asignaturas_profesor.html">
+            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "asignaturas" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="asignaturas_profesor.php">
                 <span class="navegacion-lateral-doa__icono" aria-hidden="true">
                     <img class="icono-estado icono-estado--gris" src="img/iconos/grey-notebook.svg" alt="">
                     <img class="icono-estado icono-estado--azul" src="img/iconos/blue-notebook.svg" alt="">

@@ -79,7 +79,7 @@
                                 </p>
                             </div>
 
-                            <a href="asignaturas_profesor.html" class="bloque-panel-profesor__enlace">
+                            <a href="asignaturas_profesor.php" class="bloque-panel-profesor__enlace">
                                 Ver mis asignaturas
                             </a>
                         </div>

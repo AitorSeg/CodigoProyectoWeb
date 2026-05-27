@@ -3,13 +3,9 @@
 */
 
 .pagina-asignaturas-profesor {
-    min-height: 100vh;
-    background: var(--color-bg);
-    color: var(--color-text);
-}
-
-.contenido-asignaturas-profesor {
-    padding: var(--space-6) var(--space-8) var(--space-8);
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 /*
@@ -17,32 +13,32 @@
 */
 
 .cabecera-asignaturas-profesor {
-    margin-bottom: var(--space-5);
+  margin-bottom: var(--space-5);
 }
 
 .cabecera-asignaturas-profesor__eyebrow {
-    margin: 0 0 var(--space-2);
-    color: var(--color-primary);
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  margin: 0 0 var(--space-2);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .cabecera-asignaturas-profesor h1 {
-    margin: 0 0 var(--space-2);
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--color-text);
+  margin: 0 0 var(--space-2);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-text);
 }
 
 .cabecera-asignaturas-profesor p {
-    margin: 0;
-    max-width: 720px;
-    color: var(--color-muted);
-    font-size: 14px;
-    line-height: 1.5;
+  margin: 0;
+  max-width: 720px;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /*
@@ -50,36 +46,53 @@
 */
 
 .resumen-asignaturas-profesor {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--space-4);
-    margin-bottom: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
 .dato-asignaturas-profesor {
-    min-height: 88px;
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
+  min-height: 88px;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.dato-asignaturas-profesor:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-muted);
+}
+
+.dato-asignaturas-profesor--principal {
+  border-color: rgba(var(--color-primary-rgb), 0.45);
+  box-shadow:
+    0 0 0 1px rgba(var(--color-primary-rgb), 0.08),
+    0 18px 48px rgba(var(--color-primary-rgb), 0.04);
 }
 
 .dato-asignaturas-profesor__label {
-    display: block;
-    margin-bottom: var(--space-2);
-    color: var(--color-muted);
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .dato-asignaturas-profesor__valor {
-    display: block;
-    color: var(--color-text);
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1.1;
+  display: block;
+  color: var(--color-text);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
 }
 
 /*
@@ -87,34 +100,43 @@
 */
 
 .grid-asignaturas-docente {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
 }
 
 .tarjeta-asignatura-docente {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.tarjeta-asignatura-docente:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-muted);
 }
 
 .tarjeta-asignatura-docente__cabecera h2 {
-    margin: 0;
-    color: var(--color-text);
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 1.2;
+  margin: 0;
+  color: var(--color-text);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .tarjeta-asignatura-docente__unidad {
-    margin: var(--space-2) 0 0;
-    color: var(--color-muted);
-    font-size: 14px;
-    line-height: 1.4;
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 /*
@@ -122,18 +144,18 @@
 */
 
 .tarjeta-asignatura-docente__meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .tarjeta-asignatura-docente__meta li {
-    color: var(--color-text);
-    font-size: 14px;
-    font-weight: 600;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /*
@@ -141,35 +163,35 @@
 */
 
 .tarjeta-asignatura-docente__stats {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
 }
 
 .mini-dato-docente {
-    min-height: 88px;
-    padding: var(--space-4);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-bg);
+  min-height: 88px;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
 }
 
 .mini-dato-docente span {
-    display: block;
-    margin-bottom: var(--space-2);
-    color: var(--color-muted);
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    line-height: 1.3;
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.3;
 }
 
 .mini-dato-docente strong {
-    display: block;
-    color: var(--color-text);
-    font-size: 18px;
-    font-weight: 800;
-    line-height: 1.1;
+  display: block;
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.1;
 }
 
 /*
@@ -177,25 +199,25 @@
 */
 
 .tarjeta-asignatura-docente__actividad {
-    padding: var(--space-4);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-bg);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
 }
 
 .tarjeta-asignatura-docente__actividad span {
-    display: block;
-    margin-bottom: var(--space-2);
-    color: var(--color-text);
-    font-size: 13px;
-    font-weight: 800;
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .tarjeta-asignatura-docente__actividad p {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 14px;
-    line-height: 1.5;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /*
@@ -203,54 +225,54 @@
 */
 
 .tarjeta-asignatura-docente__acciones {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
 }
 
 .tarjeta-asignatura-docente__acciones .boton-docente--principal {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .boton-docente {
-    min-height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 var(--space-4);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: transparent;
-    color: var(--color-text);
-    font-size: 12px;
-    font-weight: 800;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition:
-        border-color 0.15s ease,
-        background-color 0.15s ease,
-        color 0.15s ease,
-        transform 0.08s ease;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .boton-docente:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .boton-docente:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .boton-docente--principal {
-    border-color: var(--color-primary);
-    background: var(--color-primary);
-    color: var(--color-dark);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-dark);
 }
 
 .boton-docente--principal:hover {
-    background: var(--color-primary-hover);
-    color: var(--color-dark);
+  background: var(--color-primary-hover);
+  color: var(--color-dark);
 }
 
 /*
@@ -258,117 +280,112 @@
 */
 
 @media (max-width: 1100px) {
-    .grid-asignaturas-docente {
-        grid-template-columns: 1fr;
-    }
+  .grid-asignaturas-docente {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 900px) {
-    .contenido-asignaturas-profesor {
-        padding: var(--space-5);
-        padding-bottom: calc(88px + var(--space-6));
-    }
+  .cabecera-asignaturas-profesor {
+    margin-bottom: var(--space-4);
+  }
 
-    .cabecera-asignaturas-profesor {
-        margin-bottom: var(--space-4);
-    }
+  .cabecera-asignaturas-profesor h1 {
+    font-size: 28px;
+  }
 
-    .cabecera-asignaturas-profesor h1 {
-        font-size: 28px;
-    }
+  .resumen-asignaturas-profesor {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
 
-    .resumen-asignaturas-profesor {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-3);
-        margin-bottom: var(--space-4);
-    }
+  .dato-asignaturas-profesor {
+    min-height: 72px;
+    padding: var(--space-4);
+  }
 
-    .dato-asignaturas-profesor {
-        min-height: 72px;
-        padding: var(--space-4);
-    }
+  .dato-asignaturas-profesor__valor {
+    font-size: 20px;
+  }
 
-    .dato-asignaturas-profesor__valor {
-        font-size: 20px;
-    }
+  .tarjeta-asignatura-docente {
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
 
-    .tarjeta-asignatura-docente {
-        gap: var(--space-3);
-        padding: var(--space-4);
-    }
+  .tarjeta-asignatura-docente__cabecera h2 {
+    font-size: 20px;
+  }
 
-    .tarjeta-asignatura-docente__cabecera h2 {
-        font-size: 20px;
-    }
+  .tarjeta-asignatura-docente__meta {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
 
-    .tarjeta-asignatura-docente__meta {
-        flex-direction: column;
-        gap: var(--space-2);
-    }
+  .tarjeta-asignatura-docente__meta li {
+    font-size: 13px;
+  }
 
-    .tarjeta-asignatura-docente__meta li {
-        font-size: 13px;
-    }
+  .tarjeta-asignatura-docente__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
 
-    .tarjeta-asignatura-docente__stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-2);
-    }
+  .mini-dato-docente {
+    min-height: 78px;
+    padding: var(--space-3);
+  }
 
-    .mini-dato-docente {
-        min-height: 78px;
-        padding: var(--space-3);
-    }
+  .mini-dato-docente strong {
+    font-size: 16px;
+  }
 
-    .mini-dato-docente strong {
-        font-size: 16px;
-    }
-
-    .tarjeta-asignatura-docente__acciones {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-2);
-    }
+  .tarjeta-asignatura-docente__acciones {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
 }
 
 @media (max-width: 560px) {
-    .resumen-asignaturas-profesor {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-2);
-    }
+  .resumen-asignaturas-profesor {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
 
-    .dato-asignaturas-profesor {
-        min-height: 86px;
-        padding: var(--space-3);
-    }
+  .dato-asignaturas-profesor {
+    min-height: 86px;
+    padding: var(--space-3);
+  }
 
-    .dato-asignaturas-profesor__label {
-        margin-bottom: var(--space-1);
-        font-size: 9px;
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-    }
+  .dato-asignaturas-profesor__label {
+    margin-bottom: var(--space-1);
+    font-size: 9px;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+  }
 
-    .dato-asignaturas-profesor__valor {
-        font-size: 22px;
-    }
+  .dato-asignaturas-profesor__valor {
+    font-size: 22px;
+  }
 
-    .tarjeta-asignatura-docente__stats {
-        grid-template-columns: 1fr 1fr;
-    }
+  .tarjeta-asignatura-docente__stats {
+    grid-template-columns: 1fr 1fr;
+  }
 
-    .tarjeta-asignatura-docente__actividad {
-        padding: var(--space-3);
-    }
+  .tarjeta-asignatura-docente__actividad {
+    padding: var(--space-3);
+  }
 
-    .tarjeta-asignatura-docente__acciones {
-        grid-template-columns: 1fr;
-    }
+  .tarjeta-asignatura-docente__acciones {
+    grid-template-columns: 1fr;
+  }
 
-    .tarjeta-asignatura-docente__acciones .boton-docente--principal {
-        grid-column: auto;
-    }
+  .tarjeta-asignatura-docente__acciones .boton-docente--principal {
+    grid-column: auto;
+  }
 
-    .boton-docente {
-        width: 100%;
-    }
+  .boton-docente {
+    width: 100%;
+  }
 }
