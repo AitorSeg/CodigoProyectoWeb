@@ -18,7 +18,7 @@ function enrutarPestanasAsignatura() {
         const nombre_pestana = pestana_actual.textContent.toLowerCase().trim();
 
         if (nombre_pestana === 'recursos') {
-            pestana_actual.href = es_profesor ? 'recursosdoa.html' : 'Recursosdoaalumno.html';
+            pestana_actual.href = es_profesor ? 'recursos_profesor.php' : 'Recursosdoaalumno.html';
         }
         else if (nombre_pestana === 'tareas') {
             pestana_actual.href = 'listado_tareas.html';

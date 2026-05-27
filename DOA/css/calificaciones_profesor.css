@@ -1,0 +1,59 @@
+/*
+    Pantalla: Calificaciones del profesor
+*/
+
+.pagina-calificaciones-profesor {
+  min-height: 100vh;
+}
+
+.tabla-calificaciones--profesor table {
+  min-width: 940px;
+}
+
+.alumno-calificacion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.alumno-calificacion strong {
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.alumno-calificacion small {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.estado-calificacion--aprobado {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.estado-calificacion--suspendido {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.estado-calificacion--pendiente {
+  border-color: var(--color-border);
+  color: var(--color-muted);
+}
+
+@media (max-width: 900px) {
+  .tabla-calificaciones--profesor table {
+    min-width: 0;
+  }
+
+  .tabla-calificaciones--profesor th:nth-child(2),
+  .tabla-calificaciones--profesor th:nth-child(3),
+  .tabla-calificaciones--profesor th:nth-child(5),
+  .tabla-calificaciones--profesor td:nth-child(2),
+  .tabla-calificaciones--profesor td:nth-child(3),
+  .tabla-calificaciones--profesor td:nth-child(5) {
+    display: none;
+  }
+}

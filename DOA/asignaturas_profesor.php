@@ -136,7 +136,7 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
                         </a>
 
                         <a
-                            href="recursosdoa.html?materia=programacion"
+                            href="recursos_profesor.php?materia=programacion"
                             class="boton-docente"
                             data-asignatura="programacion">
                             Recursos
@@ -201,7 +201,7 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
                         </a>
 
                         <a
-                            href="recursosdoa.html?materia=matematicas"
+                            href="recursos_profesor.php?materia=matematicas"
                             class="boton-docente"
                             data-asignatura="matematicas">
                             Recursos
@@ -266,7 +266,7 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
                         </a>
 
                         <a
-                            href="recursosdoa.html?materia=fisica"
+                            href="recursos_profesor.php?materia=fisica"
                             class="boton-docente"
                             data-asignatura="fisica">
                             Recursos

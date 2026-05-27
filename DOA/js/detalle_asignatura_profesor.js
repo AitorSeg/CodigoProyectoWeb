@@ -155,9 +155,9 @@ function actualizar_enlaces_asignatura(id_asignatura) {
   const parametro_asignatura = "?asignatura=" + id_asignatura;
 
   document.getElementById("linkPestanaRecursos").href =
-    "recursosdoa.html" + parametro_materia;
+    "recursos_profesor.php" + parametro_materia;
   document.getElementById("linkBotonRecursos").href =
-    "recursosdoa.html" + parametro_materia;
+    "recursos_profesor.php" + parametro_materia;
 
   document.getElementById("linkPestanaTareas").href =
     "listado_tareas_profe.html" + parametro_asignatura;
@@ -174,7 +174,7 @@ function actualizar_enlaces_asignatura(id_asignatura) {
     "detalle_examen_profesor.php" + parametro_asignatura;
 
   document.getElementById("linkPestanaCalificaciones").href =
-    "calificaciones_profesor.php" + parametro_asignatura;
+    "calificaciones_profesor.php" + parametro_materia;
 
   document.getElementById("linkVistaAlumno").href = "detalle_asignatura.php";
 }

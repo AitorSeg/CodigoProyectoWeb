@@ -162,7 +162,7 @@
 
                     <div class="cabecera-detalle-asignatura__pestanas">
                         <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
-                            <a href="recursosdoa.html" class="pestanas-asignatura__item">Recursos</a>
+                            <a href="recursos_profesor.php" class="pestanas-asignatura__item">Recursos</a>
                             <a href="listado_tareas_profe.html" class="pestanas-asignatura__item">Tareas</a>
                             <a href="examenes_profesor.html" class="pestanas-asignatura__item pestanas-asignatura__item--activo">Exámenes</a>
                             <a href="detalle_tarea_entregada.html" class="pestanas-asignatura__item">Calificaciones</a>
