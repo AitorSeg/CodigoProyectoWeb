@@ -67,7 +67,7 @@ function preparar_boton_realizar_examen(examen) {
 
   if (examen.estadoFiltro === "abierto") {
     boton.textContent = "Realizar examen";
-    boton.href = "realizar_examen.html";
+    boton.href = "realizar_examen.php";
     boton.classList.remove("boton-realizar-examen--desactivado");
     mensaje.textContent = "El examen está disponible. Puedes empezar cuando quieras.";
 

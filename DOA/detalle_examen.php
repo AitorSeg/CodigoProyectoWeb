@@ -154,7 +154,7 @@ $placeholder_buscador = "Buscar examen...";
                             El examen está disponible. Puedes empezar cuando quieras.
                         </p>
 
-                        <a class="boton-realizar-examen" href="realizar_examen.html" id="botonRealizarExamen">
+                        <a class="boton-realizar-examen" href="realizar_examen.php" id="botonRealizarExamen">
                             Realizar examen
                         </a>
                     </div>
