@@ -774,6 +774,7 @@
   .cabecera-calificaciones__texto h1 {
     font-size: 28px;
   }
+}
 
   @media (max-width: 720px) {
   .grupo-filtros {
@@ -791,4 +792,4 @@
     min-width: 100%;
   }
 }
-}
+
