@@ -1,193 +1,224 @@
 /*
-    Pantalla: Gestión de exámenes del profesor
+    Pantalla: Exámenes del profesor
+    Carga los exámenes de la asignatura seleccionada y permite filtrarlos por estado.
 */
 
-let examenesProfesorActuales = [];
-let filtroProfesorActivo = "todos";
+const datos_examenes_profesor = {
+  programacion: {
+    grupo: "Grupo A",
+    totalAlumnos: "32 alumnos",
+    resumen: {
+      publicados: "3",
+      abiertos: "1",
+      entregas: "26",
+      pendientes: "6"
+    },
+    examenes: [
+      {
+        id: "programacion_parcial_01",
+        nombre: "Parcial 01",
+        descripcion: "Recursividad y estructuras dinámicas",
+        fecha: "18 Nov, 2026",
+        duracion: "45 min",
+        entregas: "26/32",
+        pendientes: "6",
+        estado: "Abierto",
+        estadoFiltro: "abierto"
+      },
+      {
+        id: "programacion_control_estructuras",
+        nombre: "Control de estructuras",
+        descripcion: "Arrays, listas y pilas",
+        fecha: "02 Nov, 2026",
+        duracion: "30 min",
+        entregas: "32/32",
+        pendientes: "0",
+        estado: "Cerrado",
+        estadoFiltro: "cerrado"
+      },
+      {
+        id: "programacion_parcial_02",
+        nombre: "Parcial 02",
+        descripcion: "Árboles y grafos",
+        fecha: "12 Dic, 2026",
+        duracion: "60 min",
+        entregas: "0/32",
+        pendientes: "0",
+        estado: "Próximo",
+        estadoFiltro: "proximo"
+      }
+    ]
+  },
 
-const revisionesPendientesMock = {
-    matematicas: 7,
-    programacion: 4,
-    fisica: 5
+  matematicas: {
+    grupo: "Grupo B",
+    totalAlumnos: "28 alumnos",
+    resumen: {
+      publicados: "2",
+      abiertos: "1",
+      entregas: "24",
+      pendientes: "4"
+    },
+    examenes: [
+      {
+        id: "matematicas_parcial_01",
+        nombre: "Parcial 01",
+        descripcion: "Límites, derivadas e introducción a integrales",
+        fecha: "15 Nov, 2026",
+        duracion: "45 min",
+        entregas: "24/28",
+        pendientes: "4",
+        estado: "Abierto",
+        estadoFiltro: "abierto"
+      },
+      {
+        id: "matematicas_control_01",
+        nombre: "Control de funciones",
+        descripcion: "Representación e interpretación de gráficas",
+        fecha: "28 Oct, 2026",
+        duracion: "30 min",
+        entregas: "28/28",
+        pendientes: "0",
+        estado: "Cerrado",
+        estadoFiltro: "cerrado"
+      }
+    ]
+  },
+
+  fisica: {
+    grupo: "Grupo A",
+    totalAlumnos: "26 alumnos",
+    resumen: {
+      publicados: "2",
+      abiertos: "0",
+      entregas: "26",
+      pendientes: "0"
+    },
+    examenes: [
+      {
+        id: "fisica_control_01",
+        nombre: "Control de cinemática",
+        descripcion: "Movimiento rectilíneo y fuerzas",
+        fecha: "22 Nov, 2026",
+        duracion: "40 min",
+        entregas: "0/26",
+        pendientes: "0",
+        estado: "Próximo",
+        estadoFiltro: "proximo"
+      },
+      {
+        id: "fisica_cuestionario_fuerzas",
+        nombre: "Cuestionario de fuerzas",
+        descripcion: "Conceptos básicos de fuerzas",
+        fecha: "11 Oct, 2026",
+        duracion: "20 min",
+        entregas: "26/26",
+        pendientes: "0",
+        estado: "Cerrado",
+        estadoFiltro: "cerrado"
+      }
+    ]
+  }
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-    const idAsignatura = obtenerAsignaturaProfesorActual();
-    const asignatura = window.DOA_ASIGNATURAS[idAsignatura] || window.DOA_ASIGNATURAS.matematicas;
+let filtro_activo = "todos";
 
-    examenesProfesorActuales = window.obtenerExamenesAsignatura(idAsignatura);
+const parametros = new URLSearchParams(window.location.search);
+const id_asignatura = parametros.get("materia") || window.obtenerAsignaturaSeleccionada();
+const asignatura = window.DOA_ASIGNATURAS[id_asignatura];
+const datos_examenes = datos_examenes_profesor[id_asignatura];
 
-    cargarCabeceraExamenesProfesor(asignatura);
-    cargarResumenExamenesProfesor(idAsignatura, examenesProfesorActuales);
-    cargarExamenDestacadoProfesor(examenesProfesorActuales);
-    prepararFiltrosExamenesProfesor();
-    renderizarExamenesProfesor();
-});
+window.guardarAsignaturaSeleccionada(id_asignatura);
 
-function obtenerAsignaturaProfesorActual() {
-    const parametrosURL = new URLSearchParams(window.location.search);
-    const asignaturaURL = parametrosURL.get("asignatura") || parametrosURL.get("materia");
+cargar_cabecera_examenes(asignatura, datos_examenes);
+cargar_resumen_examenes(datos_examenes);
+actualizar_enlaces_examenes(id_asignatura);
+preparar_filtros_examenes();
+renderizar_examenes_profesor();
 
-    if (asignaturaURL && window.DOA_ASIGNATURAS[asignaturaURL]) {
-        if (typeof window.guardarAsignaturaSeleccionada === "function") {
-            window.guardarAsignaturaSeleccionada(asignaturaURL);
-        }
+function cargar_cabecera_examenes(asignatura, datos_examenes) {
+  document.title = "Exámenes · " + asignatura.nombre + " | DOA";
 
-        return asignaturaURL;
-    }
-
-    if (typeof window.obtenerAsignaturaSeleccionada === "function") {
-        return window.obtenerAsignaturaSeleccionada();
-    }
-
-    return "matematicas";
+  document.getElementById("tituloAsignatura").textContent = asignatura.nombre;
+  document.getElementById("grupoAsignatura").textContent = datos_examenes.grupo;
+  document.getElementById("totalAlumnosAsignatura").textContent = datos_examenes.totalAlumnos;
+  document.getElementById("unidadActualTextoAsignatura").textContent = asignatura.unidadActualTexto;
 }
 
-function ponerTextoExamenProfesor(idElemento, texto) {
-    const elemento = document.getElementById(idElemento);
-
-    if (elemento !== null) {
-        elemento.textContent = texto;
-    }
+function cargar_resumen_examenes(datos_examenes) {
+  document.getElementById("totalExamenesPublicados").textContent = datos_examenes.resumen.publicados;
+  document.getElementById("totalExamenesAbiertos").textContent = datos_examenes.resumen.abiertos;
+  document.getElementById("totalEntregasRecibidas").textContent = datos_examenes.resumen.entregas;
+  document.getElementById("totalPendientesRevision").textContent = datos_examenes.resumen.pendientes;
 }
 
-function cargarCabeceraExamenesProfesor(asignatura) {
-    document.title = "Gestión de exámenes · " + asignatura.nombre + " | DOA";
+function actualizar_enlaces_examenes(id_asignatura) {
+  const parametro_materia = "?materia=" + id_asignatura;
 
-    ponerTextoExamenProfesor("tituloAsignatura", asignatura.nombre);
-    ponerTextoExamenProfesor("profesorAsignatura", asignatura.profesor);
-    ponerTextoExamenProfesor("unidadActualTextoAsignatura", asignatura.unidadActualTexto);
+  document.getElementById("linkVolverDetalle").href = "detalle_asignatura_profesor.php" + parametro_materia;
+  document.getElementById("linkPestanaRecursos").href = "recursos_profesor.php" + parametro_materia;
+  document.getElementById("linkPestanaTareas").href = "listado_tareas_profe.html" + parametro_materia;
+  document.getElementById("linkPestanaExamenes").href = "examenes_profesor.php" + parametro_materia;
+  document.getElementById("linkPestanaCalificaciones").href = "calificaciones_profesor.php" + parametro_materia;
+  document.getElementById("linkCrearExamen").href = "crearexamen.html" + parametro_materia;
 }
 
-function cargarResumenExamenesProfesor(idAsignatura, examenes) {
-    const abiertos = examenes.filter(function (examen) {
-        return examen.estadoFiltro === "abierto";
-    }).length;
+function preparar_filtros_examenes() {
+  const filtros = document.querySelectorAll(".filtro-examen");
 
-    ponerTextoExamenProfesor("totalExamenesProfesor", examenes.length);
-    ponerTextoExamenProfesor("totalExamenesAbiertosProfesor", abiertos);
-    ponerTextoExamenProfesor(
-        "totalRevisionesPendientesProfesor",
-        revisionesPendientesMock[idAsignatura] || 0
+  filtros.forEach(function (filtro) {
+    filtro.addEventListener("click", function () {
+      filtro_activo = filtro.dataset.filtro;
+
+      filtros.forEach(function (boton) {
+        boton.classList.toggle("filtro-examen--activo", boton === filtro);
+      });
+
+      renderizar_examenes_profesor();
+    });
+  });
+}
+
+function renderizar_examenes_profesor() {
+  const contenedor = document.getElementById("listadoExamenesProfesor");
+
+  contenedor.innerHTML = "";
+
+  const examenes_filtrados = datos_examenes.examenes.filter(function (examen) {
+    return filtro_activo === "todos" || examen.estadoFiltro === filtro_activo;
+  });
+
+  if (examenes_filtrados.length === 0) {
+    contenedor.innerHTML = '<p class="mensaje-sin-examenes">No hay exámenes con este filtro.</p>';
+    return;
+  }
+
+  examenes_filtrados.forEach(function (examen) {
+    contenedor.insertAdjacentHTML(
+      "beforeend",
+      `
+        <article class="fila-examen-profesor">
+          <div class="fila-examen-profesor__nombre">
+            <strong>${examen.nombre}</strong>
+            <span>${examen.descripcion}</span>
+          </div>
+
+          <span>${examen.fecha}</span>
+          <span>${examen.duracion}</span>
+          <span>${examen.entregas}</span>
+          <span>${examen.pendientes}</span>
+
+          <span>
+            <span class="etiqueta-examen etiqueta-examen--${examen.estadoFiltro}">
+              ${examen.estado}
+            </span>
+          </span>
+
+          <a class="fila-examen-profesor__accion" href="detalle_examen_profesor.php?materia=${id_asignatura}&examen=${examen.id}">
+            Detalles
+          </a>
+        </article>
+      `
     );
-}
-
-function cargarExamenDestacadoProfesor(examenes) {
-    const examenAbierto = examenes.find(function (examen) {
-        return examen.estadoFiltro === "abierto";
-    });
-
-    const examenDestacado = examenAbierto || examenes[0];
-
-    if (!examenDestacado) {
-        return;
-    }
-
-    const etiqueta = document.getElementById("estadoExamenDestacadoProfesor");
-    const botonEditar = document.getElementById("botonEditarExamenDestacadoProfesor");
-    const botonResultados = document.getElementById("botonResultadosExamenDestacadoProfesor");
-
-    ponerTextoExamenProfesor("tituloExamenDestacadoProfesor", examenDestacado.nombre);
-    ponerTextoExamenProfesor("descripcionExamenDestacadoProfesor", examenDestacado.descripcion);
-    ponerTextoExamenProfesor("fechaLimiteExamenDestacadoProfesor", examenDestacado.fechaCompleta);
-
-    if (etiqueta !== null) {
-        etiqueta.className = "etiqueta-examen etiqueta-examen--" + examenDestacado.estadoFiltro;
-        etiqueta.textContent = examenDestacado.estado;
-    }
-
-    if (botonEditar !== null) {
-        botonEditar.addEventListener("click", function () {
-            guardarExamenProfesorSeleccionado(examenDestacado.id);
-        });
-    }
-
-    if (botonResultados !== null) {
-        botonResultados.addEventListener("click", function () {
-            guardarExamenProfesorSeleccionado(examenDestacado.id);
-            mostrarAvisoResultadosExamenProfesor(examenDestacado.nombre);
-        });
-    }
-}
-
-function prepararFiltrosExamenesProfesor() {
-    const filtros = document.querySelectorAll(".filtro-examen");
-
-    filtros.forEach(function (filtro) {
-        filtro.addEventListener("click", function () {
-            filtroProfesorActivo = filtro.dataset.filtro || "todos";
-
-            filtros.forEach(function (boton) {
-                boton.classList.toggle("filtro-examen--activo", boton === filtro);
-            });
-
-            renderizarExamenesProfesor();
-        });
-    });
-}
-
-function renderizarExamenesProfesor() {
-    const contenedor = document.getElementById("listadoExamenesProfesor");
-
-    if (contenedor === null) {
-        return;
-    }
-
-    const examenesFiltrados = examenesProfesorActuales.filter(function (examen) {
-        return filtroProfesorActivo === "todos" || examen.estadoFiltro === filtroProfesorActivo;
-    });
-
-    contenedor.innerHTML = "";
-
-    if (examenesFiltrados.length === 0) {
-        const mensaje = document.createElement("p");
-        mensaje.className = "mensaje-sin-examenes";
-        mensaje.textContent = "No hay exámenes con este filtro.";
-        contenedor.appendChild(mensaje);
-        return;
-    }
-
-    examenesFiltrados.forEach(function (examen) {
-        const fila = document.createElement("article");
-        fila.className = "fila-examen fila-examen-profesor";
-
-        fila.innerHTML =
-            '<div class="fila-examen__nombre">' +
-                '<strong>' + examen.nombre + '</strong>' +
-                '<span>' + examen.descripcionCorta + '</span>' +
-            '</div>' +
-            '<p class="fila-examen__fecha" data-duracion="' + examen.duracion + '">' + examen.fechaCompleta + '</p>' +
-            '<p class="fila-examen__duracion">' + examen.duracion + '</p>' +
-            '<p class="fila-examen__estado">' +
-                '<span class="etiqueta-examen etiqueta-examen--' + examen.estadoFiltro + '">' + examen.estado + '</span>' +
-            '</p>' +
-            '<div class="acciones-fila-examen-profesor">' +
-                '<a href="crearexamen.html" class="fila-examen__accion fila-examen__accion--principal" data-accion="editar" data-examen="' + examen.id + '">Editar</a>' +
-                '<button type="button" class="fila-examen__accion" data-accion="resultados" data-examen="' + examen.id + '">Notas</button>' +
-            '</div>';
-
-        const acciones = fila.querySelectorAll("[data-examen]");
-
-        acciones.forEach(function (accion) {
-            accion.addEventListener("click", function () {
-                guardarExamenProfesorSeleccionado(examen.id);
-
-                if (accion.dataset.accion === "resultados") {
-                    mostrarAvisoResultadosExamenProfesor(examen.nombre);
-                }
-            });
-        });
-
-        contenedor.appendChild(fila);
-    });
-}
-
-function guardarExamenProfesorSeleccionado(idExamen) {
-    if (typeof window.guardarExamenSeleccionado === "function") {
-        window.guardarExamenSeleccionado(idExamen);
-    }
-}
-
-function mostrarAvisoResultadosExamenProfesor(nombreExamen) {
-    alert("Vista de resultados simulada para: " + nombreExamen + ". En el PMV no hay base de datos de entregas de exámenes.");
+  });
 }

@@ -1,215 +1,200 @@
 /*
-    Pantalla: Gestión de exámenes del profesor
+    Pantalla: Exámenes del profesor
 */
 
-.pagina-examenes-profesor .cabecera-detalle-asignatura {
-    margin-bottom: var(--space-5);
+.pagina-examenes-profesor {
+  min-height: 100vh;
 }
 
-.acciones-examenes-profesor {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-5);
-    margin-bottom: var(--space-5);
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface);
+.cabecera-seccion-profesor {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
-.acciones-examenes-profesor h2 {
-    margin: 0 0 var(--space-2);
-    color: var(--color-text);
-    font-size: 20px;
-    font-weight: 800;
+.cabecera-seccion-profesor h2 {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+  font-size: 20px;
+  font-weight: 800;
 }
 
-.acciones-examenes-profesor p {
-    max-width: 720px;
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 14px;
-    line-height: 1.5;
+.cabecera-seccion-profesor p {
+  max-width: 640px;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.boton-crear-examen-profesor {
-    min-height: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    padding: 0 var(--space-5);
-    border: 1px solid var(--color-primary);
-    border-radius: var(--radius-md);
-    background: var(--color-primary);
-    color: var(--color-dark);
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition:
-        background-color 0.15s ease,
-        transform 0.08s ease;
+.boton-profesor-principal {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-dark);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
-.boton-crear-examen-profesor:hover {
-    background: var(--color-primary-hover);
-    color: var(--color-dark);
+.boton-profesor-principal:hover {
+  border-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
+  color: var(--color-dark);
 }
 
-.boton-crear-examen-profesor:active {
-    transform: translateY(1px);
+.boton-profesor-principal:active {
+  transform: translateY(1px);
 }
 
 .resumen-examenes-profesor {
-    margin-bottom: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
 }
 
-.examen-destacado-profesor .examen-destacado__accion {
-    align-items: stretch;
+.tarjeta-resumen-examen--principal {
+  border-color: rgba(var(--color-primary-rgb), 0.45);
+  box-shadow:
+    0 0 0 1px rgba(var(--color-primary-rgb), 0.08),
+    0 18px 48px rgba(var(--color-primary-rgb), 0.04);
 }
 
-.acciones-fila-examen-profesor {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
+.seccion-examenes-profesor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
-.acciones-fila-examen-profesor--destacado {
-    justify-content: center;
+.cabecera-listado-examenes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
 }
 
-.acciones-fila-examen-profesor .fila-examen__accion {
-    min-width: 92px;
-    border-color: var(--color-border);
-    background: transparent;
-    color: var(--color-text);
-    font-family: inherit;
-    cursor: pointer;
+.cabecera-listado-examenes h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-.acciones-fila-examen-profesor .fila-examen__accion--principal {
-    border-color: var(--color-primary);
-    background: var(--color-primary);
-    color: var(--color-dark);
+.filtros-examenes-profesor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
 }
 
-.acciones-fila-examen-profesor .fila-examen__accion:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    background: var(--color-bg);
+.tabla-examenes-profesor {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
 }
 
-.acciones-fila-examen-profesor .fila-examen__accion--principal:hover {
-    background: var(--color-primary-hover);
-    color: var(--color-dark);
+.tabla-examenes-profesor__cabecera,
+.fila-examen-profesor {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.6fr) 130px 100px 110px 100px 110px 90px;
+  gap: var(--space-4);
+  align-items: center;
+  min-width: 980px;
+  padding: var(--space-4);
 }
 
-@media (max-width: 900px) {
-    .acciones-examenes-profesor {
-        flex-direction: column;
-        align-items: stretch;
-        padding: var(--space-4);
-        margin-bottom: var(--space-4);
-    }
-
-    .acciones-examenes-profesor h2 {
-        font-size: 18px;
-    }
-
-    .boton-crear-examen-profesor {
-        width: 100%;
-    }
-
-    .fila-examen-profesor {
-        grid-template-areas:
-            "nombre estado"
-            "fecha fecha"
-            "accion accion";
-    }
-
-    .fila-examen-profesor .acciones-fila-examen-profesor {
-        grid-area: accion;
-        width: 100%;
-        flex-direction: row;
-    }
-
-    .acciones-fila-examen-profesor .fila-examen__accion {
-        width: 100%;
-        min-height: 38px;
-    }
+.tabla-examenes-profesor__cabecera {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
 }
 
-.examen-destacado-profesor {
-    overflow: hidden;
+.tabla-examenes-profesor__cabecera span {
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
-.examen-destacado-profesor .examen-destacado__accion {
-    min-width: 0;
-    max-width: 100%;
+.fila-examen-profesor {
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 13px;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
 }
 
-.acciones-fila-examen-profesor {
-    display: flex;
-    flex-direction: row !important;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-2);
+.fila-examen-profesor:hover {
+  background: var(--color-surface-alt);
 }
 
-.acciones-fila-examen-profesor .fila-examen__accion {
-    width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
-    flex: 0 0 auto !important;
-
-    height: 38px;
-    padding: 0 var(--space-3);
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    white-space: nowrap;
-    text-align: center;
-    text-decoration: none;
+.fila-examen-profesor:last-child {
+  border-bottom: 0;
 }
 
-@media (max-width: 900px) {
-    .acciones-fila-examen-profesor {
-        flex-direction: row !important;
-    }
-
-    .acciones-fila-examen-profesor .fila-examen__accion {
-        width: auto !important;
-        min-width: auto !important;
-        flex: 0 0 auto !important;
-    }
+.fila-examen-profesor__nombre {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
-.examen-destacado__accion {
-    min-width: 280px !important;
-    width: 280px !important;
-    max-width: 280px !important;
+.fila-examen-profesor__nombre strong {
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 800;
 }
 
-.acciones-fila-examen-profesor--destacado {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 8px !important;
-    width: 100% !important;
+.fila-examen-profesor__nombre span {
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.4;
 }
 
-.acciones-fila-examen-profesor--destacado .fila-examen__accion {
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    flex: 0 0 auto !important;
-    padding: 0 12px !important;
-    white-space: nowrap !important;
+.fila-examen-profesor__accion {
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.fila-examen-profesor__accion:hover {
+  color: var(--color-primary-hover);
+}
+
+@media (max-width: 1100px) {
+  .resumen-examenes-profesor {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cabecera-seccion-profesor {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .resumen-examenes-profesor {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .boton-profesor-principal {
+    width: 100%;
+  }
 }

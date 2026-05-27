@@ -167,7 +167,7 @@ function actualizar_enlaces_asignatura(id_asignatura) {
     "listado_tareas_profe.html" + parametro_asignatura;
 
   document.getElementById("linkPestanaExamenes").href =
-    "examenes_profesor.html" + parametro_asignatura;
+    "examenes_profesor.php" + parametro_asignatura;
   document.getElementById("linkBotonCrearExamen").href =
     "crearexamen.html" + parametro_asignatura;
   document.getElementById("linkExamenDestacado").href =
