@@ -156,7 +156,7 @@ $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
           0 seleccionados
          </span>
         </div>
-        <div class="lista-alumnos-secretaria" id="listaAlumnosSecretaria">
+        <div class="lista-alumnos-secretaria">
          <label class="item-alumno-secretaria">
           <input type="checkbox" value="lief"/>
           <span>
@@ -239,7 +239,7 @@ $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
       </form>
      </section>
      <aside class="lateral-secretaria">
-      <article class="tarjeta-lateral-secretaria tarjeta-resumen-asignacion">
+      <article class="tarjeta-lateral-secretaria">
        <h3>
         Resumen actual
        </h3>

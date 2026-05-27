@@ -83,7 +83,7 @@
                 <span>Asignaturas</span>
             </a>
 
-            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "asignaciones" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="asignaciones_secretaria.html">
+            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "asignaciones" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="asignaciones_secretaria.php">
                 <span class="navegacion-lateral-doa__icono" aria-hidden="true">
                     <img class="icono-estado icono-estado--gris" src="img/iconos/grey-user.svg" alt="">
                     <img class="icono-estado icono-estado--azul" src="img/iconos/blue-user.svg" alt="">
