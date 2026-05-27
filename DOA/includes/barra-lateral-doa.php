@@ -67,7 +67,7 @@
         <?php } ?>
 
         <?php if ($rol_pagina === "secretaria") { ?>
-            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "panel" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="panel_secretaria.html">
+            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "panel" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="panel_secretaria.php">
                 <span class="navegacion-lateral-doa__icono" aria-hidden="true">
                     <img class="icono-estado icono-estado--gris" src="img/iconos/grey-layout-dashboard.svg" alt="">
                     <img class="icono-estado icono-estado--azul" src="img/iconos/blue-layout-dashboard.svg" alt="">
@@ -75,7 +75,7 @@
                 <span>Panel Principal</span>
             </a>
 
-            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "asignaturas" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="asignaturas_secretaria.html">
+            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "asignaturas" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="asignaturas_secretaria.php">
                 <span class="navegacion-lateral-doa__icono" aria-hidden="true">
                     <img class="icono-estado icono-estado--gris" src="img/iconos/grey-notebook.svg" alt="">
                     <img class="icono-estado icono-estado--azul" src="img/iconos/blue-notebook.svg" alt="">

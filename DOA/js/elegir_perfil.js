@@ -111,7 +111,7 @@ function validar_acceso() {
   }
 
   if (usuario_encontrado.rol === "secretaria") {
-    window.location.href = "panel_secretaria.html";
+    window.location.href = "panel_secretaria.php";
     return;
   }
 
