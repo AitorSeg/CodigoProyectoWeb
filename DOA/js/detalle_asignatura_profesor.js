@@ -163,11 +163,11 @@ function actualizar_enlaces_asignatura(id_asignatura) {
     "recursos_profesor.php" + parametro_materia;
 
   document.getElementById("linkPestanaTareas").href =
-    "listado_tareas_profe.html" + parametro_materia;
+    "listado_tareas_profe.html" + parametro_asignatura;
   document.getElementById("linkBotonCrearTarea").href =
-    "crear_tarea.html" + parametro_materia;
+    "crear_tarea.html" + parametro_asignatura;
   document.getElementById("linkTareaDestacada").href =
-    "listado_tareas_profe.html" + parametro_materia;
+    "listado_tareas_profe.html" + parametro_asignatura;
 
   document.getElementById("linkPestanaExamenes").href =
     "examenes_profesor.php" + parametro_materia;

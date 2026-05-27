@@ -73,7 +73,7 @@ $placeholder_buscador = "Buscar recurso, tarea...";
            <!-- Inicio de las pestañas de navegación entre secciones de la asignatura -->
            <div class="cabecera-detalle-asignatura__pestanas">
             <nav aria-label="Secciones de la asignatura" class="pestanas-asignatura">
-             <a class="pestanas-asignatura__item" href="recursosdoa.php">
+             <a class="pestanas-asignatura__item" href="recursos_profesor.php">
               Recursos
              </a>
              <a class="pestanas-asignatura__item pestanas-asignatura__item--activo" href="listado_tareas_profe.php">
