@@ -70,7 +70,7 @@ $placeholder_buscador = "Buscar recursos...";
                                 Recursos
                             </a>
 
-                            <a class="pestanas-asignatura__item" href="listado_tareas_profe.html" id="linkPestanaTareas">
+                            <a class="pestanas-asignatura__item" href="listado_tareas_profesor.php" id="linkPestanaTareas">
                                 Tareas
                             </a>
 

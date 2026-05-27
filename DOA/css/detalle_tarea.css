@@ -1,577 +1,440 @@
-/*
-    Pantalla: Detalle de tarea DOA
-*/
-
 .pagina-detalle-tarea {
-    min-height: 100vh;
-    background: var(--color-bg);
-    color: var(--color-text);
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
-/*
-    Volver
-*/
-
-.enlace-volver {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    margin: 0 0 var(--space-4);
-    color: var(--color-muted);
-    font-size: 16px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.15s ease;
+.detalle-tarea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
 }
 
-.enlace-volver:hover {
-    color: var(--color-primary);
+.cabecera-tarea-detalle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
 }
 
-/*
-    Detalle de tarea
-*/
+.cabecera-tarea-detalle .etiqueta-estado {
+  align-self: flex-start;
+}
 
 .detalle-tarea h2 {
-    margin: 0 0 var(--space-4);
-    font-size: 28px;
-    line-height: 1.2;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    color: var(--color-text);
+  margin: 0;
+  color: var(--color-text);
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .descripcion-tarea {
-    min-height: 108px;
-    padding: var(--space-4) var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    color: var(--color-text);
-    font-size: 14px;
-    line-height: 1.55;
+  width: 100%;
+  margin: 0;
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.6;
 }
-
-.descripcion-tarea p {
-    margin: 0;
-}
-
-.descripcion-tarea p + p {
-    margin-top: var(--space-2);
-}
-
-.separador {
-    height: 2px;
-    margin: var(--space-5) 0 var(--space-4);
-    background: var(--color-border);
-}
-
-/*
-    Fechas
-*/
 
 .fechas-tarea {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
-    margin-bottom: var(--space-4);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, max-content));
+  gap: var(--space-3);
 }
 
 .fecha-tarea {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .fecha-tarea span {
-    color: var(--color-muted);
-    font-size: 16px;
-    font-weight: 500;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .fecha-tarea__valor {
-    min-height: 56px;
-    display: inline-flex;
-    align-items: center;
-    margin: 0;
-    padding: 0 var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    color: var(--color-text);
-    font-size: 24px;
-    line-height: 1.1;
-    font-weight: 400;
-    white-space: nowrap;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 700;
+  white-space: nowrap;
 }
-
-/*
-    Zona de entrega
-*/
 
 .zona-entrega {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
-    grid-template-areas:
-        "archivos recursos"
-        "archivos acciones";
-    gap: var(--space-4);
-    align-items: start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-areas:
+    "archivos recursos"
+    "archivos acciones";
+  gap: var(--space-4);
+  align-items: start;
 }
 
 .archivos-subidos {
-    grid-area: archivos;
+  grid-area: archivos;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
 }
 
-.recursos-adjuntos {
-    grid-area: recursos;
+.archivos-subidos > div:first-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.acciones-tarea {
-    grid-area: acciones;
+.titulo-bloque-tarea {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 800;
 }
 
-.archivos-subidos,
-.recursos-adjuntos {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface);
-}
-
-.archivos-subidos {
-    min-height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: var(--space-6);
-}
-
-.lista-archivos,
-.recursos-adjuntos ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.lista-archivos {
+  flex: 1;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-4);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  list-style: none;
 }
 
 .lista-archivos li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    margin-bottom: var(--space-2);
+  margin: 0;
 }
 
 .lista-archivos a {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    color: var(--color-primary);
-    font-size: 15px;
-    font-weight: 500;
-    text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 180ms ease;
 }
 
 .lista-archivos a:hover {
-    color: var(--color-primary-hover);
+  color: var(--color-primary-hover);
 }
 
-.lista-archivos img,
-.recursos-adjuntos img {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    object-fit: contain;
+.lista-archivos img {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
-.lista-archivos button {
-    width: 30px;
-    height: 30px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    opacity: 0.85;
-    transition:
-        background-color 0.15s ease,
-        opacity 0.15s ease,
-        transform 0.08s ease;
-}
-
-.lista-archivos button:hover {
-    background: rgba(255, 255, 255, 0.04);
-    opacity: 1;
-}
-
-.lista-archivos button:active {
-    transform: translateY(1px);
+.item-sin-archivos {
+  color: var(--color-muted);
+  font-size: 14px;
+  text-align: center;
 }
 
 .subida-archivo {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+
+.input-archivo-entrega {
+  display: none;
 }
 
 .boton-subir {
-    min-width: 118px;
-    min-height: 36px;
-    padding: 0 var(--space-4);
-    border: 1px solid rgba(168, 183, 200, 0.55);
-    border-radius: var(--radius-md);
-    background: transparent;
-    color: var(--color-text);
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    transition:
-        border-color 0.15s ease,
-        color 0.15s ease,
-        background-color 0.15s ease,
-        transform 0.08s ease;
+  min-width: 220px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-5);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: rgba(var(--color-primary-rgb), 0.06);
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .boton-subir:hover {
-    border-color: var(--color-primary);
-    background: rgba(0, 229, 255, 0.06);
-    color: var(--color-primary);
+  border-color: var(--color-primary-hover);
+  background: rgba(var(--color-primary-rgb), 0.1);
+  color: var(--color-primary-hover);
 }
 
 .boton-subir:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
-
-/*
-    Recursos adjuntos
-*/
-
 .recursos-adjuntos {
-    padding: var(--space-6);
-    height: fit-content;
+  grid-area: recursos;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
 }
 
 .recursos-adjuntos h3 {
-    margin: 0 0 var(--space-6);
-    color: var(--color-muted);
-    text-align: center;
-    font-size: 26px;
-    line-height: 1.1;
-    font-weight: 400;
-    text-transform: none;
-    letter-spacing: -0.03em;
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.recursos-adjuntos ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .recursos-adjuntos li + li {
-    margin-top: var(--space-3);
+  margin-top: var(--space-3);
 }
 
 .recursos-adjuntos a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    color: var(--color-muted);
-    font-size: 16px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.15s ease;
-}
-
-.recursos-adjuntos a span {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 180ms ease;
 }
 
 .recursos-adjuntos a:hover {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
-
-.boton-adjuntar {
-    min-width: 118px;
-    min-height: 36px;
-    padding: var(--space-4);
-    border: 1px solid rgba(168, 183, 200, 0.55);
-    border-radius: var(--radius-md);
-    background: transparent;
-    color: var(--color-text);
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    transition:
-        border-color 0.15s ease,
-        color 0.15s ease,
-        background-color 0.15s ease,
-        transform 0.08s ease;
+.recursos-adjuntos a span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
-.boton-adjuntar:hover {
-    border-color: var(--color-primary);
-    background: rgba(0, 229, 255, 0.06);
-    color: var(--color-primary);
+.recursos-adjuntos img {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
-.boton-adjuntar:active {
-    transform: translateY(1px);
+.tarjeta-acciones-tarea {
+  grid-area: acciones;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
 }
-.tarea_alumno{
-    color: var(--color-text);
+
+.tarjeta-acciones-tarea h3 {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 800;
 }
-/*
-    Botones finales
-*/
+
+.tarjeta-acciones-tarea p {
+  margin: 0 0 var(--space-4);
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
 
 .acciones-tarea {
-    display: flex;
-    justify-content: flex-end;
-    align-self: end;
-    gap: var(--space-2);
-    margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .boton-principal,
 .boton-secundario {
-    min-width: 118px;
-    min-height: 36px;
-    padding: 0 var(--space-4);
-    border-radius: var(--radius-md);
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    transition:
-        border-color 0.15s ease,
-        background-color 0.15s ease,
-        color 0.15s ease,
-        transform 0.08s ease;
+  width: 100%;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .boton-principal {
-    border: 1px solid var(--color-primary);
-    background: var(--color-primary);
-    color: var(--color-dark);
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-dark);
 }
 
 .boton-principal:hover {
-    background: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
+  color: var(--color-dark);
 }
 
 .boton-secundario {
-    border: 1px solid rgba(168, 183, 200, 0.55);
-    background: var(--color-surface);
-    color: var(--color-text);
+  border: 1px solid rgba(168, 183, 200, 0.55);
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 .boton-secundario:hover {
-    border-color: var(--color-primary);
-    background: rgba(0, 229, 255, 0.06);
-    color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.06);
+  color: var(--color-primary);
 }
 
 .boton-principal:active,
 .boton-secundario:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .boton-principal:focus-visible,
 .boton-secundario:focus-visible,
 .boton-subir:focus-visible {
-    outline: 2px solid rgba(0, 229, 255, 0.75);
-    outline-offset: 2px;
+  outline: 2px solid rgba(var(--color-primary-rgb), 0.75);
+  outline-offset: 2px;
 }
 
-/*
-    Detalle de tarea - Profesor
-*/
-
-.zona-entrega-profe {
-    grid-template-columns: minmax(0, 1fr) 360px;
-    grid-template-areas:
-        "entregas recursos";
-}
-
-.entregas-profe {
-    grid-area: entregas;
-    min-height: 250px;
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface);
-}
-
-.entregas-profe h3 {
-    margin: 0 0 var(--space-5);
-    color: var(--color-muted);
-    font-size: 22px;
-    line-height: 1.1;
-    font-weight: 400;
-    letter-spacing: -0.03em;
-}
-
-.tabla-entregas-profe {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-}
-
-.tabla-entregas-profe__cabecera,
-.fila-entrega-profe {
-    display: grid;
-    grid-template-columns: minmax(130px, 1fr) 120px 110px 100px;
-    align-items: center;
-    column-gap: var(--space-4);
-}
-
-.tabla-entregas-profe__cabecera {
-    padding-bottom: var(--space-2);
-}
-
-.tabla-entregas-profe__cabecera p {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.fila-entrega-profe p {
-    margin: 0;
-    color: var(--color-text);
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.tabla-entregas-profe__cabecera p:not(:first-child),
-.fila-entrega-profe p:not(:first-child) {
-    justify-self: center;
-    text-align: center;
+.boton-enlace-tarea {
+  text-decoration: none;
 }
 
 .etiqueta-estado {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 20px;
-    padding: 0 9px;
-    border-radius: 999px;
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 1;
-    white-space: nowrap;
+  min-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.etiqueta-estado--pendiente {
+  border: 1px solid var(--color-warning);
+  background: rgba(245, 158, 11, 0.08);
+  color: var(--color-warning);
 }
 
 .etiqueta-estado--entregada,
 .etiqueta-estado--calificada {
-    border: 1px solid var(--color-success);
-    color: var(--color-success);
-    background: rgba(152, 239, 106, 0.06);
-}
-
-.etiqueta-estado--no-entregada {
-    border: 1px solid var(--color-muted);
-    color: var(--color-muted);
-    background: rgba(168, 183, 200, 0.06);
+  border: 1px solid var(--color-success);
+  background: rgba(34, 197, 94, 0.08);
+  color: var(--color-success);
 }
 
 .etiqueta-estado--tardia {
-    border: 1px solid var(--color-error);
-    color: var(--color-error);
-    background: rgba(255, 92, 92, 0.06);
+  border: 1px solid var(--color-error);
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--color-error);
 }
 
-.recursos-adjuntos-profe {
-    grid-area: recursos;
-    min-height: 220px;
+.mensaje-tarea {
+  margin: 0;
+  padding: var(--space-3);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: rgba(var(--color-primary-rgb), 0.08);
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 800;
 }
 
-.recursos-adjuntos-profe__accion {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--space-5);
+.mensaje-tarea--oculto {
+  display: none;
 }
-
-.recursos-adjuntos-profe .boton-adjuntar {
-    min-width: 106px;
-    min-height: 30px;
-    padding: 0 var(--space-3);
-    border-radius: var(--radius-sm);
-    font-size: 10px;
-}
-
-/*
-    Responsive
-*/
 
 @media (max-width: 1180px) {
-    .zona-entrega {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "recursos"
-            "archivos"
-            "acciones";
-    }
-
-    .recursos-adjuntos {
-        order: initial;
-    }
+  .zona-entrega {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "recursos"
+      "archivos"
+      "acciones";
+  }
 }
 
 @media (max-width: 900px) {
-    .contenido-detalle-tarea {
-        padding: var(--space-5);
-        padding-bottom: calc(72px + var(--space-5));
-    }
+  .detalle-tarea h2 {
+    font-size: 24px;
+  }
 
-    .detalle-tarea h2 {
-        font-size: 24px;
-    }
+  .fechas-tarea {
+    grid-template-columns: 1fr;
+  }
 
-    .descripcion-tarea {
-        min-height: auto;
-    }
+  .fecha-tarea,
+  .fecha-tarea__valor {
+    width: 100%;
+  }
 
-    .fechas-tarea {
-        flex-direction: column;
-    }
+  .fecha-tarea__valor {
+    min-height: 52px;
+    white-space: normal;
+  }
 
-    .fecha-tarea {
-        width: 100%;
-    }
+  .archivos-subidos,
+  .recursos-adjuntos,
+  .tarjeta-acciones-tarea,
+  .cabecera-tarea-detalle {
+    padding: var(--space-4);
+  }
+}
 
-    .fecha-tarea__valor {
-        width: 100%;
-        min-height: 52px;
-        font-size: 21px;
-        white-space: normal;
-    }
-
-    .archivos-subidos {
-        min-height: 250px;
-        padding: var(--space-5);
-    }
-
-    .recursos-adjuntos {
-        padding: var(--space-5);
-    }
-
-    .recursos-adjuntos h3 {
-        margin-bottom: var(--space-5);
-        font-size: 22px;
-    }
-
-    .acciones-tarea {
-        flex-direction: column;
-        margin-top: 0;
-    }
-
-    .boton-principal,
-    .boton-secundario {
-        width: 100%;
-        min-height: 42px;
-    }
+@media (max-width: 560px) {
+  .boton-principal,
+  .boton-secundario,
+  .boton-subir {
+    width: 100%;
+  }
 }
