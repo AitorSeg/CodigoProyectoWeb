@@ -196,7 +196,7 @@
                         </div>
 
                         <div class="lista-panel-lateral">
-                            <a href="crearexamen.html?asignatura=matematicas" class="item-panel-lateral">
+                            <a href="crear_examen.php?materia=matematicas" class="item-panel-lateral">
                                 <div class="item-panel-lateral__texto">
                                     <strong>Parcial 01</strong>
                                     <span>Matemáticas</span>
@@ -205,7 +205,7 @@
                                 <small>15 Nov</small>
                             </a>
 
-                            <a href="crearexamen.html?asignatura=programacion" class="item-panel-lateral">
+                            <a href="crear_examen.php?materia=programacion" class="item-panel-lateral">
                                 <div class="item-panel-lateral__texto">
                                     <strong>Quiz de punteros</strong>
                                     <span>Programación II</span>
@@ -214,7 +214,7 @@
                                 <small>18 Nov</small>
                             </a>
 
-                            <a href="crearexamen.html?asignatura=fisica" class="item-panel-lateral">
+                            <a href="crear_examen.php?materia=fisica" class="item-panel-lateral">
                                 <div class="item-panel-lateral__texto">
                                     <strong>Control de cinemática</strong>
                                     <span>Física</span>

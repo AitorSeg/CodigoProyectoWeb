@@ -92,7 +92,7 @@ $placeholder_buscador = "Buscar examen...";
                     </p>
                 </div>
 
-                <a class="boton-profesor-principal" href="crearexamen.html" id="linkCrearExamen">
+                <a class="boton-profesor-principal" href="crear_examen.php" id="linkCrearExamen">
                     Crear examen
                 </a>
             </section>

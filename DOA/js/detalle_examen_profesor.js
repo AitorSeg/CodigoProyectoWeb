@@ -301,7 +301,7 @@ function actualizar_enlaces_examen(id_asignatura, id_examen) {
   document.getElementById("linkPestanaExamenes").href = "examenes_profesor.php" + parametro_materia;
   document.getElementById("linkPestanaCalificaciones").href = "calificaciones_profesor.php" + parametro_materia;
 
-  document.getElementById("linkEditarExamen").href = "crearexamen.html" + parametro_examen;
+  document.getElementById("linkEditarExamen").href = "crear_examen.php" + parametro_examen;
   document.getElementById("linkCalificacionesExamen").href = "calificaciones_profesor.php" + parametro_materia;
   document.getElementById("linkListadoExamenes").href = "examenes_profesor.php" + parametro_materia;
 }

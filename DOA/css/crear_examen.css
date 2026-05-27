@@ -1,0 +1,290 @@
+.pagina-crear-examen {
+  min-height: 100vh;
+}
+
+.crear-examen-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.columna-principal-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.tarjeta-formulario-examen,
+.tarjeta-publicacion-examen {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.tarjeta-formulario-examen h2,
+.tarjeta-publicacion-examen h2 {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.grupo-campo-formulario {
+  margin-bottom: var(--space-4);
+}
+
+.grupo-campo-sin-margen {
+  margin-bottom: 0;
+}
+
+.grupo-campo-formulario label,
+.label-secundario {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.grupo-campo-formulario input,
+.grupo-campo-formulario select,
+.grupo-campo-formulario textarea,
+.fila-opcion-crear input[type="text"] {
+  width: 100%;
+  padding: 12px var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.grupo-campo-formulario input:focus,
+.grupo-campo-formulario select:focus,
+.grupo-campo-formulario textarea:focus,
+.fila-opcion-crear input[type="text"]:focus {
+  border-color: var(--color-primary);
+}
+
+.formulario-doble {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.cabecera-preguntas-crear {
+  margin-bottom: var(--space-4);
+}
+
+.cabecera-preguntas-crear p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contenedor-preguntas-crear {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bloque-pregunta-crear {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.cabecera-pregunta-crear {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.cabecera-pregunta-crear h3 {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.btn-eliminar-pregunta {
+  border: 0;
+  background: transparent;
+  color: var(--color-error);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.fila-opcion-crear {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.fila-opcion-crear input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+}
+
+.boton-anadir-pregunta {
+  width: 100%;
+  min-height: 44px;
+  margin-top: var(--space-4);
+  border: 1px dashed var(--color-primary);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.boton-anadir-pregunta:hover {
+  background: rgba(var(--color-primary-rgb), 0.06);
+}
+
+.columna-lateral-formulario {
+  position: sticky;
+  top: calc(72px + var(--space-5));
+}
+
+.tarjeta-publicacion-examen p {
+  margin: 0 0 var(--space-4);
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.resumen-publicacion-examen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+.resumen-publicacion-examen li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.resumen-publicacion-examen li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.resumen-publicacion-examen span {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.resumen-publicacion-examen strong {
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.boton-publicar-examen,
+.boton-descartar-examen {
+  width: 100%;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.boton-publicar-examen {
+  margin-bottom: var(--space-3);
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-dark);
+}
+
+.boton-publicar-examen:hover {
+  border-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
+  color: var(--color-dark);
+}
+
+.boton-descartar-examen {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+}
+
+.boton-descartar-examen:hover {
+  border-color: var(--color-muted);
+  color: var(--color-text);
+}
+
+.mensaje-examen-guardado {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-md);
+  background: rgba(34, 197, 94, 0.08);
+  color: var(--color-success);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.mensaje-examen-guardado--oculto {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .crear-examen-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .columna-lateral-formulario {
+    position: static;
+    order: -1;
+  }
+
+  .formulario-doble {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
