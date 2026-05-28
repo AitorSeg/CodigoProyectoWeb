@@ -65,6 +65,6 @@ if (registerForm !== null) {
         guardarUsuarios(usuarios);
 
         alert("Registro completado correctamente. Ahora puedes iniciar sesión.");
-        window.location.href = "../html/login.html";
+        window.location.href = "../login.php";
     });
 }

@@ -12,7 +12,7 @@
     <!-- Cabecera principal con logo, navegación y botón de acceso -->
     <header>
             <div class="header-logo">
-            <a href="index.html">
+            <a href="index.php">
             <img src="GTI/img/logoGTI_blanco.png" alt="Logo GTI" />
             </div>
            
@@ -21,14 +21,14 @@
             <!-- Enlaces de navegación interna hacia secciones de la misma página -->
             <a href="#faq">FAQ</a>
             <a href="#sobre-nosotros">Sobre Nosotros</a>
-            <a href="GTI/html/contacto.html">Contactanos</a>
-            <a href="GTI/html/catalogo.html" class="nav-active">Catalogo de Modulos</a>
+            <a href="GTI/contacto.php">Contactanos</a>
+            <a href="GTI/catalogo.php" class="nav-active">Catalogo de Modulos</a>
         </nav>
 
         <div class="header-actions">
             <!-- Botones de acceso rápido al registrarse y al iniciar sesión -->
-            <a href="GTI/html/registro.html" class="register-btn">Registro</a>
-            <a href="GTI/html/login.html" class="login-btn">Log in</a>
+            <a href="GTI/registro.php" class="register-btn">Registro</a>
+            <a href="GTI/login.php" class="login-btn">Log in</a>
         </div>
     </header>
 
@@ -47,7 +47,7 @@
 
             <div class="hero-actions">
                 <!-- Botón destacado para promocionar el módulo más reciente -->
-                <a href="GTI/html/catalogo.html" class="module-btn">Nuestro Último Modulo</a>
+                <a href="GTI/catalogo.php" class="module-btn">Nuestro Último Modulo</a>
                 <div class="license">
                     <!-- Indicador visual de beneficios incluido con el producto -->
                 <div class="about-image">
@@ -72,7 +72,7 @@
                     </p>
 
                     <!-- Botón que lleva al usuario a la sección de contacto o que puede abrir un formulario de contacto -->
-                    <a href="GTI/html/contacto.html" class="contact-btn" id="contacto">
+                    <a href="GTI/contacto.php" class="contact-btn" id="contacto">
                      Contactanos <span class="arrow">→</span>
                     </a>
                 </div>

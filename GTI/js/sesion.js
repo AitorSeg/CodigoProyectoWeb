@@ -45,7 +45,7 @@ function actualizarHeaderSesion() {
                 localStorage.removeItem("paginaAnterior");
 
                 // Redirige al index del proyecto (ruta relativa)
-                window.location.href = "../../../index.html";
+                window.location.href = "../../index.php";
             });
 
             headerActions.appendChild(botonCerrarSesion);

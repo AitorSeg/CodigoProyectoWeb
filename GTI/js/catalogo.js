@@ -5,9 +5,9 @@ if (trialBtn !== null) {
         const sesionIniciada = localStorage.getItem("gtiSesionIniciada");
 
         if (sesionIniciada === "true") {
-            window.location.href = "../../DOA/html/elegir_perfil.php";
+            window.location.href = "../../DOA/elegir_perfil.php";
         } else {
-            window.location.href = "../html/registro.html";
+            window.location.href = "../registro.php";
         }
     });
 }
