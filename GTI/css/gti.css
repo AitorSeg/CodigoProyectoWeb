@@ -348,6 +348,12 @@ details p {
     padding: 0 72px 22px 18px;
 }
 
+.header-user {
+    color: var(--gris-letras);
+    font-size: 15px;
+    font-weight: 700;
+}
+
 /* Diseño adaptable para pantallas medianas, reorganizando la cabecera y secciones. */
 @media (max-width: 950px) {
     nav {

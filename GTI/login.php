@@ -54,7 +54,18 @@ $mensaje_ok = "";
 
 $email = "";
 
-function limpiar_texto($texto) {
+$redir = "";
+
+if (isset($_GET["redir"]) && $_GET["redir"] === "doa") {
+    $redir = "doa";
+}
+
+if (isset($_POST["redir"]) && $_POST["redir"] === "doa") {
+    $redir = "doa";
+}
+
+function limpiar_texto($texto)
+{
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');
 }
 
@@ -79,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             SELECT id_usuario, nombre, apellidos, email, password_hash, rol, tipo_usuario, estado
             FROM usuarios
             WHERE email = :email
+            AND tipo_usuario = 'real'
             LIMIT 1
         ");
 
@@ -100,6 +112,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["rol"] = $usuario["rol"];
             $_SESSION["tipo_usuario"] = $usuario["tipo_usuario"];
 
+            if ($redir === "doa") {
+                header("Location: ../DOA/elegir_perfil.php");
+                exit;
+            }
+
             header("Location: ../index.php");
             exit;
         }
@@ -109,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title><?php echo limpiar_texto($titulo_pagina); ?></title>
@@ -143,6 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php } ?>
 
         <form id="loginForm" method="post">
+            <input type="hidden" name="redir" value="<?php echo limpiar_texto($redir); ?>">
 
             <?php foreach ($campos_formulario as $campo) { ?>
 
@@ -151,16 +170,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <?php echo limpiar_texto($campo["label"]); ?>
                     </label>
 
-                    <input 
-                        type="<?php echo limpiar_texto($campo["tipo"]); ?>" 
-                        id="<?php echo limpiar_texto($campo["id"]); ?>" 
+                    <input
+                        type="<?php echo limpiar_texto($campo["tipo"]); ?>"
+                        id="<?php echo limpiar_texto($campo["id"]); ?>"
                         name="<?php echo limpiar_texto($campo["name"]); ?>"
-                        placeholder="<?php echo limpiar_texto($campo["placeholder"]); ?>" 
+                        placeholder="<?php echo limpiar_texto($campo["placeholder"]); ?>"
                         <?php if ($campo["name"] === "email") { ?>
-                            value="<?php echo limpiar_texto($email); ?>"
+                        value="<?php echo limpiar_texto($email); ?>"
                         <?php } ?>
-                        required
-                    >
+                        required>
 
                     <span class="error-text" id="<?php echo limpiar_texto($campo["error_id"]); ?>">
                         <?php echo limpiar_texto($campo["error_texto"]); ?>
@@ -171,11 +189,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <div class="form-options">
                 <label>
-                    <input 
-                        type="checkbox" 
+                    <input
+                        type="checkbox"
                         id="<?php echo limpiar_texto($opciones_formulario["checkbox_id"]); ?>"
-                        name="<?php echo limpiar_texto($opciones_formulario["checkbox_name"]); ?>"
-                    >
+                        name="<?php echo limpiar_texto($opciones_formulario["checkbox_name"]); ?>">
                     <?php echo limpiar_texto($opciones_formulario["texto_checkbox"]); ?>
                 </label>
 
@@ -198,4 +215,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 
 </body>
+
 </html>

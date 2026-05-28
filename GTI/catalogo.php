@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+$sesion_iniciada = isset($_SESSION["id_usuario"]);
+$nombre_usuario = $sesion_iniciada ? $_SESSION["nombre"] : "";
+$enlace_prueba_doa = $sesion_iniciada ? "../DOA/elegir_perfil.php" : "login.php?redir=doa";
+
 $tituloPagina = "DOA - Nuestro Último Módulo";
 
 $cssGlobal = "css/gti.css";
@@ -28,19 +32,6 @@ $menu = [
         "texto" => "Catalogo de Modulos",
         "enlace" => "catalogo.php",
         "activo" => true
-    ]
-];
-
-$accionesHeader = [
-    [
-        "texto" => "Registro",
-        "enlace" => "registro.php",
-        "clase" => "register-btn"
-    ],
-    [
-        "texto" => "Log in",
-        "enlace" => "login.php",
-        "clase" => "login-btn"
     ]
 ];
 
@@ -94,18 +85,15 @@ $precios = [
     ]
 ];
 
-$scripts = [
-    "js/catalogo.js",
-    "js/sesion.js"
-];
-
-function limpiarTexto($texto) {
+function limpiarTexto($texto)
+{
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -127,23 +115,26 @@ function limpiarTexto($texto) {
 
         <nav>
             <?php foreach ($menu as $enlace) { ?>
-                <a 
+                <a
                     href="<?php echo limpiarTexto($enlace["enlace"]); ?>"
-                    class="<?php echo $enlace["activo"] ? "nav-active" : ""; ?>"
-                >
+                    class="<?php echo $enlace["activo"] ? "nav-active" : ""; ?>">
                     <?php echo limpiarTexto($enlace["texto"]); ?>
                 </a>
             <?php } ?>
         </nav>
 
         <div class="header-actions">
-            <?php foreach ($accionesHeader as $accion) { ?>
-                <a 
-                    href="<?php echo limpiarTexto($accion["enlace"]); ?>"
-                    class="<?php echo limpiarTexto($accion["clase"]); ?>"
-                >
-                    <?php echo limpiarTexto($accion["texto"]); ?>
+            <?php if ($sesion_iniciada) { ?>
+                <span class="header-user">
+                    <?php echo limpiarTexto($nombre_usuario); ?>
+                </span>
+
+                <a href="logout.php" class="login-btn">
+                    Cerrar sesión
                 </a>
+            <?php } else { ?>
+                <a href="registro.php" class="register-btn">Registro</a>
+                <a href="login.php" class="login-btn">Log in</a>
             <?php } ?>
         </div>
     </header>
@@ -161,7 +152,9 @@ function limpiarTexto($texto) {
 
             <div class="module-hero-actions">
                 <a href="#comprar" class="buy-btn">Comprar</a>
-                <button class="trial-btn" id="trialBtn">Prueba Gratuita</button>
+                <a href="<?php echo limpiarTexto($enlace_prueba_doa); ?>" class="trial-btn">
+                    Prueba Gratuita
+                </a>
             </div>
         </section>
 
@@ -170,10 +163,9 @@ function limpiarTexto($texto) {
 
                 <?php foreach ($caracteristicas as $caracteristica) { ?>
                     <article class="<?php echo limpiarTexto($caracteristica["clase"]); ?>">
-                        <img 
-                            src="<?php echo limpiarTexto($caracteristica["imagen"]); ?>" 
-                            alt="<?php echo limpiarTexto($caracteristica["alt"]); ?>" 
-                        />
+                        <img
+                            src="<?php echo limpiarTexto($caracteristica["imagen"]); ?>"
+                            alt="<?php echo limpiarTexto($caracteristica["alt"]); ?>" />
 
                         <h3>
                             <?php echo limpiarTexto($caracteristica["titulo"]); ?>
@@ -202,10 +194,9 @@ function limpiarTexto($texto) {
             <div class="license-card">
 
                 <div class="license-title">
-                    <img 
-                        src="<?php echo limpiarTexto($licencia["icono"]); ?>" 
-                        alt="<?php echo limpiarTexto($licencia["alt"]); ?>" 
-                    />
+                    <img
+                        src="<?php echo limpiarTexto($licencia["icono"]); ?>"
+                        alt="<?php echo limpiarTexto($licencia["alt"]); ?>" />
 
                     <h3>
                         <?php echo limpiarTexto($licencia["titulo"]); ?>
@@ -236,9 +227,6 @@ function limpiarTexto($texto) {
 
     </main>
 
-    <?php foreach ($scripts as $script) { ?>
-        <script src="<?php echo limpiarTexto($script); ?>"></script>
-    <?php } ?>
-
 </body>
+
 </html>

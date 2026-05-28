@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+function limpiar_texto($texto)
+{
+    return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');
+}
+
+$sesion_iniciada = isset($_SESSION["id_usuario"]);
+$nombre_usuario = $sesion_iniciada ? $_SESSION["nombre"] : "";
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -29,9 +41,18 @@
         </nav>
 
         <div class="header-actions">
-            <!-- Botones de acceso rápido al registrarse y al iniciar sesión -->
-            <a href="GTI/registro.php" class="register-btn">Registro</a>
-            <a href="GTI/login.php" class="login-btn">Log in</a>
+            <?php if ($sesion_iniciada) { ?>
+                <span class="header-user">
+                    <?php echo limpiar_texto($nombre_usuario); ?>
+                </span>
+
+                <a href="GTI/logout.php" class="login-btn">
+                    Cerrar sesión
+                </a>
+            <?php } else { ?>
+                <a href="GTI/registro.php" class="register-btn">Registro</a>
+                <a href="GTI/login.php" class="login-btn">Log in</a>
+            <?php } ?>
         </div>
     </header>
 
@@ -124,7 +145,6 @@
             </div>
         </section>
     </main>
-    <script src="GTI/js/sesion.js"></script>
 
 </body>
 
