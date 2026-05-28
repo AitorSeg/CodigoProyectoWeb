@@ -179,6 +179,17 @@
   background: var(--color-surface-alt);
 }
 
+.estado-calificacion--corregida {
+  border-color: var(--color-success);
+  color: var(--color-success);
+  background: var(--color-surface-alt);
+}
+
+.fila-sin-resultados td {
+  color: var(--color-muted);
+  text-align: center;
+}
+
 .enlace-tabla {
   border: 0;
   padding: 0;
@@ -248,14 +259,12 @@
 
   .tabla-calificaciones th:nth-child(2),
   .tabla-calificaciones th:nth-child(3),
-  .tabla-calificaciones th:nth-child(4),
+  .tabla-calificaciones th:nth-child(6),
   .tabla-calificaciones th:nth-child(7),
-  .tabla-calificaciones th:nth-child(8),
   .tabla-calificaciones td:nth-child(2),
   .tabla-calificaciones td:nth-child(3),
-  .tabla-calificaciones td:nth-child(4),
-  .tabla-calificaciones td:nth-child(7),
-  .tabla-calificaciones td:nth-child(8) {
+  .tabla-calificaciones td:nth-child(6),
+  .tabla-calificaciones td:nth-child(7) {
     display: none;
   }
 

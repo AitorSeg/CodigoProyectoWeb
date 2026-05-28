@@ -263,7 +263,7 @@
   padding: var(--space-3);
   border: 1px solid var(--color-success);
   border-radius: var(--radius-md);
-  background: rgba(34, 197, 94, 0.08);
+  background: var(--color-surface-alt);
   color: var(--color-success);
   font-size: 13px;
   font-weight: 800;
@@ -271,6 +271,20 @@
 
 .mensaje-examen-guardado--oculto {
   display: none;
+}
+
+.mensaje-examen-guardado--error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+  background: var(--color-surface-alt);
+}
+
+.mensaje-examen-guardado--error p {
+  margin: 0;
+}
+
+.mensaje-examen-guardado--error p + p {
+  margin-top: var(--space-1);
 }
 
 @media (max-width: 900px) {

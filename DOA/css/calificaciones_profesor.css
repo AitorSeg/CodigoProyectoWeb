@@ -31,16 +31,19 @@
 .estado-calificacion--aprobado {
   border-color: var(--color-success);
   color: var(--color-success);
+  background: var(--color-surface-alt);
 }
 
 .estado-calificacion--suspendido {
   border-color: var(--color-error);
   color: var(--color-error);
+  background: var(--color-surface-alt);
 }
 
 .estado-calificacion--pendiente {
   border-color: var(--color-border);
   color: var(--color-muted);
+  background: var(--color-surface-alt);
 }
 
 @media (max-width: 900px) {
