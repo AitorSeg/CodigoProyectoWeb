@@ -102,6 +102,57 @@
   color: var(--color-primary);
 }
 
+.pregunta-profesor__opciones {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.opcion-pregunta-profesor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.opcion-pregunta-profesor--correcta {
+  border-color: var(--color-success);
+  color: var(--color-success);
+  background: var(--color-surface-alt);
+}
+
+.opcion-pregunta-profesor strong {
+  color: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.pregunta-profesor__explicacion {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.estado-detalle-examen--borrador {
+  border-color: var(--color-border);
+  color: var(--color-muted);
+}
+
+.estado-calificacion--realizado {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-surface-alt);
+}
+
 @media (max-width: 900px) {
   .datos-examen--profesor {
     grid-template-columns: repeat(2, minmax(0, 1fr));
