@@ -14,7 +14,8 @@ require_once __DIR__ . "/../config/conexion.php";
 
 // Inicio funciones auxiliares
 
-function obtener_estado_tarea_alumno($tarea) {
+function obtener_estado_tarea_alumno($tarea)
+{
     if ($tarea["id_calificacion"] !== null) {
         return "calificada";
     }
@@ -26,7 +27,8 @@ function obtener_estado_tarea_alumno($tarea) {
     return $tarea["estado_entrega"];
 }
 
-function obtener_texto_estado_tarea($estado) {
+function obtener_texto_estado_tarea($estado)
+{
     return match ($estado) {
         "pendiente" => "Pendiente",
         "entregada" => "Entregada",
@@ -37,7 +39,8 @@ function obtener_texto_estado_tarea($estado) {
     };
 }
 
-function calcular_tiempo_restante($fecha_limite) {
+function calcular_tiempo_restante($fecha_limite)
+{
     if ($fecha_limite === null) {
         return "Sin fecha límite";
     }
@@ -268,6 +271,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Inicio metadatos y estilos -->
 
@@ -526,9 +530,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
                                     ? number_format((float) $tarea["nota"], 1) . "/10"
                                     : "-";
 
-                                $url_detalle_tarea = $tarea["id_entrega"] !== null
-                                    ? "detalle_tarea_entregada.php?id_actividad=" . (int) $tarea["id_actividad"]
-                                    : "detalle_tarea.php?id_actividad=" . (int) $tarea["id_actividad"];
+                                $url_detalle_tarea = "detalle_tarea.php?id_actividad=" . (int) $tarea["id_actividad"];
                                 ?>
 
                                 <article class="fila-tarea">
@@ -566,4 +568,5 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
         <!-- Fin contenido principal -->
     </div>
 </body>
+
 </html>

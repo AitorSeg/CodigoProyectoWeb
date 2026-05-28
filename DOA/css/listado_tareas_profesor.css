@@ -149,6 +149,12 @@
   background: rgba(245, 158, 11, 0.08);
 }
 
+.boton-editar-tarea--desactivado {
+  opacity: 0.55;
+  cursor: default;
+  pointer-events: none;
+}
+
 @media (max-width: 1100px) {
   .resumen-tareas-profesor {
     grid-template-columns: repeat(2, minmax(0, 1fr));

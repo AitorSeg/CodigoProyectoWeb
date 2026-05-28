@@ -334,6 +334,32 @@
   overflow-wrap: anywhere;
 }
 
+.etiqueta-entrega-profesor--calificada,
+.etiqueta-entrega-profesor--revisada {
+  border: 1px solid var(--color-success);
+  background: rgba(34, 197, 94, 0.08);
+  color: var(--color-success);
+}
+
+.mensaje-calificacion--error {
+  border-color: var(--color-error);
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--color-error);
+}
+
+.mensaje-calificacion--error p {
+  margin: 0;
+}
+
+.mensaje-calificacion--error p + p {
+  margin-top: var(--space-1);
+}
+
+.item-sin-archivos {
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
 @media (max-width: 1180px) {
   .entrega-profesor-grid {
     grid-template-columns: 1fr;

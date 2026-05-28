@@ -160,8 +160,8 @@
 }
 
 .subida-archivo {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  gap: var(--space-4);
   margin-top: var(--space-4);
 }
 
@@ -367,6 +367,7 @@
 }
 
 .etiqueta-estado--entregada,
+.etiqueta-estado--revisada,
 .etiqueta-estado--calificada {
   border: 1px solid var(--color-success);
   background: rgba(34, 197, 94, 0.08);
@@ -392,6 +393,94 @@
 
 .mensaje-tarea--oculto {
   display: none;
+}
+
+.mensaje-tarea--error {
+  border-color: var(--color-error);
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--color-error);
+}
+
+.mensaje-tarea--error p {
+  margin: 0;
+}
+
+.mensaje-tarea--error p + p {
+  margin-top: var(--space-1);
+}
+
+.textarea-entrega {
+  min-height: 110px;
+  padding-block: var(--space-3);
+  resize: vertical;
+}
+
+.comentario-entrega-registrada {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
+}
+
+.comentario-entrega-registrada h4 {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.comentario-entrega-registrada p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.acciones-tarea--vertical {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.tarjeta-acciones-tarea {
+  align-self: start;
+}
+
+.subida-archivo input[type="file"] {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-muted);
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.subida-archivo input[type="file"]::file-selector-button {
+  min-height: 34px;
+  margin-right: var(--space-3);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  background: rgba(var(--color-primary-rgb), 0.08);
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.grupo-campo-entrega {
+  margin-top: 0;
+}
+
+.textarea-entrega {
+  width: 100%;
+  min-height: 110px;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1180px) {
