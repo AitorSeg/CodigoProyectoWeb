@@ -260,6 +260,10 @@ a:hover {
   object-fit: contain;
 }
 
+.marca-doa__powered {
+  text-decoration: none;
+}
+
 @media (max-width: 900px) {
   h1 {
     font-size: 32px;

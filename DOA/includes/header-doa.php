@@ -5,10 +5,10 @@
                 <img class="logo-doa" src="img/LogoDoaAzulRecortado.png" alt="Logo de DOA">
             </a>
 
-            <div class="marca-doa__powered">
+            <a class="marca-doa__powered" href="../index.php" aria-label="Volver a GTI">
                 <span class="marca-doa__powered-text">Powered by</span>
                 <img class="marca-doa__powered-logo" src="img/logoGTI_blanco_fondo_negro-removebg-preview.png" alt="Grado en Tecnologías Interactivas">
-            </div>
+            </a>
         </div>
     </div>
 

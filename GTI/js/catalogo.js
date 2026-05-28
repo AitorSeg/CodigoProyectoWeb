@@ -1,13 +1,13 @@
-const trialBtn = document.getElementById("trialBtn");
+const boton_prueba = document.getElementById("trialBtn");
 
-if (trialBtn !== null) {
-    trialBtn.addEventListener("click", function() {
-        const sesionIniciada = localStorage.getItem("gtiSesionIniciada");
+boton_prueba.addEventListener("click", function () {
+  const sesion_iniciada = localStorage.getItem("gtiSesionIniciada");
 
-        if (sesionIniciada === "true") {
-            window.location.href = "../../DOA/elegir_perfil.php";
-        } else {
-            window.location.href = "../registro.php";
-        }
-    });
-}
+  if (sesion_iniciada === "true") {
+    window.location.href = "../DOA/elegir_perfil.php";
+    return;
+  }
+
+  localStorage.setItem("paginaAnterior", "../DOA/elegir_perfil.php");
+  window.location.href = "login.php";
+});

@@ -1,73 +1,60 @@
-// Función que actualiza los elementos del header según el estado de sesión
-// Usa `localStorage` para comprobar si el usuario ha iniciado sesión
-function actualizarHeaderSesion() {
-    // Valor guardado en localStorage: "true" cuando hay sesión iniciada
-    const sesionIniciada = localStorage.getItem("gtiSesionIniciada");
+function actualizar_header_sesion() {
+  const sesion_iniciada = localStorage.getItem("gtiSesionIniciada");
+  const header_actions = document.querySelector(".header-actions");
+  const boton_registro = document.querySelector(".register-btn");
+  const boton_login = document.querySelector(".login-btn");
 
-    // Elementos del header que se muestran/ocultan según la sesión
-    const headerActions = document.querySelector(".header-actions");
-    const botonRegistro = document.querySelector(".register-btn");
-    const botonLogin = document.querySelector(".login-btn");
+  if (sesion_iniciada === "true") {
+    boton_registro.style.display = "none";
+    boton_login.style.display = "none";
 
-    // Si no existe el contenedor de acciones del header, no hacemos nada
-    if (headerActions === null) {
-        return;
-    }
+    mostrar_boton_cerrar_sesion(header_actions);
+    return;
+  }
 
-    // Si la sesión está iniciada, ocultamos botones de registro/login
-    if (sesionIniciada === "true") {
-        if (botonRegistro !== null) {
-            // Oculta el botón de registro para usuarios ya logueados
-            botonRegistro.style.display = "none";
-        }
-
-        if (botonLogin !== null) {
-            // Oculta el botón de login para usuarios ya logueados
-            botonLogin.style.display = "none";
-        }
-
-        // Buscamos si ya existe un botón de cerrar sesión
-        let botonCerrarSesion = document.querySelector(".logout-btn");
-
-        // Si no existe, lo creamos y lo añadimos al header
-        if (botonCerrarSesion === null) {
-            botonCerrarSesion = document.createElement("button");
-            botonCerrarSesion.textContent = "Cerrar sesión";
-            // Reutilizamos la clase `login-btn` para estilos consistentes
-            botonCerrarSesion.classList.add("login-btn");
-            botonCerrarSesion.classList.add("logout-btn");
-
-            // Al hacer click, eliminamos los datos de sesión y volvemos al inicio
-            botonCerrarSesion.addEventListener("click", function() {
-                // Limpiamos las claves relacionadas con la sesión
-                localStorage.removeItem("gtiSesionIniciada");
-                localStorage.removeItem("gtiUsuarioActual");
-                localStorage.removeItem("paginaAnterior");
-
-                // Redirige al index del proyecto (ruta relativa)
-                window.location.href = "../../index.php";
-            });
-
-            headerActions.appendChild(botonCerrarSesion);
-        }
-    } else {
-        // Si no hay sesión iniciada, mostramos los botones de registro/login
-        if (botonRegistro !== null) {
-            botonRegistro.style.display = "inline-flex";
-        }
-
-        if (botonLogin !== null) {
-            botonLogin.style.display = "inline-flex";
-        }
-
-        // Si hay un botón de cerrar sesión visible, lo eliminamos
-        const botonCerrarSesion = document.querySelector(".logout-btn");
-
-        if (botonCerrarSesion !== null) {
-            botonCerrarSesion.remove();
-        }
-    }
+  boton_registro.style.display = "inline-flex";
+  boton_login.style.display = "inline-flex";
+  eliminar_boton_cerrar_sesion();
 }
 
-// Ejecuta la actualización al cargar este script para sincronizar el header
-actualizarHeaderSesion();
+function mostrar_boton_cerrar_sesion(header_actions) {
+  let boton_cerrar_sesion = document.querySelector(".logout-btn");
+
+  if (boton_cerrar_sesion === null) {
+    boton_cerrar_sesion = document.createElement("button");
+    boton_cerrar_sesion.textContent = "Cerrar sesión";
+    boton_cerrar_sesion.classList.add("login-btn", "logout-btn");
+
+    boton_cerrar_sesion.addEventListener("click", cerrar_sesion_gti);
+
+    header_actions.appendChild(boton_cerrar_sesion);
+  }
+}
+
+function eliminar_boton_cerrar_sesion() {
+  const boton_cerrar_sesion = document.querySelector(".logout-btn");
+
+  if (boton_cerrar_sesion !== null) {
+    boton_cerrar_sesion.remove();
+  }
+}
+
+function cerrar_sesion_gti() {
+  localStorage.removeItem("gtiSesionIniciada");
+  localStorage.removeItem("gtiUsuarioActual");
+  localStorage.removeItem("paginaAnterior");
+
+  window.location.href = obtener_url_inicio_gti();
+}
+
+function obtener_url_inicio_gti() {
+  const esta_en_gti = window.location.pathname.includes("/GTI/");
+
+  if (esta_en_gti) {
+    return "../index.php";
+  }
+
+  return "index.php";
+}
+
+actualizar_header_sesion();

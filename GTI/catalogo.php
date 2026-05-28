@@ -11,17 +11,17 @@ $logo = "img/logoGTI_blanco.png";
 $menu = [
     [
         "texto" => "FAQ",
-        "enlace" => "../../index.php#faq",
+        "enlace" => "../index.php#faq",
         "activo" => false
     ],
     [
         "texto" => "Sobre Nosotros",
-        "enlace" => "../../index.php#sobre-nosotros",
+        "enlace" => "../index.php#sobre-nosotros",
         "activo" => false
     ],
     [
         "texto" => "Contactanos",
-        "enlace" => "../../index.php#contacto",
+        "enlace" => "../index.php#contacto",
         "activo" => false
     ],
     [
@@ -53,21 +53,21 @@ $caracteristicas = [
     [
         "titulo" => "Asignaturas",
         "descripcion" => "Capacidad para crear, impartir y cursar infinidad de asignaturas de diferentes maneras y estilos",
-        "imagen" => "../img/libro.svg",
+        "imagen" => "img/libro.svg",
         "alt" => "Libro",
         "clase" => "feature-card border-cream"
     ],
     [
         "titulo" => "Calendario",
         "descripcion" => "Planificación y gestión de eventos y plazos de entregas con alertas integradas.",
-        "imagen" => "../img/calendario.svg",
+        "imagen" => "img/calendario.svg",
         "alt" => "Calendario",
         "clase" => "feature-card blue"
     ],
     [
         "titulo" => "Perfil estudiantil",
         "descripcion" => "Base de datos centralizada con historial académico y disciplinario de alta seguridad.",
-        "imagen" => "../img/id.svg",
+        "imagen" => "img/id.svg",
         "alt" => "id",
         "clase" => "feature-card border-cream"
     ]
@@ -75,7 +75,7 @@ $caracteristicas = [
 
 $licencia = [
     "titulo" => "LICENCIA DEL MODULO",
-    "icono" => "../img/credit-card.svg",
+    "icono" => "img/credit-card.svg",
     "alt" => "card",
     "items" => [
         "Actualizaciones de Seguridad",
@@ -120,7 +120,7 @@ function limpiarTexto($texto) {
 
     <header>
         <div class="header-logo">
-            <a href="../../index.php">
+            <a href="../index.php">
                 <img src="<?php echo limpiarTexto($logo); ?>" alt="Logo GTI" />
             </a>
         </div>
@@ -214,7 +214,7 @@ function limpiarTexto($texto) {
 
                 <?php foreach ($licencia["items"] as $item) { ?>
                     <div class="license-item">
-                        <img src="../img/check.svg" alt="check" />
+                        <img src="img/check.svg" alt="check" />
                         <span><?php echo limpiarTexto($item); ?></span>
                     </div>
                 <?php } ?>

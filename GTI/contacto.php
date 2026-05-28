@@ -10,7 +10,7 @@ $css = [
 
 $botonVolver = [
     "texto" => "← Volver al inicio",
-    "enlace" => "../../index.php",
+    "enlace" => "../index.php",
     "clase" => "back-btn"
 ];
 

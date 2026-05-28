@@ -94,7 +94,7 @@ if (loginForm !== null) {
             localStorage.removeItem("paginaAnterior");
             window.location.href = paginaAnterior;
         } else {
-            window.location.href = "../../../index.php";
+            window.location.href = "../index.php";
         }
     });
 }
