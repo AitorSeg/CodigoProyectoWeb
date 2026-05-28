@@ -93,13 +93,24 @@ $total_alumnos = (int) $asignatura["total_alumnos"];
 
 $consulta_resumen = $pdo->prepare("
     SELECT
-        SUM(CASE WHEN ae.estado = 'publicada' THEN 1 ELSE 0 END) AS total_tareas_activas,
+        COUNT(DISTINCT CASE
+            WHEN ae.estado = 'publicada' THEN ae.id_actividad
+        END) AS total_tareas_activas,
         COUNT(DISTINCT e.id_entrega) AS total_entregas_recibidas,
-        COUNT(DISTINCT CASE WHEN e.estado IN ('entregada', 'tardia') THEN e.id_entrega END) AS total_pendientes_revision,
-        SUM(CASE WHEN ae.estado = 'cerrada' THEN 1 ELSE 0 END) AS total_tareas_cerradas
+        COUNT(DISTINCT CASE
+            WHEN e.estado IN ('entregada', 'tardia', 'revisada')
+            AND c.id_calificacion IS NULL
+            THEN e.id_entrega
+        END) AS total_pendientes_revision,
+        COUNT(DISTINCT CASE
+            WHEN ae.estado = 'cerrada' THEN ae.id_actividad
+        END) AS total_tareas_cerradas
     FROM actividades_evaluables ae
     LEFT JOIN entregas e
         ON e.id_actividad = ae.id_actividad
+    LEFT JOIN calificaciones c
+        ON c.id_actividad = e.id_actividad
+        AND c.id_alumno = e.id_alumno
     WHERE ae.id_asignatura = :id_asignatura
     AND ae.id_profesor = :id_profesor
     AND ae.tipo_actividad IN ('tarea', 'practica')
@@ -160,7 +171,11 @@ $consulta_tareas = $pdo->prepare(
         ae.visible,
         ae.estado,
         COUNT(DISTINCT e.id_entrega) AS total_entregas,
-        COUNT(DISTINCT CASE WHEN e.estado IN ('entregada', 'tardia') THEN e.id_entrega END) AS pendientes_revision
+        COUNT(DISTINCT CASE
+            WHEN e.estado IN ('entregada', 'tardia', 'revisada')
+            AND c.id_calificacion IS NULL
+            THEN e.id_entrega
+        END) AS pendientes_revision
     FROM actividades_evaluables ae
     LEFT JOIN entregas e
         ON e.id_actividad = ae.id_actividad

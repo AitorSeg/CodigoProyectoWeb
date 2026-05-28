@@ -76,7 +76,8 @@ $datos_formulario = [
     "email" => ""
 ];
 
-function limpiar_texto($texto) {
+function limpiar_texto($texto)
+{
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');
 }
 
@@ -151,13 +152,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title><?php echo limpiar_texto($titulo_pagina); ?></title>
 
-    <?php foreach ($css as $archivo_css) { ?>
-        <link rel="stylesheet" href="<?php echo limpiar_texto($archivo_css); ?>" />
-    <?php } ?>
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><?php echo limpiar_texto($titulo_pagina); ?></title>
+
+        <?php foreach ($css as $archivo_css) { ?>
+            <link rel="stylesheet" href="<?php echo limpiar_texto($archivo_css); ?>">
+        <?php } ?>
+    </head>
 </head>
 
 <body>
@@ -197,14 +203,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php echo limpiar_texto($campo["label"]); ?>
                             </label>
 
-                            <input 
-                                type="<?php echo limpiar_texto($campo["tipo"]); ?>" 
-                                id="<?php echo limpiar_texto($campo["id"]); ?>" 
+                            <input
+                                type="<?php echo limpiar_texto($campo["tipo"]); ?>"
+                                id="<?php echo limpiar_texto($campo["id"]); ?>"
                                 name="<?php echo limpiar_texto($campo["name"]); ?>"
-                                placeholder="<?php echo limpiar_texto($campo["placeholder"]); ?>" 
+                                placeholder="<?php echo limpiar_texto($campo["placeholder"]); ?>"
                                 value="<?php echo limpiar_texto($datos_formulario[$campo["name"]]); ?>"
-                                required
-                            >
+                                required>
                         </div>
                     <?php } ?>
                 </div>
@@ -215,16 +220,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <?php echo limpiar_texto($campo["label"]); ?>
                         </label>
 
-                        <input 
-                            type="<?php echo limpiar_texto($campo["tipo"]); ?>" 
-                            id="<?php echo limpiar_texto($campo["id"]); ?>" 
+                        <input
+                            type="<?php echo limpiar_texto($campo["tipo"]); ?>"
+                            id="<?php echo limpiar_texto($campo["id"]); ?>"
                             name="<?php echo limpiar_texto($campo["name"]); ?>"
-                            placeholder="<?php echo limpiar_texto($campo["placeholder"]); ?>" 
+                            placeholder="<?php echo limpiar_texto($campo["placeholder"]); ?>"
                             <?php if ($campo["name"] === "email") { ?>
-                                value="<?php echo limpiar_texto($datos_formulario["email"]); ?>"
+                            value="<?php echo limpiar_texto($datos_formulario["email"]); ?>"
                             <?php } ?>
-                            required
-                        >
+                            required>
                     </div>
                 <?php } ?>
 
@@ -245,4 +249,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 
 </body>
+
 </html>

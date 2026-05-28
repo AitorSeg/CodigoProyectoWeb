@@ -129,6 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo limpiar_texto($titulo_pagina); ?></title>
 
     <?php foreach ($css as $archivo_css) { ?>

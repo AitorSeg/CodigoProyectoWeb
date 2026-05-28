@@ -81,6 +81,7 @@ $nombre_usuario = $sesion_iniciada ? $_SESSION["nombre"] : "";
                         <span>Acceso a licencia permanente</span>
                     </div>
                 </div>
+            </div>
         </section>
 
         <!-- Sección «Sobre Nosotros» con información institucional y llamada al contacto -->
