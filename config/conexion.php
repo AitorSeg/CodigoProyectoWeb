@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
 $base_datos = 'gti_doa';
-$usuario = 'root';
-$contrasena = '';
+$usuario = 'gti_doa_user';
+$contrasena = '4V0Ejf$7idwMlkb^';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$base_datos;charset=$charset";
