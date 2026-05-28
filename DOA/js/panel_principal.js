@@ -5,7 +5,6 @@
 const tarjetas_resumen = document.querySelectorAll(".tarjeta-asignatura-resumen");
 const tarjetas_progreso = Array.from(document.querySelectorAll(".tarjeta-progreso-asignatura"));
 const lista_progresos = document.getElementById("listaProgresosAsignaturas");
-const botones_entrar_asignatura = document.querySelectorAll(".tarjeta-progreso-asignatura .boton-entrar-asignatura");
 
 tarjetas_resumen.forEach(function (tarjeta) {
     tarjeta.addEventListener("click", function () {
@@ -13,18 +12,11 @@ tarjetas_resumen.forEach(function (tarjeta) {
     });
 });
 
-botones_entrar_asignatura.forEach(function (boton) {
-    boton.addEventListener("click", function () {
-        const tarjeta = boton.closest(".tarjeta-progreso-asignatura");
-
-        window.guardarAsignaturaSeleccionada(tarjeta.dataset.asignatura);
-    });
-});
-
-seleccionar_asignatura(window.obtenerAsignaturaSeleccionada() || "matematicas", false);
+if (tarjetas_resumen.length > 0) {
+    seleccionar_asignatura(tarjetas_resumen[0].dataset.asignatura, false);
+}
 
 function seleccionar_asignatura(asignatura_seleccionada, animar_reorden) {
-    window.guardarAsignaturaSeleccionada(asignatura_seleccionada);
     actualizar_tarjetas_resumen(asignatura_seleccionada);
 
     if (animar_reorden) {
@@ -92,11 +84,7 @@ function actualizar_tarjetas_progreso(asignatura_seleccionada) {
         tarjeta.classList.toggle("tarjeta-progreso-asignatura--activa", es_activa);
         tarjeta.classList.toggle("tarjeta-progreso-asignatura--secundaria", !es_activa);
 
-        if (es_activa) {
-            cambiar_iconos_progreso(tarjeta, "blue");
-        } else {
-            cambiar_iconos_progreso(tarjeta, "grey");
-        }
+        cambiar_iconos_progreso(tarjeta, es_activa ? "blue" : "grey");
     });
 }
 

@@ -5,6 +5,105 @@ $enlace_panel = "panel_principal.php";
 $placeholder_buscador = "Buscar asignatura...";
 
 require_once __DIR__ . "/includes/proteger_doa.php";
+require_once __DIR__ . "/../config/conexion.php";
+
+$id_alumno = (int) $_SESSION["doa_id_usuario"];
+
+function calcular_progreso_panel_demo($indice)
+{
+    $progresos_demo = [
+        ["valor" => 58, "clase_barra" => "relleno-progreso--58", "clase_avance" => "progreso-asignatura--avance-40-33"],
+        ["valor" => 46, "clase_barra" => "relleno-progreso--46", "clase_avance" => "progreso-asignatura--avance-40-333"],
+        ["valor" => 42, "clase_barra" => "relleno-progreso--42", "clase_avance" => "progreso-asignatura--avance-40-333"]
+    ];
+
+    return $progresos_demo[$indice % count($progresos_demo)];
+}
+
+$consulta_asignaturas = $pdo->prepare("
+    SELECT
+        a.id_asignatura,
+        a.nombre,
+        a.codigo,
+        a.grupo
+    FROM asignaturas a
+    INNER JOIN usuarios_asignaturas ua
+        ON ua.id_asignatura = a.id_asignatura
+        AND ua.id_usuario = :id_alumno
+        AND ua.rol_asignatura = 'alumno'
+        AND ua.estado = 'activa'
+    WHERE a.estado = 'activa'
+    ORDER BY a.nombre ASC
+    LIMIT 3
+");
+
+$consulta_asignaturas->execute([
+    "id_alumno" => $id_alumno
+]);
+
+$asignaturas_panel = $consulta_asignaturas->fetchAll();
+
+$consulta_proxima_evaluacion = $pdo->prepare("
+    SELECT
+        ae.id_actividad,
+        ae.titulo,
+        ae.fecha_inicio,
+        ae.duracion_minutos,
+        a.nombre AS asignatura_nombre
+    FROM actividades_evaluables ae
+    INNER JOIN usuarios_asignaturas ua
+        ON ua.id_asignatura = ae.id_asignatura
+        AND ua.id_usuario = :id_alumno
+        AND ua.rol_asignatura = 'alumno'
+        AND ua.estado = 'activa'
+    INNER JOIN asignaturas a
+        ON a.id_asignatura = ae.id_asignatura
+    WHERE ae.tipo_actividad = 'examen'
+    AND ae.visible = 1
+    AND ae.estado = 'publicada'
+    AND ae.fecha_inicio IS NOT NULL
+    AND ae.fecha_inicio >= NOW()
+    ORDER BY ae.fecha_inicio ASC
+    LIMIT 1
+");
+
+$consulta_proxima_evaluacion->execute([
+    "id_alumno" => $id_alumno
+]);
+
+$proxima_evaluacion = $consulta_proxima_evaluacion->fetch();
+
+$consulta_tareas_pendientes = $pdo->prepare("
+    SELECT
+        ae.id_actividad,
+        ae.titulo,
+        ae.fecha_limite,
+        a.nombre AS asignatura_nombre
+    FROM actividades_evaluables ae
+    INNER JOIN usuarios_asignaturas ua
+        ON ua.id_asignatura = ae.id_asignatura
+        AND ua.id_usuario = :id_alumno
+        AND ua.rol_asignatura = 'alumno'
+        AND ua.estado = 'activa'
+    INNER JOIN asignaturas a
+        ON a.id_asignatura = ae.id_asignatura
+    LEFT JOIN entregas e
+        ON e.id_actividad = ae.id_actividad
+        AND e.id_alumno = :id_alumno_entrega
+    WHERE ae.tipo_actividad IN ('tarea', 'practica')
+    AND ae.visible = 1
+    AND ae.estado = 'publicada'
+    AND e.id_entrega IS NULL
+    ORDER BY ae.fecha_limite ASC
+    LIMIT 2
+");
+
+$consulta_tareas_pendientes->execute([
+    "id_alumno" => $id_alumno,
+    "id_alumno_entrega" => $id_alumno
+]);
+
+$tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -47,235 +146,151 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                             VER TODAS LAS ASIGNATURAS
                         </a>
                     </div>
-                    <div class="resumen-asignaturas">
-                        <button class="tarjeta-asignatura-resumen tarjeta-asignatura-resumen--activa" data-asignatura="matematicas" type="button">
-                            <span class="tarjeta-asignatura-resumen__nombre">
-                                Matemáticas
-                            </span>
-                            <span aria-hidden="true" class="tarjeta-asignatura-resumen__punto">
-                            </span>
-                            <span aria-hidden="true" class="tarjeta-asignatura-resumen__barra">
-                                <span class="relleno-progreso--58">
+                    <?php if (count($asignaturas_panel) === 0) { ?>
+                        <div class="resumen-asignaturas">
+                            <article class="tarjeta-asignatura-resumen tarjeta-asignatura-resumen--activa">
+                                <span class="tarjeta-asignatura-resumen__nombre">
+                                    Sin asignaturas
                                 </span>
-                            </span>
-                        </button>
-                        <button class="tarjeta-asignatura-resumen" data-asignatura="programacion" type="button">
-                            <span class="tarjeta-asignatura-resumen__nombre">
-                                Programación
-                            </span>
-                            <span aria-hidden="true" class="tarjeta-asignatura-resumen__punto">
-                            </span>
-                            <span aria-hidden="true" class="tarjeta-asignatura-resumen__barra">
-                                <span class="relleno-progreso--46">
+                                <span aria-hidden="true" class="tarjeta-asignatura-resumen__punto"></span>
+                                <span aria-hidden="true" class="tarjeta-asignatura-resumen__barra">
+                                    <span class="relleno-progreso--42"></span>
                                 </span>
-                            </span>
-                        </button>
-                        <button class="tarjeta-asignatura-resumen tarjeta-asignatura-resumen--ocultar-movil" data-asignatura="fisica" type="button">
-                            <span class="tarjeta-asignatura-resumen__nombre">
-                                Física
-                            </span>
-                            <span aria-hidden="true" class="tarjeta-asignatura-resumen__punto">
-                            </span>
-                            <span aria-hidden="true" class="tarjeta-asignatura-resumen__barra">
-                                <span class="relleno-progreso--42">
-                                </span>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="lista-progresos-asignaturas" id="listaProgresosAsignaturas">
-                        <article class="tarjeta-progreso-asignatura" data-asignatura="matematicas">
-                            <div class="tarjeta-progreso-asignatura__cabecera">
-                                <h2>
-                                    Progreso Matemáticas
-                                </h2>
-                                <a class="boton-entrar-asignatura" href="detalle_asignatura.php">
-                                    Entrar
-                                </a>
-                            </div>
-                            <div aria-label="Progreso de Matemáticas" class="progreso-asignatura progreso-asignatura--avance-40-33">
-                                <span class="progreso-asignatura__destello" aria-hidden="true"></span>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/blue-check.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 01
+                            </article>
+                        </div>
+
+                        <div class="lista-progresos-asignaturas" id="listaProgresosAsignaturas">
+                            <article class="tarjeta-progreso-asignatura tarjeta-progreso-asignatura--activa">
+                                <div class="tarjeta-progreso-asignatura__cabecera">
+                                    <h2>No hay asignaturas asignadas</h2>
+                                    <a class="boton-entrar-asignatura" href="asignaturas.php">
+                                        Ver asignaturas
                                     </a>
                                 </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada">
-                                    <span class="progreso-asignatura__badge">
+
+                                <p>
+                                    Secretaría debe asignarte a una asignatura para que aparezca aquí.
+                                </p>
+                            </article>
+                        </div>
+                    <?php } else { ?>
+                        <div class="resumen-asignaturas">
+                            <?php foreach ($asignaturas_panel as $indice => $asignatura) { ?>
+                                <?php
+                                $progreso_demo = calcular_progreso_panel_demo($indice);
+                                $clase_activa = $indice === 0 ? " tarjeta-asignatura-resumen--activa" : "";
+                                $clase_ocultar_movil = $indice >= 2 ? " tarjeta-asignatura-resumen--ocultar-movil" : "";
+                                ?>
+
+                                <button
+                                    class="tarjeta-asignatura-resumen<?php echo $clase_activa . $clase_ocultar_movil; ?>"
+                                    data-asignatura="<?php echo (int) $asignatura["id_asignatura"]; ?>"
+                                    type="button">
+
+                                    <span class="tarjeta-asignatura-resumen__nombre">
+                                        <?php echo limpiar_texto_doa($asignatura["nombre"]); ?>
                                     </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/blue-check.svg" />
+
+                                    <span aria-hidden="true" class="tarjeta-asignatura-resumen__punto"></span>
+
+                                    <span aria-hidden="true" class="tarjeta-asignatura-resumen__barra">
+                                        <span class="<?php echo limpiar_texto_doa($progreso_demo["clase_barra"]); ?>"></span>
                                     </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 02
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--actual">
-                                    <span class="progreso-asignatura__badge">
-                                        Actual
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/blue-play.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 03
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-x.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 04
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada progreso-asignatura__unidad--ocultar-movil">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-x.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 05
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="tarjeta-progreso-asignatura tarjeta-progreso-asignatura--secundaria" data-asignatura="programacion">
-                            <div class="tarjeta-progreso-asignatura__cabecera">
-                                <h2>
-                                    Progreso Programación
-                                </h2>
-                                <a class="boton-entrar-asignatura" href="detalle_asignatura.php">
-                                    Entrar
-                                </a>
-                            </div>
-                            <div aria-label="Progreso de Programación" class="progreso-asignatura progreso-asignatura--avance-40-333">
-                                <span class="progreso-asignatura__destello" aria-hidden="true"></span>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-check.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 01
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-check.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 02
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--actual">
-                                    <span class="progreso-asignatura__badge">
-                                        Actual
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-play.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 03
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-x.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 04
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada progreso-asignatura__unidad--ocultar-movil">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-x.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 05
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="tarjeta-progreso-asignatura tarjeta-progreso-asignatura--secundaria tarjeta-progreso-asignatura--ocultar-movil" data-asignatura="fisica">
-                            <div class="tarjeta-progreso-asignatura__cabecera">
-                                <h2>
-                                    Progreso Física
-                                </h2>
-                                <a class="boton-entrar-asignatura" href="detalle_asignatura.php">
-                                    Entrar
-                                </a>
-                            </div>
-                            <div aria-label="Progreso de Física" class="progreso-asignatura progreso-asignatura--avance-40-333">
-                                <span class="progreso-asignatura__destello" aria-hidden="true"></span>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-check.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 01
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-check.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 02
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--actual">
-                                    <span class="progreso-asignatura__badge">
-                                        Actual
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-play.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 03
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-x.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 04
-                                    </a>
-                                </div>
-                                <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada progreso-asignatura__unidad--ocultar-movil">
-                                    <span class="progreso-asignatura__badge">
-                                    </span>
-                                    <span aria-hidden="true" class="progreso-asignatura__estado">
-                                        <img alt="" src="img/iconos/grey-x.svg" />
-                                    </span>
-                                    <a class="progreso-asignatura__nombre" href="#">
-                                        Unidad 05
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
+                                </button>
+                            <?php } ?>
+                        </div>
+
+                        <div class="lista-progresos-asignaturas" id="listaProgresosAsignaturas">
+                            <?php foreach ($asignaturas_panel as $indice => $asignatura) { ?>
+                                <?php
+                                $progreso_demo = calcular_progreso_panel_demo($indice);
+                                $clase_tarjeta = $indice === 0
+                                    ? "tarjeta-progreso-asignatura tarjeta-progreso-asignatura--activa"
+                                    : "tarjeta-progreso-asignatura tarjeta-progreso-asignatura--secundaria";
+
+                                if ($indice >= 2) {
+                                    $clase_tarjeta .= " tarjeta-progreso-asignatura--ocultar-movil";
+                                }
+
+                                $color_iconos = $indice === 0 ? "blue" : "grey";
+                                ?>
+
+                                <article
+                                    class="<?php echo limpiar_texto_doa($clase_tarjeta); ?>"
+                                    data-asignatura="<?php echo (int) $asignatura["id_asignatura"]; ?>">
+
+                                    <div class="tarjeta-progreso-asignatura__cabecera">
+                                        <h2>
+                                            Progreso <?php echo limpiar_texto_doa($asignatura["nombre"]); ?>
+                                        </h2>
+
+                                        <a class="boton-entrar-asignatura" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
+                                            Entrar
+                                        </a>
+                                    </div>
+
+                                    <div
+                                        aria-label="Progreso de <?php echo limpiar_texto_doa($asignatura["nombre"]); ?>"
+                                        class="progreso-asignatura <?php echo limpiar_texto_doa($progreso_demo["clase_avance"]); ?>">
+
+                                        <span class="progreso-asignatura__destello" aria-hidden="true"></span>
+
+                                        <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
+                                            <span class="progreso-asignatura__badge"></span>
+                                            <span aria-hidden="true" class="progreso-asignatura__estado">
+                                                <img alt="" src="img/iconos/<?php echo $color_iconos; ?>-check.svg">
+                                            </span>
+                                            <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
+                                                Unidad 01
+                                            </a>
+                                        </div>
+
+                                        <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada">
+                                            <span class="progreso-asignatura__badge"></span>
+                                            <span aria-hidden="true" class="progreso-asignatura__estado">
+                                                <img alt="" src="img/iconos/<?php echo $color_iconos; ?>-check.svg">
+                                            </span>
+                                            <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
+                                                Unidad 02
+                                            </a>
+                                        </div>
+
+                                        <div class="progreso-asignatura__unidad progreso-asignatura__unidad--actual">
+                                            <span class="progreso-asignatura__badge">
+                                                Actual
+                                            </span>
+                                            <span aria-hidden="true" class="progreso-asignatura__estado">
+                                                <img alt="" src="img/iconos/<?php echo $color_iconos; ?>-play.svg">
+                                            </span>
+                                            <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
+                                                Unidad 03
+                                            </a>
+                                        </div>
+
+                                        <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada">
+                                            <span class="progreso-asignatura__badge"></span>
+                                            <span aria-hidden="true" class="progreso-asignatura__estado">
+                                                <img alt="" src="img/iconos/grey-x.svg">
+                                            </span>
+                                            <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
+                                                Unidad 04
+                                            </a>
+                                        </div>
+
+                                        <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada progreso-asignatura__unidad--ocultar-movil">
+                                            <span class="progreso-asignatura__badge"></span>
+                                            <span aria-hidden="true" class="progreso-asignatura__estado">
+                                                <img alt="" src="img/iconos/grey-x.svg">
+                                            </span>
+                                            <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
+                                                Unidad 05
+                                            </a>
+                                        </div>
+                                    </div>
+                                </article>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
                 </section>
                 <!-- Final del bloque del panel principal -->
                 <div class="panel-derecho">
@@ -283,73 +298,100 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                         <p class="tarjeta-lateral-panel__titulo">
                             Próxima evaluación
                         </p>
+
                         <div class="tarjeta-lateral-panel__contenido">
-                            <h2>
-                                Parcial 1
-                            </h2>
-                            <ul class="lista-detalles-panel">
-                                <li>
-                                    <img alt="" src="img/iconos/grey-calendar.svg" />
-                                    <span>
-                                        15 Oct, 2025
-                                    </span>
-                                </li>
-                                <li>
-                                    <img alt="" src="img/iconos/grey-clock.svg" />
-                                    <span>
-                                        10:00 AM
-                                    </span>
-                                </li>
-                                <li>
-                                    <img alt="" src="img/iconos/grey-map-pin.svg" />
-                                    <span>
-                                        Edificio G, Aula 6
-                                    </span>
-                                </li>
-                            </ul>
-                            <a class="boton-secundario-panel" href="#">
-                                Ver detalles
-                            </a>
+                            <?php if (!$proxima_evaluacion) { ?>
+                                <h2>No hay exámenes próximos</h2>
+
+                                <p class="texto-vencimiento">
+                                    Cuando un profesor publique un examen, aparecerá aquí.
+                                </p>
+
+                                <a class="boton-secundario-panel" href="examenes.php">
+                                    Ver exámenes
+                                </a>
+                            <?php } else { ?>
+                                <h2>
+                                    <?php echo limpiar_texto_doa($proxima_evaluacion["titulo"]); ?>
+                                </h2>
+
+                                <ul class="lista-detalles-panel">
+                                    <li>
+                                        <img alt="" src="img/iconos/grey-calendar.svg">
+                                        <span>
+                                            <?php echo date("d/m/Y", strtotime($proxima_evaluacion["fecha_inicio"])); ?>
+                                        </span>
+                                    </li>
+
+                                    <li>
+                                        <img alt="" src="img/iconos/grey-clock.svg">
+                                        <span>
+                                            <?php echo date("H:i", strtotime($proxima_evaluacion["fecha_inicio"])); ?>
+                                        </span>
+                                    </li>
+
+                                    <li>
+                                        <img alt="" src="img/iconos/grey-notebook.svg">
+                                        <span>
+                                            <?php echo limpiar_texto_doa($proxima_evaluacion["asignatura_nombre"]); ?>
+                                        </span>
+                                    </li>
+                                </ul>
+
+                                <a class="boton-secundario-panel" href="detalle_examen.php?id_actividad=<?php echo (int) $proxima_evaluacion["id_actividad"]; ?>">
+                                    Ver detalles
+                                </a>
+                            <?php } ?>
                         </div>
                     </div>
-                    <div class="tarjeta-lateral-panel">
-                        <p class="tarjeta-lateral-panel__titulo">
-                            Tarea activa
-                        </p>
-                        <div class="tarjeta-lateral-panel__contenido">
-                            <h2>
-                                Ejercicio recursividad
-                            </h2>
-                            <p class="texto-vencimiento">
-                                Vence en:
-                                <strong>
-                                    2 días
-                                </strong>
+                    <?php if (count($tareas_pendientes) === 0) { ?>
+                        <div class="tarjeta-lateral-panel">
+                            <p class="tarjeta-lateral-panel__titulo">
+                                Tareas activas
                             </p>
-                            <a class="boton-secundario-panel" href="#">
-                                Ir a la tarea
-                            </a>
+
+                            <div class="tarjeta-lateral-panel__contenido">
+                                <h2>No hay tareas pendientes</h2>
+
+                                <p class="texto-vencimiento">
+                                    Las tareas publicadas aparecerán aquí.
+                                </p>
+
+                                <a class="boton-secundario-panel" href="listado_tareas.php">
+                                    Ver tareas
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tarjeta-lateral-panel">
-                        <p class="tarjeta-lateral-panel__titulo">
-                            Tarea activa
-                        </p>
-                        <div class="tarjeta-lateral-panel__contenido">
-                            <h2>
-                                Ejercicio grafos
-                            </h2>
-                            <p class="texto-vencimiento">
-                                Vence en:
-                                <strong>
-                                    5 días
-                                </strong>
+                    <?php } ?>
+
+                    <?php foreach ($tareas_pendientes as $tarea) { ?>
+                        <div class="tarjeta-lateral-panel">
+                            <p class="tarjeta-lateral-panel__titulo">
+                                Tarea activa
                             </p>
-                            <a class="boton-secundario-panel" href="#">
-                                Ir a la tarea
-                            </a>
+
+                            <div class="tarjeta-lateral-panel__contenido">
+                                <h2>
+                                    <?php echo limpiar_texto_doa($tarea["titulo"]); ?>
+                                </h2>
+
+                                <p class="texto-vencimiento">
+                                    <?php echo limpiar_texto_doa($tarea["asignatura_nombre"]); ?>
+                                    <?php if ($tarea["fecha_limite"] !== null) { ?>
+                                        <br>
+                                        Vence:
+                                        <strong>
+                                            <?php echo date("d/m/Y", strtotime($tarea["fecha_limite"])); ?>
+                                        </strong>
+                                    <?php } ?>
+                                </p>
+
+                                <a class="boton-secundario-panel" href="detalle_tarea.php?id_actividad=<?php echo (int) $tarea["id_actividad"]; ?>">
+                                    Ir a la tarea
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </main>
@@ -357,8 +399,6 @@ require_once __DIR__ . "/includes/proteger_doa.php";
     </div>
     <!-- Final del contenido principal -->
 
-    <script src="js/doa_datos.js">
-    </script>
     <script src="js/panel_principal.js">
     </script>
 </body>

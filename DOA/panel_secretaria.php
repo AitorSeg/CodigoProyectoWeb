@@ -5,6 +5,106 @@ $enlace_panel = "panel_secretaria.php";
 $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
 
 require_once __DIR__ . "/includes/proteger_doa.php";
+require_once __DIR__ . "/../config/conexion.php";
+
+$consulta_resumen = $pdo->query("
+    SELECT
+        (SELECT COUNT(*) FROM asignaturas) AS total_asignaturas,
+
+        (
+            SELECT COUNT(DISTINCT id_usuario)
+            FROM usuarios_asignaturas
+            WHERE rol_asignatura = 'profesor'
+            AND estado = 'activa'
+        ) AS total_profesores_asignados,
+
+        (
+            SELECT COUNT(DISTINCT id_usuario)
+            FROM usuarios_asignaturas
+            WHERE rol_asignatura = 'alumno'
+            AND estado = 'activa'
+        ) AS total_alumnos_matriculados,
+
+        (
+            SELECT COUNT(*)
+            FROM asignaturas a
+            WHERE NOT EXISTS (
+                SELECT 1
+                FROM usuarios_asignaturas ua_profesor
+                WHERE ua_profesor.id_asignatura = a.id_asignatura
+                AND ua_profesor.rol_asignatura = 'profesor'
+                AND ua_profesor.estado = 'activa'
+            )
+            OR NOT EXISTS (
+                SELECT 1
+                FROM usuarios_asignaturas ua_alumno
+                WHERE ua_alumno.id_asignatura = a.id_asignatura
+                AND ua_alumno.rol_asignatura = 'alumno'
+                AND ua_alumno.estado = 'activa'
+            )
+        ) AS total_pendientes
+");
+
+$resumen = $consulta_resumen->fetch();
+
+$consulta_ultimas_asignaturas = $pdo->query("
+    SELECT
+        a.id_asignatura,
+        a.nombre,
+        a.codigo,
+        a.grupo,
+        GROUP_CONCAT(
+            DISTINCT CONCAT(u_profesor.nombre, ' ', u_profesor.apellidos)
+            SEPARATOR ', '
+        ) AS profesores,
+        COUNT(DISTINCT ua_alumno.id_usuario) AS total_alumnos
+    FROM asignaturas a
+    LEFT JOIN usuarios_asignaturas ua_profesor
+        ON ua_profesor.id_asignatura = a.id_asignatura
+        AND ua_profesor.rol_asignatura = 'profesor'
+        AND ua_profesor.estado = 'activa'
+    LEFT JOIN usuarios u_profesor
+        ON u_profesor.id_usuario = ua_profesor.id_usuario
+    LEFT JOIN usuarios_asignaturas ua_alumno
+        ON ua_alumno.id_asignatura = a.id_asignatura
+        AND ua_alumno.rol_asignatura = 'alumno'
+        AND ua_alumno.estado = 'activa'
+    GROUP BY
+        a.id_asignatura,
+        a.nombre,
+        a.codigo,
+        a.grupo,
+        a.fecha_creacion
+    ORDER BY a.fecha_creacion DESC
+    LIMIT 3
+");
+
+$ultimas_asignaturas = $consulta_ultimas_asignaturas->fetchAll();
+
+$consulta_asignaturas_pendientes = $pdo->query("
+    SELECT
+        a.id_asignatura,
+        a.nombre,
+        a.codigo,
+        a.grupo,
+        COUNT(DISTINCT CASE WHEN ua.rol_asignatura = 'profesor' THEN ua.id_usuario END) AS total_profesores,
+        COUNT(DISTINCT CASE WHEN ua.rol_asignatura = 'alumno' THEN ua.id_usuario END) AS total_alumnos
+    FROM asignaturas a
+    LEFT JOIN usuarios_asignaturas ua
+        ON ua.id_asignatura = a.id_asignatura
+        AND ua.estado = 'activa'
+    GROUP BY
+        a.id_asignatura,
+        a.nombre,
+        a.codigo,
+        a.grupo,
+        a.fecha_creacion
+    HAVING total_profesores = 0 OR total_alumnos = 0
+    ORDER BY a.fecha_creacion DESC
+    LIMIT 3
+");
+
+$asignaturas_pendientes = $consulta_asignaturas_pendientes->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +137,9 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                 <div class="cabecera-secretaria__texto">
                     <p class="cabecera-secretaria__eyebrow">Panel de Secretaría</p>
 
-                    <h1>Buenos días, Ondrea</h1>
+                    <h1>
+                        Buenos días, <?php echo limpiar_texto_doa($_SESSION["doa_nombre"]); ?>
+                    </h1>
 
                     <p>
                         Gestiona las asignaturas del centro y asigna profesores y alumnos
@@ -49,22 +151,30 @@ require_once __DIR__ . "/includes/proteger_doa.php";
             <section class="resumen-secretaria" aria-label="Resumen de Secretaría">
                 <article class="dato-secretaria dato-secretaria--principal">
                     <span class="dato-secretaria__label">Asignaturas creadas</span>
-                    <strong class="dato-secretaria__valor">8</strong>
+                    <strong class="dato-secretaria__valor">
+                        <?php echo (int) $resumen["total_asignaturas"]; ?>
+                    </strong>
                 </article>
 
                 <article class="dato-secretaria">
                     <span class="dato-secretaria__label">Profesores asignados</span>
-                    <strong class="dato-secretaria__valor">12</strong>
+                    <strong class="dato-secretaria__valor">
+                        <?php echo (int) $resumen["total_profesores_asignados"]; ?>
+                    </strong>
                 </article>
 
                 <article class="dato-secretaria">
                     <span class="dato-secretaria__label">Alumnos matriculados</span>
-                    <strong class="dato-secretaria__valor">214</strong>
+                    <strong class="dato-secretaria__valor">
+                        <?php echo (int) $resumen["total_alumnos_matriculados"]; ?>
+                    </strong>
                 </article>
 
                 <article class="dato-secretaria">
                     <span class="dato-secretaria__label">Asignaciones pendientes</span>
-                    <strong class="dato-secretaria__valor">3</strong>
+                    <strong class="dato-secretaria__valor">
+                        <?php echo (int) $resumen["total_pendientes"]; ?>
+                    </strong>
                 </article>
             </section>
 
@@ -123,35 +233,40 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 <span>Alumnos</span>
                             </div>
 
-                            <a class="tabla-simple-secretaria__fila" href="asignaturas_secretaria.php">
-                                <span>
-                                    <strong>Programación II</strong>
-                                    <small>Grupo A</small>
-                                </span>
-                                <span>GTI-203</span>
-                                <span>Kevan Pounds</span>
-                                <span>32</span>
-                            </a>
+                            <?php if (count($ultimas_asignaturas) === 0) { ?>
+                                <a class="tabla-simple-secretaria__fila" href="crear_asignatura.php">
+                                    <span>
+                                        <strong>No hay asignaturas creadas</strong>
+                                        <small>Crea la primera asignatura</small>
+                                    </span>
+                                    <span>-</span>
+                                    <span>-</span>
+                                    <span>0</span>
+                                </a>
+                            <?php } ?>
 
-                            <a class="tabla-simple-secretaria__fila" href="asignaturas_secretaria.php">
-                                <span>
-                                    <strong>Matemáticas</strong>
-                                    <small>Grupo B</small>
-                                </span>
-                                <span>GTI-104</span>
-                                <span>Don Pepito</span>
-                                <span>28</span>
-                            </a>
+                            <?php foreach ($ultimas_asignaturas as $asignatura) { ?>
+                                <a class="tabla-simple-secretaria__fila" href="asignaturas_secretaria.php">
+                                    <span>
+                                        <strong><?php echo limpiar_texto_doa($asignatura["nombre"]); ?></strong>
+                                        <small>
+                                            Grupo <?php echo limpiar_texto_doa($asignatura["grupo"]); ?>
+                                        </small>
+                                    </span>
 
-                            <a class="tabla-simple-secretaria__fila" href="asignaturas_secretaria.php">
-                                <span>
-                                    <strong>Física</strong>
-                                    <small>Grupo A</small>
-                                </span>
-                                <span>GTI-112</span>
-                                <span>Eolande Merriton</span>
-                                <span>26</span>
-                            </a>
+                                    <span><?php echo limpiar_texto_doa($asignatura["codigo"]); ?></span>
+
+                                    <span>
+                                        <?php
+                                        echo $asignatura["profesores"] !== null
+                                            ? limpiar_texto_doa($asignatura["profesores"])
+                                            : "Pendiente";
+                                        ?>
+                                    </span>
+
+                                    <span><?php echo (int) $asignatura["total_alumnos"]; ?></span>
+                                </a>
+                            <?php } ?>
                         </div>
                     </article>
                 </section>
@@ -161,41 +276,54 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                         <h3>Asignaciones pendientes</h3>
 
                         <div class="lista-lateral-secretaria">
-                            <a class="item-lateral-secretaria" href="asignaciones_secretaria.php">
-                                <strong>Diseño de Interfaces</strong>
-                                <span>Profesor pendiente de asignar</span>
-                            </a>
+                            <?php if (count($asignaturas_pendientes) === 0) { ?>
+                                <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
+                                    <strong>Sin pendientes</strong>
+                                    <span>Todas las asignaturas tienen profesor y alumnos asignados.</span>
+                                </div>
+                            <?php } ?>
 
-                            <a class="item-lateral-secretaria" href="asignaciones_secretaria.php">
-                                <strong>Animación 3D</strong>
-                                <span>12 alumnos sin grupo</span>
-                            </a>
+                            <?php foreach ($asignaturas_pendientes as $asignatura) { ?>
+                                <?php
+                                if ((int) $asignatura["total_profesores"] === 0 && (int) $asignatura["total_alumnos"] === 0) {
+                                    $motivo_pendiente = "Profesor y alumnos pendientes";
+                                } elseif ((int) $asignatura["total_profesores"] === 0) {
+                                    $motivo_pendiente = "Profesor pendiente de asignar";
+                                } else {
+                                    $motivo_pendiente = "Alumnos pendientes de asignar";
+                                }
+                                ?>
 
-                            <a class="item-lateral-secretaria" href="asignaciones_secretaria.php">
-                                <strong>Proyecto Web</strong>
-                                <span>Grupo pendiente de revisión</span>
-                            </a>
+                                <a class="item-lateral-secretaria" href="asignaciones_secretaria.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
+                                    <strong><?php echo limpiar_texto_doa($asignatura["nombre"]); ?></strong>
+                                    <span><?php echo limpiar_texto_doa($motivo_pendiente); ?></span>
+                                </a>
+                            <?php } ?>
                         </div>
                     </article>
 
                     <article class="tarjeta-lateral-secretaria">
-                        <h3>Actividad reciente</h3>
+                        <h3>Estado del sistema</h3>
 
-                        <div class="lista-lateral-secretaria">
-                            <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
-                                <strong>Programación II</strong>
-                                <span>Se han asignado 32 alumnos.</span>
-                            </div>
+                        <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
+                            <strong>Asignaturas creadas</strong>
+                            <span>
+                                <?php echo (int) $resumen["total_asignaturas"]; ?> registradas en base de datos.
+                            </span>
+                        </div>
 
-                            <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
-                                <strong>Matemáticas</strong>
-                                <span>Profesor actualizado correctamente.</span>
-                            </div>
+                        <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
+                            <strong>Profesores asignados</strong>
+                            <span>
+                                <?php echo (int) $resumen["total_profesores_asignados"]; ?> profesores vinculados a asignaturas.
+                            </span>
+                        </div>
 
-                            <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
-                                <strong>Física</strong>
-                                <span>Asignatura creada en el sistema.</span>
-                            </div>
+                        <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
+                            <strong>Alumnos matriculados</strong>
+                            <span>
+                                <?php echo (int) $resumen["total_alumnos_matriculados"]; ?> alumnos asignados a grupos.
+                            </span>
                         </div>
                     </article>
                 </aside>
@@ -203,8 +331,6 @@ require_once __DIR__ . "/includes/proteger_doa.php";
         </main>
     </div>
 
-    <script src="js/doa_datos.js"></script>
-    
 </body>
 
 </html>

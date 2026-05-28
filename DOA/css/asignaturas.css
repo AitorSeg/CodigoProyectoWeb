@@ -139,17 +139,20 @@
   display: none;
 }
 
-.dato-asignaturas__detalle a {
+.dato-asignaturas__detalle .enlace-detalle-asignatura {
   display: block;
   padding: var(--space-2) 0;
   color: var(--color-text);
   font-size: 13px;
   font-weight: 600;
+}
+
+.dato-asignaturas__detalle a.enlace-detalle-asignatura {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.dato-asignaturas__detalle a:hover {
+.dato-asignaturas__detalle a.enlace-detalle-asignatura:hover {
   color: var(--color-primary);
 }
 
@@ -243,18 +246,32 @@
   height: 4px;
   display: block;
   overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-border);
+  appearance: none;
+}
+
+.barra-asignatura::-webkit-progress-bar {
   border-radius: 999px;
   background: var(--color-border);
 }
 
-.barra-asignatura span {
-  height: 100%;
-  display: block;
+.barra-asignatura::-webkit-progress-value {
   border-radius: 999px;
   background: var(--color-primary);
 }
 
-.tarjeta-asignatura:not(.tarjeta-asignatura--activa) .barra-asignatura span {
+.barra-asignatura::-moz-progress-bar {
+  border-radius: 999px;
+  background: var(--color-primary);
+}
+
+.tarjeta-asignatura:not(.tarjeta-asignatura--activa) .barra-asignatura::-webkit-progress-value {
+  background: var(--color-muted);
+}
+
+.tarjeta-asignatura:not(.tarjeta-asignatura--activa) .barra-asignatura::-moz-progress-bar {
   background: var(--color-muted);
 }
 
