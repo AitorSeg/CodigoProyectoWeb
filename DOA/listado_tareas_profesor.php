@@ -96,12 +96,15 @@ $consulta_resumen = $pdo->prepare("
         COUNT(DISTINCT CASE
             WHEN ae.estado = 'publicada' THEN ae.id_actividad
         END) AS total_tareas_activas,
+
         COUNT(DISTINCT e.id_entrega) AS total_entregas_recibidas,
+
         COUNT(DISTINCT CASE
             WHEN e.estado IN ('entregada', 'tardia', 'revisada')
             AND c.id_calificacion IS NULL
             THEN e.id_entrega
         END) AS total_pendientes_revision,
+
         COUNT(DISTINCT CASE
             WHEN ae.estado = 'cerrada' THEN ae.id_actividad
         END) AS total_tareas_cerradas
@@ -156,8 +159,8 @@ if ($filtro_estado !== "todos") {
 
 $orden_sql = match ($orden_tareas) {
     "nombre" => "ae.titulo ASC",
-    "pendientes" => "pendientes_revision DESC, ae.fecha_limite ASC",
-    default => "ae.fecha_limite ASC",
+    "pendientes" => "pendientes_revision DESC, CASE WHEN ae.fecha_limite IS NULL THEN 1 ELSE 0 END, ae.fecha_limite ASC",
+    default => "CASE WHEN ae.fecha_limite IS NULL THEN 1 ELSE 0 END, ae.fecha_limite ASC",
 };
 
 $consulta_tareas = $pdo->prepare(
@@ -170,7 +173,9 @@ $consulta_tareas = $pdo->prepare(
         ae.fecha_limite,
         ae.visible,
         ae.estado,
+
         COUNT(DISTINCT e.id_entrega) AS total_entregas,
+
         COUNT(DISTINCT CASE
             WHEN e.estado IN ('entregada', 'tardia', 'revisada')
             AND c.id_calificacion IS NULL
@@ -179,6 +184,9 @@ $consulta_tareas = $pdo->prepare(
     FROM actividades_evaluables ae
     LEFT JOIN entregas e
         ON e.id_actividad = ae.id_actividad
+    LEFT JOIN calificaciones c
+        ON c.id_actividad = e.id_actividad
+        AND c.id_alumno = e.id_alumno
     WHERE " . implode(" AND ", $condiciones_tareas) . "
     GROUP BY
         ae.id_actividad,
