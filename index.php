@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Definición de codificación y vista para que la página se muestre correctamente en diferentes dispositivos -->
     <meta charset="UTF-8" />
@@ -8,14 +9,16 @@
     <!-- Enlace al archivo CSS que contiene los estilos para esta página -->
     <link rel="stylesheet" href="GTI/css/gti.css" />
 </head>
+
 <body>
     <!-- Cabecera principal con logo, navegación y botón de acceso -->
     <header>
-            <div class="header-logo">
+        <div class="header-logo">
             <a href="index.php">
-            <img src="GTI/img/logoGTI_blanco.png" alt="Logo GTI" />
-            </div>
-           
+                <img src="GTI/img/logoGTI_blanco.png" alt="Logo GTI" />
+            </a>
+        </div>
+
 
         <nav>
             <!-- Enlaces de navegación interna hacia secciones de la misma página -->
@@ -50,13 +53,13 @@
                 <a href="GTI/catalogo.php" class="module-btn">Nuestro Último Modulo</a>
                 <div class="license">
                     <!-- Indicador visual de beneficios incluido con el producto -->
-                <div class="about-image">
-                    <!-- Imagen que refuerza visualmente el mensaje de la sección "Sobre Nosotros" -->
-                    <img src="GTI/img/verificacion.svg" alt="verificacion" />
-                
-                    <span>Acceso a licencia permanente</span>
+                    <div class="about-image">
+                        <!-- Imagen que refuerza visualmente el mensaje de la sección "Sobre Nosotros" -->
+                        <img src="GTI/img/verificacion.svg" alt="verificacion" />
+
+                        <span>Acceso a licencia permanente</span>
+                    </div>
                 </div>
-            </div>
         </section>
 
         <!-- Sección «Sobre Nosotros» con información institucional y llamada al contacto -->
@@ -73,7 +76,7 @@
 
                     <!-- Botón que lleva al usuario a la sección de contacto o que puede abrir un formulario de contacto -->
                     <a href="GTI/contacto.php" class="contact-btn" id="contacto">
-                     Contactanos <span class="arrow">→</span>
+                        Contactanos <span class="arrow">→</span>
                     </a>
                 </div>
 
@@ -124,5 +127,5 @@
     <script src="GTI/js/sesion.js"></script>
 
 </body>
-</body>
+
 </html>
