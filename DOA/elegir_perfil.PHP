@@ -1,10 +1,129 @@
 <?php
 session_start();
+require_once __DIR__ . '/../config/conexion.php';
 
 if (!isset($_SESSION["id_usuario"])) {
   header("Location: ../GTI/login.php?redir=doa");
   exit;
 }
+
+function limpiar_texto($texto)
+{
+  return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');
+}
+
+function obtener_icono_rol($rol)
+{
+  return match ($rol) {
+    'alumno' => 'graduation-cap',
+    'profesor' => 'user',
+    'secretaria' => 'briefcase-business',
+  };
+}
+
+function obtener_texto_rol($rol)
+{
+  return match ($rol) {
+    'alumno' => 'Alumno',
+    'profesor' => 'Profesor',
+    'secretaria' => 'Secretaría',
+  };
+}
+
+function obtener_titulo_grupo($rol)
+{
+  return match ($rol) {
+    'alumno' => 'Alumnos',
+    'profesor' => 'Profesores',
+    'secretaria' => 'Secretaría',
+  };
+}
+
+function obtener_password_demo($dni)
+{
+  $partes_dni = explode('-', $dni);
+  return $partes_dni[1];
+}
+
+$errores = [];
+$correo_demo = "";
+$password_demo = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $correo_demo = strtolower(trim($_POST["correo_demo"]));
+  $password_demo = trim($_POST["password_demo"]);
+
+  if ($correo_demo === "" || $password_demo === "") {
+    $errores[] = "Introduce el correo electrónico y la contraseña.";
+  }
+
+  if (count($errores) === 0) {
+    $consulta_usuario_demo = $pdo->prepare("
+      SELECT id_usuario, dni, nombre, apellidos, email, password_hash, rol
+      FROM usuarios
+      WHERE email = :email
+      AND tipo_usuario = 'demo'
+      AND estado = 'activo'
+      LIMIT 1
+    ");
+
+    $consulta_usuario_demo->execute([
+      "email" => $correo_demo
+    ]);
+
+    $usuario_demo = $consulta_usuario_demo->fetch();
+
+    if (!$usuario_demo || !password_verify($password_demo, $usuario_demo["password_hash"])) {
+      $errores[] = "Las credenciales no pertenecen a ningún usuario de prueba.";
+    } else {
+      $_SESSION["doa_id_usuario"] = $usuario_demo["id_usuario"];
+      $_SESSION["doa_dni"] = $usuario_demo["dni"];
+      $_SESSION["doa_nombre"] = $usuario_demo["nombre"];
+      $_SESSION["doa_apellidos"] = $usuario_demo["apellidos"];
+      $_SESSION["doa_email"] = $usuario_demo["email"];
+      $_SESSION["doa_rol"] = $usuario_demo["rol"];
+
+      if ($usuario_demo["rol"] === "profesor") {
+        header("Location: panel_profesor.php");
+        exit;
+      }
+
+      if ($usuario_demo["rol"] === "secretaria") {
+        header("Location: panel_secretaria.php");
+        exit;
+      }
+
+      header("Location: panel_principal.php");
+      exit;
+    }
+  }
+}
+
+$consulta_usuarios_demo = $pdo->query("
+  SELECT id_usuario, dni, nombre, apellidos, email, rol
+  FROM usuarios
+  WHERE tipo_usuario = 'demo'
+  AND estado = 'activo'
+  AND dni IS NOT NULL
+  ORDER BY FIELD(rol, 'alumno', 'profesor', 'secretaria'), nombre, apellidos
+");
+
+$usuarios_demo = $consulta_usuarios_demo->fetchAll();
+
+$usuarios_por_rol = [
+  "alumno" => [],
+  "profesor" => [],
+  "secretaria" => []
+];
+
+foreach ($usuarios_demo as $usuario_demo) {
+  $usuarios_por_rol[$usuario_demo["rol"]][] = $usuario_demo;
+}
+
+$total_usuarios_demo = count($usuarios_demo);
+$total_alumnos = count($usuarios_por_rol["alumno"]);
+$total_profesores = count($usuarios_por_rol["profesor"]);
+$total_secretaria = count($usuarios_por_rol["secretaria"]);
 ?>
 
 <!doctype html>
@@ -91,7 +210,7 @@ if (!isset($_SESSION["id_usuario"])) {
             </span>
             <span>
               Todos
-              <small> (8) </small>
+              <small> (<?php echo $total_usuarios_demo; ?>) </small>
             </span>
           </button>
           <button class="filtro-perfil" data-filtro="alumno" type="button">
@@ -107,7 +226,7 @@ if (!isset($_SESSION["id_usuario"])) {
             </span>
             <span>
               Alumnos
-              <small> (3) </small>
+              <small> (<?php echo $total_alumnos; ?>) </small>
             </span>
           </button>
           <button class="filtro-perfil" data-filtro="profesor" type="button">
@@ -123,7 +242,7 @@ if (!isset($_SESSION["id_usuario"])) {
             </span>
             <span>
               Profesores
-              <small> (3) </small>
+              <small> (<?php echo $total_profesores; ?>) </small>
             </span>
           </button>
           <button class="filtro-perfil" data-filtro="secretaria" type="button">
@@ -139,292 +258,71 @@ if (!isset($_SESSION["id_usuario"])) {
             </span>
             <span>
               Secretaría
-              <small> (2) </small>
+              <small> (<?php echo $total_secretaria; ?>) </small>
             </span>
           </button>
         </nav>
         <div class="lista-usuarios-demo">
-          <section class="grupo-usuarios-demo" data-grupo="alumno">
-            <h3>Alumnos</h3>
-            <button
-              class="usuario-demo"
-              data-dni="01-9218611"
-              data-email="l.simdre@epsg.upv.es"
-              data-nombre="Lief Simants Dredge"
-              data-password="9218611"
-              data-rol="alumno"
-              data-rol-texto="Alumno"
-              type="button">
-              <span aria-hidden="true" class="usuario-demo__icono">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-graduation-cap.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-graduation-cap.svg" />
-              </span>
-              <span class="usuario-demo__datos">
-                <strong> Lief Simants Dredge </strong>
-                <span> l.simdre@epsg.upv.es · 9218611 </span>
-              </span>
-              <span aria-hidden="true" class="usuario-demo__flecha">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-chevron-right.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-chevron-right.svg" />
-              </span>
-            </button>
-            <button
-              class="usuario-demo"
-              data-dni="04-1320191"
-              data-email="m.kirkam@epsg.upv.es"
-              data-nombre="Merline Kirdsch Kampshell"
-              data-password="1320191"
-              data-rol="alumno"
-              data-rol-texto="Alumno"
-              type="button">
-              <span aria-hidden="true" class="usuario-demo__icono">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-graduation-cap.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-graduation-cap.svg" />
-              </span>
-              <span class="usuario-demo__datos">
-                <strong> Merline Kirdsch Kampshell </strong>
-                <span> m.kirkam@epsg.upv.es · 1320191 </span>
-              </span>
-              <span aria-hidden="true" class="usuario-demo__flecha">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-chevron-right.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-chevron-right.svg" />
-              </span>
-            </button>
-            <button
-              class="usuario-demo"
-              data-dni="05-9971924"
-              data-email="d.rawabc@epsg.upv.es"
-              data-nombre="Debora Rawstorne"
-              data-password="9971924"
-              data-rol="alumno"
-              data-rol-texto="Alumno"
-              type="button">
-              <span aria-hidden="true" class="usuario-demo__icono">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-graduation-cap.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-graduation-cap.svg" />
-              </span>
-              <span class="usuario-demo__datos">
-                <strong> Debora Rawstorne </strong>
-                <span> d.rawabc@epsg.upv.es · 9971924 </span>
-              </span>
-              <span aria-hidden="true" class="usuario-demo__flecha">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-chevron-right.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-chevron-right.svg" />
-              </span>
-            </button>
-          </section>
-          <section class="grupo-usuarios-demo" data-grupo="profesor">
-            <h3>Profesores</h3>
-            <button
-              class="usuario-demo"
-              data-dni="60-4525956"
-              data-email="k.poumai@upv.es"
-              data-nombre="Kevan Pounds Mainston"
-              data-password="4525956"
-              data-rol="profesor"
-              data-rol-texto="Profesor"
-              type="button">
-              <span aria-hidden="true" class="usuario-demo__icono">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-user.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-user.svg" />
-              </span>
-              <span class="usuario-demo__datos">
-                <strong> Kevan Pounds Mainston </strong>
-                <span> k.poumai@upv.es · 4525956 </span>
-              </span>
-              <span aria-hidden="true" class="usuario-demo__flecha">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-chevron-right.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-chevron-right.svg" />
-              </span>
-            </button>
-            <button
-              class="usuario-demo"
-              data-dni="64-6055365"
-              data-email="l.prista@upv.es"
-              data-nombre="Luelle Pridmore Starsmeare"
-              data-password="6055365"
-              data-rol="profesor"
-              data-rol-texto="Profesor"
-              type="button">
-              <span aria-hidden="true" class="usuario-demo__icono">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-user.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-user.svg" />
-              </span>
-              <span class="usuario-demo__datos">
-                <strong> Luelle Pridmore Starsmeare </strong>
-                <span> l.prista@upv.es · 6055365 </span>
-              </span>
-              <span aria-hidden="true" class="usuario-demo__flecha">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-chevron-right.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-chevron-right.svg" />
-              </span>
-            </button>
-            <button
-              class="usuario-demo"
-              data-dni="64-6738133"
-              data-email="e.mermiz@upv.es"
-              data-nombre="Eolande Merriton Mizzi"
-              data-password="6738133"
-              data-rol="profesor"
-              data-rol-texto="Profesor"
-              type="button">
-              <span aria-hidden="true" class="usuario-demo__icono">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-user.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-user.svg" />
-              </span>
-              <span class="usuario-demo__datos">
-                <strong> Eolande Merriton Mizzi </strong>
-                <span> e.mermiz@upv.es · 6738133 </span>
-              </span>
-              <span aria-hidden="true" class="usuario-demo__flecha">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-chevron-right.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-chevron-right.svg" />
-              </span>
-            </button>
-          </section>
-          <section class="grupo-usuarios-demo" data-grupo="secretaria">
-            <h3>Secretaría</h3>
-            <button
-              class="usuario-demo"
-              data-dni="88-1316390"
-              data-email="o.breshe@upv.es"
-              data-nombre="Ondrea Brezlaw Sherwill"
-              data-password="1316390"
-              data-rol="secretaria"
-              data-rol-texto="Secretaría"
-              type="button">
-              <span aria-hidden="true" class="usuario-demo__icono">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-briefcase-business.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-briefcase-business.svg" />
-              </span>
-              <span class="usuario-demo__datos">
-                <strong> Ondrea Brezlaw Sherwill </strong>
-                <span> o.breshe@upv.es · 1316390 </span>
-              </span>
-              <span aria-hidden="true" class="usuario-demo__flecha">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-chevron-right.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-chevron-right.svg" />
-              </span>
-            </button>
-            <button
-              class="usuario-demo"
-              data-dni="91-1970980"
-              data-email="b.maltho@upv.es"
-              data-nombre="Brooke Malimoe Thomerson"
-              data-password="1970980"
-              data-rol="secretaria"
-              data-rol-texto="Secretaría"
-              type="button">
-              <span aria-hidden="true" class="usuario-demo__icono">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-briefcase-business.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-briefcase-business.svg" />
-              </span>
-              <span class="usuario-demo__datos">
-                <strong> Brooke Malimoe Thomerson </strong>
-                <span> b.maltho@upv.es · 1970980 </span>
-              </span>
-              <span aria-hidden="true" class="usuario-demo__flecha">
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--gris"
-                  src="img/iconos/grey-chevron-right.svg" />
-                <img
-                  alt=""
-                  class="icono-estado icono-estado--azul"
-                  src="img/iconos/blue-chevron-right.svg" />
-              </span>
-            </button>
-          </section>
+          <?php foreach ($usuarios_por_rol as $rol => $usuarios_rol) { ?>
+            <?php
+            $icono_rol = obtener_icono_rol($rol);
+            $texto_rol = obtener_texto_rol($rol);
+            $titulo_grupo = obtener_titulo_grupo($rol);
+            ?>
+
+            <section class="grupo-usuarios-demo" data-grupo="<?php echo limpiar_texto($rol); ?>">
+              <h3><?php echo limpiar_texto($titulo_grupo); ?></h3>
+
+              <?php foreach ($usuarios_rol as $usuario_demo) { ?>
+                <?php
+                $nombre_completo = trim($usuario_demo["nombre"] . " " . $usuario_demo["apellidos"]);
+                $password_visible = obtener_password_demo($usuario_demo["dni"]);
+                ?>
+
+                <button
+                  class="usuario-demo"
+                  data-dni="<?php echo limpiar_texto($usuario_demo["dni"]); ?>"
+                  data-email="<?php echo limpiar_texto($usuario_demo["email"]); ?>"
+                  data-nombre="<?php echo limpiar_texto($nombre_completo); ?>"
+                  data-password="<?php echo limpiar_texto($password_visible); ?>"
+                  data-rol="<?php echo limpiar_texto($usuario_demo["rol"]); ?>"
+                  data-rol-texto="<?php echo limpiar_texto($texto_rol); ?>"
+                  type="button">
+
+                  <span aria-hidden="true" class="usuario-demo__icono">
+                    <img
+                      alt=""
+                      class="icono-estado icono-estado--gris"
+                      src="img/iconos/grey-<?php echo limpiar_texto($icono_rol); ?>.svg" />
+                    <img
+                      alt=""
+                      class="icono-estado icono-estado--azul"
+                      src="img/iconos/blue-<?php echo limpiar_texto($icono_rol); ?>.svg" />
+                  </span>
+
+                  <span class="usuario-demo__datos">
+                    <strong><?php echo limpiar_texto($nombre_completo); ?></strong>
+                    <span>
+                      <?php echo limpiar_texto($usuario_demo["email"]); ?> ·
+                      contraseña:
+                      <?php echo limpiar_texto($password_visible); ?>
+                    </span>
+                  </span>
+
+                  <span aria-hidden="true" class="usuario-demo__flecha">
+                    <img
+                      alt=""
+                      class="icono-estado icono-estado--gris"
+                      src="img/iconos/grey-chevron-right.svg" />
+                    <img
+                      alt=""
+                      class="icono-estado icono-estado--azul"
+                      src="img/iconos/blue-chevron-right.svg" />
+                  </span>
+                </button>
+              <?php } ?>
+            </section>
+          <?php } ?>
         </div>
       </div>
       <div class="caja-demo caja-demo--login">
@@ -438,7 +336,6 @@ if (!isset($_SESSION["id_usuario"])) {
           Accede con uno de los usuarios de prueba registrados en la demo.
         </p>
         <form
-          action="#"
           class="formulario-login-demo"
           id="formLoginDemo"
           method="post">
@@ -446,23 +343,24 @@ if (!isset($_SESSION["id_usuario"])) {
             <label for="correoDemo"> Correo electrónico </label>
             <input
               id="correoDemo"
-              name="correoDemo"
+              name="correo_demo"
               placeholder="ejemplo@upv.es"
-              type="email" />
+              type="email"
+              value="<?php echo limpiar_texto($correo_demo); ?>"
+              required />
           </div>
           <div class="campo-formulario">
             <label for="passwordDemo"> Contraseña </label>
             <div class="campo-password">
               <input
                 id="passwordDemo"
-                name="passwordDemo"
+                name="password_demo"
                 placeholder="Introduce la contraseña"
-                type="password" />
-              <button
-                class="boton-mostrar-password"
-                id="botonMostrarPassword"
-                type="button">
-                Mostrar
+                type="text"
+                value="<?php echo limpiar_texto($password_demo); ?>"
+                required />
+              <button class="boton-mostrar-password" id="botonMostrarPassword" type="button">
+                Ocultar
               </button>
             </div>
           </div>
@@ -483,7 +381,13 @@ if (!isset($_SESSION["id_usuario"])) {
               </li>
             </ul>
           </div>
-          <p class="mensaje-error-login oculto" id="mensajeErrorLogin"></p>
+          <p class="mensaje-error-login <?php echo count($errores) === 0 ? 'oculto' : ''; ?>" id="mensajeErrorLogin">
+            <?php
+            if (count($errores) > 0) {
+              echo limpiar_texto($errores[0]);
+            }
+            ?>
+          </p>
           <button class="boton-acceso-demo" type="submit">
             Acceder a DOA
           </button>

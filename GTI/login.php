@@ -147,13 +147,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </p>
 
         <?php if ($mensaje_ok !== "") { ?>
-            <div class="success-msg" style="display: block; margin-bottom: 16px; color: #4ade80; font-size: 14px;">
+            <div class="form-message form-message--success">
                 <?php echo limpiar_texto($mensaje_ok); ?>
             </div>
         <?php } ?>
 
         <?php if (count($errores) > 0) { ?>
-            <div class="error-msg" style="display: block; margin-bottom: 16px; color: #ff4d4d; font-size: 14px;">
+            <div class="form-message form-message--error">
                 <?php foreach ($errores as $error) { ?>
                     <p><?php echo limpiar_texto($error); ?></p>
                 <?php } ?>

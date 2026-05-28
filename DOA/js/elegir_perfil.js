@@ -1,12 +1,11 @@
 /*
-    Pantalla: Elegir perfil de prueba
+  Pantalla: Elegir perfil de prueba
 */
 
 const filtros = document.querySelectorAll(".filtro-perfil");
 const grupos_usuarios = document.querySelectorAll(".grupo-usuarios-demo");
 const usuarios = document.querySelectorAll(".usuario-demo");
 
-const form_login = document.getElementById("formLoginDemo");
 const input_correo = document.getElementById("correoDemo");
 const input_password = document.getElementById("passwordDemo");
 const boton_mostrar_password = document.getElementById("botonMostrarPassword");
@@ -32,11 +31,6 @@ usuarios.forEach(function (usuario) {
 
 boton_mostrar_password.addEventListener("click", function () {
   cambiar_visibilidad_password();
-});
-
-form_login.addEventListener("submit", function (evento) {
-  evento.preventDefault();
-  validar_acceso();
 });
 
 function cambiar_filtro(filtro_seleccionado) {
@@ -68,6 +62,8 @@ function seleccionar_usuario(usuario_seleccionado) {
 
   input_correo.value = usuario_seleccionado.dataset.email;
   input_password.value = usuario_seleccionado.dataset.password;
+  input_password.type = "text";
+  boton_mostrar_password.textContent = "Ocultar";
 
   perfil_nombre.textContent = usuario_seleccionado.dataset.nombre;
   perfil_dni.textContent = usuario_seleccionado.dataset.dni;
@@ -85,63 +81,6 @@ function cambiar_visibilidad_password() {
     input_password.type = "password";
     boton_mostrar_password.textContent = "Mostrar";
   }
-}
-
-function validar_acceso() {
-  const correo = input_correo.value.trim().toLowerCase();
-  const password = input_password.value.trim();
-
-  if (correo === "" || password === "") {
-    mostrar_error("Introduce el correo electrónico y la contraseña.");
-    return;
-  }
-
-  const usuario_encontrado = buscar_usuario(correo, password);
-
-  if (usuario_encontrado === null) {
-    mostrar_error("Las credenciales no pertenecen a ningún usuario de prueba.");
-    return;
-  }
-
-  sessionStorage.setItem("usuarioDemoDOA", JSON.stringify(usuario_encontrado));
-
-  if (usuario_encontrado.rol === "profesor") {
-    window.location.href = "panel_profesor.php";
-    return;
-  }
-
-  if (usuario_encontrado.rol === "secretaria") {
-    window.location.href = "panel_secretaria.php";
-    return;
-  }
-
-  window.location.href = "panel_principal.php";
-}
-
-function buscar_usuario(correo, password) {
-  for (let i = 0; i < usuarios.length; i++) {
-    const usuario = usuarios[i];
-
-    if (
-      usuario.dataset.email.toLowerCase() === correo &&
-      usuario.dataset.password === password
-    ) {
-      return {
-        nombre: usuario.dataset.nombre,
-        dni: usuario.dataset.dni,
-        email: usuario.dataset.email,
-        rol: usuario.dataset.rol,
-        rol_texto: usuario.dataset.rolTexto,
-      };
-    }
-  }
-
-  return null;
-}
-
-function mostrar_error(texto) {
-  mensaje_error.textContent = texto;
-  mensaje_error.classList.remove("oculto");
 }
 
 function ocultar_error() {

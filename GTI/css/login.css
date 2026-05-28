@@ -2,162 +2,180 @@
 
 /* Variables CSS globales para colores y fuentes */
 :root {
-      --primary-orange: #D97706;
-      --secondary-orange: #F89119;
-      --bg-main: #000000;
-      --bg-card: #1B1B1B;
-      --bg-input: #353535;
-      --text-white: #FFFFFF;
-      --text-gray: #A9B7C8;
-      --accent-blue: #0B3D91;
-      --error: #FF4D57;
-      --font-main: 'Space Grotesk', Arial, Helvetica, sans-serif;
-    }
+  --primary-orange: #d97706;
+  --secondary-orange: #f89119;
+  --bg-main: #000000;
+  --bg-card: #1b1b1b;
+  --bg-input: #353535;
+  --text-white: #ffffff;
+  --text-gray: #a9b7c8;
+  --accent-blue: #0b3d91;
+  --error: #ff4d57;
+  --font-main: "Space Grotesk", Arial, Helvetica, sans-serif;
+}
 
 /* Estilos del cuerpo de la página */
 body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: var(--bg-main);
-      color: var(--text-white);
-      font-family: var(--font-main);
-    }
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg-main);
+  color: var(--text-white);
+  font-family: var(--font-main);
+}
 
 /* Tarjeta principal de autenticación */
 .auth-card {
-      background-color: var(--bg-card);
-      padding: 40px;
-      border-radius: 16px; /* Radio estándar de tarjetas GTI */
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      text-align: center;
-    }
+  background-color: var(--bg-card);
+  padding: 40px;
+  border-radius: 16px; /* Radio estándar de tarjetas GTI */
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
 
 /* Título de la tarjeta de autenticación */
 .auth-card h2 {
-      font-size: 30px; /* Título H2 */
-      font-weight: 600; /* SemiBold */
-      margin-bottom: 5px;
-      color: var(--text-white);
-    }
+  font-size: 30px; /* Título H2 */
+  font-weight: 600; /* SemiBold */
+  margin-bottom: 5px;
+  color: var(--text-white);
+}
 
 /* Subtítulo de la tarjeta */
 .auth-card p.subtitle {
-      font-size: 14px;
-      color: var(--text-gray);
-      margin-bottom: 32px;
-    }
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-bottom: 32px;
+}
 
 /* Grupo de formulario (etiqueta + input) */
 .form-group {
-      text-align: left;
-      margin-bottom: 24px;
-    }
+  text-align: left;
+  margin-bottom: 24px;
+}
 
 /* Etiqueta del grupo de formulario */
 .form-group label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
 
 /* Campos de entrada para email y contraseña */
 .form-group input[type="email"],
 .form-group input[type="password"] {
-      width: 100%;
-      background-color: var(--bg-input);
-      border: 2px solid transparent;
-      color: var(--text-white);
-      height: 44px; /* Alto definido en el libro de estilos */
-      padding: 0 16px; /* Padding horizontal de 16px */
-      border-radius: 12px; /* Radio de 12px para inputs */
-      font-family: var(--font-main);
-      font-size: 16px;
-      box-sizing: border-box;
-      outline: none;
-      transition: border 0.3s ease;
-    }
+  width: 100%;
+  background-color: var(--bg-input);
+  border: 2px solid transparent;
+  color: var(--text-white);
+  height: 44px; /* Alto definido en el libro de estilos */
+  padding: 0 16px; /* Padding horizontal de 16px */
+  border-radius: 12px; /* Radio de 12px para inputs */
+  font-family: var(--font-main);
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.3s ease;
+}
 
 /* Estilos al enfocar los inputs */
 .form-group input:focus {
-      border-color: var(--accent-blue);
-    }
+  border-color: var(--accent-blue);
+}
 
 /* Opciones del formulario (recordar contraseña, olvidar contraseña) */
 .form-options {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px; /* Caption */
-      margin-bottom: 24px;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px; /* Caption */
+  margin-bottom: 24px;
+}
 
 /* Etiqueta con checkbox para recordar contraseña */
 .form-options label {
-      color: var(--text-gray);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-    }
+  color: var(--text-gray);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
 
 /* Enlace para olvidar contraseña */
 .form-options a {
-      color: var(--primary-orange);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
+  color: var(--primary-orange);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
 
 /* Hover del enlace */
 .form-options a:hover {
-      color: var(--secondary-orange);
-    }
+  color: var(--secondary-orange);
+}
 
 /* Botón primario de login */
 .btn-primary {
-      background-color: var(--primary-orange);
-      color: var(--text-white);
-      border: none;
-      height: 44px; /* Alto del botón primario */
-      padding: 0 16px;
-      width: 100%;
-      font-family: var(--font-main);
-      font-weight: 600;
-      font-size: 16px;
-      border-radius: 12px; /* Radio de 12px para botones */
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+  background-color: var(--primary-orange);
+  color: var(--text-white);
+  border: none;
+  height: 44px; /* Alto del botón primario */
+  padding: 0 16px;
+  width: 100%;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 12px; /* Radio de 12px para botones */
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
 /* Hover del botón primario */
 .btn-primary:hover {
-      background-color: var(--secondary-orange);
-    }
+  background-color: var(--secondary-orange);
+}
 
 /* Pie de la tarjeta de autenticación */
 .auth-footer {
-      margin-top: 24px;
-      font-size: 14px;
-      color: var(--text-gray);
-    }
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-gray);
+}
 
 /* Enlace en el pie (registro) */
 .auth-footer a {
-      color: var(--primary-orange);
-      text-decoration: none;
-      font-weight: 600;
-    }
+  color: var(--primary-orange);
+  text-decoration: none;
+  font-weight: 600;
+}
 
 /* Texto de error (oculto por defecto) */
 .error-text {
-      color: #ff4d4d;
-      font-size: 12px;
-      margin-top: 6px;
-      display: none;
-    }
+  color: #ff4d4d;
+  font-size: 12px;
+  margin-top: 6px;
+  display: none;
+}
+
+.form-message {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.form-message p {
+  margin: 0;
+}
+
+.form-message--success {
+  color: #4ade80;
+}
+
+.form-message--error {
+  color: #ff4d4d;
+}

@@ -167,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="auth-text">
             <h1>
                 <?php echo limpiar_texto($texto_principal["titulo_parte_1"]); ?> <br>
-                <span style="color: var(--primary-orange)">
+                <span class="auth-highlight">
                     <?php echo limpiar_texto($texto_principal["titulo_parte_2"]); ?>
                 </span>
             </h1>
@@ -181,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <h2><?php echo limpiar_texto($formulario["titulo"]); ?></h2>
 
             <?php if (count($errores) > 0) { ?>
-                <div class="error-msg" style="display: block; margin-bottom: 16px;">
+                <div class="form-message form-message--error">
                     <?php foreach ($errores as $error) { ?>
                         <p><?php echo limpiar_texto($error); ?></p>
                     <?php } ?>
@@ -232,9 +232,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php echo limpiar_texto($formulario["boton"]); ?>
                 </button>
 
-                <p style="margin-top: 24px; text-align: center; font-size: 14px; color: var(--text-gray)">
+                <p class="auth-login-link">
                     <?php echo limpiar_texto($enlace_login["texto"]); ?>
-                    <a href="<?php echo limpiar_texto($enlace_login["enlace"]); ?>" style="color: var(--primary-orange); text-decoration: none; font-weight: 600;">
+                    <a href="<?php echo limpiar_texto($enlace_login["enlace"]); ?>" class="auth-login-link__anchor">
                         <?php echo limpiar_texto($enlace_login["texto_enlace"]); ?>
                     </a>
                 </p>

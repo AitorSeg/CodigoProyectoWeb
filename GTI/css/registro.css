@@ -1,121 +1,180 @@
-
 /* Página de Registro - Estilos para el formulario de registro */
 
 /* Variables CSS globales para colores y fuentes */
 :root {
-      --primary-orange: #D97706;
-      --secondary-orange: #F89119;
-      --bg-main: #000000;
-      --bg-card: #1B1B1B;
-      --bg-input: #353535;
-      --text-white: #FFFFFF;
-      --text-gray: #A9B7C8;
-      --accent-blue: #0B3D91;
-      --error: #FF4D57;
-      --font-main: 'Space Grotesk', sans-serif;
-    }
+  --primary-orange: #d97706;
+  --secondary-orange: #f89119;
+  --bg-main: #000000;
+  --bg-card: #1b1b1b;
+  --bg-input: #353535;
+  --text-white: #ffffff;
+  --text-gray: #a9b7c8;
+  --accent-blue: #0b3d91;
+  --error: #ff4d57;
+  --font-main: "Space Grotesk", sans-serif;
+}
 
 /* Reset global para box-sizing, margin y padding */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 /* Estilos del cuerpo de la página */
 body {
-      background-color: var(--bg-main);
-      color: var(--text-white);
-      font-family: var(--font-main);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+  background-color: var(--bg-main);
+  color: var(--text-white);
+  font-family: var(--font-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
 /* Contenedor principal con layout de dos columnas */
 .auth-container {
-      display: flex;
-      gap: 64px;
-      max-width: 1000px;
-      width: 90%;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+  display: flex;
+  gap: 64px;
+  max-width: 1000px;
+  width: 90%;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 /* Sección de texto lateral */
-.auth-text { flex: 1; min-width: 300px; }
+.auth-text {
+  flex: 1;
+  min-width: 300px;
+}
 
 /* Título de la sección de texto */
-.auth-text h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; line-height: 1.1; }
+.auth-text h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
 
 /* Párrafo de la sección de texto */
-.auth-text p { font-size: 16px; color: var(--text-gray); max-width: 400px; }
+.auth-text p {
+  font-size: 16px;
+  color: var(--text-gray);
+  max-width: 400px;
+}
 
 /* Tarjeta del formulario de registro */
 .auth-card {
-      flex: 1;
-      min-width: 350px;
-      background-color: var(--bg-card);
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 10px 10px 30px rgba(0,0,0,0.8);
-    }
+  flex: 1;
+  min-width: 350px;
+  background-color: var(--bg-card);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.8);
+}
 
 /* Título de la tarjeta de registro */
 .auth-card h2 {
-      font-size: 30px;
-      margin-bottom: 32px;
-      color: var(--primary-orange);
-      text-align: center;
-    }
+  font-size: 30px;
+  margin-bottom: 32px;
+  color: var(--primary-orange);
+  text-align: center;
+}
 
 /* Fila de formulario para campos en línea */
-.form-row { display: flex; gap: 16px; }
+.form-row {
+  display: flex;
+  gap: 16px;
+}
 
 /* Grupo de formulario (etiqueta + input) */
-.form-group { margin-bottom: 20px; width: 100%; }
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
 
 /* Etiqueta del grupo de formulario */
-.form-group label { display: block; font-size: 14px; margin-bottom: 8px; font-weight: 600; }
+.form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
 
 /* Campo de entrada */
 .form-group input {
-      width: 100%;
-      height: 44px;
-      background-color: var(--bg-input);
-      border: 2px solid transparent;
-      border-radius: 12px;
-      padding: 0 16px;
-      color: white;
-      font: var(--font-main);
-      transition: 0.3s;
-    }
+  width: 100%;
+  height: 44px;
+  background-color: var(--bg-input);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 0 16px;
+  color: white;
+  font: var(--font-main);
+  transition: 0.3s;
+}
 
 /* Estilos al enfocar el input */
 .form-group input:focus {
-      border-color: var(--accent-blue);
-      outline: none;
-    }
+  border-color: var(--accent-blue);
+  outline: none;
+}
 
 /* Botón primario de registro */
 .btn-primary {
-      width: 100%;
-      height: 44px;
-      background-color: var(--primary-orange);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 10px;
-    }
+  width: 100%;
+  height: 44px;
+  background-color: var(--primary-orange);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
 
 /* Hover del botón primario */
-.btn-primary:hover { background-color: var(--secondary-orange); }
+.btn-primary:hover {
+  background-color: var(--secondary-orange);
+}
 
 /* Mensaje de error (oculto por defecto) */
 .error-msg {
-      color: var(--error);
-      font-size: 12px;
-      margin-top: 6px;
-      display: none;
-    }
+  color: var(--error);
+  font-size: 12px;
+  margin-top: 6px;
+  display: none;
+}
+
+.auth-highlight {
+  color: var(--primary-orange);
+}
+
+.form-message {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.form-message p {
+  margin: 0;
+}
+
+.form-message--error {
+  color: var(--error);
+}
+
+.auth-login-link {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.auth-login-link__anchor {
+  color: var(--primary-orange);
+  text-decoration: none;
+  font-weight: 600;
+}
