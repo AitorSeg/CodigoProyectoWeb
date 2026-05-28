@@ -171,7 +171,7 @@ $placeholder_buscador = "Buscar recurso, tarea...";
                                     Gestionar recursos
                                 </a>
 
-                                <a class="boton-docente-detalle" href="crear_tarea.html" id="linkBotonCrearTarea">
+                                <a class="boton-docente-detalle" href="crear_tarea.php" id="linkBotonCrearTarea">
                                     Crear tarea
                                 </a>
 

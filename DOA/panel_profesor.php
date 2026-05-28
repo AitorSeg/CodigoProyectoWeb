@@ -161,7 +161,7 @@
                         </div>
 
                         <div class="lista-panel-lateral">
-                            <a href="crear_tarea.html?asignatura=programacion" class="item-panel-lateral">
+                            <a href="crear_tarea.php?materia=programacion" class="item-panel-lateral">
                                 <div class="item-panel-lateral__texto">
                                     <strong>Ejercicio de recursividad</strong>
                                     <span>Programación II · 14 entregas pendientes</span>
@@ -170,7 +170,7 @@
                                 <small>Vence en 2 días</small>
                             </a>
 
-                            <a href="crear_tarea.html?asignatura=matematicas" class="item-panel-lateral">
+                            <a href="crear_tarea.php?materia=matematicas" class="item-panel-lateral">
                                 <div class="item-panel-lateral__texto">
                                     <strong>Hoja de límites</strong>
                                     <span>Matemáticas · 9 entregas pendientes</span>
@@ -179,7 +179,7 @@
                                 <small>Vence mañana</small>
                             </a>
 
-                            <a href="crear_tarea.html?asignatura=fisica" class="item-panel-lateral">
+                            <a href="crear_tarea.php?materia=fisica" class="item-panel-lateral">
                                 <div class="item-panel-lateral__texto">
                                     <strong>Ejercicios de MRU</strong>
                                     <span>Física · 6 entregas pendientes</span>

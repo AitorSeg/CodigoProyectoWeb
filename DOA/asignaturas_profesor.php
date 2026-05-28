@@ -143,7 +143,7 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
                         </a>
 
                         <a
-                            href="listado_tareas_profesor.php?asignatura=programacion"
+                            href="listado_tareas_profesor.php?materia=programacion"
                             class="boton-docente"
                             data-asignatura="programacion">
                             Tareas
@@ -208,7 +208,7 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
                         </a>
 
                         <a
-                            href="listado_tareas_profesor.php?asignatura=matematicas"
+                            href="listado_tareas_profesor.php?materia=matematicas"
                             class="boton-docente"
                             data-asignatura="matematicas">
                             Tareas
@@ -273,7 +273,7 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
                         </a>
 
                         <a
-                            href="listado_tareas_profesor.php?asignatura=fisica"
+                            href="listado_tareas_profesor.php?materia=fisica"
                             class="boton-docente"
                             data-asignatura="fisica">
                             Tareas

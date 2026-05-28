@@ -157,7 +157,7 @@ function actualizar_enlaces_tareas_profesor() {
 
   document.getElementById("linkVolverDetalle").href = "detalle_asignatura_profesor.php" + parametro_materia;
   document.getElementById("linkPestanaRecursos").href = "recursos_profesor.php" + parametro_materia;
-  document.getElementById("linkPestanaTareas").href = "listado_tareas_profe.php" + parametro_materia;
+  document.getElementById("linkPestanaTareas").href = "listado_tareas_profesor.php" + parametro_materia;
   document.getElementById("linkPestanaExamenes").href = "examenes_profesor.php" + parametro_materia;
   document.getElementById("linkPestanaCalificaciones").href = "calificaciones_profesor.php" + parametro_materia;
   document.getElementById("linkCrearTarea").href = "crear_tarea.php" + parametro_materia;

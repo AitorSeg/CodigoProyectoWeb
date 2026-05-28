@@ -776,7 +776,7 @@
   }
 }
 
-  @media (max-width: 720px) {
+@media (max-width: 720px) {
   .grupo-filtros {
     width: 100%;
     justify-content: flex-start;
@@ -792,4 +792,3 @@
     min-width: 100%;
   }
 }
-
