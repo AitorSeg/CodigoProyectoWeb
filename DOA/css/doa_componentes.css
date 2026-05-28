@@ -70,8 +70,8 @@
   text-transform: uppercase;
   text-decoration: none;
   transition:
-    background-color 0.15s ease,
-    transform 0.08s ease;
+    background-color 180ms ease,
+    transform 180ms ease;
 }
 
 .boton-entrar-asignatura:hover {
@@ -454,10 +454,10 @@
   text-transform: uppercase;
   text-decoration: none;
   transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    color 0.15s ease,
-    transform 0.08s ease;
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .boton-secundario-panel:hover {
@@ -510,8 +510,8 @@
   font-weight: 700;
   text-decoration: none;
   transition:
-    color 0.15s ease,
-    border-color 0.15s ease;
+    color 180ms ease,
+    border-color 180ms ease;
 }
 
 .pestanas-asignatura__item:hover,

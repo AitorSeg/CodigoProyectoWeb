@@ -230,9 +230,9 @@
   font-size: 14px;
   font-weight: 600;
   transition:
-    background-color 0.15s ease,
-    color 0.15s ease,
-    transform 0.08s ease;
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .navegacion-lateral-doa__item:hover {
@@ -282,7 +282,7 @@
   height: 100%;
   display: block;
   object-fit: contain;
-  transition: opacity 0.15s ease;
+  transition: opacity 180ms ease;
 }
 
 .icono-estado--azul {
@@ -325,9 +325,9 @@
   font-size: 13px;
   font-weight: 500;
   transition:
-    background-color 0.15s ease,
-    color 0.15s ease,
-    transform 0.08s ease;
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .boton-cerrar-sesion:hover {
@@ -357,9 +357,9 @@
   background: var(--color-surface);
   text-decoration: none;
   transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.08s ease;
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
 .boton-cerrar-sesion-movil:hover {

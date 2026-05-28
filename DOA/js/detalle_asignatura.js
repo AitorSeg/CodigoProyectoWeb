@@ -3,8 +3,12 @@
     Carga la asignatura seleccionada y actualiza el contenido principal.
 */
 
-const id_asignatura = window.obtenerAsignaturaSeleccionada() || "programacion";
-const datos_asignatura = window.DOA_ASIGNATURAS[id_asignatura] || window.DOA_ASIGNATURAS.programacion;
+const id_asignatura = window.obtenerAsignaturaSeleccionada();
+const datos_asignatura = window.DOA_ASIGNATURAS[id_asignatura];
+
+window.guardarAsignaturaSeleccionada(id_asignatura);
+
+renderizar_detalle_asignatura(datos_asignatura, id_asignatura);
 
 window.guardarAsignaturaSeleccionada(id_asignatura);
 

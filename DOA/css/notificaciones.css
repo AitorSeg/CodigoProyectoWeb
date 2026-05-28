@@ -52,9 +52,9 @@
     font-weight: 800;
     text-transform: uppercase;
     transition:
-        border-color 0.15s ease,
-        color 0.15s ease,
-        transform 0.08s ease;
+        border-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
 }
 
 .boton-marcar-todas:hover {
@@ -142,9 +142,9 @@
     font-weight: 800;
     text-transform: uppercase;
     transition:
-        color 0.15s ease,
-        border-color 0.15s ease,
-        background-color 0.15s ease;
+        color 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease;
 }
 
 .filtro-notificacion:hover,
@@ -185,8 +185,8 @@
     text-align: left;
     cursor: pointer;
     transition:
-        background-color 0.15s ease,
-        color 0.15s ease;
+        background-color 180ms ease,
+        color 180ms ease;
 }
 
 .notificacion-item:hover,
@@ -329,10 +329,10 @@
     text-transform: uppercase;
     text-decoration: none;
     transition:
-        border-color 0.15s ease,
-        background-color 0.15s ease,
-        color 0.15s ease,
-        transform 0.08s ease;
+        border-color 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
 }
 
 .boton-lectura-notificacion {

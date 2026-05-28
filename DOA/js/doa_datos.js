@@ -73,16 +73,16 @@ window.DOA_ASIGNATURAS = {
     }
 };
 
-window.guardarAsignaturaSeleccionada = function (idAsignatura) {
-    localStorage.setItem("doaAsignaturaSeleccionada", idAsignatura);
+window.guardarAsignaturaSeleccionada = function (id_asignatura) {
+  localStorage.setItem("doaAsignaturaSeleccionada", id_asignatura);
 };
 
 window.obtenerAsignaturaSeleccionada = function () {
-    const idGuardado = localStorage.getItem("doaAsignaturaSeleccionada");
+  const id_guardado = localStorage.getItem("doaAsignaturaSeleccionada");
 
-    if (idGuardado && window.DOA_ASIGNATURAS[idGuardado]) {
-        return idGuardado;
-    }
+  if (id_guardado && window.DOA_ASIGNATURAS[id_guardado]) {
+    return id_guardado;
+  }
 
-    return "matematicas";
+  return "matematicas";
 };

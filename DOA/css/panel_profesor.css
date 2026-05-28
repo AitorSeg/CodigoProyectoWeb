@@ -166,8 +166,8 @@
     border-radius: var(--radius-lg);
     background: var(--color-bg);
     transition:
-        border-color 0.15s ease,
-        background-color 0.15s ease;
+        border-color 180ms ease,
+        background-color 180ms ease;
 }
 
 .tarjeta-asignatura-profesor:hover {
@@ -265,10 +265,10 @@
     text-transform: uppercase;
     text-decoration: none;
     transition:
-        border-color 0.15s ease,
-        background-color 0.15s ease,
-        color 0.15s ease,
-        transform 0.08s ease;
+        border-color 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
 }
 
 .boton-docente:hover {
@@ -336,9 +336,9 @@
     background: var(--color-bg);
     text-decoration: none;
     transition:
-        border-color 0.15s ease,
-        background-color 0.15s ease,
-        transform 0.08s ease;
+        border-color 180ms ease,
+        background-color 180ms ease,
+        transform 180ms ease;
 }
 
 .item-panel-lateral:hover {

@@ -113,7 +113,7 @@
   height: 18px;
   margin-left: auto;
   flex-shrink: 0;
-  transition: transform 0.15s ease;
+  transition: transform 180ms ease;
 }
 
 .dato-asignaturas__flecha img {

@@ -177,7 +177,7 @@
 .badge-enviada {
   border-color: var(--color-primary);
   color: var(--color-primary);
-  background: rgba(0, 229, 255, 0.05);
+  background: 180ms easergba(var(--color-primary-rgb), 0.05);
 }
 
 /* Columnas Derecha (Paneles) */
@@ -280,7 +280,7 @@
 }
 .radio-importancia.neutral input:checked + span {
   border-color: var(--color-primary);
-  background: rgba(0, 229, 255, 0.1);
+  background: 180ms easergba(var(--color-primary-rgb), 0.1);
   color: var(--color-primary);
 }
 .radio-importancia.recordatorio input:checked + span {
