@@ -224,12 +224,6 @@
   font-weight: 700;
 }
 
-.boton-aplicar-filtros {
-  min-height: 34px;
-  padding-inline: var(--space-3);
-  font-size: 11px;
-}
-
 .biblioteca-breadcrumb strong {
   color: var(--color-text);
 }

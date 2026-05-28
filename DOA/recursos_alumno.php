@@ -14,7 +14,8 @@ require_once __DIR__ . "/../config/conexion.php";
 
 // Inicio funciones auxiliares
 
-function construir_url_recursos($id_asignatura, $carpeta, $filtro_tipo, $filtro_etiqueta) {
+function construir_url_recursos($id_asignatura, $carpeta, $filtro_tipo, $filtro_etiqueta)
+{
     return "recursos_alumno.php?" . http_build_query([
         "id_asignatura" => $id_asignatura,
         "carpeta" => $carpeta,
@@ -23,7 +24,8 @@ function construir_url_recursos($id_asignatura, $carpeta, $filtro_tipo, $filtro_
     ]);
 }
 
-function formatear_tamano_recurso($tamano_bytes) {
+function formatear_tamano_recurso($tamano_bytes)
+{
     if ($tamano_bytes === null) {
         return "-";
     }
@@ -35,7 +37,8 @@ function formatear_tamano_recurso($tamano_bytes) {
     return round((int) $tamano_bytes / 1024, 1) . " KB";
 }
 
-function obtener_tipo_recurso_visible($recurso) {
+function obtener_tipo_recurso_visible($recurso)
+{
     if ($recurso["tipo_archivo"] !== null && $recurso["tipo_archivo"] !== "") {
         return strtoupper($recurso["tipo_archivo"]);
     }
@@ -43,7 +46,8 @@ function obtener_tipo_recurso_visible($recurso) {
     return ucfirst($recurso["tipo_recurso"]);
 }
 
-function obtener_clase_etiqueta_recurso($etiqueta) {
+function obtener_clase_etiqueta_recurso($etiqueta)
+{
     return match ($etiqueta) {
         "Unidad actual" => "etiqueta-actual",
         "Práctica", "Importante" => "etiqueta-importante",
@@ -240,6 +244,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Inicio metadatos y estilos -->
 
@@ -492,7 +497,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
                                             </select>
                                         </label>
 
-                                        <button class="btn btn-primary boton-aplicar-filtros" type="submit">
+                                        <button class="btn btn-primary boton-filtro-aplicar" type="submit">
                                             Aplicar
                                         </button>
                                     </form>
@@ -569,4 +574,5 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
 
     <script src="js/recursos_alumno.js"></script>
 </body>
+
 </html>

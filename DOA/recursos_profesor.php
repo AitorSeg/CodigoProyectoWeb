@@ -14,7 +14,8 @@ require_once __DIR__ . "/../config/conexion.php";
 
 // Inicio funciones auxiliares
 
-function construir_url_recursos_profesor($id_asignatura, $carpeta, $filtro_tipo, $filtro_etiqueta) {
+function construir_url_recursos_profesor($id_asignatura, $carpeta, $filtro_tipo, $filtro_etiqueta)
+{
     return "recursos_profesor.php?" . http_build_query([
         "id_asignatura" => $id_asignatura,
         "carpeta" => $carpeta,
@@ -23,7 +24,8 @@ function construir_url_recursos_profesor($id_asignatura, $carpeta, $filtro_tipo,
     ]);
 }
 
-function formatear_tamano_recurso_profesor($tamano_bytes) {
+function formatear_tamano_recurso_profesor($tamano_bytes)
+{
     if ($tamano_bytes === null) {
         return "-";
     }
@@ -35,7 +37,8 @@ function formatear_tamano_recurso_profesor($tamano_bytes) {
     return round((int) $tamano_bytes / 1024, 1) . " KB";
 }
 
-function obtener_tipo_recurso_visible_profesor($recurso) {
+function obtener_tipo_recurso_visible_profesor($recurso)
+{
     if ($recurso["tipo_archivo"] !== null && $recurso["tipo_archivo"] !== "") {
         return strtoupper($recurso["tipo_archivo"]);
     }
@@ -43,7 +46,8 @@ function obtener_tipo_recurso_visible_profesor($recurso) {
     return ucfirst($recurso["tipo_recurso"]);
 }
 
-function obtener_clase_etiqueta_recurso_profesor($etiqueta) {
+function obtener_clase_etiqueta_recurso_profesor($etiqueta)
+{
     return match ($etiqueta) {
         "Unidad actual" => "etiqueta-actual",
         "Práctica", "Importante" => "etiqueta-importante",
@@ -52,7 +56,8 @@ function obtener_clase_etiqueta_recurso_profesor($etiqueta) {
     };
 }
 
-function obtener_tipo_recurso_bd($extension) {
+function obtener_tipo_recurso_bd($extension)
+{
     return match ($extension) {
         "JPG", "JPEG", "PNG", "WEBP" => "imagen",
         "MP4", "WEBM" => "video",
@@ -61,7 +66,8 @@ function obtener_tipo_recurso_bd($extension) {
     };
 }
 
-function limpiar_nombre_archivo($nombre_archivo) {
+function limpiar_nombre_archivo($nombre_archivo)
+{
     $nombre_limpio = strtolower($nombre_archivo);
     $nombre_limpio = preg_replace("/[^a-z0-9._-]/", "-", $nombre_limpio);
 
@@ -366,6 +372,7 @@ $url_calificaciones = "calificaciones_profesor.php?id_asignatura=" . $id_asignat
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Inicio metadatos y estilos -->
 
@@ -676,7 +683,7 @@ $url_calificaciones = "calificaciones_profesor.php?id_asignatura=" . $id_asignat
                                             </select>
                                         </label>
 
-                                        <button class="btn btn-primary boton-aplicar-filtros" type="submit">
+                                        <button class="btn btn-primary boton-filtro-aplicar" type="submit">
                                             Aplicar
                                         </button>
                                     </form>
@@ -746,4 +753,5 @@ $url_calificaciones = "calificaciones_profesor.php?id_asignatura=" . $id_asignat
 
     <script src="js/recursos_profesor.js"></script>
 </body>
+
 </html>

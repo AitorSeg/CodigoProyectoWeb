@@ -686,6 +686,17 @@
   border-color: var(--color-primary);
 }
 
+.boton-filtro-aplicar {
+  min-height: 42px;
+  padding-inline: var(--space-4);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 /*
     Responsive
 */
