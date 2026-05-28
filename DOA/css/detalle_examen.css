@@ -92,6 +92,16 @@
   text-transform: uppercase;
 }
 
+.estado-detalle-examen--realizado {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.estado-detalle-examen--abierto {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
 .estado-detalle-examen--cerrado,
 .estado-detalle-examen--proximo {
   border-color: var(--color-border);
@@ -265,6 +275,107 @@
   margin: 0;
   color: var(--color-muted);
   font-size: 12px;
+  line-height: 1.5;
+}
+
+.revision-respuestas-examen {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.pregunta-revision-examen {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
+}
+
+.pregunta-revision-examen--correcta {
+  border-color: var(--color-success);
+}
+
+.pregunta-revision-examen--incorrecta {
+  border-color: var(--color-error);
+}
+
+.pregunta-revision-examen__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.pregunta-revision-examen__cabecera span {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.etiqueta-revision-respuesta {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.etiqueta-revision-respuesta--correcta {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.etiqueta-revision-respuesta--incorrecta {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.pregunta-revision-examen__enunciado {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.respuestas-revision-examen {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.respuestas-revision-examen p {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+.respuestas-revision-examen span {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.respuestas-revision-examen strong {
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.respuesta-alumno--correcta,
+.respuesta-correcta-revision {
+  color: var(--color-success);
+}
+
+.respuesta-alumno--incorrecta {
+  color: var(--color-error);
+}
+
+.explicacion-revision-examen {
+  margin: var(--space-3) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 14px;
   line-height: 1.5;
 }
 

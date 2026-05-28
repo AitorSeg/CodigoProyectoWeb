@@ -1,4 +1,6 @@
 <?php
+// Inicio configuración de página
+
 $rol_pagina = "alumno";
 $pagina_activa = "panel";
 $enlace_panel = "panel_principal.php";
@@ -8,6 +10,11 @@ require_once __DIR__ . "/includes/proteger_doa.php";
 require_once __DIR__ . "/../config/conexion.php";
 
 $id_alumno = (int) $_SESSION["doa_id_usuario"];
+
+// Fin configuración de página
+
+
+// Inicio funciones auxiliares
 
 function calcular_progreso_panel_demo($indice)
 {
@@ -19,6 +26,11 @@ function calcular_progreso_panel_demo($indice)
 
     return $progresos_demo[$indice % count($progresos_demo)];
 }
+
+// Fin funciones auxiliares
+
+
+// Inicio consulta de asignaturas
 
 $consulta_asignaturas = $pdo->prepare("
     SELECT
@@ -43,11 +55,22 @@ $consulta_asignaturas->execute([
 
 $asignaturas_panel = $consulta_asignaturas->fetchAll();
 
+$id_asignatura_principal = count($asignaturas_panel) > 0
+    ? (int) $asignaturas_panel[0]["id_asignatura"]
+    : 0;
+
+// Fin consulta de asignaturas
+
+
+// Inicio consulta de próxima evaluación
+
 $consulta_proxima_evaluacion = $pdo->prepare("
     SELECT
         ae.id_actividad,
+        ae.id_asignatura,
         ae.titulo,
         ae.fecha_inicio,
+        ae.fecha_limite,
         ae.duracion_minutos,
         a.nombre AS asignatura_nombre
     FROM actividades_evaluables ae
@@ -61,21 +84,43 @@ $consulta_proxima_evaluacion = $pdo->prepare("
     WHERE ae.tipo_actividad = 'examen'
     AND ae.visible = 1
     AND ae.estado = 'publicada'
-    AND ae.fecha_inicio IS NOT NULL
-    AND ae.fecha_inicio >= NOW()
-    ORDER BY ae.fecha_inicio ASC
+    AND (
+        ae.fecha_limite IS NULL
+        OR ae.fecha_limite >= NOW()
+    )
+    AND NOT EXISTS (
+        SELECT 1
+        FROM preguntas_examen p
+        INNER JOIN respuestas_examen re
+            ON re.id_pregunta = p.id_pregunta
+            AND re.id_alumno = :id_alumno_respuestas
+        WHERE p.id_actividad = ae.id_actividad
+    )
+    ORDER BY
+        CASE
+            WHEN ae.fecha_inicio <= NOW() THEN 0
+            ELSE 1
+        END,
+        ae.fecha_inicio ASC
     LIMIT 1
 ");
 
 $consulta_proxima_evaluacion->execute([
-    "id_alumno" => $id_alumno
+    "id_alumno" => $id_alumno,
+    "id_alumno_respuestas" => $id_alumno
 ]);
 
 $proxima_evaluacion = $consulta_proxima_evaluacion->fetch();
 
+// Fin consulta de próxima evaluación
+
+
+// Inicio consulta de tareas pendientes
+
 $consulta_tareas_pendientes = $pdo->prepare("
     SELECT
         ae.id_actividad,
+        ae.id_asignatura,
         ae.titulo,
         ae.fecha_limite,
         a.nombre AS asignatura_nombre
@@ -94,7 +139,13 @@ $consulta_tareas_pendientes = $pdo->prepare("
     AND ae.visible = 1
     AND ae.estado = 'publicada'
     AND e.id_entrega IS NULL
-    ORDER BY ae.fecha_limite ASC
+    ORDER BY
+        CASE
+            WHEN ae.fecha_limite IS NULL THEN 1
+            ELSE 0
+        END,
+        ae.fecha_limite ASC,
+        ae.fecha_creacion DESC
     LIMIT 2
 ");
 
@@ -104,55 +155,85 @@ $consulta_tareas_pendientes->execute([
 ]);
 
 $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
+
+// Fin consulta de tareas pendientes
+
+
+// Inicio enlaces derivados
+
+$url_examenes_panel = $id_asignatura_principal > 0
+    ? "examenes.php?id_asignatura=" . $id_asignatura_principal
+    : "asignaturas.php";
+
+$url_tareas_panel = $id_asignatura_principal > 0
+    ? "listado_tareas.php?id_asignatura=" . $id_asignatura_principal
+    : "asignaturas.php";
+
+// Fin enlaces derivados
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>
-        Panel principal | DOA
-    </title>
-    <!-- Enlaces a hojas de estilo -->
-    <link href="css/doa.css" rel="stylesheet" />
-    <link href="css/doa_layout.css" rel="stylesheet" />
-    <link href="css/doa_componentes.css" rel="stylesheet" />
-    <link href="css/panel_principal.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-    <!-- Fin enlaces a hojas de estilo -->
+    <!-- Inicio metadatos y estilos -->
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Panel principal | DOA</title>
+
+    <link href="css/doa.css" rel="stylesheet">
+    <link href="css/doa_layout.css" rel="stylesheet">
+    <link href="css/doa_componentes.css" rel="stylesheet">
+    <link href="css/panel_principal.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Fin metadatos y estilos -->
 </head>
 
 <body class="pagina-doa pagina-panel-principal">
-    <!-- Header -->
-    <?php include "includes/header-doa.php"; ?>
-    <!-- Inicio del contenido principal -->
+    <!-- Inicio cabecera -->
+
+    <?php require_once __DIR__ . "/includes/header-doa.php"; ?>
+
+    <!-- Fin cabecera -->
+
     <div class="layout-doa">
-        <!-- Barra Lateral -->
-        <?php include "includes/barra-lateral-doa.php"; ?>
-        <!-- Inicio del contenido principal de la página -->
+        <!-- Inicio barra lateral -->
+
+        <?php require_once __DIR__ . "/includes/barra-lateral-doa.php"; ?>
+
+        <!-- Fin barra lateral -->
+
+
+        <!-- Inicio contenido principal -->
+
         <main class="contenido-doa contenido-panel-principal">
             <div class="panel-principal-grid">
-                <!-- Inicio del bloque del panel principal -->
+                <!-- Inicio bloque de asignaturas -->
+
                 <section class="bloque-panel-principal">
                     <div class="cabecera-bloque-panel">
-                        <h1>
-                            Mis asignaturas
-                        </h1>
+                        <h1>Mis asignaturas</h1>
+
                         <a class="cabecera-bloque-panel__enlace" href="asignaturas.php">
                             VER TODAS LAS ASIGNATURAS
                         </a>
                     </div>
+
                     <?php if (count($asignaturas_panel) === 0) { ?>
                         <div class="resumen-asignaturas">
                             <article class="tarjeta-asignatura-resumen tarjeta-asignatura-resumen--activa">
                                 <span class="tarjeta-asignatura-resumen__nombre">
                                     Sin asignaturas
                                 </span>
+
                                 <span aria-hidden="true" class="tarjeta-asignatura-resumen__punto"></span>
+
                                 <span aria-hidden="true" class="tarjeta-asignatura-resumen__barra">
                                     <span class="relleno-progreso--42"></span>
                                 </span>
@@ -163,6 +244,7 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
                             <article class="tarjeta-progreso-asignatura tarjeta-progreso-asignatura--activa">
                                 <div class="tarjeta-progreso-asignatura__cabecera">
                                     <h2>No hay asignaturas asignadas</h2>
+
                                     <a class="boton-entrar-asignatura" href="asignaturas.php">
                                         Ver asignaturas
                                     </a>
@@ -204,6 +286,7 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
                             <?php foreach ($asignaturas_panel as $indice => $asignatura) { ?>
                                 <?php
                                 $progreso_demo = calcular_progreso_panel_demo($indice);
+
                                 $clase_tarjeta = $indice === 0
                                     ? "tarjeta-progreso-asignatura tarjeta-progreso-asignatura--activa"
                                     : "tarjeta-progreso-asignatura tarjeta-progreso-asignatura--secundaria";
@@ -237,9 +320,11 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
 
                                         <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
                                             <span class="progreso-asignatura__badge"></span>
+
                                             <span aria-hidden="true" class="progreso-asignatura__estado">
                                                 <img alt="" src="img/iconos/<?php echo $color_iconos; ?>-check.svg">
                                             </span>
+
                                             <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
                                                 Unidad 01
                                             </a>
@@ -247,9 +332,11 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
 
                                         <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada">
                                             <span class="progreso-asignatura__badge"></span>
+
                                             <span aria-hidden="true" class="progreso-asignatura__estado">
                                                 <img alt="" src="img/iconos/<?php echo $color_iconos; ?>-check.svg">
                                             </span>
+
                                             <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
                                                 Unidad 02
                                             </a>
@@ -259,9 +346,11 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
                                             <span class="progreso-asignatura__badge">
                                                 Actual
                                             </span>
+
                                             <span aria-hidden="true" class="progreso-asignatura__estado">
                                                 <img alt="" src="img/iconos/<?php echo $color_iconos; ?>-play.svg">
                                             </span>
+
                                             <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
                                                 Unidad 03
                                             </a>
@@ -269,9 +358,11 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
 
                                         <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada">
                                             <span class="progreso-asignatura__badge"></span>
+
                                             <span aria-hidden="true" class="progreso-asignatura__estado">
                                                 <img alt="" src="img/iconos/grey-x.svg">
                                             </span>
+
                                             <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
                                                 Unidad 04
                                             </a>
@@ -279,9 +370,11 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
 
                                         <div class="progreso-asignatura__unidad progreso-asignatura__unidad--bloqueada progreso-asignatura__unidad--ocultar-movil">
                                             <span class="progreso-asignatura__badge"></span>
+
                                             <span aria-hidden="true" class="progreso-asignatura__estado">
                                                 <img alt="" src="img/iconos/grey-x.svg">
                                             </span>
+
                                             <a class="progreso-asignatura__nombre" href="detalle_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
                                                 Unidad 05
                                             </a>
@@ -292,7 +385,12 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
                         </div>
                     <?php } ?>
                 </section>
-                <!-- Final del bloque del panel principal -->
+
+                <!-- Fin bloque de asignaturas -->
+
+
+                <!-- Inicio panel lateral -->
+
                 <div class="panel-derecho">
                     <div class="tarjeta-lateral-panel">
                         <p class="tarjeta-lateral-panel__titulo">
@@ -307,7 +405,7 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
                                     Cuando un profesor publique un examen, aparecerá aquí.
                                 </p>
 
-                                <a class="boton-secundario-panel" href="examenes.php">
+                                <a class="boton-secundario-panel" href="<?php echo limpiar_texto_doa($url_examenes_panel); ?>">
                                     Ver exámenes
                                 </a>
                             <?php } else { ?>
@@ -318,6 +416,7 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
                                 <ul class="lista-detalles-panel">
                                     <li>
                                         <img alt="" src="img/iconos/grey-calendar.svg">
+
                                         <span>
                                             <?php echo date("d/m/Y", strtotime($proxima_evaluacion["fecha_inicio"])); ?>
                                         </span>
@@ -325,6 +424,7 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
 
                                     <li>
                                         <img alt="" src="img/iconos/grey-clock.svg">
+
                                         <span>
                                             <?php echo date("H:i", strtotime($proxima_evaluacion["fecha_inicio"])); ?>
                                         </span>
@@ -332,6 +432,7 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
 
                                     <li>
                                         <img alt="" src="img/iconos/grey-notebook.svg">
+
                                         <span>
                                             <?php echo limpiar_texto_doa($proxima_evaluacion["asignatura_nombre"]); ?>
                                         </span>
@@ -344,6 +445,7 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
                             <?php } ?>
                         </div>
                     </div>
+
                     <?php if (count($tareas_pendientes) === 0) { ?>
                         <div class="tarjeta-lateral-panel">
                             <p class="tarjeta-lateral-panel__titulo">
@@ -357,7 +459,7 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
                                     Las tareas publicadas aparecerán aquí.
                                 </p>
 
-                                <a class="boton-secundario-panel" href="listado_tareas.php">
+                                <a class="boton-secundario-panel" href="<?php echo limpiar_texto_doa($url_tareas_panel); ?>">
                                     Ver tareas
                                 </a>
                             </div>
@@ -377,6 +479,7 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
 
                                 <p class="texto-vencimiento">
                                     <?php echo limpiar_texto_doa($tarea["asignatura_nombre"]); ?>
+
                                     <?php if ($tarea["fecha_limite"] !== null) { ?>
                                         <br>
                                         Vence:
@@ -393,14 +496,15 @@ $tareas_pendientes = $consulta_tareas_pendientes->fetchAll();
                         </div>
                     <?php } ?>
                 </div>
+
+                <!-- Fin panel lateral -->
             </div>
         </main>
-        <!-- Final del contenido principal de la página -->
-    </div>
-    <!-- Final del contenido principal -->
 
-    <script src="js/panel_principal.js">
-    </script>
+        <!-- Fin contenido principal -->
+    </div>
+
+    <script src="js/panel_principal.js"></script>
 </body>
 
 </html>
