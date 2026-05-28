@@ -185,6 +185,11 @@
   color: var(--color-muted);
 }
 
+.etiqueta-examen--borrador {
+  border-color: var(--color-border);
+  color: var(--color-muted);
+}
+
 /*
     Listado
 */
