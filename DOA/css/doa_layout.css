@@ -377,6 +377,28 @@
   height: 18px;
 }
 
+.enlace-menu-lateral__texto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.contador-notificaciones-lateral {
+  min-width: 22px;
+  height: 22px;
+  padding-inline: var(--space-2);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  color: var(--color-primary);
+  background: var(--color-surface-alt);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 20px;
+  text-align: center;
+}
+
 @media (max-width: 900px) {
   .cabecera-panel-doa {
     grid-template-columns: auto 1fr;

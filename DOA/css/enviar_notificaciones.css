@@ -255,42 +255,21 @@
 }
 
 /* Radios de Importancia */
-.contenedor-radios-importancia {
-  display: flex;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-}
-.radio-importancia {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.radio-importancia input {
-  display: none;
-}
-.radio-importancia span {
-  padding: 8px 16px;
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-muted);
-  transition: all 0.2s ease;
-}
 .radio-importancia.neutral input:checked + span {
   border-color: var(--color-primary);
-  background: rgba(var(--color-primary-rgb), 0.1);
+  background: var(--color-surface-alt);
   color: var(--color-primary);
 }
+
 .radio-importancia.recordatorio input:checked + span {
-  border-color: #ff8a00;
-  background: rgba(255, 138, 0, 0.1);
-  color: #ff8a00;
+  border-color: var(--color-warning);
+  background: var(--color-surface-alt);
+  color: var(--color-warning);
 }
+
 .radio-importancia.urgente input:checked + span {
   border-color: var(--color-error);
-  background: rgba(255, 64, 85, 0.1);
+  background: var(--color-surface-alt);
   color: var(--color-error);
 }
 
@@ -326,7 +305,7 @@
 
 /* Alerta Éxito */
 .alerta-exito {
-  background: rgba(152, 239, 106, 0.15);
+  background: var(--color-surface-alt);
   border: 1px solid var(--color-success);
   color: var(--color-success);
   padding: 12px;
@@ -334,7 +313,28 @@
   font-size: 13px;
   font-weight: 700;
   text-align: center;
-  margin-top: 16px;
+  margin-bottom: var(--space-4);
+}
+
+.alerta-error {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.acciones-redactar .boton-primario-noti,
+.acciones-redactar .boton-secundario-noti {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  text-align: center;
 }
 
 /* Responsive */

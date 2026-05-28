@@ -35,6 +35,29 @@ $rol_usuario_doa_texto = match ($_SESSION["doa_rol"]) {
     "secretaria" => "Secretaría",
 };
 
+// Inicio contador de notificaciones
+
+$total_notificaciones_no_leidas = 0;
+
+if ($_SESSION["doa_rol"] === "alumno") {
+    require_once __DIR__ . "/../../config/conexion.php";
+
+    $consulta_notificaciones_no_leidas = $pdo->prepare("
+        SELECT COUNT(*) AS total
+        FROM notificaciones
+        WHERE id_usuario_destino = :id_usuario_destino
+        AND leida = 0
+    ");
+
+    $consulta_notificaciones_no_leidas->execute([
+        "id_usuario_destino" => (int) $_SESSION["doa_id_usuario"]
+    ]);
+
+    $total_notificaciones_no_leidas = (int) $consulta_notificaciones_no_leidas->fetch()["total"];
+}
+
+// Fin contador de notificaciones
+
 function limpiar_texto_doa($texto) {
     return htmlspecialchars($texto, ENT_QUOTES, "UTF-8");
 }

@@ -31,12 +31,20 @@
                 <span>Mis Asignaturas</span>
             </a>
 
-            <a class="navegacion-lateral-doa__item <?= $pagina_activa === "notificaciones" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="notificaciones.php">
-                <span class="navegacion-lateral-doa__icono" aria-hidden="true">
-                    <img class="icono-estado icono-estado--gris" src="img/iconos/grey-bell.svg" alt="">
-                    <img class="icono-estado icono-estado--azul" src="img/iconos/blue-bell.svg" alt="">
+            <a class="enlace-menu-lateral <?php echo $pagina_activa === "notificaciones" ? "enlace-menu-lateral--activo" : ""; ?>" href="notificaciones.php">
+                <span class="enlace-menu-lateral__icono">
+                    <img src="img/iconos/grey-bell.svg" alt="">
                 </span>
-                <span>Notificaciones</span>
+
+                <span class="enlace-menu-lateral__texto">
+                    Notificaciones
+
+                    <?php if ($total_notificaciones_no_leidas > 0) { ?>
+                        <strong class="contador-notificaciones-lateral">
+                            <?php echo $total_notificaciones_no_leidas; ?>
+                        </strong>
+                    <?php } ?>
+                </span>
             </a>
         <?php } ?>
 

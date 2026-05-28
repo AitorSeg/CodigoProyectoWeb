@@ -404,6 +404,22 @@
     width: 100%;
 }
 
+.notificacion-item {
+    text-decoration: none;
+}
+
+.boton-lectura-notificacion--desactivado {
+    border-color: var(--color-border);
+    color: var(--color-muted);
+    background: var(--color-surface-alt);
+    cursor: default;
+}
+
+.detalle-notificacion-movil__acciones {
+    display: grid;
+    gap: var(--space-3);
+}
+
 /*
     Responsive
 */
