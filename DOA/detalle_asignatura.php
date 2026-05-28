@@ -1,120 +1,238 @@
 <?php
 $rol_pagina = "alumno";
-$pagina_activa = "panel";
+$pagina_activa = "asignaturas";
 $enlace_panel = "panel_principal.php";
 $placeholder_buscador = "Buscar asignatura...";
 
 require_once __DIR__ . "/includes/proteger_doa.php";
+require_once __DIR__ . "/../config/conexion.php";
+
+if (!isset($_GET["id_asignatura"])) {
+    header("Location: asignaturas.php");
+    exit;
+}
+
+$id_alumno = (int) $_SESSION["doa_id_usuario"];
+$id_asignatura = (int) $_GET["id_asignatura"];
+
+$consulta_asignatura = $pdo->prepare("
+    SELECT
+        a.id_asignatura,
+        a.nombre,
+        a.codigo,
+        a.descripcion,
+        a.curso,
+        a.grupo,
+        GROUP_CONCAT(
+            DISTINCT CONCAT(u_profesor.nombre, ' ', u_profesor.apellidos)
+            SEPARATOR ', '
+        ) AS profesores
+    FROM asignaturas a
+    INNER JOIN usuarios_asignaturas ua_alumno
+        ON ua_alumno.id_asignatura = a.id_asignatura
+        AND ua_alumno.id_usuario = :id_alumno
+        AND ua_alumno.rol_asignatura = 'alumno'
+        AND ua_alumno.estado = 'activa'
+    LEFT JOIN usuarios_asignaturas ua_profesor
+        ON ua_profesor.id_asignatura = a.id_asignatura
+        AND ua_profesor.rol_asignatura = 'profesor'
+        AND ua_profesor.estado = 'activa'
+    LEFT JOIN usuarios u_profesor
+        ON u_profesor.id_usuario = ua_profesor.id_usuario
+    WHERE a.id_asignatura = :id_asignatura
+    AND a.estado = 'activa'
+    GROUP BY
+        a.id_asignatura,
+        a.nombre,
+        a.codigo,
+        a.descripcion,
+        a.curso,
+        a.grupo
+    LIMIT 1
+");
+
+$consulta_asignatura->execute([
+    "id_alumno" => $id_alumno,
+    "id_asignatura" => $id_asignatura
+]);
+
+$asignatura = $consulta_asignatura->fetch();
+
+if (!$asignatura) {
+    header("Location: asignaturas.php");
+    exit;
+}
+
+$consulta_proximo_examen = $pdo->prepare("
+    SELECT
+        id_actividad,
+        titulo,
+        fecha_inicio,
+        duracion_minutos
+    FROM actividades_evaluables
+    WHERE id_asignatura = :id_asignatura
+    AND tipo_actividad = 'examen'
+    AND visible = 1
+    AND estado = 'publicada'
+    AND fecha_inicio IS NOT NULL
+    AND fecha_inicio >= NOW()
+    ORDER BY fecha_inicio ASC
+    LIMIT 1
+");
+
+$consulta_proximo_examen->execute([
+    "id_asignatura" => $id_asignatura
+]);
+
+$proximo_examen = $consulta_proximo_examen->fetch();
+
+$consulta_proxima_tarea = $pdo->prepare("
+    SELECT
+        ae.id_actividad,
+        ae.titulo,
+        ae.fecha_limite
+    FROM actividades_evaluables ae
+    LEFT JOIN entregas e
+        ON e.id_actividad = ae.id_actividad
+        AND e.id_alumno = :id_alumno
+    WHERE ae.id_asignatura = :id_asignatura
+    AND ae.tipo_actividad IN ('tarea', 'practica')
+    AND ae.visible = 1
+    AND ae.estado = 'publicada'
+    AND e.id_entrega IS NULL
+    ORDER BY ae.fecha_limite ASC
+    LIMIT 1
+");
+
+$consulta_proxima_tarea->execute([
+    "id_alumno" => $id_alumno,
+    "id_asignatura" => $id_asignatura
+]);
+
+$proxima_tarea = $consulta_proxima_tarea->fetch();
+
+$profesores = $asignatura["profesores"] !== null ? $asignatura["profesores"] : "Pendiente";
+
+$clases_avance_demo = [
+    "progreso-asignatura--avance-40-33",
+    "progreso-asignatura--avance-40-333"
+];
+
+$clase_avance = $clases_avance_demo[$id_asignatura % count($clases_avance_demo)];
+
+$titulo_unidad_actual = "Unidad 03. Aplicación práctica";
+$descripcion_unidad_actual = $asignatura["descripcion"] !== null && $asignatura["descripcion"] !== ""
+    ? $asignatura["descripcion"]
+    : "Continúa trabajando los contenidos principales de la asignatura mediante recursos, tareas y actividades evaluables.";
+
+$url_recursos = "recursos_alumno.php?id_asignatura=" . $id_asignatura;
+$url_tareas = "listado_tareas.php?id_asignatura=" . $id_asignatura;
+$url_examenes = "examenes.php?id_asignatura=" . $id_asignatura;
+$url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <!-- Inicio: metadatos principales -->
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Detalle de asignatura | DOA</title>
-    <!-- Fin: metadatos principales -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Inicio: hojas de estilo -->
-    <link href="css/doa.css" rel="stylesheet" />
-    <link href="css/doa_layout.css" rel="stylesheet" />
-    <link href="css/doa_componentes.css" rel="stylesheet" />
-    <link href="css/detalle_asignatura.css" rel="stylesheet" />
-    <!-- Fin: hojas de estilo -->
+    <title><?php echo limpiar_texto_doa($asignatura["nombre"]); ?> | DOA</title>
 
-    <!-- Inicio: fuente Inter -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-    <!-- Fin: fuente Inter -->
+    <link href="css/doa.css" rel="stylesheet">
+    <link href="css/doa_layout.css" rel="stylesheet">
+    <link href="css/doa_componentes.css" rel="stylesheet">
+    <link href="css/detalle_asignatura.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body class="pagina-doa pagina-detalle-asignatura">
-    <!-- Inicio: cabecera común DOA -->
-    <?php include "includes/header-doa.php"; ?>
-    <!-- Fin: cabecera común DOA -->
+    <?php require_once __DIR__ . "/includes/header-doa.php"; ?>
 
-    <!-- Inicio: layout principal del detalle de asignatura -->
     <div class="layout-doa">
-        <!-- Inicio: navegación lateral común -->
-        <?php include "includes/barra-lateral-doa.php"; ?>
-        <!-- Fin: navegación lateral común -->
+        <?php require_once __DIR__ . "/includes/barra-lateral-doa.php"; ?>
 
-        <!-- Inicio: contenido principal del detalle de asignatura -->
         <main class="contenido-doa contenido-detalle-asignatura">
             <div class="detalle-asignatura-grid">
-                <!-- Inicio: zona principal del detalle de asignatura -->
                 <section class="detalle-asignatura-principal">
-                    <!-- Inicio: cabecera del detalle de asignatura -->
                     <div class="cabecera-detalle-asignatura">
-                        <!-- Inicio: información de la asignatura -->
                         <div class="cabecera-detalle-asignatura__texto">
                             <a class="enlace-volver-asignaturas" href="asignaturas.php">
                                 <span aria-hidden="true" class="enlace-volver-asignaturas__icono">
-                                    <img alt="" src="img/iconos/grey-chevron-right.svg" />
+                                    <img alt="" src="img/iconos/grey-chevron-right.svg">
                                 </span>
+
                                 <span>Volver a mis asignaturas</span>
                             </a>
 
-                            <h1 id="tituloAsignatura">Cargando...</h1>
+                            <h1><?php echo limpiar_texto_doa($asignatura["nombre"]); ?></h1>
 
                             <ul class="metadatos-asignatura">
                                 <li>
-                                    <img alt="" src="img/iconos/grey-user.svg" />
-                                    <span id="profesorAsignatura">Cargando...</span>
+                                    <img alt="" src="img/iconos/grey-user.svg">
+                                    <span><?php echo limpiar_texto_doa($profesores); ?></span>
                                 </li>
 
                                 <li>
-                                    <img alt="" src="img/iconos/grey-notebook.svg" />
-                                    <span id="unidadActualTextoAsignatura">Unidad actual</span>
+                                    <img alt="" src="img/iconos/grey-notebook.svg">
+                                    <span>
+                                        <?php echo limpiar_texto_doa($asignatura["codigo"]); ?>
+                                        · <?php echo limpiar_texto_doa($asignatura["curso"]); ?>
+                                        · Grupo <?php echo limpiar_texto_doa($asignatura["grupo"]); ?>
+                                    </span>
+                                </li>
+
+                                <li>
+                                    <img alt="" src="img/iconos/grey-play.svg">
+                                    <span>Unidad actual</span>
                                 </li>
                             </ul>
                         </div>
-                        <!-- Fin: información de la asignatura -->
 
-                        <!-- Inicio: pestañas internas de la asignatura -->
                         <div class="cabecera-detalle-asignatura__pestanas">
                             <nav aria-label="Secciones de la asignatura" class="pestanas-asignatura">
-                                <a class="pestanas-asignatura__item" href="recursos_alumno.php" id="linkPestanaRecursos">
+                                <a class="pestanas-asignatura__item" href="<?php echo limpiar_texto_doa($url_recursos); ?>">
                                     Recursos
                                 </a>
 
-                                <a class="pestanas-asignatura__item" href="listado_tareas.php">
+                                <a class="pestanas-asignatura__item" href="<?php echo limpiar_texto_doa($url_tareas); ?>">
                                     Tareas
                                 </a>
 
-                                <a class="pestanas-asignatura__item" href="examenes.php">
+                                <a class="pestanas-asignatura__item" href="<?php echo limpiar_texto_doa($url_examenes); ?>">
                                     Exámenes
                                 </a>
 
-                                <a class="pestanas-asignatura__item" href="calificaciones.php">
+                                <a class="pestanas-asignatura__item" href="<?php echo limpiar_texto_doa($url_calificaciones); ?>">
                                     Calificaciones
                                 </a>
                             </nav>
                         </div>
-                        <!-- Fin: pestañas internas de la asignatura -->
                     </div>
-                    <!-- Fin: cabecera del detalle de asignatura -->
 
-                    <!-- Inicio: ruta de progreso de la asignatura -->
                     <article class="tarjeta-progreso-asignatura tarjeta-progreso-asignatura--activa tarjeta-progreso-asignatura--sin-margen">
                         <div class="tarjeta-progreso-asignatura__cabecera">
                             <h2>Ruta de progreso</h2>
                         </div>
 
-                        <div aria-label="Ruta de progreso de la asignatura" class="progreso-asignatura progreso-asignatura--avance-40-33" id="rutaProgresoAsignatura">
+                        <div
+                            aria-label="Ruta de progreso de la asignatura"
+                            class="progreso-asignatura <?php echo limpiar_texto_doa($clase_avance); ?>">
+
                             <span class="progreso-asignatura__destello" aria-hidden="true"></span>
 
                             <div class="progreso-asignatura__unidad progreso-asignatura__unidad--completada progreso-asignatura__unidad--ocultar-movil">
                                 <span class="progreso-asignatura__badge"></span>
 
                                 <span aria-hidden="true" class="progreso-asignatura__estado">
-                                    <img alt="" src="img/iconos/blue-check.svg" />
+                                    <img alt="" src="img/iconos/blue-check.svg">
                                 </span>
 
-                                <a class="progreso-asignatura__nombre" href="#">
+                                <a class="progreso-asignatura__nombre" href="<?php echo limpiar_texto_doa($url_recursos); ?>">
                                     Unidad 01
                                 </a>
                             </div>
@@ -123,10 +241,10 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 <span class="progreso-asignatura__badge"></span>
 
                                 <span aria-hidden="true" class="progreso-asignatura__estado">
-                                    <img alt="" src="img/iconos/blue-check.svg" />
+                                    <img alt="" src="img/iconos/blue-check.svg">
                                 </span>
 
-                                <a class="progreso-asignatura__nombre" href="#">
+                                <a class="progreso-asignatura__nombre" href="<?php echo limpiar_texto_doa($url_recursos); ?>">
                                     Unidad 02
                                 </a>
                             </div>
@@ -137,10 +255,10 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 </span>
 
                                 <span aria-hidden="true" class="progreso-asignatura__estado">
-                                    <img alt="" src="img/iconos/blue-play.svg" />
+                                    <img alt="" src="img/iconos/blue-play.svg">
                                 </span>
 
-                                <a class="progreso-asignatura__nombre" href="#">
+                                <a class="progreso-asignatura__nombre" href="<?php echo limpiar_texto_doa($url_recursos); ?>">
                                     Unidad 03
                                 </a>
                             </div>
@@ -149,10 +267,10 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 <span class="progreso-asignatura__badge"></span>
 
                                 <span aria-hidden="true" class="progreso-asignatura__estado">
-                                    <img alt="" src="img/iconos/grey-x.svg" />
+                                    <img alt="" src="img/iconos/grey-x.svg">
                                 </span>
 
-                                <a class="progreso-asignatura__nombre" href="#">
+                                <a class="progreso-asignatura__nombre" href="<?php echo limpiar_texto_doa($url_recursos); ?>">
                                     Unidad 04
                                 </a>
                             </div>
@@ -161,38 +279,34 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 <span class="progreso-asignatura__badge"></span>
 
                                 <span aria-hidden="true" class="progreso-asignatura__estado">
-                                    <img alt="" src="img/iconos/grey-x.svg" />
+                                    <img alt="" src="img/iconos/grey-x.svg">
                                 </span>
 
-                                <a class="progreso-asignatura__nombre" href="#">
+                                <a class="progreso-asignatura__nombre" href="<?php echo limpiar_texto_doa($url_recursos); ?>">
                                     Unidad 05
                                 </a>
                             </div>
                         </div>
                     </article>
-                    <!-- Fin: ruta de progreso de la asignatura -->
 
-                    <!-- Inicio: tarjeta de unidad actual -->
                     <article class="tarjeta-unidad-actual">
                         <div class="tarjeta-unidad-actual__contenido">
                             <p class="tarjeta-unidad-actual__etiqueta">
                                 Unidad actual
                             </p>
 
-                            <h2 id="tituloUnidadActual">
-                                Unidad 03. Recursividad
+                            <h2>
+                                <?php echo limpiar_texto_doa($titulo_unidad_actual); ?>
                             </h2>
 
-                            <p id="descripcionUnidadActual">
-                                En esta unidad aprenderás qué es la recursividad y cómo usarla para resolver problemas paso a paso.
-                                Veremos cómo una función puede llamarse a sí misma de forma controlada mediante un caso base
-                                y una llamada recursiva.
+                            <p>
+                                <?php echo limpiar_texto_doa($descripcion_unidad_actual); ?>
                             </p>
 
                             <div class="tarjeta-unidad-actual__bloques">
                                 <article class="bloque-unidad">
                                     <strong>Objetivo</strong>
-                                    <span>Comprender el funcionamiento de una llamada recursiva y su caso base.</span>
+                                    <span>Avanzar en los contenidos principales de la asignatura.</span>
                                 </article>
 
                                 <article class="bloque-unidad">
@@ -202,103 +316,125 @@ require_once __DIR__ . "/includes/proteger_doa.php";
 
                                 <article class="bloque-unidad">
                                     <strong>Siguiente paso</strong>
-                                    <span>Revisar los recursos del tema y completar la próxima tarea.</span>
+                                    <span>Revisar los recursos disponibles y completar las tareas publicadas.</span>
                                 </article>
                             </div>
 
                             <div class="tarjeta-unidad-actual__acciones">
-                                <a class="boton-entrar-asignatura" href="recursos_alumno.php" id="linkBotonRecursos">
+                                <a class="boton-entrar-asignatura" href="<?php echo limpiar_texto_doa($url_recursos); ?>">
                                     Recursos del tema
                                 </a>
 
                                 <div class="tarjeta-unidad-actual__enlaces">
-                                    <a href="#">
-                                        Criterios de evaluación
+                                    <a href="<?php echo limpiar_texto_doa($url_tareas); ?>">
+                                        Tareas
                                     </a>
 
-                                    <a href="#">
-                                        Conocimientos previos
+                                    <a href="<?php echo limpiar_texto_doa($url_calificaciones); ?>">
+                                        Calificaciones
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </article>
-                    <!-- Fin: tarjeta de unidad actual -->
                 </section>
-                <!-- Fin: zona principal del detalle de asignatura -->
 
-                <!-- Inicio: panel lateral derecho de la asignatura -->
                 <aside class="panel-derecho-asignatura">
-                    <!-- Inicio: tarjeta de próxima evaluación -->
                     <div class="tarjeta-lateral-panel">
                         <p class="tarjeta-lateral-panel__titulo">
                             Próxima evaluación
                         </p>
 
                         <div class="tarjeta-lateral-panel__contenido">
-                            <h2 id="tituloEvaluacionAsignatura">
-                                Parcial 1
-                            </h2>
+                            <?php if (!$proximo_examen) { ?>
+                                <h2>No hay exámenes próximos</h2>
 
-                            <ul class="lista-detalles-panel">
-                                <li>
-                                    <img alt="" src="img/iconos/grey-calendar.svg" />
-                                    <span id="fechaEvaluacionAsignatura">15 Oct, 2025</span>
-                                </li>
+                                <p class="texto-vencimiento">
+                                    Cuando se publique un examen de esta asignatura, aparecerá aquí.
+                                </p>
 
-                                <li>
-                                    <img alt="" src="img/iconos/grey-clock.svg" />
-                                    <span id="horaEvaluacionAsignatura">10:00 AM</span>
-                                </li>
+                                <a class="boton-secundario-panel" href="<?php echo limpiar_texto_doa($url_examenes); ?>">
+                                    Ver exámenes
+                                </a>
+                            <?php } else { ?>
+                                <h2>
+                                    <?php echo limpiar_texto_doa($proximo_examen["titulo"]); ?>
+                                </h2>
 
-                                <li>
-                                    <img alt="" src="img/iconos/grey-map-pin.svg" />
-                                    <span id="lugarEvaluacionAsignatura">Edificio G, Aula 6</span>
-                                </li>
-                            </ul>
+                                <ul class="lista-detalles-panel">
+                                    <li>
+                                        <img alt="" src="img/iconos/grey-calendar.svg">
+                                        <span>
+                                            <?php echo date("d/m/Y", strtotime($proximo_examen["fecha_inicio"])); ?>
+                                        </span>
+                                    </li>
 
-                            <a class="boton-secundario-panel" href="#">
-                                Ver detalles
-                            </a>
+                                    <li>
+                                        <img alt="" src="img/iconos/grey-clock.svg">
+                                        <span>
+                                            <?php echo date("H:i", strtotime($proximo_examen["fecha_inicio"])); ?>
+                                        </span>
+                                    </li>
+
+                                    <?php if ($proximo_examen["duracion_minutos"] !== null) { ?>
+                                        <li>
+                                            <img alt="" src="img/iconos/grey-notebook.svg">
+                                            <span>
+                                                <?php echo (int) $proximo_examen["duracion_minutos"]; ?> minutos
+                                            </span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+
+                                <a class="boton-secundario-panel" href="detalle_examen.php?id_actividad=<?php echo (int) $proximo_examen["id_actividad"]; ?>">
+                                    Ver detalles
+                                </a>
+                            <?php } ?>
                         </div>
                     </div>
-                    <!-- Fin: tarjeta de próxima evaluación -->
 
-                    <!-- Inicio: tarjeta de próxima tarea -->
                     <div class="tarjeta-lateral-panel">
                         <p class="tarjeta-lateral-panel__titulo">
                             Próxima tarea
                         </p>
 
                         <div class="tarjeta-lateral-panel__contenido">
-                            <h2 id="tituloTareaAsignatura">
-                                Ejercicio recursividad
-                            </h2>
+                            <?php if (!$proxima_tarea) { ?>
+                                <h2>No hay tareas pendientes</h2>
 
-                            <p class="texto-vencimiento">
-                                Vence en:
-                                <strong id="vencimientoTareaAsignatura">2 días</strong>
-                            </p>
+                                <p class="texto-vencimiento">
+                                    Las tareas publicadas de esta asignatura aparecerán aquí.
+                                </p>
 
-                            <a class="boton-secundario-panel" href="#">
-                                Ir a la tarea
-                            </a>
+                                <a class="boton-secundario-panel" href="<?php echo limpiar_texto_doa($url_tareas); ?>">
+                                    Ver tareas
+                                </a>
+                            <?php } else { ?>
+                                <h2>
+                                    <?php echo limpiar_texto_doa($proxima_tarea["titulo"]); ?>
+                                </h2>
+
+                                <p class="texto-vencimiento">
+                                    <?php if ($proxima_tarea["fecha_limite"] !== null) { ?>
+                                        Vence:
+                                        <strong>
+                                            <?php echo date("d/m/Y", strtotime($proxima_tarea["fecha_limite"])); ?>
+                                        </strong>
+                                    <?php } else { ?>
+                                        Sin fecha límite definida.
+                                    <?php } ?>
+                                </p>
+
+                                <a class="boton-secundario-panel" href="detalle_tarea.php?id_actividad=<?php echo (int) $proxima_tarea["id_actividad"]; ?>">
+                                    Ir a la tarea
+                                </a>
+                            <?php } ?>
                         </div>
                     </div>
-                    <!-- Fin: tarjeta de próxima tarea -->
                 </aside>
-                <!-- Fin: panel lateral derecho de la asignatura -->
             </div>
         </main>
-        <!-- Fin: contenido principal del detalle de asignatura -->
     </div>
-    <!-- Fin: layout principal del detalle de asignatura -->
-
-    <!-- Inicio: scripts -->
-    
-    <script src="js/doa_datos.js"></script>
-    <script src="js/detalle_asignatura.js"></script>
-    <!-- Fin: scripts -->
 </body>
 
 </html>

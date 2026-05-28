@@ -49,9 +49,9 @@
 
 .grid-recursos-tema {
   display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
   gap: var(--space-4);
-  max-width: 560px;
+  max-width: 720px;
 }
 
 .tarjeta-recurso-mini {
@@ -96,6 +96,10 @@
   height: 22px;
 }
 
+.tarjeta-recurso-mini__info {
+  min-width: 0;
+}
+
 .tarjeta-recurso-mini__info h4 {
   margin: 0 0 var(--space-1);
   color: var(--color-text);
@@ -107,6 +111,7 @@
   color: var(--color-muted);
   font-size: 12px;
   font-weight: 600;
+  line-height: 1.35;
 }
 
 /*
@@ -208,6 +213,21 @@
   gap: var(--space-2);
   color: var(--color-muted);
   font-size: 13px;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.biblioteca-tabla-fila .nombre-archivo {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.boton-aplicar-filtros {
+  min-height: 34px;
+  padding-inline: var(--space-3);
+  font-size: 11px;
 }
 
 .biblioteca-breadcrumb strong {
