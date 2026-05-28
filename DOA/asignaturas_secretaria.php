@@ -5,10 +5,73 @@ $enlace_panel = "panel_secretaria.php";
 $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
 
 require_once __DIR__ . "/includes/proteger_doa.php";
+require_once __DIR__ . "/../config/conexion.php";
+
+$consulta_asignaturas = $pdo->query("
+    SELECT
+        a.id_asignatura,
+        a.nombre,
+        a.codigo,
+        a.curso,
+        a.grupo,
+        a.estado,
+        COUNT(DISTINCT ua_alumno.id_usuario) AS total_alumnos,
+        GROUP_CONCAT(
+            DISTINCT CONCAT(u_profesor.nombre, ' ', u_profesor.apellidos)
+            SEPARATOR ', '
+        ) AS profesores
+    FROM asignaturas a
+    LEFT JOIN usuarios_asignaturas ua_alumno
+        ON ua_alumno.id_asignatura = a.id_asignatura
+        AND ua_alumno.rol_asignatura = 'alumno'
+        AND ua_alumno.estado = 'activa'
+    LEFT JOIN usuarios_asignaturas ua_profesor
+        ON ua_profesor.id_asignatura = a.id_asignatura
+        AND ua_profesor.rol_asignatura = 'profesor'
+        AND ua_profesor.estado = 'activa'
+    LEFT JOIN usuarios u_profesor
+        ON u_profesor.id_usuario = ua_profesor.id_usuario
+    GROUP BY
+        a.id_asignatura,
+        a.nombre,
+        a.codigo,
+        a.curso,
+        a.grupo,
+        a.estado
+    ORDER BY a.fecha_creacion DESC
+");
+
+$asignaturas = $consulta_asignaturas->fetchAll();
+
+$total_asignaturas_activas = 0;
+$total_con_profesor = 0;
+$total_sin_profesor = 0;
+$total_alumnos_asignados = 0;
+
+foreach ($asignaturas as $asignatura) {
+    if ($asignatura["estado"] === "activa") {
+        $total_asignaturas_activas++;
+    }
+
+    if ($asignatura["profesores"] !== null) {
+        $total_con_profesor++;
+    } else {
+        $total_sin_profesor++;
+    }
+
+    $total_alumnos_asignados += (int) $asignatura["total_alumnos"];
+}
+
+$mensaje_ok = "";
+
+if (isset($_GET["creada"]) && $_GET["creada"] === "ok") {
+    $mensaje_ok = "Asignatura creada correctamente.";
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -49,25 +112,31 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                 </a>
             </section>
 
+            <?php if ($mensaje_ok !== "") { ?>
+                <p class="mensaje-formulario-secretaria">
+                    <?php echo limpiar_texto_doa($mensaje_ok); ?>
+                </p>
+            <?php } ?>
+
             <section aria-label="Resumen de asignaturas" class="resumen-secretaria">
                 <article class="dato-secretaria dato-secretaria--principal">
                     <span class="dato-secretaria__label">Asignaturas activas</span>
-                    <strong class="dato-secretaria__valor">8</strong>
+                    <strong class="dato-secretaria__valor"><?php echo $total_asignaturas_activas; ?></strong>
                 </article>
 
                 <article class="dato-secretaria">
                     <span class="dato-secretaria__label">Con profesor</span>
-                    <strong class="dato-secretaria__valor">6</strong>
+                    <strong class="dato-secretaria__valor"><?php echo $total_con_profesor; ?></strong>
                 </article>
 
                 <article class="dato-secretaria">
                     <span class="dato-secretaria__label">Sin profesor</span>
-                    <strong class="dato-secretaria__valor">2</strong>
+                    <strong class="dato-secretaria__valor"><?php echo $total_sin_profesor; ?></strong>
                 </article>
 
                 <article class="dato-secretaria">
                     <span class="dato-secretaria__label">Alumnos asignados</span>
-                    <strong class="dato-secretaria__valor">214</strong>
+                    <strong class="dato-secretaria__valor"><?php echo $total_alumnos_asignados; ?></strong>
                 </article>
             </section>
 
@@ -93,123 +162,77 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                         <span>Acciones</span>
                     </div>
 
-                    <article class="tabla-asignaturas-secretaria__fila">
-                        <div class="asignatura-secretaria-nombre">
-                            <strong>Programación II</strong>
-                            <small>Grupo A · Unidad 03</small>
-                        </div>
+                    <?php if (count($asignaturas) === 0) { ?>
+                        <article class="tabla-asignaturas-secretaria__fila">
+                            <div class="asignatura-secretaria-nombre">
+                                <strong>No hay asignaturas creadas</strong>
+                                <small>Crea la primera asignatura desde el botón superior.</small>
+                            </div>
 
-                        <span>GTI-203</span>
-                        <span>2º</span>
-                        <span>Kevan Pounds</span>
-                        <span>32</span>
-
-                        <span>
-                            <span class="estado-secretaria estado-secretaria--completa">
-                                Completa
+                            <span>-</span>
+                            <span>-</span>
+                            <span>-</span>
+                            <span>0</span>
+                            <span>
+                                <span class="estado-secretaria estado-secretaria--pendiente">
+                                    Pendiente
+                                </span>
                             </span>
-                        </span>
+                            <span>-</span>
+                        </article>
+                    <?php } ?>
 
-                        <div class="acciones-fila-secretaria">
-                            <a class="enlace-accion-secretaria" href="asignaciones_secretaria.php">
-                                Asignaciones
-                            </a>
+                    <?php foreach ($asignaturas as $asignatura) { ?>
+                        <?php
+                        $profesores = $asignatura["profesores"] !== null ? $asignatura["profesores"] : "Pendiente";
 
-                            <a class="enlace-accion-secretaria" href="crear_asignatura.php">
-                                Editar
-                            </a>
-                        </div>
-                    </article>
+                        $asignatura_completa = $asignatura["profesores"] !== null && (int) $asignatura["total_alumnos"] > 0;
 
-                    <article class="tabla-asignaturas-secretaria__fila">
-                        <div class="asignatura-secretaria-nombre">
-                            <strong>Matemáticas</strong>
-                            <small>Grupo B · Unidad 03</small>
-                        </div>
+                        $clase_estado = $asignatura_completa
+                            ? "estado-secretaria--completa"
+                            : "estado-secretaria--pendiente";
 
-                        <span>GTI-104</span>
-                        <span>1º</span>
-                        <span>Don Pepito</span>
-                        <span>28</span>
+                        $texto_estado = $asignatura_completa
+                            ? "Completa"
+                            : "Pendiente";
+                        ?>
 
-                        <span>
-                            <span class="estado-secretaria estado-secretaria--completa">
-                                Completa
+                        <article class="tabla-asignaturas-secretaria__fila">
+                            <div class="asignatura-secretaria-nombre">
+                                <strong><?php echo limpiar_texto_doa($asignatura["nombre"]); ?></strong>
+                                <small>
+                                    Grupo <?php echo limpiar_texto_doa($asignatura["grupo"]); ?> ·
+                                    <?php echo limpiar_texto_doa($asignatura["estado"]); ?>
+                                </small>
+                            </div>
+
+                            <span><?php echo limpiar_texto_doa($asignatura["codigo"]); ?></span>
+                            <span><?php echo limpiar_texto_doa($asignatura["curso"]); ?></span>
+                            <span><?php echo limpiar_texto_doa($profesores); ?></span>
+                            <span><?php echo (int) $asignatura["total_alumnos"]; ?></span>
+
+                            <span>
+                                <span class="estado-secretaria <?php echo limpiar_texto_doa($clase_estado); ?>">
+                                    <?php echo limpiar_texto_doa($texto_estado); ?>
+                                </span>
                             </span>
-                        </span>
 
-                        <div class="acciones-fila-secretaria">
-                            <a class="enlace-accion-secretaria" href="asignaciones_secretaria.php">
-                                Asignaciones
-                            </a>
+                            <div class="acciones-fila-secretaria">
+                                <a class="enlace-accion-secretaria" href="asignaciones_secretaria.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
+                                    Asignaciones
+                                </a>
 
-                            <a class="enlace-accion-secretaria" href="crear_asignatura.php">
-                                Editar
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="tabla-asignaturas-secretaria__fila">
-                        <div class="asignatura-secretaria-nombre">
-                            <strong>Física</strong>
-                            <small>Grupo A · Unidad 02</small>
-                        </div>
-
-                        <span>GTI-112</span>
-                        <span>1º</span>
-                        <span>Eolande Merriton</span>
-                        <span>26</span>
-
-                        <span>
-                            <span class="estado-secretaria estado-secretaria--completa">
-                                Completa
-                            </span>
-                        </span>
-
-                        <div class="acciones-fila-secretaria">
-                            <a class="enlace-accion-secretaria" href="asignaciones_secretaria.php">
-                                Asignaciones
-                            </a>
-
-                            <a class="enlace-accion-secretaria" href="crear_asignatura.php">
-                                Editar
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="tabla-asignaturas-secretaria__fila">
-                        <div class="asignatura-secretaria-nombre">
-                            <strong>Diseño de Interfaces</strong>
-                            <small>Grupo C · Sin unidad activa</small>
-                        </div>
-
-                        <span>GTI-221</span>
-                        <span>2º</span>
-                        <span>Pendiente</span>
-                        <span>0</span>
-
-                        <span>
-                            <span class="estado-secretaria estado-secretaria--pendiente">
-                                Pendiente
-                            </span>
-                        </span>
-
-                        <div class="acciones-fila-secretaria">
-                            <a class="enlace-accion-secretaria" href="asignaciones_secretaria.php">
-                                Asignaciones
-                            </a>
-
-                            <a class="enlace-accion-secretaria" href="crear_asignatura.php">
-                                Editar
-                            </a>
-                        </div>
-                    </article>
+                                <a class="enlace-accion-secretaria" href="crear_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
+                                    Editar
+                                </a>
+                            </div>
+                        </article>
+                    <?php } ?>
                 </div>
             </section>
         </main>
     </div>
 
-    <script src="js/doa_datos.js"></script>
-    
 </body>
+
 </html>

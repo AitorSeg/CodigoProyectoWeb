@@ -5,10 +5,92 @@ $enlace_panel = "panel_secretaria.php";
 $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
 
 require_once __DIR__ . "/includes/proteger_doa.php";
+require_once __DIR__ . "/../config/conexion.php";
+
+$errores = [];
+
+$datos_asignatura = [
+    "nombre" => "",
+    "codigo" => "",
+    "curso" => "",
+    "grupo" => "",
+    "descripcion" => "",
+    "estado" => "pendiente"
+];
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $datos_asignatura["nombre"] = trim($_POST["nombre"]);
+    $datos_asignatura["codigo"] = strtoupper(trim($_POST["codigo"]));
+    $datos_asignatura["curso"] = trim($_POST["curso"]);
+    $datos_asignatura["grupo"] = trim($_POST["grupo"]);
+    $datos_asignatura["descripcion"] = trim($_POST["descripcion"]);
+    $datos_asignatura["estado"] = trim($_POST["estado"]);
+
+    if ($datos_asignatura["nombre"] === "") {
+        $errores["nombre"] = "El nombre de la asignatura es obligatorio.";
+    }
+
+    if ($datos_asignatura["codigo"] === "") {
+        $errores["codigo"] = "El código de la asignatura es obligatorio.";
+    }
+
+    if ($datos_asignatura["curso"] === "") {
+        $errores["curso"] = "Selecciona un curso.";
+    }
+
+    if ($datos_asignatura["grupo"] === "") {
+        $errores["grupo"] = "Selecciona un grupo.";
+    }
+
+    if (!in_array($datos_asignatura["estado"], ["pendiente", "activa"], true)) {
+        $errores["estado"] = "El estado seleccionado no es válido.";
+    }
+
+    if (count($errores) === 0) {
+        $consulta_codigo = $pdo->prepare("
+            SELECT COUNT(*) AS total
+            FROM asignaturas
+            WHERE codigo = :codigo
+        ");
+
+        $consulta_codigo->execute([
+            "codigo" => $datos_asignatura["codigo"]
+        ]);
+
+        $codigo_existente = $consulta_codigo->fetch();
+
+        if ((int) $codigo_existente["total"] > 0) {
+            $errores["codigo"] = "Ya existe una asignatura con ese código.";
+        }
+    }
+
+    if (count($errores) === 0) {
+        $insertar_asignatura = $pdo->prepare("
+            INSERT INTO asignaturas
+                (nombre, codigo, descripcion, curso, grupo, estado, id_usuario_creador)
+            VALUES
+                (:nombre, :codigo, :descripcion, :curso, :grupo, :estado, :id_usuario_creador)
+        ");
+
+        $insertar_asignatura->execute([
+            "nombre" => $datos_asignatura["nombre"],
+            "codigo" => $datos_asignatura["codigo"],
+            "descripcion" => $datos_asignatura["descripcion"] !== "" ? $datos_asignatura["descripcion"] : null,
+            "curso" => $datos_asignatura["curso"],
+            "grupo" => $datos_asignatura["grupo"],
+            "estado" => $datos_asignatura["estado"],
+            "id_usuario_creador" => $_SESSION["doa_id_usuario"]
+        ]);
+
+        header("Location: asignaturas_secretaria.php?creada=ok");
+        exit;
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -64,15 +146,24 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                         </div>
                     </div>
 
-                    <form class="formulario-secretaria" id="formCrearAsignatura">
+                    <form class="formulario-secretaria" id="formCrearAsignatura" method="post">
                         <div class="campo-formulario-secretaria">
                             <label class="form-label" for="nombreAsignatura">
                                 Nombre de la asignatura *
                             </label>
 
-                            <input class="input" id="nombreAsignatura" type="text" placeholder="Ej. Diseño de Interfaces">
+                            <input
+                                class="input"
+                                id="nombreAsignatura"
+                                name="nombre"
+                                type="text"
+                                placeholder="Ej. Diseño de Interfaces"
+                                value="<?php echo limpiar_texto_doa($datos_asignatura["nombre"]); ?>"
+                                required>
 
-                            <p class="mensaje-error-campo" id="errorNombreAsignatura"></p>
+                            <p class="mensaje-error-campo" id="errorNombreAsignatura">
+                                <?php echo isset($errores["nombre"]) ? limpiar_texto_doa($errores["nombre"]) : ""; ?>
+                            </p>
                         </div>
 
                         <div class="campo-formulario-secretaria">
@@ -80,9 +171,18 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 Código *
                             </label>
 
-                            <input class="input" id="codigoAsignatura" type="text" placeholder="Ej. GTI-221">
+                            <input
+                                class="input"
+                                id="codigoAsignatura"
+                                name="codigo"
+                                type="text"
+                                placeholder="Ej. GTI-221"
+                                value="<?php echo limpiar_texto_doa($datos_asignatura["codigo"]); ?>"
+                                required>
 
-                            <p class="mensaje-error-campo" id="errorCodigoAsignatura"></p>
+                            <p class="mensaje-error-campo" id="errorCodigoAsignatura">
+                                <?php echo isset($errores["codigo"]) ? limpiar_texto_doa($errores["codigo"]) : ""; ?>
+                            </p>
                         </div>
 
                         <div class="campo-formulario-secretaria">
@@ -90,15 +190,17 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 Curso *
                             </label>
 
-                            <select class="input" id="cursoAsignatura">
+                            <select class="input" id="cursoAsignatura" name="curso" required>
                                 <option value="">Selecciona curso</option>
-                                <option value="1º">1º</option>
-                                <option value="2º">2º</option>
-                                <option value="3º">3º</option>
-                                <option value="4º">4º</option>
+                                <option value="1º" <?php echo $datos_asignatura["curso"] === "1º" ? "selected" : ""; ?>>1º</option>
+                                <option value="2º" <?php echo $datos_asignatura["curso"] === "2º" ? "selected" : ""; ?>>2º</option>
+                                <option value="3º" <?php echo $datos_asignatura["curso"] === "3º" ? "selected" : ""; ?>>3º</option>
+                                <option value="4º" <?php echo $datos_asignatura["curso"] === "4º" ? "selected" : ""; ?>>4º</option>
                             </select>
 
-                            <p class="mensaje-error-campo" id="errorCursoAsignatura"></p>
+                            <p class="mensaje-error-campo" id="errorCursoAsignatura">
+                                <?php echo isset($errores["curso"]) ? limpiar_texto_doa($errores["curso"]) : ""; ?>
+                            </p>
                         </div>
 
                         <div class="campo-formulario-secretaria">
@@ -106,14 +208,16 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 Grupo *
                             </label>
 
-                            <select class="input" id="grupoAsignatura">
+                            <select class="input" id="grupoAsignatura" name="grupo" required>
                                 <option value="">Selecciona grupo</option>
-                                <option value="A">Grupo A</option>
-                                <option value="B">Grupo B</option>
-                                <option value="C">Grupo C</option>
+                                <option value="A" <?php echo $datos_asignatura["grupo"] === "A" ? "selected" : ""; ?>>Grupo A</option>
+                                <option value="B" <?php echo $datos_asignatura["grupo"] === "B" ? "selected" : ""; ?>>Grupo B</option>
+                                <option value="C" <?php echo $datos_asignatura["grupo"] === "C" ? "selected" : ""; ?>>Grupo C</option>
                             </select>
 
-                            <p class="mensaje-error-campo" id="errorGrupoAsignatura"></p>
+                            <p class="mensaje-error-campo" id="errorGrupoAsignatura">
+                                <?php echo isset($errores["grupo"]) ? limpiar_texto_doa($errores["grupo"]) : ""; ?>
+                            </p>
                         </div>
 
                         <div class="campo-formulario-secretaria campo-formulario-secretaria--completo">
@@ -121,7 +225,12 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 Descripción
                             </label>
 
-                            <textarea class="input textarea-secretaria" id="descripcionAsignatura" placeholder="Descripción breve de la asignatura..."></textarea>
+                            <textarea
+                                class="input textarea-secretaria"
+                                id="descripcionAsignatura"
+                                name="descripcion"
+                                placeholder="Descripción breve de la asignatura..."><?php echo limpiar_texto_doa($datos_asignatura["descripcion"]); ?>
+                            </textarea>
                         </div>
 
                         <div class="campo-formulario-secretaria campo-formulario-secretaria--completo">
@@ -129,15 +238,15 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                                 Estado inicial
                             </label>
 
-                            <select class="input" id="estadoAsignatura">
-                                <option value="pendiente">Pendiente de asignaciones</option>
-                                <option value="activa">Activa</option>
+                            <select class="input" id="estadoAsignatura" name="estado">
+                                <option value="pendiente" <?php echo $datos_asignatura["estado"] === "pendiente" ? "selected" : ""; ?>>
+                                    Pendiente de asignaciones
+                                </option>
+                                <option value="activa" <?php echo $datos_asignatura["estado"] === "activa" ? "selected" : ""; ?>>
+                                    Activa
+                                </option>
                             </select>
                         </div>
-
-                        <p class="mensaje-formulario-secretaria mensaje-formulario-secretaria--oculto" id="mensajeFormularioAsignatura">
-                            Asignatura creada correctamente en modo demo.
-                        </p>
 
                         <div class="acciones-formulario-secretaria">
                             <a class="boton-secretaria" href="asignaturas_secretaria.php">
@@ -177,16 +286,13 @@ require_once __DIR__ . "/includes/proteger_doa.php";
                         <h3>Estado demo</h3>
 
                         <p class="texto-lateral-secretaria">
-                            En esta versión PMV, el alta se simula en el navegador. Más adelante estos datos se guardarían en la base de datos.
+                            En esta versión PMV, las asignaturas creadas se guardan en la base de datos local y quedan disponibles para su posterior asignación.
                         </p>
                     </article>
                 </aside>
             </div>
         </main>
     </div>
-
-    <script src="js/doa_datos.js"></script>
-    
-    <script src="js/crear_asignatura.js"></script>
 </body>
+
 </html>
