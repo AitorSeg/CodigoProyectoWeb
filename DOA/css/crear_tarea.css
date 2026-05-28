@@ -272,6 +272,20 @@
   display: none;
 }
 
+.mensaje-tarea-guardada--error {
+  border-color: var(--color-error);
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--color-error);
+}
+
+.mensaje-tarea-guardada--error p {
+  margin: 0;
+}
+
+.mensaje-tarea-guardada--error p + p {
+  margin-top: var(--space-1);
+}
+
 @media (max-width: 900px) {
   .crear-tarea-grid {
     grid-template-columns: 1fr;
