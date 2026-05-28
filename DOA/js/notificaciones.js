@@ -1,380 +1,318 @@
-/*
-    Pantalla: Notificaciones
-*/
+let notificaciones = cargar_notificaciones_demo();
+let filtro_activo = "todas";
+let notificacion_seleccionada = null;
 
-let notificaciones = [];
-let filtroActivo = "todas";
-let notificacionSeleccionada = null;
+preparar_filtros_notificaciones();
+preparar_acciones_notificaciones();
+seleccionar_notificacion(notificaciones[0].id);
 
-notificaciones = cargarNotificacionesDemo();
+function cargar_notificaciones_demo() {
+  const estado_lectura = obtener_estado_lectura_guardado();
 
-prepararFiltrosNotificaciones();
-prepararAccionesNotificaciones();
-renderizarResumenNotificaciones();
-renderizarListadoNotificaciones();
+  return [
+    {
+      id: "notificacion_tarea_derivadas",
+      tipo: "tarea",
+      tipo_texto: "Tarea",
+      titulo: "Nueva tarea disponible",
+      resumen: "Se ha publicado la tarea de derivadas en Matemáticas.",
+      contenido: "Ya está disponible la tarea de derivadas de la Unidad 03. Revisa el enunciado, entrega la actividad antes de la fecha indicada y consulta los recursos del tema si necesitas repasar.",
+      remitente: "Don Pepito",
+      fecha: "Hoy",
+      asignatura: "matematicas",
+      accion_texto: "Ver tareas",
+      accion_href: "listado_tareas.php",
+      leida: estado_lectura.notificacion_tarea_derivadas === true
+    },
 
-if (notificaciones.length > 0) {
-    seleccionarNotificacion(notificaciones[0].id);
-}
+    {
+      id: "notificacion_examen_programacion",
+      tipo: "aviso",
+      tipo_texto: "Aviso",
+      titulo: "Recordatorio de examen",
+      resumen: "El examen de Programación II estará disponible próximamente.",
+      contenido: "Recuerda que el examen de la Unidad 03 de Programación II estará disponible durante el periodo indicado en la sección de exámenes. Comprueba la duración antes de empezar.",
+      remitente: "Profesorado de Programación",
+      fecha: "Ayer",
+      asignatura: "programacion",
+      accion_texto: "Ver exámenes",
+      accion_href: "examenes.php",
+      leida: estado_lectura.notificacion_examen_programacion === true
+    },
 
-function cargarNotificacionesDemo() {
-    const estadoLectura = obtenerEstadoLecturaGuardado();
+    {
+      id: "notificacion_centro_mantenimiento",
+      tipo: "aviso",
+      tipo_texto: "Centro",
+      titulo: "Mantenimiento programado",
+      resumen: "El centro realizará tareas de mantenimiento fuera del horario lectivo.",
+      contenido: "Se informa al alumnado de que se realizarán tareas de mantenimiento en los sistemas del centro. Durante ese periodo podrían producirse interrupciones puntuales en algunos servicios.",
+      remitente: "Secretaría del centro",
+      fecha: "Lun",
+      accion_texto: "",
+      accion_href: "",
+      leida: estado_lectura.notificacion_centro_mantenimiento === true
+    },
 
-    return [
-        {
-            id: "notificacion_tarea_derivadas",
-            tipo: "tarea",
-            tipoTexto: "Tarea",
-            titulo: "Nueva tarea disponible",
-            resumen: "Se ha publicado la tarea de derivadas en Matemáticas.",
-            contenido: "Ya está disponible la tarea de derivadas de la Unidad 03. Revisa el enunciado, entrega la actividad antes de la fecha indicada y consulta los recursos del tema si necesitas repasar.",
-            remitente: "Don Pepito",
-            fecha: "Hoy",
-            asignatura: "matematicas",
-            accionTexto: "Ver tareas",
-            accionHref: "listado_tareas.php",
-            leida: estadoLectura.notificacion_tarea_derivadas === true ? true : false
-        },
-        {
-            id: "notificacion_examen_programacion",
-            tipo: "aviso",
-            tipoTexto: "Aviso",
-            titulo: "Recordatorio de examen",
-            resumen: "El examen de Programación II estará disponible próximamente.",
-            contenido: "Recuerda que el examen de la Unidad 03 de Programación II estará disponible durante el periodo indicado en la sección de exámenes. Comprueba la duración antes de empezar.",
-            remitente: "Profesorado de Programación",
-            fecha: "Ayer",
-            asignatura: "programacion",
-            accionTexto: "Ver exámenes",
-            accionHref: "examenes.php",
-            leida: estadoLectura.notificacion_examen_programacion === true ? true : false
-        },
-        {
-            id: "notificacion_centro_mantenimiento",
-            tipo: "aviso",
-            tipoTexto: "Centro",
-            titulo: "Mantenimiento programado",
-            resumen: "El centro realizará tareas de mantenimiento fuera del horario lectivo.",
-            contenido: "Se informa al alumnado de que se realizarán tareas de mantenimiento en los sistemas del centro. Durante ese periodo podrían producirse interrupciones puntuales en algunos servicios.",
-            remitente: "Secretaría del centro",
-            fecha: "Lun",
-            accionTexto: "",
-            accionHref: "",
-            leida: estadoLectura.notificacion_centro_mantenimiento === true ? true : false
-        },
-        {
-            id: "notificacion_recurso_fisica",
-            tipo: "recurso",
-            tipoTexto: "Recurso",
-            titulo: "Nuevo recurso de Física",
-            resumen: "Se ha añadido una guía de repaso a la biblioteca de Física.",
-            contenido: "La asignatura de Física tiene disponible un nuevo recurso de repaso relacionado con la unidad actual. Puedes consultarlo desde la sección de recursos de la asignatura.",
-            remitente: "Eolande Merriton Mizzi",
-            fecha: "Vie",
-            asignatura: "fisica",
-            accionTexto: "Ver recursos",
-            accionHref: "recursos_alumno.php",
-            leida: estadoLectura.notificacion_recurso_fisica === true ? true : false
-        },
-        {
-            id: "notificacion_calificacion",
-            tipo: "aviso",
-            tipoTexto: "Calificación",
-            titulo: "Nueva calificación publicada",
-            resumen: "Se ha publicado una nueva nota en Matemáticas.",
-            contenido: "Tu profesor ha publicado una nueva calificación asociada a una actividad de Matemáticas. Puedes revisarla desde la sección de calificaciones de la asignatura.",
-            remitente: "Don Pepito",
-            fecha: "Jue",
-            asignatura: "matematicas",
-            accionTexto: "Ver calificaciones",
-            accionHref: "calificaciones.php",
-            leida: estadoLectura.notificacion_calificacion === true ? true : false
-        }
-    ];
-}
+    {
+      id: "notificacion_recurso_fisica",
+      tipo: "recurso",
+      tipo_texto: "Recurso",
+      titulo: "Nuevo recurso de Física",
+      resumen: "Se ha añadido una guía de repaso a la biblioteca de Física.",
+      contenido: "La asignatura de Física tiene disponible un nuevo recurso de repaso relacionado con la unidad actual. Puedes consultarlo desde la sección de recursos de la asignatura.",
+      remitente: "Eolande Merriton Mizzi",
+      fecha: "Vie",
+      asignatura: "fisica",
+      accion_texto: "Ver recursos",
+      accion_href: "recursos_alumno.php",
+      leida: estado_lectura.notificacion_recurso_fisica === true
+    },
 
-function obtenerEstadoLecturaGuardado() {
-    const datos = localStorage.getItem("doaEstadoLecturaNotificaciones");
-
-    if (datos === null) {
-        return {};
+    {
+      id: "notificacion_calificacion",
+      tipo: "aviso",
+      tipo_texto: "Calificación",
+      titulo: "Nueva calificación publicada",
+      resumen: "Se ha publicado una nueva nota en Matemáticas.",
+      contenido: "Tu profesor ha publicado una nueva calificación asociada a una actividad de Matemáticas. Puedes revisarla desde la sección de calificaciones de la asignatura.",
+      remitente: "Don Pepito",
+      fecha: "Jue",
+      asignatura: "matematicas",
+      accion_texto: "Ver calificaciones",
+      accion_href: "calificaciones.php",
+      leida: estado_lectura.notificacion_calificacion === true
     }
-
-    try {
-        return JSON.parse(datos);
-    } catch (error) {
-        return {};
-    }
+  ];
 }
 
-function guardarEstadoLectura() {
-    const estadoLectura = {};
+function obtener_estado_lectura_guardado() {
+  const datos = localStorage.getItem("doaEstadoLecturaNotificaciones");
 
-    notificaciones.forEach(function (notificacion) {
-        estadoLectura[notificacion.id] = notificacion.leida;
+  return datos === null ? {} : JSON.parse(datos);
+}
+
+function guardar_estado_lectura() {
+  const estado_lectura = {};
+
+  notificaciones.forEach(function (notificacion) {
+    estado_lectura[notificacion.id] = notificacion.leida;
+  });
+
+  localStorage.setItem("doaEstadoLecturaNotificaciones", JSON.stringify(estado_lectura));
+}
+
+function preparar_filtros_notificaciones() {
+  const filtros = document.querySelectorAll(".filtro-notificacion");
+
+  filtros.forEach(function (filtro) {
+    filtro.addEventListener("click", function () {
+      filtro_activo = filtro.dataset.filtro;
+
+      filtros.forEach(function (boton) {
+        boton.classList.toggle("filtro-notificacion--activo", boton === filtro);
+      });
+
+      renderizar_listado_notificaciones();
     });
-
-    localStorage.setItem("doaEstadoLecturaNotificaciones", JSON.stringify(estadoLectura));
+  });
 }
 
-function prepararFiltrosNotificaciones() {
-    const filtros = document.querySelectorAll(".filtro-notificacion");
+function preparar_acciones_notificaciones() {
+  document.getElementById("botonLecturaNotificacion").addEventListener("click", cambiar_estado_lectura_notificacion_seleccionada);
+  document.getElementById("botonMarcarTodas").addEventListener("click", marcar_todas_como_leidas);
 
-    filtros.forEach(function (filtro) {
-        filtro.addEventListener("click", function () {
-            filtroActivo = filtro.dataset.filtro || "todas";
+  document.getElementById("botonAccionNotificacion").addEventListener("click", function () {
+    guardar_asignatura_de_notificacion(notificacion_seleccionada);
+  });
+}
 
-            filtros.forEach(function (boton) {
-                boton.classList.toggle("filtro-notificacion--activo", boton === filtro);
-            });
+function renderizar_resumen_notificaciones() {
+  const no_leidas = notificaciones.filter(function (notificacion) {
+    return !notificacion.leida;
+  }).length;
 
-            renderizarListadoNotificaciones();
-        });
+  const tareas = notificaciones.filter(function (notificacion) {
+    return notificacion.tipo === "tarea";
+  }).length;
+
+  const avisos = notificaciones.filter(function (notificacion) {
+    return notificacion.tipo === "aviso";
+  }).length;
+
+  document.getElementById("totalNoLeidas").textContent = no_leidas;
+  document.getElementById("totalTareas").textContent = tareas;
+  document.getElementById("totalAvisos").textContent = avisos;
+}
+
+function renderizar_listado_notificaciones() {
+  const contenedor = document.getElementById("listaNotificaciones");
+  const notificaciones_filtradas = obtener_notificaciones_filtradas();
+
+  contenedor.innerHTML = "";
+
+  if (notificaciones_filtradas.length === 0) {
+    contenedor.innerHTML = '<p class="mensaje-sin-notificaciones">No hay notificaciones con este filtro.</p>';
+    return;
+  }
+
+  notificaciones_filtradas.forEach(function (notificacion) {
+    contenedor.appendChild(crear_bloque_notificacion(notificacion));
+  });
+}
+
+function crear_bloque_notificacion(notificacion) {
+  const bloque = document.createElement("article");
+  const item = document.createElement("button");
+
+  bloque.className = "bloque-notificacion";
+  item.type = "button";
+  item.className = "notificacion-item";
+
+  if (!notificacion.leida) {
+    item.classList.add("notificacion-item--no-leida");
+  }
+
+  if (notificacion_seleccionada !== null && notificacion_seleccionada.id === notificacion.id) {
+    item.classList.add("notificacion-item--activa");
+    bloque.classList.add("bloque-notificacion--activa");
+  }
+
+  item.innerHTML = `
+    <div>
+      <p class="notificacion-item__titulo">${notificacion.titulo}</p>
+    </div>
+
+    <span class="notificacion-item__fecha">${notificacion.fecha}</span>
+    <p class="notificacion-item__resumen">${notificacion.resumen}</p>
+    <span class="notificacion-item__tipo">${notificacion.tipo_texto}</span>
+  `;
+
+  item.addEventListener("click", function () {
+    seleccionar_notificacion(notificacion.id);
+  });
+
+  bloque.appendChild(item);
+
+  if (notificacion_seleccionada !== null && notificacion_seleccionada.id === notificacion.id) {
+    bloque.appendChild(crear_detalle_movil_notificacion(notificacion));
+  }
+
+  return bloque;
+}
+
+function crear_detalle_movil_notificacion(notificacion) {
+  const detalle = document.createElement("div");
+  const boton_accion = notificacion.accion_href === ""
+    ? ""
+    : '<a href="' + crear_url_accion_notificacion(notificacion) + '" class="boton-accion-notificacion boton-accion-notificacion-movil">' + notificacion.accion_texto + '</a>';
+
+  detalle.className = "detalle-notificacion-movil";
+  detalle.innerHTML = `
+    <div class="detalle-notificacion-movil__cabecera">
+      <span class="etiqueta-notificacion">${notificacion.tipo_texto}</span>
+      <p>${notificacion.remitente} · ${notificacion.fecha}</p>
+    </div>
+
+    <p class="detalle-notificacion-movil__texto">${notificacion.contenido}</p>
+
+    <div class="detalle-notificacion-movil__acciones">
+      ${boton_accion}
+    </div>
+  `;
+
+  const enlace_movil = detalle.querySelector(".boton-accion-notificacion-movil");
+
+  if (enlace_movil !== null) {
+    enlace_movil.addEventListener("click", function () {
+      guardar_asignatura_de_notificacion(notificacion);
     });
+  }
+
+  return detalle;
 }
 
-function prepararAccionesNotificaciones() {
-    const botonLectura = document.getElementById("botonLecturaNotificacion");
-    const botonMarcarTodas = document.getElementById("botonMarcarTodas");
-    const botonAccion = document.getElementById("botonAccionNotificacion");
-
-    if (botonLectura !== null) {
-        botonLectura.addEventListener("click", function () {
-            cambiarEstadoLecturaNotificacionSeleccionada();
-        });
+function obtener_notificaciones_filtradas() {
+  return notificaciones.filter(function (notificacion) {
+    if (filtro_activo === "todas") {
+      return true;
     }
 
-    if (botonMarcarTodas !== null) {
-        botonMarcarTodas.addEventListener("click", function () {
-            marcarTodasComoLeidas();
-        });
+    if (filtro_activo === "no-leidas") {
+      return !notificacion.leida;
     }
 
-    if (botonAccion !== null) {
-        botonAccion.addEventListener("click", function () {
-            guardarAsignaturaDeNotificacion(notificacionSeleccionada);
-        });
-    }
+    return notificacion.tipo === filtro_activo;
+  });
 }
 
-function renderizarResumenNotificaciones() {
-    const noLeidas = notificaciones.filter(function (notificacion) {
-        return !notificacion.leida;
-    }).length;
+function seleccionar_notificacion(id_notificacion) {
+  const notificacion = notificaciones.find(function (item) {
+    return item.id === id_notificacion;
+  });
 
-    const tareas = notificaciones.filter(function (notificacion) {
-        return notificacion.tipo === "tarea";
-    }).length;
+  notificacion_seleccionada = notificacion;
 
-    const avisos = notificaciones.filter(function (notificacion) {
-        return notificacion.tipo === "aviso";
-    }).length;
+  if (!notificacion.leida) {
+    notificacion.leida = true;
+    guardar_estado_lectura();
+  }
 
-    ponerTexto("totalNoLeidas", noLeidas);
-    ponerTexto("totalTareas", tareas);
-    ponerTexto("totalAvisos", avisos);
+  cargar_detalle_notificacion(notificacion);
+  renderizar_resumen_notificaciones();
+  renderizar_listado_notificaciones();
 }
 
-function renderizarListadoNotificaciones() {
-    const contenedor = document.getElementById("listaNotificaciones");
+function cargar_detalle_notificacion(notificacion) {
+  const boton_accion = document.getElementById("botonAccionNotificacion");
 
-    if (contenedor === null) {
-        return;
-    }
+  document.getElementById("detalleTipoNotificacion").textContent = notificacion.tipo_texto;
+  document.getElementById("detalleTituloNotificacion").textContent = notificacion.titulo;
+  document.getElementById("detalleMetaNotificacion").textContent = notificacion.remitente + " · " + notificacion.fecha;
+  document.getElementById("detalleTextoNotificacion").textContent = notificacion.contenido;
+  document.getElementById("botonLecturaNotificacion").textContent = notificacion.leida ? "Marcar como no leída" : "Marcar como leída";
 
-    const filtradas = obtenerNotificacionesFiltradas();
+  if (notificacion.accion_href !== "") {
+    boton_accion.classList.remove("hidden");
+    boton_accion.href = crear_url_accion_notificacion(notificacion);
+    boton_accion.textContent = notificacion.accion_texto;
+    return;
+  }
 
-    contenedor.innerHTML = "";
-
-    if (filtradas.length === 0) {
-        const mensaje = document.createElement("p");
-
-        mensaje.className = "mensaje-sin-notificaciones";
-        mensaje.textContent = "No hay notificaciones con este filtro.";
-
-        contenedor.appendChild(mensaje);
-        return;
-    }
-
-    filtradas.forEach(function (notificacion) {
-        const bloque = document.createElement("article");
-        const item = document.createElement("button");
-
-        bloque.className = "bloque-notificacion";
-
-        item.type = "button";
-        item.className = "notificacion-item";
-
-        if (!notificacion.leida) {
-            item.classList.add("notificacion-item--no-leida");
-        }
-
-        if (notificacionSeleccionada !== null && notificacionSeleccionada.id === notificacion.id) {
-            item.classList.add("notificacion-item--activa");
-            bloque.classList.add("bloque-notificacion--activa");
-        }
-
-        item.innerHTML =
-            '<div>' +
-                '<p class="notificacion-item__titulo">' + notificacion.titulo + '</p>' +
-            '</div>' +
-            '<span class="notificacion-item__fecha">' + notificacion.fecha + '</span>' +
-            '<p class="notificacion-item__resumen">' + notificacion.resumen + '</p>' +
-            '<span class="notificacion-item__tipo">' + notificacion.tipoTexto + '</span>';
-
-        item.addEventListener("click", function () {
-            seleccionarNotificacion(notificacion.id);
-        });
-
-        bloque.appendChild(item);
-
-        if (notificacionSeleccionada !== null && notificacionSeleccionada.id === notificacion.id) {
-            const detalleMovil = document.createElement("div");
-
-            detalleMovil.className = "detalle-notificacion-movil";
-            detalleMovil.innerHTML = crearDetalleMovilNotificacion(notificacion);
-
-            const enlaceMovil = detalleMovil.querySelector(".boton-accion-notificacion-movil");
-
-            if (enlaceMovil !== null) {
-                enlaceMovil.addEventListener("click", function () {
-                    guardarAsignaturaDeNotificacion(notificacion);
-                });
-            }
-
-            bloque.appendChild(detalleMovil);
-        }
-
-        contenedor.appendChild(bloque);
-    });
+  boton_accion.classList.add("hidden");
+  boton_accion.removeAttribute("href");
 }
 
-function crearDetalleMovilNotificacion(notificacion) {
-    let botonAccion = "";
+function cambiar_estado_lectura_notificacion_seleccionada() {
+  notificacion_seleccionada.leida = !notificacion_seleccionada.leida;
 
-    if (notificacion.accionHref !== "") {
-        botonAccion =
-            '<a href="' + notificacion.accionHref + '" class="boton-accion-notificacion boton-accion-notificacion-movil">' +
-                notificacion.accionTexto +
-            '</a>';
-    }
-
-    return (
-        '<div class="detalle-notificacion-movil__cabecera">' +
-            '<span class="etiqueta-notificacion">' + notificacion.tipoTexto + '</span>' +
-            '<p>' + notificacion.remitente + " · " + notificacion.fecha + '</p>' +
-        '</div>' +
-        '<p class="detalle-notificacion-movil__texto">' + notificacion.contenido + '</p>' +
-        '<div class="detalle-notificacion-movil__acciones">' +
-            botonAccion +
-        '</div>'
-    );
+  guardar_estado_lectura();
+  renderizar_resumen_notificaciones();
+  renderizar_listado_notificaciones();
+  cargar_detalle_notificacion(notificacion_seleccionada);
 }
 
-function obtenerNotificacionesFiltradas() {
-    return notificaciones.filter(function (notificacion) {
-        if (filtroActivo === "todas") {
-            return true;
-        }
+function marcar_todas_como_leidas() {
+  notificaciones.forEach(function (notificacion) {
+    notificacion.leida = true;
+  });
 
-        if (filtroActivo === "no-leidas") {
-            return !notificacion.leida;
-        }
-
-        return notificacion.tipo === filtroActivo;
-    });
+  guardar_estado_lectura();
+  renderizar_resumen_notificaciones();
+  renderizar_listado_notificaciones();
+  cargar_detalle_notificacion(notificacion_seleccionada);
 }
 
-function seleccionarNotificacion(idNotificacion) {
-    const notificacion = notificaciones.find(function (item) {
-        return item.id === idNotificacion;
-    });
-
-    if (notificacion === undefined) {
-        return;
-    }
-
-    notificacionSeleccionada = notificacion;
-
-    if (!notificacion.leida) {
-        notificacion.leida = true;
-        guardarEstadoLectura();
-    }
-
-    cargarDetalleNotificacion(notificacion);
-    renderizarResumenNotificaciones();
-    renderizarListadoNotificaciones();
+function guardar_asignatura_de_notificacion(notificacion) {
+  if (notificacion.asignatura !== undefined) {
+    window.guardarAsignaturaSeleccionada(notificacion.asignatura);
+  }
 }
 
-function cargarDetalleNotificacion(notificacion) {
-    ponerTexto("detalleTipoNotificacion", notificacion.tipoTexto);
-    ponerTexto("detalleTituloNotificacion", notificacion.titulo);
-    ponerTexto("detalleMetaNotificacion", notificacion.remitente + " · " + notificacion.fecha);
-    ponerTexto("detalleTextoNotificacion", notificacion.contenido);
+function crear_url_accion_notificacion(notificacion) {
+  if (notificacion.asignatura === undefined) {
+    return notificacion.accion_href;
+  }
 
-    const botonLectura = document.getElementById("botonLecturaNotificacion");
-    const botonAccion = document.getElementById("botonAccionNotificacion");
-
-    if (botonLectura !== null) {
-        botonLectura.textContent = notificacion.leida ? "Marcar como no leída" : "Marcar como leída";
-    }
-
-    if (botonAccion !== null) {
-        if (notificacion.accionHref !== "") {
-            botonAccion.classList.remove("hidden");
-            botonAccion.href = notificacion.accionHref;
-            botonAccion.textContent = notificacion.accionTexto;
-        } else {
-            botonAccion.classList.add("hidden");
-            botonAccion.removeAttribute("href");
-        }
-    }
-}
-
-function cambiarEstadoLecturaNotificacionSeleccionada() {
-    if (notificacionSeleccionada === null) {
-        return;
-    }
-
-    notificacionSeleccionada.leida = !notificacionSeleccionada.leida;
-
-    guardarEstadoLectura();
-    renderizarResumenNotificaciones();
-    renderizarListadoNotificaciones();
-    cargarDetalleNotificacion(notificacionSeleccionada);
-}
-
-function marcarTodasComoLeidas() {
-    notificaciones.forEach(function (notificacion) {
-        notificacion.leida = true;
-    });
-
-    guardarEstadoLectura();
-    renderizarResumenNotificaciones();
-    renderizarListadoNotificaciones();
-
-    if (notificacionSeleccionada !== null) {
-        cargarDetalleNotificacion(notificacionSeleccionada);
-    }
-}
-
-function guardarAsignaturaDeNotificacion(notificacion) {
-    if (notificacion === null || !notificacion.asignatura) {
-        return;
-    }
-
-    if (typeof window.guardarAsignaturaSeleccionada === "function") {
-        window.guardarAsignaturaSeleccionada(notificacion.asignatura);
-        return;
-    }
-
-    localStorage.setItem("doaAsignaturaSeleccionada", notificacion.asignatura);
-}
-
-function ponerTexto(idElemento, texto) {
-    const elemento = document.getElementById(idElemento);
-
-    if (elemento !== null) {
-        elemento.textContent = texto;
-    }
+  return notificacion.accion_href + "?materia=" + notificacion.asignatura;
 }

@@ -14,8 +14,8 @@ $placeholder_buscador = "Buscar examen...";
     <title>Crear examen | DOA</title>
 
     <link href="css/doa.css" rel="stylesheet">
-    <link href="css/doa-layout.css" rel="stylesheet">
-    <link href="css/doa-componentes.css" rel="stylesheet">
+    <link href="css/doa_layout.css" rel="stylesheet">
+    <link href="css/doa_componentes.css" rel="stylesheet">
     <link href="css/detalle_asignatura.css" rel="stylesheet">
     <link href="css/crear_examen.css" rel="stylesheet">
 
@@ -197,7 +197,7 @@ $placeholder_buscador = "Buscar examen...";
     </div>
 
     <script src="js/doa_layout.js"></script>
-    <script src="js/doa-datos.js"></script>
+    <script src="js/doa_datos.js"></script>
     <script src="js/crear_examen.js"></script>
 </body>
 </html>

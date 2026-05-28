@@ -15,8 +15,8 @@ $placeholder_buscador = "Buscar tarea...";
     </title>
     <!-- Enlaces a hojas de estilo -->
     <link href="css/doa.css" rel="stylesheet" />
-    <link href="css/doa-layout.css" rel="stylesheet" />
-    <link href="css/doa-componentes.css" rel="stylesheet" />
+    <link href="css/doa_layout.css" rel="stylesheet" />
+    <link href="css/doa_componentes.css" rel="stylesheet" />
     <link href="css/detalle_asignatura.css" rel="stylesheet" />
     <link href="css/listado_tareas.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -171,7 +171,7 @@ $placeholder_buscador = "Buscar tarea...";
     <!-- Final del contenido principal -->
     <script src="js/doa_layout.js">
     </script>
-    <script src="js/doa-datos.js">
+    <script src="js/doa_datos.js">
     </script>
     <script src="js/listado_tareas.js">
     </script>

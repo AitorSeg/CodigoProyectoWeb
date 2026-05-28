@@ -141,20 +141,6 @@ function actualizar_progreso_examen() {
   document.getElementById("barraProgresoExamen").style.width = porcentaje + "%";
 }
 
-const porcentaje =
-  totalPreguntas === 0 ? 0 : (respondidas / totalPreguntas) * 100;
-
-ponerTexto(
-  "contadorPreguntasRespondidas",
-  respondidas + " de " + totalPreguntas + " respondidas",
-);
-
-const barra = document.getElementById("barraProgresoExamen");
-
-if (barra !== null) {
-  barra.style.width = porcentaje + "%";
-}
-
 function corregir_examen() {
   let correctas = 0;
 

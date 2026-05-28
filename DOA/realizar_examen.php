@@ -16,8 +16,8 @@ $placeholder_buscador = "Buscar examen...";
     </title>
     <!-- Enlaces a hojas de estilo -->
     <link href="css/doa.css" rel="stylesheet" />
-    <link href="css/doa-layout.css" rel="stylesheet" />
-    <link href="css/doa-componentes.css" rel="stylesheet" />
+    <link href="css/doa_layout.css" rel="stylesheet" />
+    <link href="css/doa_componentes.css" rel="stylesheet" />
     <link href="css/detalle_asignatura.css" rel="stylesheet" />
     <link href="css/realizar_examen.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -169,9 +169,9 @@ $placeholder_buscador = "Buscar examen...";
     <!-- Final del contenido principal -->
     <script src="js/doa_layout.js">
     </script>
-    <script src="js/doa-datos.js">
+    <script src="js/doa_datos.js">
     </script>
-    <script src="js/doa-examenes-datos.js">
+    <script src="js/doa_examenes_datos.js">
     </script>
     <script src="js/realizar_examen.js">
     </script>

@@ -13,10 +13,10 @@ $placeholder_buscador = "Buscar recursos...";
     <title>Recursos Alumno | DOA</title>
 
     <link rel="stylesheet" href="css/doa.css">
-    <link rel="stylesheet" href="css/doa-layout.css">
-    <link rel="stylesheet" href="css/doa-componentes.css">
+    <link rel="stylesheet" href="css/doa_layout.css">
+    <link rel="stylesheet" href="css/doa_componentes.css">
     <link rel="stylesheet" href="css/detalle_asignatura.css">
-    <link rel="stylesheet" href="css/recursos-alumno.css">
+    <link rel="stylesheet" href="css/recursos_alumno.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,7 +206,7 @@ $placeholder_buscador = "Buscar recursos...";
         </main>
     </div>
 
-    <script src="js/doa-datos.js"></script>
+    <script src="js/doa_datos.js"></script>
     <script src="js/doa_layout.js"></script>
     <script src="js/recursos_alumno.js"></script>
 </body>

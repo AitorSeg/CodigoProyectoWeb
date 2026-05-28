@@ -15,8 +15,8 @@ $placeholder_buscador = "Buscar recurso, tarea...";
     <title>Detalle de asignatura | DOA</title>
 
     <link href="css/doa.css" rel="stylesheet">
-    <link href="css/doa-layout.css" rel="stylesheet">
-    <link href="css/doa-componentes.css" rel="stylesheet">
+    <link href="css/doa_layout.css" rel="stylesheet">
+    <link href="css/doa_componentes.css" rel="stylesheet">
     <link href="css/detalle_asignatura.css" rel="stylesheet">
     <link href="css/detalle_asignatura_profesor.css" rel="stylesheet">
 
@@ -245,7 +245,7 @@ $placeholder_buscador = "Buscar recurso, tarea...";
     </div>
 
     <script src="js/doa_layout.js"></script>
-    <script src="js/doa-datos.js"></script>
+    <script src="js/doa_datos.js"></script>
     <script src="js/detalle_asignatura_profesor.js"></script>
 </body>
 

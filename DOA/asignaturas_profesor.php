@@ -16,8 +16,8 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
     </title>
     <!-- Enlaces a hojas de estilo -->
     <link href="css/doa.css" rel="stylesheet" />
-    <link href="css/doa-layout.css" rel="stylesheet" />
-    <link href="css/doa-componentes.css" rel="stylesheet" />
+    <link href="css/doa_layout.css" rel="stylesheet" />
+    <link href="css/doa_componentes.css" rel="stylesheet" />
     <link href="css/asignaturas_profesor.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />

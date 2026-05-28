@@ -14,9 +14,9 @@ $placeholder_buscador = "Buscar asignatura, tarea...";
     <title>Enviar notificación | DOA</title>
 
     <link rel="stylesheet" href="css/doa.css">
-    <link rel="stylesheet" href="css/doa-layout.css">
-    <link rel="stylesheet" href="css/doa-componentes.css">
-    <link rel="stylesheet" href="css/enviar-notificaciones.css">
+    <link rel="stylesheet" href="css/doa_layout.css">
+    <link rel="stylesheet" href="css/doa_componentes.css">
+    <link rel="stylesheet" href="css/enviar_notificaciones.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

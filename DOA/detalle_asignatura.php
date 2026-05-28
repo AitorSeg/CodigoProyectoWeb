@@ -17,8 +17,8 @@ $placeholder_buscador = "Buscar recurso, tarea...";
 
     <!-- Inicio: hojas de estilo -->
     <link href="css/doa.css" rel="stylesheet" />
-    <link href="css/doa-layout.css" rel="stylesheet" />
-    <link href="css/doa-componentes.css" rel="stylesheet" />
+    <link href="css/doa_layout.css" rel="stylesheet" />
+    <link href="css/doa_componentes.css" rel="stylesheet" />
     <link href="css/detalle_asignatura.css" rel="stylesheet" />
     <!-- Fin: hojas de estilo -->
 
@@ -205,7 +205,7 @@ $placeholder_buscador = "Buscar recurso, tarea...";
                             </div>
 
                             <div class="tarjeta-unidad-actual__acciones">
-                                <a class="boton-entrar-asignatura" href="recursos_alumno.php">
+                                <a class="boton-entrar-asignatura" href="recursos_alumno.php" id="linkBotonRecursos">
                                     Recursos del tema
                                 </a>
 
@@ -294,7 +294,7 @@ $placeholder_buscador = "Buscar recurso, tarea...";
 
     <!-- Inicio: scripts -->
     <script src="js/doa_layout.js"></script>
-    <script src="js/doa-datos.js"></script>
+    <script src="js/doa_datos.js"></script>
     <script src="js/detalle_asignatura.js"></script>
     <!-- Fin: scripts -->
 </body>

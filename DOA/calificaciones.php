@@ -15,8 +15,8 @@ $placeholder_buscador = "Buscar calificación...";
     </title>
     <!-- Enlaces a hojas de estilo -->
     <link href="css/doa.css" rel="stylesheet" />
-    <link href="css/doa-layout.css" rel="stylesheet" />
-    <link href="css/doa-componentes.css" rel="stylesheet" />
+    <link href="css/doa_layout.css" rel="stylesheet" />
+    <link href="css/doa_componentes.css" rel="stylesheet" />
     <link href="css/detalle_asignatura.css" rel="stylesheet" />
     <link href="css/calificaciones.css" rel="stylesheet" />
 
@@ -209,7 +209,7 @@ $placeholder_buscador = "Buscar calificación...";
     <!-- Final del contenido principal -->
     <script src="js/doa_layout.js">
     </script>
-    <script src="js/doa-datos.js">
+    <script src="js/doa_datos.js">
     </script>
     <script src="js/calificaciones.js">
     </script>

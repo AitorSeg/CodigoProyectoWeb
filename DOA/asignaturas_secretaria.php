@@ -14,8 +14,8 @@ $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
     <title>Asignaturas | Secretaría DOA</title>
 
     <link href="css/doa.css" rel="stylesheet">
-    <link href="css/doa-layout.css" rel="stylesheet">
-    <link href="css/doa-componentes.css" rel="stylesheet">
+    <link href="css/doa_layout.css" rel="stylesheet">
+    <link href="css/doa_componentes.css" rel="stylesheet">
     <link href="css/secretaria.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -207,7 +207,7 @@ $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
         </main>
     </div>
 
-    <script src="js/doa-datos.js"></script>
+    <script src="js/doa_datos.js"></script>
     <script src="js/doa_layout.js"></script>
 </body>
 </html>
