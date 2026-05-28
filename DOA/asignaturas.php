@@ -88,6 +88,7 @@ $consulta_proxima_evaluacion = $pdo->prepare("
         ae.id_actividad,
         ae.titulo,
         ae.fecha_inicio,
+        ae.fecha_limite,
         a.nombre AS asignatura_nombre
     FROM actividades_evaluables ae
     INNER JOIN usuarios_asignaturas ua_alumno
@@ -100,14 +101,30 @@ $consulta_proxima_evaluacion = $pdo->prepare("
     WHERE ae.tipo_actividad = 'examen'
     AND ae.visible = 1
     AND ae.estado = 'publicada'
-    AND ae.fecha_inicio IS NOT NULL
-    AND ae.fecha_inicio >= NOW()
-    ORDER BY ae.fecha_inicio ASC
+    AND (
+        ae.fecha_limite IS NULL
+        OR ae.fecha_limite >= NOW()
+    )
+    AND NOT EXISTS (
+        SELECT 1
+        FROM preguntas_examen p
+        INNER JOIN respuestas_examen re
+            ON re.id_pregunta = p.id_pregunta
+            AND re.id_alumno = :id_alumno_respuestas
+        WHERE p.id_actividad = ae.id_actividad
+    )
+    ORDER BY
+        CASE
+            WHEN ae.fecha_inicio <= NOW() THEN 0
+            ELSE 1
+        END,
+        ae.fecha_inicio ASC
     LIMIT 1
 ");
 
 $consulta_proxima_evaluacion->execute([
-    "id_alumno" => $id_alumno
+    "id_alumno" => $id_alumno,
+    "id_alumno_respuestas" => $id_alumno
 ]);
 
 $proxima_evaluacion = $consulta_proxima_evaluacion->fetch();

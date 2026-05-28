@@ -71,11 +71,6 @@
   min-width: 118px;
 }
 
-.pagina-listado-tareas-profe .tabla-tareas__cabecera,
-.pagina-listado-tareas-profe .fila-tarea {
-  grid-template-columns: minmax(220px, 1fr) 150px 150px 110px 100px 120px;
-}
-
 .boton-editar-tarea {
   min-width: 112px;
   min-height: 34px;
@@ -318,19 +313,6 @@
     Alineación específica de columnas en listado profesor
 */
 
-.pagina-listado-tareas-profe .tabla-tareas__cabecera p,
-.pagina-listado-tareas-profe .fila-tarea > p,
-.pagina-listado-tareas-profe .boton-editar-tarea {
-  justify-self: center;
-  text-align: center;
-}
-
-.pagina-listado-tareas-profe .tabla-tareas__cabecera p:first-child,
-.pagina-listado-tareas-profe .fila-tarea__nombre {
-  justify-self: start;
-  text-align: left;
-}
-
 .mensaje-tabla-vacia {
   margin: 0;
   padding: var(--space-5);
@@ -356,12 +338,6 @@
   .fila-tarea {
     min-width: 820px;
   }
-
-  .pagina-listado-tareas-profe .tabla-tareas__cabecera,
-  .pagina-listado-tareas-profe .fila-tarea {
-    min-width: 900px;
-  }
-}
 
 @media (max-width: 900px) {
   /*
@@ -470,16 +446,5 @@
   .fila-tarea p {
     font-size: 14px;
   }
-
-  .pagina-listado-tareas-profe .tabla-tareas__cabecera,
-  .pagina-listado-tareas-profe .fila-tarea {
-    grid-template-columns: 210px 125px 125px 100px 80px 110px;
-    min-width: 780px;
-  }
-
-  .pagina-listado-tareas-profe .boton-editar-tarea {
-    min-width: 104px;
-    min-height: 32px;
-    font-size: 10px;
-  }
+}
 }

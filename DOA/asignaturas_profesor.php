@@ -81,7 +81,8 @@ $consulta_resumen = $pdo->prepare("
         ON e.id_actividad = ae_entrega.id_actividad
         AND e.estado IN ('entregada', 'tardia')
     LEFT JOIN calificaciones c
-        ON c.id_entrega = e.id_entrega
+        ON c.id_actividad = e.id_actividad
+        AND c.id_alumno = e.id_alumno
     LEFT JOIN actividades_evaluables ae_examen
         ON ae_examen.id_asignatura = a.id_asignatura
         AND ae_examen.id_profesor = :id_profesor_examenes
@@ -159,7 +160,8 @@ $consulta_asignaturas = $pdo->prepare("
         ON e.id_actividad = ae_tarea.id_actividad
         AND e.estado IN ('entregada', 'tardia')
     LEFT JOIN calificaciones c
-        ON c.id_entrega = e.id_entrega
+        ON c.id_actividad = e.id_actividad
+        AND c.id_alumno = e.id_alumno
     LEFT JOIN recursos r
         ON r.id_asignatura = a.id_asignatura
         AND r.id_profesor = :id_profesor_recursos
@@ -206,6 +208,7 @@ $asignaturas_profesor = $consulta_asignaturas->fetchAll();
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Inicio metadatos y estilos -->
 
@@ -397,4 +400,5 @@ $asignaturas_profesor = $consulta_asignaturas->fetchAll();
         <!-- Fin contenido principal -->
     </div>
 </body>
+
 </html>

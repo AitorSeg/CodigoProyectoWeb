@@ -84,85 +84,6 @@
   gap: var(--space-4);
 }
 
-.cabecera-recursos-tarea {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-4);
-  margin-bottom: var(--space-4);
-}
-
-.cabecera-recursos-tarea p {
-  max-width: 620px;
-  margin: 0;
-  color: var(--color-muted);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.input-recursos-tarea {
-  display: none;
-}
-
-.boton-anadir-recurso-tarea {
-  min-height: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 var(--space-4);
-  border: 1px solid rgba(168, 183, 200, 0.55);
-  border-radius: var(--radius-md);
-  background: transparent;
-  color: var(--color-text);
-  font-size: 12px;
-  font-weight: 800;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition:
-    border-color 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease;
-}
-
-.boton-anadir-recurso-tarea:hover {
-  border-color: var(--color-primary);
-  background: rgba(var(--color-primary-rgb), 0.06);
-  color: var(--color-primary);
-}
-
-.lista-recursos-tarea {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin: 0;
-  padding: var(--space-4);
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-bg);
-  list-style: none;
-}
-
-.lista-recursos-tarea li {
-  min-height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  color: var(--color-text);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.lista-recursos-tarea button {
-  border: 0;
-  background: transparent;
-  color: var(--color-error);
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
 .item-sin-recursos {
   justify-content: center;
   color: var(--color-muted);
@@ -299,13 +220,5 @@
   .formulario-doble-tarea {
     grid-template-columns: 1fr;
     gap: 0;
-  }
-
-  .cabecera-recursos-tarea {
-    flex-direction: column;
-  }
-
-  .boton-anadir-recurso-tarea {
-    width: 100%;
   }
 }

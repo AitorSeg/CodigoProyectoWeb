@@ -203,6 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $guardar_calificacion = $pdo->prepare("
                 UPDATE calificaciones
                 SET
+                    id_entrega = :id_entrega,
                     nota = :nota,
                     comentario_profesor = :comentario_profesor,
                     fecha_calificacion = CURRENT_TIMESTAMP
@@ -210,6 +211,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ");
 
             $guardar_calificacion->execute([
+                "id_entrega" => $id_entrega,
                 "nota" => $nota_formulario,
                 "comentario_profesor" => $comentario_formulario !== "" ? $comentario_formulario : null,
                 "id_calificacion" => $entrega["id_calificacion"]
@@ -221,6 +223,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         id_actividad,
                         id_alumno,
                         id_profesor,
+                        id_entrega,
                         nota,
                         comentario_profesor
                     )
@@ -229,6 +232,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         :id_actividad,
                         :id_alumno,
                         :id_profesor,
+                        :id_entrega,
                         :nota,
                         :comentario_profesor
                     )
@@ -238,10 +242,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 "id_actividad" => $id_actividad,
                 "id_alumno" => $id_alumno,
                 "id_profesor" => $id_profesor,
+                "id_entrega" => $id_entrega,
                 "nota" => $nota_formulario,
                 "comentario_profesor" => $comentario_formulario !== "" ? $comentario_formulario : null
             ]);
         }
+
+        $actualizar_estado_entrega = $pdo->prepare("
+            UPDATE entregas
+            SET estado = 'calificada'
+            WHERE id_entrega = :id_entrega
+        ");
+
+        $actualizar_estado_entrega->execute([
+            "id_entrega" => $id_entrega
+        ]);
 
         header("Location: detalle_tarea_entregada.php?id_entrega=" . $id_entrega . "&calificada=ok");
         exit;

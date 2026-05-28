@@ -2,8 +2,8 @@
     Pantalla: Panel principal del alumno
 */
 
-const tarjetas_resumen = document.querySelectorAll(".tarjeta-asignatura-resumen");
-const tarjetas_progreso = Array.from(document.querySelectorAll(".tarjeta-progreso-asignatura"));
+const tarjetas_resumen = document.querySelectorAll(".tarjeta-asignatura-resumen[data-asignatura]");
+const tarjetas_progreso = Array.from(document.querySelectorAll(".tarjeta-progreso-asignatura[data-asignatura]"));
 const lista_progresos = document.getElementById("listaProgresosAsignaturas");
 
 tarjetas_resumen.forEach(function (tarjeta) {

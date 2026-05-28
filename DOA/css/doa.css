@@ -40,6 +40,7 @@
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+  --radius-pill: 999px;
 
   --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.28);
 }

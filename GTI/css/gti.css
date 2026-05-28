@@ -191,12 +191,12 @@ nav a {
 .license-icon {
     width: 34px;
     height: 34px;
-    border: 4px solid var(--blue);
+    border: 4px solid var(--azul);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--blue);
+    color: var(--azul);
     font-size: 18px;
     font-weight: 700;
 }

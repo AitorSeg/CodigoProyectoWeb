@@ -65,23 +65,40 @@ if (!$asignatura) {
 
 $consulta_proximo_examen = $pdo->prepare("
     SELECT
-        id_actividad,
-        titulo,
-        fecha_inicio,
-        duracion_minutos
-    FROM actividades_evaluables
-    WHERE id_asignatura = :id_asignatura
-    AND tipo_actividad = 'examen'
-    AND visible = 1
-    AND estado = 'publicada'
-    AND fecha_inicio IS NOT NULL
-    AND fecha_inicio >= NOW()
-    ORDER BY fecha_inicio ASC
+        ae.id_actividad,
+        ae.titulo,
+        ae.fecha_inicio,
+        ae.fecha_limite,
+        ae.duracion_minutos
+    FROM actividades_evaluables ae
+    WHERE ae.id_asignatura = :id_asignatura
+    AND ae.tipo_actividad = 'examen'
+    AND ae.visible = 1
+    AND ae.estado = 'publicada'
+    AND (
+        ae.fecha_limite IS NULL
+        OR ae.fecha_limite >= NOW()
+    )
+    AND NOT EXISTS (
+        SELECT 1
+        FROM preguntas_examen p
+        INNER JOIN respuestas_examen re
+            ON re.id_pregunta = p.id_pregunta
+            AND re.id_alumno = :id_alumno
+        WHERE p.id_actividad = ae.id_actividad
+    )
+    ORDER BY
+        CASE
+            WHEN ae.fecha_inicio <= NOW() THEN 0
+            ELSE 1
+        END,
+        ae.fecha_inicio ASC
     LIMIT 1
 ");
 
 $consulta_proximo_examen->execute([
-    "id_asignatura" => $id_asignatura
+    "id_asignatura" => $id_asignatura,
+    "id_alumno" => $id_alumno
 ]);
 
 $proximo_examen = $consulta_proximo_examen->fetch();

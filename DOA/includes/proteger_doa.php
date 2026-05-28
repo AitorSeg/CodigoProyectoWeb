@@ -59,5 +59,5 @@ if ($_SESSION["doa_rol"] === "alumno") {
 // Fin contador de notificaciones
 
 function limpiar_texto_doa($texto) {
-    return htmlspecialchars($texto, ENT_QUOTES, "UTF-8");
+    return htmlspecialchars((string) $texto, ENT_QUOTES, "UTF-8");
 }

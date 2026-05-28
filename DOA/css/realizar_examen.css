@@ -25,8 +25,7 @@
 
 .tarjeta-instrucciones-examen,
 .pregunta-examen,
-.tarjeta-estado-examen,
-.tarjeta-resultado-examen {
+.tarjeta-estado-examen {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     background: var(--color-surface);
@@ -244,8 +243,7 @@
 }
 
 .boton-entregar-examen,
-.boton-secundario-examen,
-.boton-volver-resultado {
+.boton-secundario-examen {
     min-height: 42px;
     display: inline-flex;
     align-items: center;
@@ -285,8 +283,7 @@
 }
 
 .boton-entregar-examen:active,
-.boton-secundario-examen:active,
-.boton-volver-resultado:active {
+.boton-secundario-examen:active {
     transform: translateY(1px);
 }
 
@@ -308,13 +305,11 @@
     gap: var(--space-4);
 }
 
-.tarjeta-estado-examen,
-.tarjeta-resultado-examen {
+.tarjeta-estado-examen {
     padding: var(--space-4);
 }
 
-.tarjeta-estado-examen__titulo,
-.tarjeta-resultado-examen__titulo {
+.tarjeta-estado-examen__titulo {
     margin: 0 0 var(--space-3);
     color: var(--color-text);
     font-size: 14px;
@@ -375,33 +370,6 @@
     color: var(--color-text);
 }
 
-.tarjeta-resultado-examen strong {
-    display: block;
-    margin-bottom: var(--space-2);
-    color: var(--color-primary);
-    font-size: 28px;
-    font-weight: 800;
-}
-
-.tarjeta-resultado-examen span {
-    display: block;
-    margin-bottom: var(--space-4);
-    color: var(--color-muted);
-    font-size: 13px;
-}
-
-.boton-volver-resultado {
-    width: 100%;
-    border: 1px solid var(--color-primary);
-    background: var(--color-primary);
-    color: var(--color-dark);
-}
-
-.boton-volver-resultado:hover {
-    background: var(--color-primary-hover);
-    color: var(--color-dark);
-}
-
 /*
     Responsive
 */
@@ -426,8 +394,7 @@
 
     .tarjeta-instrucciones-examen,
     .pregunta-examen,
-    .tarjeta-estado-examen,
-    .tarjeta-resultado-examen {
+    .tarjeta-estado-examen {
         padding: var(--space-4);
     }
 

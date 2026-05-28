@@ -257,7 +257,6 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
     <link rel="stylesheet" href="css/doa_componentes.css">
     <link rel="stylesheet" href="css/detalle_asignatura.css">
     <link rel="stylesheet" href="css/recursos_alumno.css">
-    <link rel="stylesheet" href="css/recursos_profesor.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
