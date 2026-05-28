@@ -1,9 +1,12 @@
 <?php
-    $rol_pagina = "alumno";
-    $pagina_activa = "notificaciones";
-    $enlace_panel = "panel_principal.php";
-    $placeholder_buscador = "Buscar notificación...";
+$rol_pagina = "alumno";
+$pagina_activa = "panel";
+$enlace_panel = "panel_principal.php";
+$placeholder_buscador = "Buscar asignatura...";
+
+require_once __DIR__ . "/includes/proteger_doa.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -134,7 +137,7 @@
     </div>
 
     <script src="js/doa_datos.js"></script>
-    <script src="js/doa_layout.js"></script>
+    
     <script src="js/notificaciones.js"></script>
 </body>
 </html>

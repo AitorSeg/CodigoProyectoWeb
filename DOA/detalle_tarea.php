@@ -1,8 +1,10 @@
 <?php
 $rol_pagina = "alumno";
-$pagina_activa = "asignaturas";
+$pagina_activa = "panel";
 $enlace_panel = "panel_principal.php";
-$placeholder_buscador = "Buscar tarea...";
+$placeholder_buscador = "Buscar asignatura...";
+
+require_once __DIR__ . "/includes/proteger_doa.php";
 ?>
 
 <!DOCTYPE html>
@@ -163,7 +165,7 @@ $placeholder_buscador = "Buscar tarea...";
         </main>
     </div>
 
-    <script src="js/doa_layout.js"></script>
+    
     <script src="js/doa_datos.js"></script>
     <script src="js/detalle_tarea.js"></script>
 </body>

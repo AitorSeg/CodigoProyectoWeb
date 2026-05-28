@@ -3,6 +3,8 @@ $rol_pagina = "secretaria";
 $pagina_activa = "asignaciones";
 $enlace_panel = "panel_secretaria.php";
 $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
+
+require_once __DIR__ . "/includes/proteger_doa.php";
 ?>
 
 <!DOCTYPE html>
@@ -198,7 +200,6 @@ $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
         </main>
     </div>
 
-    <script src="js/doa_layout.js"></script>
     <script src="js/asignaciones_secretaria.js"></script>
 </body>
 </html>

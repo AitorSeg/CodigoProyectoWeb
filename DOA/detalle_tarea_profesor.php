@@ -3,6 +3,8 @@ $rol_pagina = "profesor";
 $pagina_activa = "asignaturas";
 $enlace_panel = "panel_profesor.php";
 $placeholder_buscador = "Buscar tarea, alumno...";
+
+require_once __DIR__ . "/includes/proteger_doa.php";
 ?>
 
 <!DOCTYPE html>
@@ -179,7 +181,7 @@ $placeholder_buscador = "Buscar tarea, alumno...";
         </main>
     </div>
 
-    <script src="js/doa_layout.js"></script>
+    
     <script src="js/doa_datos.js"></script>
     <script src="js/detalle_tarea_profesor.js"></script>
 </body>

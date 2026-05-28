@@ -3,6 +3,8 @@ $rol_pagina = "profesor";
 $pagina_activa = "asignaturas";
 $enlace_panel = "panel_profesor.php";
 $placeholder_buscador = "Buscar recursos...";
+
+require_once __DIR__ . "/includes/proteger_doa.php";
 ?>
 
 <!DOCTYPE html>
@@ -241,7 +243,7 @@ $placeholder_buscador = "Buscar recursos...";
         </main>
     </div>
 
-    <script src="js/doa_layout.js"></script>
+    
     <script src="js/doa_datos.js"></script>
     <script src="js/recursos_profesor.js"></script>
 </body>

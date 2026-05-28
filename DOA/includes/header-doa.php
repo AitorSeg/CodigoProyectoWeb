@@ -1,7 +1,7 @@
 <header class="cabecera-panel-doa">
     <div class="cabecera-panel-doa__logo">
         <div class="marca-doa">
-            <a class="marca-doa__link" href="<?= $enlace_panel ?>" aria-label="Ir al panel principal de DOA">
+            <a class="marca-doa__link" href="<?php echo limpiar_texto_doa($enlace_panel); ?>" aria-label="Ir al panel principal de DOA">
                 <img class="logo-doa" src="img/LogoDoaAzulRecortado.png" alt="Logo de DOA">
             </a>
 
@@ -18,7 +18,7 @@
                 <img src="img/iconos/grey-search.svg" alt="">
             </span>
 
-            <input type="search" placeholder="<?= $placeholder_buscador ?>" disabled>
+            <input type="search" placeholder="<?php echo limpiar_texto_doa($placeholder_buscador); ?>" disabled>
         </div>
     </div>
 
@@ -29,12 +29,16 @@
             </span>
 
             <span class="perfil-header__texto">
-                <strong id="nombreUsuarioHeader">Usuario demo</strong>
-                <small id="rolUsuarioHeader">Perfil DOA</small>
+                <strong>
+                    <?php echo limpiar_texto_doa($nombre_usuario_doa); ?>
+                </strong>
+                <small>
+                    <?php echo limpiar_texto_doa($rol_usuario_doa_texto); ?>
+                </small>
             </span>
         </div>
 
-        <a class="boton-cerrar-sesion-movil" href="elegir_perfil.php" aria-label="Cerrar sesión">
+        <a class="boton-cerrar-sesion-movil" href="cerrar_perfil.php" aria-label="Cerrar perfil de prueba">
             <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
                 <img class="icono-estado icono-estado--gris" src="img/iconos/grey-log-out.svg" alt="">
                 <img class="icono-estado icono-estado--azul" src="img/iconos/blue-log-out.svg" alt="">

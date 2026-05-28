@@ -3,6 +3,8 @@ $rol_pagina = "secretaria";
 $pagina_activa = "notificaciones";
 $enlace_panel = "panel_secretaria.php";
 $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
+
+require_once __DIR__ . "/includes/proteger_doa.php";
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +33,7 @@ $placeholder_buscador = "Buscar asignatura, profesor, alumno...";
         <?php include "includes/contenido-enviar-notificaciones.php"; ?>
     </div>
 
-    <script src="js/doa_layout.js"></script>
+    
     <script src="js/enviar_notificaciones.js"></script>
 </body>
 </html>

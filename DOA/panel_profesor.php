@@ -3,6 +3,8 @@
     $pagina_activa = "panel";
     $enlace_panel = "panel_profesor.php";
     $placeholder_buscador = "Buscar asignatura, tarea...";
+
+    require_once __DIR__ . "/includes/proteger_doa.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -232,7 +234,6 @@
   <!-- Final del contenido principal -->
   <script src="js/doa_datos.js">
   </script>
-  <script src="js/doa_layout.js">
-  </script>
+
  </body>
 </html>
