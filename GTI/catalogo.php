@@ -49,10 +49,10 @@ $caracteristicas = [
         "clase" => "feature-card border-cream"
     ],
     [
-        "titulo" => "Calendario",
-        "descripcion" => "Planificación y gestión de eventos y plazos de entregas con alertas integradas.",
+        "titulo" => "Notificaciones",
+        "descripcion" => "Reciba alertas en tiempo real sobre novedades académicas y eventos importantes.",
         "imagen" => "img/calendario.svg",
-        "alt" => "Calendario",
+        "alt" => "Notificaciones",
         "clase" => "feature-card blue"
     ],
     [

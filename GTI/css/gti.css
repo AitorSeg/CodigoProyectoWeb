@@ -96,15 +96,23 @@ nav a {
 }
 
 /* Botón de login con fondo naranja y texto blanco para llamar la atención. */
+.login-btn,
+.register-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .login-btn {
     background-color: var(--naranja);
     color: var(--gris-letras);
     border: none;
-    min-width: 120px;
-    padding: 17px 28px;
-    font-size: 17px;
-    font-weight: 700;
-    cursor: pointer;
 }
 
 /* Botón de registro con borde naranja y fondo transparente para diferenciar la acción. */
@@ -112,11 +120,6 @@ nav a {
     background-color: transparent;
     color: var(--gris-letras);
     border: 2px solid var(--naranja);
-    min-width: 120px;
-    padding: 15px 24px;
-    font-size: 17px;
-    font-weight: 700;
-    cursor: pointer;
 }
 
 /* Contenedor de acciones del header con separación entre botones. */
