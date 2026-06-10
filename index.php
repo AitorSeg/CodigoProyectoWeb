@@ -36,8 +36,8 @@ $nombre_usuario = $sesion_iniciada ? $_SESSION["nombre"] : "";
             <!-- Enlaces de navegación interna hacia secciones de la misma página -->
             <a href="#faq">FAQ</a>
             <a href="#sobre-nosotros">Sobre Nosotros</a>
-            <a href="GTI/contacto.php">Contactanos</a>
-            <a href="GTI/catalogo.php" class="nav-active">Catalogo de Modulos</a>
+            <a href="GTI/contacto.php">Contáctanos</a>
+            <a href="GTI/catalogo.php" class="nav-active">Catálogo de Modulos</a>
         </nav>
 
         <div class="header-actions">
