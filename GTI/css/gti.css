@@ -1043,8 +1043,9 @@ nav {
 
 
 .logout-btn {
-    background-color: #FCD8AD;
-    color: var(--gris-fondo);
+    background-color: transparent;
+    color: var(--cream);
+    border: 2px solid var(--cream);
     width: 120px;
     min-width: 120px;
     max-width: 120px;

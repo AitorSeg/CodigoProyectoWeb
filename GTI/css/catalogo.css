@@ -699,3 +699,28 @@ nav a.active {
         font-size: 16px;
     }
 }
+@media (max-width: 950px) {
+    .feature-card.blue {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 22px;
+        row-gap: 34px;
+        align-items: center;
+        justify-content: stretch;
+    }
+}
+
+@media (max-width: 560px) {
+    .feature-card.blue {
+        grid-template-columns: 38px 1fr;
+        column-gap: 16px;
+        row-gap: 18px;
+    }
+}
+
+@media (max-width: 950px) {
+    .license-card .buy-now-btn {
+        margin-top: 28px;
+    }
+}
