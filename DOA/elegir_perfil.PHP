@@ -326,15 +326,25 @@ $total_secretaria = count($usuarios_por_rol["secretaria"]);
         </div>
       </div>
       <div class="caja-demo caja-demo--login">
-        <h2 class="titulo-con-icono">
+        <div class="banner-eleccion-perfil" id="bannerEleccionPerfil">
+          <div class="banner-eleccion-perfil__icono" aria-hidden="true">
+            <img alt="" src="img/iconos/blue-user.svg" />
+          </div>
+
+          <div class="banner-eleccion-perfil__contenido">
+            <h2>Elige un perfil para continuar</h2>
+            <p>
+              Pulsa uno de los usuarios de prueba disponibles. Sus credenciales se rellenarán automáticamente.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="titulo-con-icono titulo-login-demo">
           <span aria-hidden="true" class="titulo-con-icono__icono">
             <img alt="" src="img/iconos/grey-lock-keyhole.svg" />
           </span>
-          <span> Inicio de sesión </span>
+          <span> Acceso a la demo </span>
         </h2>
-        <p>
-          Accede con uno de los usuarios de prueba registrados en la demo.
-        </p>
         <form
           class="formulario-login-demo"
           id="formLoginDemo"
@@ -356,11 +366,11 @@ $total_secretaria = count($usuarios_por_rol["secretaria"]);
                 id="passwordDemo"
                 name="password_demo"
                 placeholder="Introduce la contraseña"
-                type="text"
+                type="password"
                 value="<?php echo limpiar_texto($password_demo); ?>"
                 required />
               <button class="boton-mostrar-password" id="botonMostrarPassword" type="button">
-                Ocultar
+                Mostrar
               </button>
             </div>
           </div>
@@ -388,7 +398,7 @@ $total_secretaria = count($usuarios_por_rol["secretaria"]);
             }
             ?>
           </p>
-          <button class="boton-acceso-demo" type="submit">
+          <button class="boton-acceso-demo boton-acceso-demo--secundario" id="botonAccesoDemo" type="submit">
             Acceder a DOA
           </button>
         </form>

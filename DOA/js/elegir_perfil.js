@@ -17,6 +17,9 @@ const perfil_rol = document.getElementById("perfilRol");
 
 const caja_login = document.querySelector(".caja-demo--login");
 
+const banner_eleccion_perfil = document.getElementById("bannerEleccionPerfil");
+const boton_acceso_demo = document.getElementById("botonAccesoDemo");
+
 filtros.forEach(function (filtro) {
   filtro.addEventListener("click", function () {
     cambiar_filtro(filtro);
@@ -68,6 +71,16 @@ function seleccionar_usuario(usuario_seleccionado) {
   perfil_nombre.textContent = usuario_seleccionado.dataset.nombre;
   perfil_dni.textContent = usuario_seleccionado.dataset.dni;
   perfil_rol.textContent = usuario_seleccionado.dataset.rolTexto;
+
+  banner_eleccion_perfil.classList.add("banner-eleccion-perfil--seleccionado");
+
+  banner_eleccion_perfil.querySelector("h2").textContent =
+    "Perfil seleccionado";
+  banner_eleccion_perfil.querySelector("p").textContent =
+    "Las credenciales se han rellenado automáticamente. Ya puedes acceder a la demo de DOA.";
+
+  boton_acceso_demo.classList.remove("boton-acceso-demo--secundario");
+  boton_acceso_demo.classList.add("boton-acceso-demo--principal");
 
   ocultar_error();
   bajar_al_login_en_movil();
