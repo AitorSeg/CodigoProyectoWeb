@@ -520,6 +520,30 @@
   border-bottom-color: var(--color-primary);
 }
 
+.pestanas-asignatura--destacada {
+  padding: 0 var(--space-3);
+  border-bottom-color: rgba(var(--color-primary-rgb), 0.35);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: rgba(var(--color-primary-rgb), 0.035);
+  box-shadow: 0 8px 18px -16px rgba(var(--color-primary-rgb), 0.95);
+}
+
+.pestanas-asignatura--destacada .pestanas-asignatura__item {
+  color: var(--color-text);
+}
+
+.pestanas-asignatura--destacada .pestanas-asignatura__item:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  text-shadow: 0 0 12px rgba(var(--color-primary-rgb), 0.45);
+}
+
+.pestanas-asignatura--destacada .pestanas-asignatura__item--activo {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  text-shadow: 0 0 14px rgba(var(--color-primary-rgb), 0.55);
+}
+
 /*
     Título y metadatos de cabecera de asignatura
 */

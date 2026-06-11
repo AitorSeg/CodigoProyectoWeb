@@ -431,7 +431,7 @@ $url_vista_alumno = "detalle_asignatura.php?id_asignatura=" . $id_asignatura;
                         </div>
 
                         <div class="cabecera-detalle-asignatura__pestanas">
-                            <nav class="pestanas-asignatura" aria-label="Secciones de la asignatura">
+                            <nav class="pestanas-asignatura pestanas-asignatura--destacada" aria-label="Secciones de la asignatura">
                                 <a class="pestanas-asignatura__item" href="<?php echo limpiar_texto_doa($url_recursos); ?>">
                                     Recursos
                                 </a>

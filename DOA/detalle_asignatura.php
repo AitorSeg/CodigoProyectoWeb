@@ -211,7 +211,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
                         </div>
 
                         <div class="cabecera-detalle-asignatura__pestanas">
-                            <nav aria-label="Secciones de la asignatura" class="pestanas-asignatura">
+                            <nav aria-label="Secciones de la asignatura" class="pestanas-asignatura pestanas-asignatura--destacada">
                                 <a class="pestanas-asignatura__item" href="<?php echo limpiar_texto_doa($url_recursos); ?>">
                                     Recursos
                                 </a>
