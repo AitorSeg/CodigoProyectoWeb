@@ -456,8 +456,7 @@
     background: transparent;
   }
 
-  .tarjeta-modo-prueba,
-  .barra-lateral-doa__salida {
+  .tarjeta-modo-prueba {
     display: none;
   }
 

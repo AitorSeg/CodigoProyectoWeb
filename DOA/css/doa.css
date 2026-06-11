@@ -158,10 +158,6 @@ a:hover {
   background: var(--color-primary-hover);
 }
 
-.form-group {
-  margin-bottom: var(--space-4);
-}
-
 .form-label {
   display: block;
   margin-bottom: var(--space-2);

@@ -548,8 +548,7 @@
     Título y metadatos de cabecera de asignatura
 */
 
-.cabecera-detalle-asignatura__texto h1,
-.cabecera-calificaciones__texto h1 {
+.cabecera-detalle-asignatura__texto h1 {
   margin: 0 0 var(--space-3);
   color: var(--color-text);
   font-size: 32px;
@@ -805,8 +804,7 @@
     font-size: 12px;
   }
 
-  .cabecera-detalle-asignatura__texto h1,
-  .cabecera-calificaciones__texto h1 {
+  .cabecera-detalle-asignatura__texto h1 {
     font-size: 28px;
   }
 }
