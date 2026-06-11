@@ -178,3 +178,75 @@ body {
   text-decoration: none;
   font-weight: 600;
 }
+
+/* Ajustes responsive extra para registro */
+body {
+  min-height: 100svh;
+  padding: 32px 16px;
+}
+
+.auth-container,
+.auth-text,
+.auth-card {
+  min-width: 0;
+}
+
+.form-group input {
+  font-family: var(--font-main);
+}
+
+@media (max-width: 900px) {
+  .auth-container {
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .auth-text {
+    text-align: center;
+  }
+
+  .auth-text p {
+    margin: 0 auto;
+  }
+
+  .auth-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    align-items: flex-start;
+    padding: 24px 14px;
+  }
+
+  .auth-text h1 {
+    font-size: 34px;
+  }
+
+  .auth-card {
+    padding: 28px 20px;
+  }
+
+  .auth-card h2 {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .auth-text h1 {
+    font-size: 30px;
+  }
+
+  .auth-card {
+    padding: 24px 16px;
+  }
+}

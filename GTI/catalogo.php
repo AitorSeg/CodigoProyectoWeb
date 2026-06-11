@@ -129,9 +129,9 @@ function limpiarTexto($texto)
                     <?php echo limpiarTexto($nombre_usuario); ?>
                 </span>
 
-                <a href="logout.php" class="login-btn">
-                    Cerrar sesión
-                </a>
+                 <a href="GTI/logout.php" class="login-btn logout-btn">
+                  Cerrar sesión
+                 </a>
             <?php } else { ?>
                 <a href="registro.php" class="register-btn">Registro</a>
                 <a href="login.php" class="login-btn">Log in</a>

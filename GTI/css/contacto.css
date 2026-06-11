@@ -125,3 +125,38 @@
 .back-btn:hover {
     color: var(--naranja);
 }
+
+/* Ajustes responsive extra para móviles */
+@media (max-width: 480px) {
+    .contact-page {
+        align-items: flex-start;
+        padding: 24px 14px;
+    }
+
+    .contact-card {
+        padding: 26px 18px;
+    }
+
+    .contact-card h1 {
+        font-size: 30px;
+    }
+
+    .contact-subtitle {
+        margin-bottom: 24px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+
+    .send-btn {
+        height: 50px;
+        font-size: 16px;
+    }
+}

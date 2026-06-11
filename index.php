@@ -46,8 +46,8 @@ $nombre_usuario = $sesion_iniciada ? $_SESSION["nombre"] : "";
                     <?php echo limpiar_texto($nombre_usuario); ?>
                 </span>
 
-                <a href="GTI/logout.php" class="login-btn">
-                    Cerrar sesión
+                <a href="GTI/logout.php" class="login-btn logout-btn">
+                Cerrar sesión
                 </a>
             <?php } else { ?>
                 <a href="GTI/registro.php" class="register-btn">Registro</a>
@@ -98,7 +98,7 @@ $nombre_usuario = $sesion_iniciada ? $_SESSION["nombre"] : "";
 
                     <!-- Botón que lleva al usuario a la sección de contacto o que puede abrir un formulario de contacto -->
                     <a href="GTI/contacto.php" class="contact-btn" id="contacto">
-                        Contactanos <span class="arrow">→</span>
+                        Contáctanos <span class="arrow">→</span>
                     </a>
                 </div>
 

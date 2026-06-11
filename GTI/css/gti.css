@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
 
+
 /* Reiniciar márgenes y rellenos para todos los elementos y usar el box-sizing a border-box
    para que el ancho y alto incluyan borde y relleno en todos los contenedores. */
 * {
@@ -8,10 +9,12 @@
     box-sizing: border-box;
 }
 
+
 /* Efecto de desplazamiento suave para anclas dentro de la página. */
 html {
     scroll-behavior: smooth;
 }
+
 
 /* Estilos globales del body: tipografía base, fondo oscuro y texto claro. */
 body {
@@ -22,6 +25,7 @@ body {
     width: 100%;
     overflow-x: hidden;
 }
+
 
 /* Variables CSS para mantener una paleta de colores consistente en todo el sitio. */
 :root {
@@ -34,7 +38,9 @@ body {
     --azul: #0059d6;
     --gris-letras: #d7d7d7;
 
+
 }
+
 
 /* Cabecera fija superior con distribución horizontal y separación entre elementos. */
 header {
@@ -54,6 +60,7 @@ header {
     color: var(--gris-letras);
 }
 
+
 .header-logo {
     height: 100%;
     width: 220px;
@@ -64,6 +71,7 @@ header {
     overflow: hidden;
 }
 
+
 .header-logo img {
     display: block;
     width: 260px;
@@ -71,11 +79,13 @@ header {
     transform: translateY(36px);
 }
 
+
 header a,
 header button,
 header .header-actions button {
     color: var(--gris-letras);
 }
+
 
 /* Navegación principal con enlaces distribuidos uniformemente. */
 nav {
@@ -86,6 +96,7 @@ nav {
     gap: 20px;
 }
 
+
 /* Estilo base para enlaces del menú: color neutro y transición suave. */
 nav a {
     color: var(--gris-letras);
@@ -94,6 +105,7 @@ nav a {
     font-weight: 700;
     transition: color 0.2s ease;
 }
+
 
 /* Botón de login con fondo naranja y texto blanco para llamar la atención. */
 .login-btn,
@@ -109,11 +121,13 @@ nav a {
     text-decoration: none;
 }
 
+
 .login-btn {
     background-color: var(--naranja);
     color: var(--gris-letras);
     border: none;
 }
+
 
 /* Botón de registro con borde naranja y fondo transparente para diferenciar la acción. */
 .register-btn {
@@ -122,6 +136,7 @@ nav a {
     border: 2px solid var(--naranja);
 }
 
+
 /* Contenedor de acciones del header con separación entre botones. */
 .header-actions {
     display: flex;
@@ -129,12 +144,14 @@ nav a {
     gap: 12px;
 }
 
+
 /* Sección hero principal con espacio superior e inferior y fondo negro. */
 .hero {
     min-height: 710px;
     background-color:var(--negro);
     padding: 110px 8% 80px;
 }
+
 
 /* Estilo de título principal: tamaños fluidos, mayúsculas y espaciado amplio. */
 .hero h1 {
@@ -146,10 +163,12 @@ nav a {
     text-transform: uppercase;
 }
 
+
 /* Clase reutilizable para texto en color naranja de marca. */
 .orange {
     color: var(--naranja);
 }
+
 
 /* Párrafo de introducción con ancho limitado y color crema para mejor lectura. */
 .hero p {
@@ -161,6 +180,7 @@ nav a {
     font-weight: 700;
 }
 
+
 /* Contenedor de acciones del hero con espacio entre elementos y ajuste en pantallas pequeñas. */
 .hero-actions {
     margin-top: 42px;
@@ -169,6 +189,7 @@ nav a {
     gap: 58px;
     flex-wrap: wrap;
 }
+
 
 /* Botón principal de módulo con borde naranja y texto oscuro para contraste. */
 .module-btn {
@@ -181,6 +202,7 @@ nav a {
     cursor: pointer;
 }
 
+
 /* Indicador de licencia que usa un diseño en línea flexible para icono y texto. */
 .license {
     display: flex;
@@ -189,6 +211,7 @@ nav a {
     color: var(--cream);
     font-size: 17px;
 }
+
 
 /* Estilo del icono de licencia redondo con borde azul para destacarlo. */
 .license-icon {
@@ -204,6 +227,7 @@ nav a {
     font-weight: 700;
 }
 
+
 /* Sección sobre nosotros con fondo de sección oscura y bordes superiores/inferiores. */
 .about {
     background-color: var(--gris-fondo);
@@ -213,6 +237,7 @@ nav a {
     border-bottom: 1px solid var(--gris-fondo);
 }
 
+
 /* Títulos de sección resaltados con color de marca. */
 .section-title {
     color: var(--naranja);
@@ -220,6 +245,7 @@ nav a {
     font-weight: 700;
     margin-bottom: 55px;
 }
+
 
 /* Subtítulo de la sección sobre nosotros con tamaño grande y separación inferior. */
 .about h2 {
@@ -229,6 +255,7 @@ nav a {
     margin-bottom: 35px;
 }
 
+
 /* Diseño de la cuadrícula de la sección about con dos columnas. */
 .about-grid {
     display: grid;
@@ -236,6 +263,7 @@ nav a {
     gap: 60px;
     align-items: center;
 }
+
 
 /* Estilo del texto central de la sección about, con buena legibilidad y ancho controlado. */
 .about-text p {
@@ -245,6 +273,7 @@ nav a {
     max-width: 585px;
     font-weight: 700;
 }
+
 
 /* Botón de contacto con borde claro y diseño tipo tarjeta. */
 .contact-btn {
@@ -262,11 +291,13 @@ nav a {
     cursor: pointer;
 }
 
+
 /* Flecha decorativa en el botón de contacto, más grande para resaltar la acción. */
 .arrow {
     font-size: 42px;
     line-height: 1;
 }
+
 
 /* Sección de FAQ con fondo oscuro y mayor espaciado vertical. */
 .faq {
@@ -274,10 +305,12 @@ nav a {
     padding: 55px 8% 95px;
 }
 
+
 /* Ajuste de margen específico para el subtítulo dentro de faq. */
 .faq .section-title {
     margin-bottom: 38px;
 }
+
 
 /* Contenedor de la lista de preguntas frecuentes con ancho máximo y margen lateral. */
 .faq-list {
@@ -285,6 +318,7 @@ nav a {
     max-width: 1040px;
     margin-left: 46px;
 }
+
 
 /* Estilo de cada pregunta expandible: fondo gris y borde izquierdo azul. */
 details {
@@ -294,12 +328,14 @@ details {
     min-height: 60px;
 }
 
+
 .faq,
 .faq summary,
 .faq p,
 .faq .section-title {
     color: var(--gris-letras);
 }
+
 
 /* Resumen clickable con estilo de texto claro y espacio interior. */
 summary {
@@ -312,10 +348,12 @@ summary {
     position: relative;
 }
 
+
 /* Ocultar el marcador predeterminado del elemento details en navegadores WebKit. */
 summary::-webkit-details-marker {
     display: none;
 }
+
 
 /* Símbolo de expansión personalizado en el lado derecho del resumen. */
 summary::after {
@@ -338,10 +376,12 @@ summary::after {
     box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.08);
 }
 
+
 /* Cambiar el símbolo cuando el panel está abierto. */
 details[open] summary::after {
     content: "−";
 }
+
 
 /* Estilo del texto de respuesta en los detalles, con espacio interior y legibilidad. */
 details p {
@@ -351,11 +391,13 @@ details p {
     padding: 0 72px 22px 18px;
 }
 
+
 .header-user {
     color: var(--gris-letras);
     font-size: 15px;
     font-weight: 700;
 }
+
 
 /* Diseño adaptable para pantallas medianas, reorganizando la cabecera y secciones. */
 @media (max-width: 950px) {
@@ -363,33 +405,40 @@ details p {
         display: none;
     }
 
+
     header {
         flex-wrap: wrap;
         gap: 18px;
         padding: 18px;
     }
 
+
     .hero {
         padding-top: 70px;
         min-height: auto;
     }
 
+
     .about-grid {
         grid-template-columns: 1fr;
     }
+
 
     .contact-btn {
         margin-top: 50px;
     }
 
+
     .image-frame {
         margin: 0;
     }
+
 
     .faq-list {
         margin-left: 0;
     }
 }
+
 
 /* Ajustes para móviles pequeños: tipografías más pequeñas y elementos gráficos escalados. */
 @media (max-width: 600px) {
@@ -397,45 +446,55 @@ details p {
         display: none;
     }
 
+
     header {
         justify-content: space-between;
         padding: 18px;
     }
 
+
     .header-actions {
         order: 2;
     }
+
 
     .logo-main {
         font-size: 44px;
     }
 
+
     nav a {
         font-size: 15px;
     }
 
+
     .hero h1 {
         font-size: 40px;
     }
+
 
     .hero p,
     .about-text p {
         font-size: 21px;
     }
 
+
     .about h2 {
         font-size: 32px;
     }
 
+
     .image-frame {
         height: 360px;
     }
+
 
     .easel,
     .bucket {
         transform: scale(0.7);
     }
 }
+
 
 @media (max-width: 950px) {
     header {
@@ -444,11 +503,13 @@ details p {
         flex-wrap: nowrap;
     }
 
+
     .header-actions {
         display: flex;
         align-items: center;
         flex-shrink: 0;
     }
+
 
     .register-btn,
     .login-btn {
@@ -458,6 +519,7 @@ details p {
     }
 }
 
+
 @media (max-width: 600px) {
     header {
         height: auto;
@@ -466,14 +528,17 @@ details p {
         padding: 0 10px;
     }
 
+
     .header-logo {
         width: 150px;
         flex-shrink: 1;
     }
 
+
     .header-logo img {
         width: 210px;
     }
+
 
     .header-actions {
         display: flex;
@@ -481,6 +546,7 @@ details p {
         gap: 8px;
         flex-shrink: 0;
     }
+
 
     .register-btn,
     .login-btn {
@@ -490,11 +556,13 @@ details p {
     }
 }
 
+
 @media (max-width: 950px) {
     .about .about-image {
         display: none;
     }
 }
+
 
 html,
 body {
@@ -504,6 +572,7 @@ body {
     overflow-x: hidden;
 }
 
+
 header {
     width: 100vw;
     max-width: 100vw;
@@ -512,11 +581,13 @@ header {
     right: 0;
 }
 
+
 .license .about-image {
     display: flex;
     align-items: center;
     gap: 14px;
 }
+
 
 .license .about-image img {
     width: 34px;
@@ -524,10 +595,461 @@ header {
     display: block;
 }
 
+
 .header-actions a,
 .contact-btn,
 .module-btn,
 .register-btn,
 .login-btn {
     text-decoration: none;
+}
+
+
+/* ==========================================================
+   AJUSTES RESPONSIVE GENERALES
+   Estos overrides hacen que el header, hero, about y FAQ se adapten
+   sin ocultar la navegación en móvil.
+   ========================================================== */
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.nav-active,
+nav a.active {
+    color: var(--naranja);
+    border-bottom: 3px solid var(--naranja);
+    padding-bottom: 6px;
+}
+
+
+header {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: 72px;
+    margin: 0;
+    padding: 0 24px 0 8px;
+    gap: 18px;
+}
+
+
+nav {
+    min-width: 0;
+}
+
+
+.header-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+@media (max-width: 1100px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 12px 18px;
+    }
+
+
+    .header-logo {
+        width: 180px;
+        height: 56px;
+    }
+
+
+    .header-logo img {
+        width: 220px;
+        transform: translateY(31px);
+    }
+
+
+    nav {
+        order: 3;
+        flex: 0 0 100%;
+        width: 100%;
+        display: flex !important;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        padding: 6px 0 4px;
+    }
+
+
+    nav a {
+        font-size: 15px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+
+    .header-actions {
+        margin-left: auto;
+        gap: 10px;
+    }
+
+
+    .hero {
+        min-height: auto;
+        padding: 80px 6% 70px;
+    }
+
+
+    .hero h1 {
+        font-size: clamp(42px, 8vw, 68px);
+        line-height: 1.18;
+    }
+
+
+    .hero p {
+        margin-top: 34px;
+        font-size: 20px;
+    }
+
+
+    .hero-actions {
+        gap: 28px;
+    }
+
+
+    .about {
+        min-height: auto;
+        padding: 48px 6% 60px;
+    }
+
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+
+    .about .about-image {
+        display: block;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
+
+    .about h2 {
+        font-size: clamp(32px, 5vw, 42px);
+    }
+
+
+    .about-text p {
+        max-width: none;
+        font-size: clamp(21px, 3vw, 28px);
+        line-height: 1.22;
+    }
+
+
+    .contact-btn {
+        margin-top: 42px;
+    }
+
+
+    .faq-list {
+        max-width: none;
+        margin-left: 0;
+    }
+}
+
+
+@media (max-width: 700px) {
+    header {
+        justify-content: center;
+        padding: 10px 12px 12px;
+        gap: 10px;
+    }
+
+
+    .header-logo {
+        width: 150px;
+        height: 54px;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+
+    .header-logo img {
+        width: 205px;
+        transform: translateY(29px);
+    }
+
+
+    .header-actions {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+    }
+
+
+    .header-user {
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+    }
+
+
+    .register-btn,
+    .login-btn {
+        min-width: 0;
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+
+    nav {
+        order: 3;
+        gap: 8px 12px;
+        padding-top: 4px;
+    }
+
+
+    nav a {
+        font-size: 13px;
+        white-space: normal;
+    }
+
+
+    .hero {
+        padding: 55px 6% 56px;
+    }
+
+
+    .hero h1 {
+        font-size: clamp(32px, 10vw, 44px);
+        line-height: 1.16;
+        word-break: normal;
+    }
+
+
+    .hero p {
+        margin-top: 26px;
+        font-size: 17px;
+    }
+
+
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+
+    .module-btn,
+    .contact-btn {
+        width: 100%;
+        max-width: 320px;
+        min-width: 0;
+        height: auto;
+        min-height: 56px;
+        padding: 14px 18px;
+        font-size: 16px;
+    }
+
+
+    .license {
+        font-size: 14px;
+        align-items: flex-start;
+    }
+
+
+    .about {
+        padding: 40px 6% 48px;
+    }
+
+
+    .section-title {
+        font-size: 24px;
+        margin-bottom: 28px;
+    }
+
+
+    .about h2 {
+        font-size: 28px;
+    }
+
+
+    .about-text p {
+        font-size: 18px;
+    }
+
+
+    .contact-btn {
+        margin-top: 32px;
+        gap: 18px;
+    }
+
+
+    .arrow {
+        font-size: 30px;
+    }
+
+
+    .faq {
+        padding: 40px 6% 60px;
+    }
+
+
+    details {
+        margin-bottom: 20px;
+    }
+
+
+    summary {
+        padding: 18px 58px 18px 16px;
+        font-size: 15px;
+    }
+
+
+    summary::after {
+        width: 32px;
+        height: 32px;
+        font-size: 32px;
+    }
+
+
+    details p {
+        padding: 0 18px 18px 16px;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 380px) {
+    nav a {
+        font-size: 12px;
+    }
+
+
+    .register-btn,
+    .login-btn {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+
+    .hero h1 {
+        font-size: 30px;
+    }
+}
+
+
+/* ==========================================================
+   OCULTAR SUBHEADER / MENÚ EN TABLET Y MÓVIL
+   Solo se muestra en pantallas de ordenador.
+   ========================================================== */
+
+
+@media (max-width: 1100px) {
+    header nav {
+        display: none !important;
+    }
+
+
+    header {
+        min-height: 72px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        padding: 8px 16px;
+    }
+
+
+    .header-logo {
+        width: 160px;
+        height: 56px;
+    }
+
+
+    .header-logo img {
+        width: 210px;
+        transform: translateY(30px);
+    }
+
+
+    .header-actions {
+        width: auto;
+        order: initial;
+        margin-left: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+    }
+
+
+    .register-btn,
+    .login-btn {
+        min-width: auto;
+        padding: 9px 14px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}
+
+
+@media (max-width: 520px) {
+    header {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+
+    .header-logo {
+        width: 125px;
+        height: 50px;
+    }
+
+
+    .header-logo img {
+        width: 180px;
+        transform: translateY(26px);
+    }
+
+
+    .header-actions {
+        gap: 6px;
+    }
+
+
+    .register-btn,
+    .login-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+
+    .header-user {
+        display: none;
+    }
+}
+
+
+.logout-btn {
+    background-color: #FCD8AD;
+    color: var(--gris-fondo);
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 13px;
+    white-space: nowrap;
 }
