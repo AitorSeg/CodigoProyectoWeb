@@ -243,10 +243,6 @@
     flex-direction: column;
   }
 
-  .filtros-calificaciones button {
-    flex-shrink: 0;
-  }
-
   .tabla-calificaciones table {
     min-width: 0;
   }

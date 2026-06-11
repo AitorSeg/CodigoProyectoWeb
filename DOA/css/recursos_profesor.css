@@ -64,10 +64,6 @@
   font-weight: 700;
 }
 
-.mensaje-recurso-subido--oculto {
-  display: none;
-}
-
 .etiqueta-success {
   border-color: var(--color-success);
   color: var(--color-success);

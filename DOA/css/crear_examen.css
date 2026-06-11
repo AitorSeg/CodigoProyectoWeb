@@ -269,10 +269,6 @@
   font-weight: 800;
 }
 
-.mensaje-examen-guardado--oculto {
-  display: none;
-}
-
 .mensaje-examen-guardado--error {
   border-color: var(--color-error);
   color: var(--color-error);

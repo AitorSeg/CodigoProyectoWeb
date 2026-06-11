@@ -40,12 +40,6 @@
   background: var(--color-surface-alt);
 }
 
-.estado-calificacion--pendiente {
-  border-color: var(--color-border);
-  color: var(--color-muted);
-  background: var(--color-surface-alt);
-}
-
 @media (max-width: 900px) {
   .tabla-calificaciones--profesor table {
     min-width: 0;
