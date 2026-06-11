@@ -15,8 +15,18 @@ $datos_asignatura = [
     "curso" => "",
     "grupo" => "",
     "descripcion" => "",
-    "estado" => "pendiente"
+    "id_profesor" => ""
 ];
+
+$consulta_profesores = $pdo->query("
+    SELECT id_usuario, nombre, apellidos, email, tipo_usuario
+    FROM usuarios
+    WHERE rol = 'profesor'
+    AND estado = 'activo'
+    ORDER BY nombre ASC, apellidos ASC
+");
+
+$profesores = $consulta_profesores->fetchAll();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $datos_asignatura["nombre"] = trim($_POST["nombre"]);
@@ -24,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $datos_asignatura["curso"] = trim($_POST["curso"]);
     $datos_asignatura["grupo"] = trim($_POST["grupo"]);
     $datos_asignatura["descripcion"] = trim($_POST["descripcion"]);
-    $datos_asignatura["estado"] = trim($_POST["estado"]);
+    $datos_asignatura["id_profesor"] = $_POST["id_profesor"] !== "" ? (int) $_POST["id_profesor"] : "";
 
     if ($datos_asignatura["nombre"] === "") {
         $errores["nombre"] = "El nombre de la asignatura es obligatorio.";
@@ -42,8 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errores["grupo"] = "Selecciona un grupo.";
     }
 
-    if (!in_array($datos_asignatura["estado"], ["pendiente", "activa"], true)) {
-        $errores["estado"] = "El estado seleccionado no es válido.";
+    $ids_profesores_validos = array_map("intval", array_column($profesores, "id_usuario"));
+
+    if ($datos_asignatura["id_profesor"] !== "" && !in_array($datos_asignatura["id_profesor"], $ids_profesores_validos, true)) {
+        $errores["id_profesor"] = "El profesor seleccionado no es válido.";
     }
 
     if (count($errores) === 0) {
@@ -65,25 +77,49 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (count($errores) === 0) {
-        $insertar_asignatura = $pdo->prepare("
-            INSERT INTO asignaturas
-                (nombre, codigo, descripcion, curso, grupo, estado, id_usuario_creador)
-            VALUES
-                (:nombre, :codigo, :descripcion, :curso, :grupo, :estado, :id_usuario_creador)
-        ");
+        $pdo->beginTransaction();
 
-        $insertar_asignatura->execute([
-            "nombre" => $datos_asignatura["nombre"],
-            "codigo" => $datos_asignatura["codigo"],
-            "descripcion" => $datos_asignatura["descripcion"] !== "" ? $datos_asignatura["descripcion"] : null,
-            "curso" => $datos_asignatura["curso"],
-            "grupo" => $datos_asignatura["grupo"],
-            "estado" => $datos_asignatura["estado"],
-            "id_usuario_creador" => $_SESSION["doa_id_usuario"]
-        ]);
+        try {
+            $insertar_asignatura = $pdo->prepare("
+                INSERT INTO asignaturas
+                    (nombre, codigo, descripcion, curso, grupo, estado, id_usuario_creador)
+                VALUES
+                    (:nombre, :codigo, :descripcion, :curso, :grupo, 'pendiente', :id_usuario_creador)
+            ");
 
-        header("Location: asignaturas_secretaria.php?creada=ok");
-        exit;
+            $insertar_asignatura->execute([
+                "nombre" => $datos_asignatura["nombre"],
+                "codigo" => $datos_asignatura["codigo"],
+                "descripcion" => $datos_asignatura["descripcion"] !== "" ? $datos_asignatura["descripcion"] : null,
+                "curso" => $datos_asignatura["curso"],
+                "grupo" => $datos_asignatura["grupo"],
+                "id_usuario_creador" => $_SESSION["doa_id_usuario"]
+            ]);
+
+            $id_asignatura_creada = (int) $pdo->lastInsertId();
+
+            if ($datos_asignatura["id_profesor"] !== "") {
+                $insertar_profesor = $pdo->prepare("
+                    INSERT INTO usuarios_asignaturas
+                        (id_usuario, id_asignatura, rol_asignatura, estado)
+                    VALUES
+                        (:id_usuario, :id_asignatura, 'profesor', 'activa')
+                ");
+
+                $insertar_profesor->execute([
+                    "id_usuario" => $datos_asignatura["id_profesor"],
+                    "id_asignatura" => $id_asignatura_creada
+                ]);
+            }
+
+            $pdo->commit();
+
+            header("Location: asignaturas_secretaria.php?creada=ok");
+            exit;
+        } catch (Throwable $error) {
+            $pdo->rollBack();
+            throw $error;
+        }
     }
 }
 ?>
@@ -129,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <h1>Crear asignatura</h1>
 
                     <p>
-                        Da de alta una nueva asignatura o grupo para que posteriormente se puedan asignar profesores y alumnos.
+                        Da de alta una nueva asignatura o grupo. Puedes asignar un profesor responsable ahora y completar la asignación de alumnos más tarde.
                     </p>
                 </div>
             </section>
@@ -141,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <h2>Datos de la asignatura</h2>
 
                             <p>
-                                Completa los datos básicos de la asignatura. Después podrás asignarle profesor y alumnos.
+                                Completa los datos básicos de la asignatura. La asignatura quedará pendiente hasta que tenga profesor y alumnos asignados.
                             </p>
                         </div>
                     </div>
@@ -229,23 +265,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 class="input textarea-secretaria"
                                 id="descripcionAsignatura"
                                 name="descripcion"
-                                placeholder="Descripción breve de la asignatura..."><?php echo limpiar_texto_doa($datos_asignatura["descripcion"]); ?>
-                            </textarea>
+                                placeholder="Descripción breve de la asignatura..."><?php echo limpiar_texto_doa($datos_asignatura["descripcion"]); ?></textarea>
                         </div>
 
                         <div class="campo-formulario-secretaria campo-formulario-secretaria--completo">
-                            <label class="form-label" for="estadoAsignatura">
-                                Estado inicial
+                            <label class="form-label" for="profesorResponsable">
+                                Profesor responsable
                             </label>
 
-                            <select class="input" id="estadoAsignatura" name="estado">
-                                <option value="pendiente" <?php echo $datos_asignatura["estado"] === "pendiente" ? "selected" : ""; ?>>
-                                    Pendiente de asignaciones
+                            <select class="input" id="profesorResponsable" name="id_profesor">
+                                <option value="">
+                                    Sin profesor por ahora
                                 </option>
-                                <option value="activa" <?php echo $datos_asignatura["estado"] === "activa" ? "selected" : ""; ?>>
-                                    Activa
-                                </option>
+
+                                <?php foreach ($profesores as $profesor) { ?>
+                                    <?php
+                                    $nombre_profesor = trim($profesor["nombre"] . " " . $profesor["apellidos"]);
+                                    ?>
+
+                                    <option
+                                        value="<?php echo (int) $profesor["id_usuario"]; ?>"
+                                        <?php echo (string) $profesor["id_usuario"] === (string) $datos_asignatura["id_profesor"] ? "selected" : ""; ?>>
+                                        <?php echo limpiar_texto_doa($nombre_profesor); ?>
+                                        · <?php echo limpiar_texto_doa($profesor["email"]); ?>
+                                    </option>
+                                <?php } ?>
                             </select>
+
+                            <p class="mensaje-error-campo" id="errorProfesorResponsable">
+                                <?php echo isset($errores["id_profesor"]) ? limpiar_texto_doa($errores["id_profesor"]) : ""; ?>
+                            </p>
                         </div>
 
                         <div class="acciones-formulario-secretaria">
@@ -271,13 +320,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             </div>
 
                             <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
-                                <strong>2. Asignar profesor</strong>
-                                <span>Selecciona el docente responsable desde la pantalla de asignaciones.</span>
+                                <strong>2. Profesor responsable</strong>
+                                <span>Si lo conoces, puedes asignarlo ahora. La asignatura seguirá pendiente hasta añadir alumnos.</span>
                             </div>
 
                             <div class="item-lateral-secretaria item-lateral-secretaria--sin-enlace">
                                 <strong>3. Añadir alumnos</strong>
-                                <span>Matricula los alumnos correspondientes al grupo.</span>
+                                <span>Matricula los alumnos correspondientes desde la pantalla de asignaciones.</span>
                             </div>
                         </div>
                     </article>
@@ -286,7 +335,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <h3>Estado demo</h3>
 
                         <p class="texto-lateral-secretaria">
-                            En esta versión PMV, las asignaturas creadas se guardan en la base de datos local y quedan disponibles para su posterior asignación.
+                            En esta versión PMV, las asignaturas creadas se guardan en la base de datos local. Quedarán pendientes hasta tener profesor y alumnos asignados.
                         </p>
                     </article>
                 </aside>
