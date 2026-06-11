@@ -109,14 +109,4 @@
             </a>
         <?php } ?>
     </nav>
-
-    <div class="barra-lateral-doa__salida">
-        <a class="boton-cerrar-sesion" href="cerrar_perfil.php">
-            <span class="boton-cerrar-sesion__icono" aria-hidden="true">
-                <img class="icono-estado icono-estado--gris" src="img/iconos/grey-log-out.svg" alt="">
-                <img class="icono-estado icono-estado--azul" src="img/iconos/blue-log-out.svg" alt="">
-            </span>
-            <span>Cambiar perfil</span>
-        </a>
-    </div>
 </aside>

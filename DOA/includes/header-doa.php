@@ -23,6 +23,13 @@
     </div>
 
     <div class="cabecera-panel-doa__perfil">
+        <a class="boton-cambiar-perfil-header" href="cerrar_perfil.php">
+            <span class="boton-cambiar-perfil-header__icono" aria-hidden="true">
+                <img class="icono-estado icono-estado--gris" src="img/iconos/grey-log-out.svg" alt="">
+                <img class="icono-estado icono-estado--azul" src="img/iconos/blue-log-out.svg" alt="">
+            </span>
+            <span>Cambiar perfil</span>
+        </a>
         <div class="perfil-header">
             <span class="perfil-header__icono" aria-hidden="true">
                 <img src="img/iconos/grey-user.svg" alt="">
@@ -37,12 +44,5 @@
                 </small>
             </span>
         </div>
-
-        <a class="boton-cerrar-sesion-movil" href="cerrar_perfil.php" aria-label="Cerrar perfil de prueba">
-            <span class="boton-cerrar-sesion-movil__icono" aria-hidden="true">
-                <img class="icono-estado icono-estado--gris" src="img/iconos/grey-log-out.svg" alt="">
-                <img class="icono-estado icono-estado--azul" src="img/iconos/blue-log-out.svg" alt="">
-            </span>
-        </a>
     </div>
 </header>
