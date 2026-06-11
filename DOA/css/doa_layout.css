@@ -501,4 +501,22 @@
     padding: var(--space-5);
     padding-bottom: calc(64px + var(--space-6));
   }
+
+  .navegacion-lateral-doa__texto {
+    width: auto;
+    min-width: 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .contador-notificaciones-lateral {
+    position: absolute;
+    top: 7px;
+    left: calc(50% + 8px);
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    font-size: 10px;
+    line-height: 16px;
+  }
 }
