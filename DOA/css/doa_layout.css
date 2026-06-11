@@ -519,4 +519,13 @@
     font-size: 10px;
     line-height: 16px;
   }
+
+  .navegacion-lateral-doa--secretaria {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .navegacion-lateral-doa--secretaria .navegacion-lateral-doa__item {
+    padding-inline: var(--space-1);
+    font-size: 11px;
+  }
 }

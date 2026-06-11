@@ -13,7 +13,7 @@
         </p>
     </div>
 
-    <nav class="navegacion-lateral-doa" aria-label="Navegación principal de DOA">
+    <nav class="navegacion-lateral-doa navegacion-lateral-doa--<?php echo limpiar_texto_doa($rol_pagina); ?>" aria-label="Navegación principal de DOA">
         <?php if ($rol_pagina === "alumno") { ?>
             <a class="navegacion-lateral-doa__item <?= $pagina_activa === "panel" ? "navegacion-lateral-doa__item--activo" : "" ?>" href="panel_principal.php">
                 <span class="navegacion-lateral-doa__icono" aria-hidden="true">
