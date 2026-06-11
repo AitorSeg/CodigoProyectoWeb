@@ -76,6 +76,10 @@ $licencia = [
 
 $precios = [
     [
+        "texto" => "",
+        "valor" => ""
+    ],
+    [
         "texto" => "Precio base de la licencia",
         "valor" => "$4,999.00"
     ],
