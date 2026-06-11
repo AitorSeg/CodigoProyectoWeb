@@ -221,10 +221,6 @@ if (isset($_GET["creada"]) && $_GET["creada"] === "ok") {
                                 <a class="enlace-accion-secretaria" href="asignaciones_secretaria.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
                                     Asignaciones
                                 </a>
-
-                                <a class="enlace-accion-secretaria" href="crear_asignatura.php?id_asignatura=<?php echo (int) $asignatura["id_asignatura"]; ?>">
-                                    Editar
-                                </a>
                             </div>
                         </article>
                     <?php } ?>
