@@ -61,16 +61,6 @@
     Ajustes listado profesor
 */
 
-.acciones-superiores-tareas {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: var(--space-4);
-}
-
-.boton-crear-tarea {
-  min-width: 118px;
-}
-
 .boton-editar-tarea {
   min-width: 112px;
   min-height: 34px;

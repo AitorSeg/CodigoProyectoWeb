@@ -409,7 +409,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
                                         <li>
                                             <a
                                                 href="<?php echo limpiar_texto_doa(construir_url_recursos($id_asignatura, $carpeta_temario, $filtro_tipo, $filtro_etiqueta)); ?>"
-                                                class="carpeta-click <?php echo $carpeta_actual === $carpeta_temario ? "activo" : ""; ?>">
+                                                <?php echo $carpeta_actual === $carpeta_temario ? "activo" : ""; ?>">
                                                 <?php echo limpiar_texto_doa($carpeta_temario); ?>
                                             </a>
                                         </li>
@@ -419,7 +419,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
 
                             <div class="biblioteca-carpeta">
                                 <a
-                                    class="biblioteca-carpeta__titulo carpeta-click <?php echo $carpeta_actual === "PRÁCTICAS" ? "activo" : ""; ?>"
+                                    class="biblioteca-carpeta__titulo <?php echo $carpeta_actual === "PRÁCTICAS" ? "activo" : ""; ?>"
                                     href="<?php echo limpiar_texto_doa(construir_url_recursos($id_asignatura, "PRÁCTICAS", $filtro_tipo, $filtro_etiqueta)); ?>">
                                     <img src="img/iconos/grey-file.svg" alt="" aria-hidden="true">
                                     PRÁCTICAS
@@ -428,7 +428,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
 
                             <div class="biblioteca-carpeta">
                                 <a
-                                    class="biblioteca-carpeta__titulo carpeta-click <?php echo $carpeta_actual === "EXÁMENES" ? "activo" : ""; ?>"
+                                    class="biblioteca-carpeta__titulo <?php echo $carpeta_actual === "EXÁMENES" ? "activo" : ""; ?>"
                                     href="<?php echo limpiar_texto_doa(construir_url_recursos($id_asignatura, "EXÁMENES", $filtro_tipo, $filtro_etiqueta)); ?>">
                                     <img src="img/iconos/grey-check.svg" alt="" aria-hidden="true">
                                     EXÁMENES
@@ -528,7 +528,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
                                         $url_recurso = $recurso["url_externa"] ?: $recurso["url_archivo"];
                                         ?>
 
-                                        <div class="biblioteca-tabla-fila archivo-fila">
+                                        <div class="biblioteca-tabla-fila">
                                             <?php if ($url_recurso !== null && $url_recurso !== "") { ?>
                                                 <a href="<?php echo limpiar_texto_doa($url_recurso); ?>" class="nombre-archivo">
                                                     <?php echo limpiar_texto_doa($recurso["titulo"]); ?>
@@ -539,7 +539,7 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
                                                 </span>
                                             <?php } ?>
 
-                                            <span class="col-tipo">
+                                            <span>
                                                 <?php echo limpiar_texto_doa($tipo_visible); ?>
                                             </span>
 

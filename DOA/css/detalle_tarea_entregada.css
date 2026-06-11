@@ -294,10 +294,6 @@
   font-weight: 800;
 }
 
-.mensaje-calificacion--oculto {
-  display: none;
-}
-
 .lista-info-entrega {
   display: flex;
   flex-direction: column;

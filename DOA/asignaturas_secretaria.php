@@ -89,10 +89,10 @@ if (isset($_GET["creada"]) && $_GET["creada"] === "ok") {
 </head>
 
 <body class="pagina-doa pagina-secretaria">
-    <?php include "includes/header-doa.php"; ?>
+    <?php require_once __DIR__ . "/includes/header-doa.php"; ?>
 
     <div class="layout-doa">
-        <?php include "includes/barra-lateral-doa.php"; ?>
+        <?php require_once __DIR__ . "/includes/barra-lateral-doa.php"; ?>
 
         <main class="contenido-doa contenido-secretaria">
             <section class="cabecera-secretaria cabecera-secretaria--con-accion">
@@ -118,7 +118,7 @@ if (isset($_GET["creada"]) && $_GET["creada"] === "ok") {
                 </p>
             <?php } ?>
 
-            <section aria-label="Resumen de asignaturas" class="resumen-secretaria">
+            <section aria-label="Resumen de asignaturas" class="resumen-metricas resumen-metricas--compacto">
                 <article class="tarjeta-metrica tarjeta-metrica--principal">
                     <span>Asignaturas activas</span>
                     <strong><?php echo $total_asignaturas_activas; ?></strong>

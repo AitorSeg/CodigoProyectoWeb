@@ -108,10 +108,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 
 <body class="pagina-doa pagina-secretaria pagina-crear-asignatura-secretaria">
-    <?php include "includes/header-doa.php"; ?>
+    <?php require_once __DIR__ . "/includes/header-doa.php"; ?>
 
     <div class="layout-doa">
-        <?php include "includes/barra-lateral-doa.php"; ?>
+        <?php require_once __DIR__ . "/includes/barra-lateral-doa.php"; ?>
 
         <main class="contenido-doa contenido-secretaria">
             <section class="cabecera-secretaria">

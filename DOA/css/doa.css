@@ -184,18 +184,6 @@ a:hover {
   box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.15);
 }
 
-.text-muted {
-  color: var(--color-muted);
-}
-
-.text-soft {
-  color: var(--color-soft);
-}
-
-.hidden {
-  display: none !important;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;

@@ -119,6 +119,51 @@
 }
 
 /* Radios de Importancia */
+.contenedor-radios-importancia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.radio-importancia {
+  display: inline-flex;
+}
+
+.radio-importancia input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-importancia span {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.radio-importancia:hover span {
+  border-color: var(--color-muted);
+  color: var(--color-text);
+}
+
+.radio-importancia input:focus-visible + span {
+  outline: 2px solid rgba(var(--color-primary-rgb), 0.75);
+  outline-offset: 2px;
+}
+
 .radio-importancia.neutral input:checked + span {
   border-color: var(--color-primary);
   background: var(--color-surface-alt);

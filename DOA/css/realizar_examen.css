@@ -145,78 +145,6 @@
 }
 
 /*
-    Corrección de respuestas
-*/
-
-.pregunta-examen--correcta {
-    border-color: var(--color-success);
-}
-
-.pregunta-examen--incorrecta {
-    border-color: var(--color-error);
-}
-
-.pregunta-examen--corregida .opcion-pregunta {
-    cursor: default;
-}
-
-.pregunta-examen--corregida .opcion-pregunta:hover {
-    border-color: var(--color-border);
-    background: var(--color-bg);
-    color: var(--color-muted);
-}
-
-.opcion-pregunta--correcta {
-    border-color: var(--color-success);
-    color: var(--color-text);
-    background: var(--color-surface-alt);
-}
-
-.opcion-pregunta--correcta::after {
-    content: "Correcta";
-    margin-left: auto;
-    color: var(--color-success);
-    font-size: 10px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.opcion-pregunta--incorrecta {
-    border-color: var(--color-error);
-    color: var(--color-text);
-    background: var(--color-surface-alt);
-}
-
-.opcion-pregunta--incorrecta::after {
-    content: "Incorrecta";
-    margin-left: auto;
-    color: var(--color-error);
-    font-size: 10px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.retroalimentacion-pregunta {
-    display: none;
-    margin: var(--space-4) 0 0;
-    padding: var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-bg);
-    color: var(--color-muted);
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.pregunta-examen--corregida .retroalimentacion-pregunta {
-    display: block;
-}
-
-.retroalimentacion-pregunta strong {
-    color: var(--color-text);
-}
-
-/*
     Acciones
 */
 
@@ -229,10 +157,6 @@
     background: var(--color-surface);
     font-size: 13px;
     font-weight: 700;
-}
-
-.oculto {
-    display: none !important;
 }
 
 .acciones-examen {
@@ -328,24 +252,6 @@
     color: var(--color-muted);
     font-size: 13px;
     font-weight: 700;
-}
-
-.barra-progreso-examen {
-    width: 100%;
-    height: 6px;
-    display: block;
-    overflow: hidden;
-    border-radius: 999px;
-    background: var(--color-border);
-}
-
-.barra-progreso-examen span {
-    width: 0;
-    height: 100%;
-    display: block;
-    border-radius: 999px;
-    background: var(--color-primary);
-    transition: width 180ms ease;
 }
 
 .lista-info-examen {

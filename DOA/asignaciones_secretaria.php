@@ -253,7 +253,7 @@ $texto_estado_resumen = $asignacion_completa ? "Completa" : "Pendiente";
                 </div>
             </section>
 
-            <section aria-label="Resumen de asignaciones" class="resumen-secretaria">
+            <section aria-label="Resumen de asignaciones" class="resumen-metricas resumen-metricas--compacto">
                 <article class="tarjeta-metrica tarjeta-metrica--principal">
                     <span>Asignaturas</span>
                     <strong><?php echo count($asignaturas); ?></strong>
