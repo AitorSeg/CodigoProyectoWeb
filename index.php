@@ -37,7 +37,7 @@ $nombre_usuario = $sesion_iniciada ? $_SESSION["nombre"] : "";
             <a href="#faq">FAQ</a>
             <a href="#sobre-nosotros">Sobre Nosotros</a>
             <a href="GTI/contacto.php">Contáctanos</a>
-            <a href="GTI/catalogo.php">Catálogo de Modulos</a>
+            <a href="GTI/catalogo.php">Catálogo de Módulos</a>
         </nav>
 
         <div class="header-actions">
@@ -71,7 +71,7 @@ $nombre_usuario = $sesion_iniciada ? $_SESSION["nombre"] : "";
 
             <div class="hero-actions">
                 <!-- Botón destacado para promocionar el módulo más reciente -->
-                <a href="GTI/catalogo.php" class="module-btn">Nuestro Último Modulo</a>
+                <a href="GTI/catalogo.php" class="module-btn">Nuestro Último Módulo</a>
                 <div class="license">
                     <!-- Indicador visual de beneficios incluido con el producto -->
                     <div class="about-image">
