@@ -303,23 +303,25 @@ function calcular_progreso_demo($id_asignatura)
                             </span>
                         </div>
 
-                        <div class="tarjeta-asignatura__detalle">
-                            <span>Código</span>
-                            <strong>
-                                <?php echo limpiar_texto_doa($asignatura["codigo"]); ?>
-                            </strong>
-                        </div>
+                        <div class="tarjeta-asignatura__metadatos">
+                            <div class="tarjeta-asignatura__detalle">
+                                <span>Código</span>
+                                <strong>
+                                    <?php echo limpiar_texto_doa($asignatura["codigo"]); ?>
+                                </strong>
+                            </div>
 
-                        <div class="tarjeta-asignatura__detalle">
-                            <span>Grupo</span>
-                            <strong>
-                                <?php echo limpiar_texto_doa($asignatura["curso"]); ?>
-                                · Grupo <?php echo limpiar_texto_doa($asignatura["grupo"]); ?>
-                            </strong>
+                            <div class="tarjeta-asignatura__detalle">
+                                <span>Grupo</span>
+                                <strong>
+                                    <?php echo limpiar_texto_doa($asignatura["curso"]); ?>
+                                    · Grupo <?php echo limpiar_texto_doa($asignatura["grupo"]); ?>
+                                </strong>
+                            </div>
                         </div>
 
                         <?php if ($asignatura["descripcion"] !== null && $asignatura["descripcion"] !== "") { ?>
-                            <div class="tarjeta-asignatura__detalle">
+                            <div class="tarjeta-asignatura__detalle tarjeta-asignatura__detalle--descripcion">
                                 <span>Descripción</span>
                                 <strong>
                                     <?php echo limpiar_texto_doa($asignatura["descripcion"]); ?>

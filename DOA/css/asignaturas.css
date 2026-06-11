@@ -267,18 +267,32 @@
   background: var(--color-primary);
 }
 
-.tarjeta-asignatura:not(.tarjeta-asignatura--activa) .barra-asignatura::-webkit-progress-value {
+.tarjeta-asignatura:not(.tarjeta-asignatura--activa)
+  .barra-asignatura::-webkit-progress-value {
   background: var(--color-muted);
 }
 
-.tarjeta-asignatura:not(.tarjeta-asignatura--activa) .barra-asignatura::-moz-progress-bar {
+.tarjeta-asignatura:not(.tarjeta-asignatura--activa)
+  .barra-asignatura::-moz-progress-bar {
   background: var(--color-muted);
+}
+
+.tarjeta-asignatura__metadatos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 .tarjeta-asignatura__detalle {
+  min-width: 120px;
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+}
+
+.tarjeta-asignatura__detalle--descripcion {
+  max-width: 760px;
   margin-bottom: var(--space-5);
 }
 
@@ -383,10 +397,15 @@
 
   .tarjeta-asignatura__acciones {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
   }
 
   .boton-asignatura {
-    width: 100%;
+    width: auto;
+  }
+
+  .boton-asignatura--principal {
+    grid-column: 1 / -1;
   }
 }
