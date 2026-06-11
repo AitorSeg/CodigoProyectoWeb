@@ -37,7 +37,7 @@ $nombre_usuario = $sesion_iniciada ? $_SESSION["nombre"] : "";
             <a href="#faq">FAQ</a>
             <a href="#sobre-nosotros">Sobre Nosotros</a>
             <a href="GTI/contacto.php">Contáctanos</a>
-            <a href="GTI/catalogo.php" class="nav-active">Catálogo de Modulos</a>
+            <a href="GTI/catalogo.php">Catálogo de Modulos</a>
         </nav>
 
         <div class="header-actions">
