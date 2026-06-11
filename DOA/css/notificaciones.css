@@ -67,43 +67,6 @@
 }
 
 /*
-    Resumen
-*/
-
-.resumen-notificaciones {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-4);
-    margin-bottom: var(--space-5);
-}
-
-.tarjeta-resumen-notificacion {
-    min-height: 88px;
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-}
-
-.tarjeta-resumen-notificacion span {
-    display: block;
-    margin-bottom: var(--space-2);
-    color: var(--color-muted);
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
-
-.tarjeta-resumen-notificacion strong {
-    display: block;
-    color: var(--color-text);
-    font-size: 24px;
-    line-height: 1.1;
-    font-weight: 800;
-}
-
-/*
     Estructura principal
 */
 
@@ -443,27 +406,6 @@
 
     .boton-marcar-todas {
         width: 100%;
-    }
-
-    .resumen-notificaciones {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: var(--space-2);
-        margin-bottom: var(--space-4);
-    }
-
-    .tarjeta-resumen-notificacion {
-        min-height: 68px;
-        padding: var(--space-3);
-    }
-
-    .tarjeta-resumen-notificacion span {
-        margin-bottom: var(--space-1);
-        font-size: 10px;
-        line-height: 1.2;
-    }
-
-    .tarjeta-resumen-notificacion strong {
-        font-size: 20px;
     }
 
     .notificaciones-grid {

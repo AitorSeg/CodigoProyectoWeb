@@ -378,18 +378,18 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
 
                 <!-- Inicio resumen de exámenes -->
 
-                <section class="resumen-examenes" aria-label="Resumen de exámenes">
-                    <article class="tarjeta-resumen-examen">
+                <section class="resumen-metricas resumen-metricas--tres resumen-metricas--compacto" aria-label="Resumen de exámenes">
+                    <article class="tarjeta-metrica">
                         <span>Exámenes abiertos</span>
                         <strong><?php echo $total_abiertos; ?></strong>
                     </article>
 
-                    <article class="tarjeta-resumen-examen">
+                    <article class="tarjeta-metrica">
                         <span>Próximo examen</span>
                         <strong><?php echo limpiar_texto_doa($texto_proximo_examen); ?></strong>
                     </article>
 
-                    <article class="tarjeta-resumen-examen">
+                    <article class="tarjeta-metrica">
                         <span>Realizados</span>
                         <strong><?php echo $total_realizados; ?></strong>
                     </article>

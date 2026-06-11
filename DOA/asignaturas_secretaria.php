@@ -119,24 +119,24 @@ if (isset($_GET["creada"]) && $_GET["creada"] === "ok") {
             <?php } ?>
 
             <section aria-label="Resumen de asignaturas" class="resumen-secretaria">
-                <article class="dato-secretaria dato-secretaria--principal">
-                    <span class="dato-secretaria__label">Asignaturas activas</span>
-                    <strong class="dato-secretaria__valor"><?php echo $total_asignaturas_activas; ?></strong>
+                <article class="tarjeta-metrica tarjeta-metrica--principal">
+                    <span>Asignaturas activas</span>
+                    <strong><?php echo $total_asignaturas_activas; ?></strong>
                 </article>
 
-                <article class="dato-secretaria">
-                    <span class="dato-secretaria__label">Con profesor</span>
-                    <strong class="dato-secretaria__valor"><?php echo $total_con_profesor; ?></strong>
+                <article class="tarjeta-metrica">
+                    <span>Con profesor</span>
+                    <strong><?php echo $total_con_profesor; ?></strong>
                 </article>
 
-                <article class="dato-secretaria">
-                    <span class="dato-secretaria__label">Sin profesor</span>
-                    <strong class="dato-secretaria__valor"><?php echo $total_sin_profesor; ?></strong>
+                <article class="tarjeta-metrica">
+                    <span>Sin profesor</span>
+                    <strong><?php echo $total_sin_profesor; ?></strong>
                 </article>
 
-                <article class="dato-secretaria">
-                    <span class="dato-secretaria__label">Alumnos asignados</span>
-                    <strong class="dato-secretaria__valor"><?php echo $total_alumnos_asignados; ?></strong>
+                <article class="tarjeta-metrica">
+                    <span>Alumnos asignados</span>
+                    <strong><?php echo $total_alumnos_asignados; ?></strong>
                 </article>
             </section>
 

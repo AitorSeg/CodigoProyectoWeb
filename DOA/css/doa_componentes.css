@@ -100,25 +100,33 @@
 }
 
 /*
-    Resumen docente
+    Resumen de métricas
 */
 
-.resumen-docente {
+.resumen-metricas {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-4);
   margin-bottom: var(--space-8);
 }
 
-.resumen-docente--compacto {
+.resumen-metricas--tres {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.resumen-metricas--compacto {
   margin-bottom: var(--space-5);
 }
 
-.resumen-docente--sin-margen {
+.resumen-metricas--sin-margen {
   margin-bottom: 0;
 }
 
-.tarjeta-resumen-docente {
+.resumen-metricas--con-padding {
+  padding-inline: var(--space-8);
+}
+
+.tarjeta-metrica {
   min-height: 96px;
   padding: var(--space-5);
   border: 1px solid var(--color-border);
@@ -131,19 +139,19 @@
     transform 180ms ease;
 }
 
-.tarjeta-resumen-docente:hover {
+.tarjeta-metrica:hover {
   transform: translateY(-2px);
   border-color: var(--color-muted);
 }
 
-.tarjeta-resumen-docente--principal {
+.tarjeta-metrica--principal {
   border-color: rgba(var(--color-primary-rgb), 0.45);
   box-shadow:
     0 0 0 1px rgba(var(--color-primary-rgb), 0.08),
     0 18px 48px rgba(var(--color-primary-rgb), 0.04);
 }
 
-.tarjeta-resumen-docente span {
+.tarjeta-metrica span {
   display: block;
   margin-bottom: var(--space-3);
   color: var(--color-muted);
@@ -154,7 +162,7 @@
   letter-spacing: 0.02em;
 }
 
-.tarjeta-resumen-docente strong {
+.tarjeta-metrica strong {
   display: block;
   color: var(--color-text);
   font-size: 22px;
@@ -163,32 +171,44 @@
 }
 
 @media (max-width: 1100px) {
-  .resumen-docente {
+  .resumen-metricas {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resumen-metricas--tres {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .resumen-metricas--con-padding {
+    padding-inline: var(--space-5);
   }
 }
 
 @media (max-width: 560px) {
-  .resumen-docente {
+  .resumen-metricas,
+  .resumen-metricas--tres {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-3);
     margin-bottom: var(--space-5);
   }
 
-  .resumen-docente--sin-margen {
+  .resumen-metricas--sin-margen {
     margin-bottom: 0;
   }
 
-  .tarjeta-resumen-docente {
+  .tarjeta-metrica {
     min-height: 84px;
     padding: var(--space-4);
   }
 
-  .tarjeta-resumen-docente span {
+  .tarjeta-metrica span {
     margin-bottom: var(--space-2);
     font-size: 11px;
   }
 
-  .tarjeta-resumen-docente strong {
+  .tarjeta-metrica strong {
     font-size: 20px;
   }
 }

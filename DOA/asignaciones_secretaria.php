@@ -254,24 +254,24 @@ $texto_estado_resumen = $asignacion_completa ? "Completa" : "Pendiente";
             </section>
 
             <section aria-label="Resumen de asignaciones" class="resumen-secretaria">
-                <article class="dato-secretaria dato-secretaria--principal">
-                    <span class="dato-secretaria__label">Asignaturas</span>
-                    <strong class="dato-secretaria__valor"><?php echo count($asignaturas); ?></strong>
+                <article class="tarjeta-metrica tarjeta-metrica--principal">
+                    <span>Asignaturas</span>
+                    <strong><?php echo count($asignaturas); ?></strong>
                 </article>
 
-                <article class="dato-secretaria">
-                    <span class="dato-secretaria__label">Profesores disponibles</span>
-                    <strong class="dato-secretaria__valor"><?php echo count($profesores); ?></strong>
+                <article class="tarjeta-metrica">
+                    <span>Profesores disponibles</span>
+                    <strong><?php echo count($profesores); ?></strong>
                 </article>
 
-                <article class="dato-secretaria">
-                    <span class="dato-secretaria__label">Alumnos disponibles</span>
-                    <strong class="dato-secretaria__valor"><?php echo count($alumnos); ?></strong>
+                <article class="tarjeta-metrica">
+                    <span>Alumnos disponibles</span>
+                    <strong><?php echo count($alumnos); ?></strong>
                 </article>
 
-                <article class="dato-secretaria">
-                    <span class="dato-secretaria__label">Pendientes</span>
-                    <strong class="dato-secretaria__valor"><?php echo $total_pendientes; ?></strong>
+                <article class="tarjeta-metrica">
+                    <span>Pendientes</span>
+                    <strong><?php echo $total_pendientes; ?></strong>
                 </article>
             </section>
 

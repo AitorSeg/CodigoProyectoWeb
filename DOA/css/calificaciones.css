@@ -16,58 +16,6 @@
 }
 
 /*
-    Resumen superior
-*/
-.resumen-calificaciones {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-4);
-  margin-bottom: var(--space-8);
-}
-
-.tarjeta-resumen-nota {
-  min-height: 96px;
-  padding: var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  transition:
-    border-color 180ms ease,
-    background-color 180ms ease,
-    transform 180ms ease;
-}
-
-.tarjeta-resumen-nota:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-muted);
-}
-
-.tarjeta-resumen-nota span {
-  display: block;
-  margin-bottom: var(--space-3);
-  color: var(--color-text);
-  font-size: 14px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-.tarjeta-resumen-nota strong {
-  display: block;
-  color: var(--color-text);
-  font-size: 22px;
-  line-height: 1.1;
-  font-weight: 800;
-}
-
-.tarjeta-resumen-nota--principal {
-  border-color: rgba(var(--color-primary-rgb), 0.45);
-  box-shadow:
-    0 0 0 1px rgba(var(--color-primary-rgb), 0.08),
-    0 18px 48px rgba(var(--color-primary-rgb), 0.04);
-}
-
-/*
     Secciones
 */
 
@@ -218,26 +166,6 @@
 */
 
 @media (max-width: 900px) {
-  .resumen-calificaciones {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
-    margin-bottom: var(--space-4);
-  }
-
-  .tarjeta-resumen-nota {
-    min-height: 84px;
-    padding: var(--space-4);
-  }
-
-  .tarjeta-resumen-nota span {
-    margin-bottom: var(--space-2);
-    font-size: 12px;
-  }
-
-  .tarjeta-resumen-nota strong {
-    font-size: 20px;
-  }
-
   .cabecera-tabla-calificaciones {
     align-items: flex-start;
     flex-direction: column;

@@ -27,39 +27,6 @@
   margin: 0;
 }
 
-
-/* Tarjetas de Resumen */
-.resumen-notificaciones {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
-  padding: 0 var(--space-8);
-  margin-bottom: var(--space-6);
-}
-
-.tarjeta-resumen-noti {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-}
-
-.tarjeta-resumen-noti span {
-  display: block;
-  color: var(--color-text);
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-bottom: var(--space-3);
-}
-
-.tarjeta-resumen-noti strong {
-  display: block;
-  color: var(--color-text);
-  font-size: 24px;
-  font-weight: 800;
-}
-
 /* Layout Principal de Notificaciones */
 .notificaciones-grid {
   display: grid;
@@ -246,11 +213,6 @@
   .boton-primario-noti,
   .boton-secundario-noti {
     text-align: center;
-  }
-
-  .resumen-notificaciones {
-    grid-template-columns: 1fr;
-    padding: 0 var(--space-5);
   }
 
   .notificaciones-grid {

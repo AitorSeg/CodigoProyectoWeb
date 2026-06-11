@@ -291,23 +291,23 @@ $url_calificaciones = "calificaciones_profesor.php?id_asignatura=" . $id_asignat
                     </a>
                 </section>
 
-                <section class="resumen-docente" aria-label="Resumen de entregas">
-                    <article class="tarjeta-resumen-docente tarjeta-resumen-docente--principal">
+                <section class="resumen-metricas" aria-label="Resumen de entregas">
+                    <article class="tarjeta-metrica tarjeta-metrica--principal">
                         <span>Alumnos</span>
                         <strong><?php echo $total_alumnos; ?></strong>
                     </article>
 
-                    <article class="tarjeta-resumen-docente">
+                    <article class="tarjeta-metrica">
                         <span>Entregadas</span>
                         <strong><?php echo $total_entregadas; ?></strong>
                     </article>
 
-                    <article class="tarjeta-resumen-docente">
+                    <article class="tarjeta-metrica">
                         <span>Pendientes de revisar</span>
                         <strong><?php echo $total_pendientes_revision; ?></strong>
                     </article>
 
-                    <article class="tarjeta-resumen-docente">
+                    <article class="tarjeta-metrica">
                         <span>Calificadas</span>
                         <strong><?php echo $total_calificadas; ?></strong>
                     </article>

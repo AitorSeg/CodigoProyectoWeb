@@ -348,18 +348,18 @@ $texto_ayuda_envio = $es_profesor
 
     <!-- Inicio resumen de envío -->
 
-    <section class="resumen-notificaciones" aria-label="Resumen de envío de notificaciones">
-        <article class="tarjeta-resumen-noti">
+    <section class="resumen-metricas resumen-metricas--tres resumen-metricas--compacto resumen-metricas--con-padding" aria-label="Resumen de envío de notificaciones">
+        <article class="tarjeta-metrica">
             <span>Estado</span>
             <strong><?php echo limpiar_texto_doa($texto_estado_envio); ?></strong>
         </article>
 
-        <article class="tarjeta-resumen-noti">
+        <article class="tarjeta-metrica">
             <span>Destinatarios</span>
             <strong><?php echo limpiar_texto_doa($texto_destinatarios_envio); ?></strong>
         </article>
 
-        <article class="tarjeta-resumen-noti">
+        <article class="tarjeta-metrica">
             <span>Asignaturas</span>
             <strong><?php echo $total_asignaturas_envio; ?></strong>
         </article>

@@ -114,9 +114,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         header(
             "Location: notificaciones.php?filtro="
-            . urlencode($filtro_redireccion)
-            . "&id_notificacion="
-            . $id_notificacion_post
+                . urlencode($filtro_redireccion)
+                . "&id_notificacion="
+                . $id_notificacion_post
         );
         exit;
     }
@@ -242,6 +242,7 @@ if (!$notificacion_detalle && count($notificaciones) > 0) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Inicio metadatos y estilos -->
 
@@ -305,18 +306,18 @@ if (!$notificacion_detalle && count($notificaciones) > 0) {
 
             <!-- Inicio resumen -->
 
-            <section class="resumen-notificaciones" aria-label="Resumen de notificaciones">
-                <article class="tarjeta-resumen-notificacion">
+            <section class="resumen-metricas resumen-metricas--tres resumen-metricas--compacto" aria-label="Resumen de notificaciones">
+                <article class="tarjeta-metrica tarjeta-metrica--principal">
                     <span>No leídas</span>
                     <strong><?php echo $total_no_leidas; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-notificacion">
+                <article class="tarjeta-metrica">
                     <span>Tareas</span>
                     <strong><?php echo $total_tareas; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-notificacion">
+                <article class="tarjeta-metrica">
                     <span>Avisos</span>
                     <strong><?php echo $total_avisos; ?></strong>
                 </article>
@@ -479,8 +480,8 @@ if (!$notificacion_detalle && count($notificaciones) > 0) {
                         $tipo_detalle = obtener_texto_tipo_notificacion($notificacion_detalle["tipo_notificacion"]);
                         $creador_detalle = trim(
                             (string) $notificacion_detalle["creador_nombre"]
-                            . " "
-                            . (string) $notificacion_detalle["creador_apellidos"]
+                                . " "
+                                . (string) $notificacion_detalle["creador_apellidos"]
                         );
 
                         if ($creador_detalle === "") {
@@ -545,4 +546,5 @@ if (!$notificacion_detalle && count($notificaciones) > 0) {
         <!-- Fin contenido principal -->
     </div>
 </body>
+
 </html>

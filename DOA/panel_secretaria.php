@@ -148,31 +148,31 @@ $asignaturas_pendientes = $consulta_asignaturas_pendientes->fetchAll();
                 </div>
             </section>
 
-            <section class="resumen-secretaria" aria-label="Resumen de Secretaría">
-                <article class="dato-secretaria dato-secretaria--principal">
-                    <span class="dato-secretaria__label">Asignaturas creadas</span>
-                    <strong class="dato-secretaria__valor">
+            <section class="resumen-metricas resumen-metricas--compacto" aria-label="Resumen de Secretaría">
+                <article class="tarjeta-metrica tarjeta-metrica--principal">
+                    <span>Asignaturas creadas</span>
+                    <strong>
                         <?php echo (int) $resumen["total_asignaturas"]; ?>
                     </strong>
                 </article>
 
-                <article class="dato-secretaria">
-                    <span class="dato-secretaria__label">Profesores asignados</span>
-                    <strong class="dato-secretaria__valor">
+                <article class="tarjeta-metrica">
+                    <span>Profesores asignados</span>
+                    <strong>
                         <?php echo (int) $resumen["total_profesores_asignados"]; ?>
                     </strong>
                 </article>
 
-                <article class="dato-secretaria">
-                    <span class="dato-secretaria__label">Alumnos matriculados</span>
-                    <strong class="dato-secretaria__valor">
+                <article class="tarjeta-metrica">
+                    <span>Alumnos matriculados</span>
+                    <strong>
                         <?php echo (int) $resumen["total_alumnos_matriculados"]; ?>
                     </strong>
                 </article>
 
-                <article class="dato-secretaria">
-                    <span class="dato-secretaria__label">Asignaciones pendientes</span>
-                    <strong class="dato-secretaria__valor">
+                <article class="tarjeta-metrica">
+                    <span>Asignaciones pendientes</span>
+                    <strong>
                         <?php echo (int) $resumen["total_pendientes"]; ?>
                     </strong>
                 </article>

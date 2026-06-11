@@ -387,23 +387,23 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
 
             <h2 class="titulo-seccion-calificaciones">Calificaciones de la asignatura</h2>
 
-            <section aria-label="Resumen de calificaciones" class="resumen-calificaciones">
-                <article class="tarjeta-resumen-nota tarjeta-resumen-nota--principal">
+            <section aria-label="Resumen de calificaciones" class="resumen-metricas">
+                <article class="tarjeta-metrica tarjeta-metrica--principal">
                     <span>Nota media</span>
                     <strong><?php echo limpiar_texto_doa($nota_media); ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-nota">
+                <article class="tarjeta-metrica">
                     <span>Nota media exámenes</span>
                     <strong><?php echo limpiar_texto_doa($nota_media_examenes); ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-nota">
+                <article class="tarjeta-metrica">
                     <span>Nota media tareas</span>
                     <strong><?php echo limpiar_texto_doa($nota_media_tareas); ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-nota">
+                <article class="tarjeta-metrica">
                     <span>Nota media prácticas</span>
                     <strong><?php echo limpiar_texto_doa($nota_media_practicas); ?></strong>
                 </article>

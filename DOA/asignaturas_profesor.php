@@ -267,23 +267,23 @@ $asignaturas_profesor = $consulta_asignaturas->fetchAll();
 
             <!-- Inicio resumen general -->
 
-            <section class="resumen-docente resumen-docente--compacto" aria-label="Resumen general del profesor">
-                <article class="tarjeta-resumen-docente tarjeta-resumen-docente--principal">
+            <section class="resumen-metricas resumen-metricas--compacto" aria-label="Resumen general del profesor">
+                <article class="tarjeta-metrica tarjeta-metrica--principal">
                     <span>Asignaturas activas</span>
                     <strong><?php echo $total_asignaturas; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-docente">
+                <article class="tarjeta-metrica">
                     <span>Alumnos totales</span>
                     <strong><?php echo $total_alumnos; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-docente">
+                <article class="tarjeta-metrica">
                     <span>Entregas pendientes</span>
                     <strong><?php echo $total_entregas_pendientes; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-docente">
+                <article class="tarjeta-metrica">
                     <span>Próximos exámenes</span>
                     <strong><?php echo $total_proximos_examenes; ?></strong>
                 </article>

@@ -9,52 +9,6 @@
 }
 
 /*
-    Resumen superior
-*/
-
-.resumen-examenes {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
-  margin-bottom: var(--space-5);
-}
-
-.tarjeta-resumen-examen {
-  min-height: 92px;
-  padding: var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  transition:
-    border-color 180ms ease,
-    background-color 180ms ease,
-    transform 180ms ease;
-}
-
-.tarjeta-resumen-examen:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-muted);
-}
-
-.tarjeta-resumen-examen span {
-  display: block;
-  margin-bottom: var(--space-3);
-  color: var(--color-text);
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-.tarjeta-resumen-examen strong {
-  display: block;
-  color: var(--color-text);
-  font-size: 22px;
-  line-height: 1.1;
-  font-weight: 800;
-}
-
-/*
     Examen destacado
 */
 
@@ -377,29 +331,6 @@
   .contenido-examenes {
     padding: var(--space-5);
     padding-bottom: calc(72px + var(--space-5));
-  }
-
-  .resumen-examenes {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-2);
-    margin-bottom: var(--space-4);
-  }
-
-  .tarjeta-resumen-examen {
-    min-height: 68px;
-    padding: var(--space-3);
-    border-radius: var(--radius-sm);
-  }
-
-  .tarjeta-resumen-examen span {
-    margin-bottom: var(--space-1);
-    font-size: 10px;
-    line-height: 1.2;
-    color: var(--color-muted);
-  }
-
-  .tarjeta-resumen-examen strong {
-    font-size: 18px;
   }
 
   .examen-destacado {

@@ -345,23 +345,23 @@ $examenes_laterales = $consulta_examenes_laterales->fetchAll();
                 </div>
             </section>
 
-            <section class="resumen-docente resumen-docente--sin-margen" aria-label="Resumen general del profesor">
-                <article class="tarjeta-resumen-docente tarjeta-resumen-docente--principal">
+            <section class="resumen-metricas resumen-metricas--sin-margen" aria-label="Resumen general del profesor">
+                <article class="tarjeta-metrica tarjeta-metrica--principal">
                     <span>Asignaturas</span>
                     <strong><?php echo $total_asignaturas; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-docente">
+                <article class="tarjeta-metrica">
                     <span>Tareas activas</span>
                     <strong><?php echo $total_tareas_activas; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-docente">
+                <article class="tarjeta-metrica">
                     <span>Entregas pendientes</span>
                     <strong><?php echo $total_entregas_pendientes; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-docente">
+                <article class="tarjeta-metrica">
                     <span>Recursos publicados</span>
                     <strong><?php echo $total_recursos_publicados; ?></strong>
                 </article>
