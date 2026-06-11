@@ -347,7 +347,6 @@ $url_examenes = "examenes_profesor.php?id_asignatura=" . $id_asignatura;
 $url_calificaciones = "calificaciones_profesor.php?id_asignatura=" . $id_asignatura;
 $url_crear_tarea = "crear_tarea.php?id_asignatura=" . $id_asignatura;
 $url_crear_examen = "crear_examen.php?id_asignatura=" . $id_asignatura;
-$url_vista_alumno = "detalle_asignatura.php?id_asignatura=" . $id_asignatura;
 
 // Fin datos derivados
 ?>
@@ -579,10 +578,6 @@ $url_vista_alumno = "detalle_asignatura.php?id_asignatura=" . $id_asignatura;
 
                                 <a class="boton-docente-detalle" href="<?php echo limpiar_texto_doa($url_crear_examen); ?>">
                                     Crear examen
-                                </a>
-
-                                <a class="boton-docente-detalle" href="<?php echo limpiar_texto_doa($url_vista_alumno); ?>">
-                                    Vista alumno
                                 </a>
                             </div>
                         </div>

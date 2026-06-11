@@ -338,6 +338,7 @@
   .fila-tarea {
     min-width: 820px;
   }
+}
 
 @media (max-width: 900px) {
   /*
@@ -389,7 +390,9 @@
   .proxima-entrega__tiempo {
     margin: 0;
     text-align: left;
-    font-size: 0;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.1;
   }
 
   .proxima-entrega__tiempo::before {
@@ -399,15 +402,6 @@
     color: var(--color-text);
     font-size: 11px;
     font-weight: 500;
-  }
-
-  .proxima-entrega__tiempo::after {
-    content: "3 días";
-    display: block;
-    color: var(--color-text);
-    font-size: 20px;
-    font-weight: 800;
-    line-height: 1;
   }
 
   .boton-ver-detalles {
@@ -446,5 +440,4 @@
   .fila-tarea p {
     font-size: 14px;
   }
-}
 }

@@ -347,6 +347,10 @@ $url_calificaciones = "calificaciones.php?id_asignatura=" . $id_asignatura;
                                         Tareas
                                     </a>
 
+                                    <a href="<?php echo limpiar_texto_doa($url_examenes); ?>">
+                                        Exámenes
+                                    </a>
+
                                     <a href="<?php echo limpiar_texto_doa($url_calificaciones); ?>">
                                         Calificaciones
                                     </a>
