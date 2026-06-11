@@ -59,20 +59,6 @@
   transform: translateY(1px);
 }
 
-.resumen-examenes-profesor {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-4);
-  margin-bottom: var(--space-8);
-}
-
-.tarjeta-resumen-examen--principal {
-  border-color: rgba(var(--color-primary-rgb), 0.45);
-  box-shadow:
-    0 0 0 1px rgba(var(--color-primary-rgb), 0.08),
-    0 18px 48px rgba(var(--color-primary-rgb), 0.04);
-}
-
 .seccion-examenes-profesor {
   display: flex;
   flex-direction: column;
@@ -178,10 +164,6 @@
 }
 
 @media (max-width: 1100px) {
-  .resumen-examenes-profesor {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .cabecera-seccion-profesor {
     align-items: flex-start;
     flex-direction: column;
@@ -189,11 +171,6 @@
 }
 
 @media (max-width: 560px) {
-  .resumen-examenes-profesor {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-  }
-
   .boton-profesor-principal {
     width: 100%;
   }

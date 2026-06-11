@@ -378,23 +378,23 @@ $url_calificaciones = "calificaciones_profesor.php?id_asignatura=" . $id_asignat
                 </p>
             <?php } ?>
 
-            <section class="resumen-examenes-profesor" aria-label="Resumen de exámenes">
-                <article class="tarjeta-resumen-examen tarjeta-resumen-examen--principal">
+            <section class="resumen-docente" aria-label="Resumen de exámenes">
+                <article class="tarjeta-resumen-docente tarjeta-resumen-docente--principal">
                     <span>Exámenes publicados</span>
                     <strong><?php echo $total_examenes_publicados; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-examen">
+                <article class="tarjeta-resumen-docente">
                     <span>Abiertos</span>
                     <strong><?php echo $total_examenes_abiertos; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-examen">
+                <article class="tarjeta-resumen-docente">
                     <span>Realizados</span>
                     <strong><?php echo $total_examenes_realizados; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-examen">
+                <article class="tarjeta-resumen-docente">
                     <span>Sin calificar</span>
                     <strong><?php echo $total_sin_calificar; ?></strong>
                 </article>

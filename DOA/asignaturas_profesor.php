@@ -267,25 +267,25 @@ $asignaturas_profesor = $consulta_asignaturas->fetchAll();
 
             <!-- Inicio resumen general -->
 
-            <section class="resumen-asignaturas-profesor" aria-label="Resumen general del profesor">
-                <article class="dato-asignaturas-profesor dato-asignaturas-profesor--principal">
-                    <span class="dato-asignaturas-profesor__label">Asignaturas activas</span>
-                    <strong class="dato-asignaturas-profesor__valor"><?php echo $total_asignaturas; ?></strong>
+            <section class="resumen-docente resumen-docente--compacto" aria-label="Resumen general del profesor">
+                <article class="tarjeta-resumen-docente tarjeta-resumen-docente--principal">
+                    <span>Asignaturas activas</span>
+                    <strong><?php echo $total_asignaturas; ?></strong>
                 </article>
 
-                <article class="dato-asignaturas-profesor">
-                    <span class="dato-asignaturas-profesor__label">Alumnos totales</span>
-                    <strong class="dato-asignaturas-profesor__valor"><?php echo $total_alumnos; ?></strong>
+                <article class="tarjeta-resumen-docente">
+                    <span>Alumnos totales</span>
+                    <strong><?php echo $total_alumnos; ?></strong>
                 </article>
 
-                <article class="dato-asignaturas-profesor">
-                    <span class="dato-asignaturas-profesor__label">Entregas pendientes</span>
-                    <strong class="dato-asignaturas-profesor__valor"><?php echo $total_entregas_pendientes; ?></strong>
+                <article class="tarjeta-resumen-docente">
+                    <span>Entregas pendientes</span>
+                    <strong><?php echo $total_entregas_pendientes; ?></strong>
                 </article>
 
-                <article class="dato-asignaturas-profesor">
-                    <span class="dato-asignaturas-profesor__label">Próximos exámenes</span>
-                    <strong class="dato-asignaturas-profesor__valor"><?php echo $total_proximos_examenes; ?></strong>
+                <article class="tarjeta-resumen-docente">
+                    <span>Próximos exámenes</span>
+                    <strong><?php echo $total_proximos_examenes; ?></strong>
                 </article>
             </section>
 

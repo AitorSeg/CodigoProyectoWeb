@@ -455,23 +455,23 @@ $url_crear_examen = "crear_examen.php?id_asignatura=" . $id_asignatura;
 
                     <!-- Inicio resumen docente -->
 
-                    <section class="resumen-docente-asignatura" aria-label="Resumen docente de la asignatura">
-                        <article class="dato-docente-asignatura dato-docente-asignatura--principal">
+                    <section class="resumen-docente resumen-docente--compacto" aria-label="Resumen docente de la asignatura">
+                        <article class="tarjeta-resumen-docente tarjeta-resumen-docente--principal">
                             <span>Tareas activas</span>
                             <strong><?php echo $total_tareas_activas; ?></strong>
                         </article>
 
-                        <article class="dato-docente-asignatura">
+                        <article class="tarjeta-resumen-docente">
                             <span>Entregas pendientes</span>
                             <strong><?php echo $total_entregas_pendientes; ?></strong>
                         </article>
 
-                        <article class="dato-docente-asignatura">
+                        <article class="tarjeta-resumen-docente">
                             <span>Recursos publicados</span>
                             <strong><?php echo $total_recursos_publicados; ?></strong>
                         </article>
 
-                        <article class="dato-docente-asignatura">
+                        <article class="tarjeta-resumen-docente">
                             <span>Próximo examen</span>
                             <strong><?php echo limpiar_texto_doa($fecha_proximo_examen); ?></strong>
                         </article>

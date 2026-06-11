@@ -345,25 +345,26 @@ $examenes_laterales = $consulta_examenes_laterales->fetchAll();
                 </div>
             </section>
 
-            <section class="resumen-panel-profesor" aria-label="Resumen general del profesor">
-                <article class="dato-panel-profesor">
-                    <span class="dato-panel-profesor__label">Asignaturas</span>
-                    <strong class="dato-panel-profesor__valor"><?php echo $total_asignaturas; ?></strong>
+            <section class="resumen-docente resumen-docente--sin-margen" aria-label="Resumen general del profesor">
+                <article class="tarjeta-resumen-docente tarjeta-resumen-docente--principal">
+                    <span>Asignaturas</span>
+                    <strong><?php echo $total_asignaturas; ?></strong>
                 </article>
 
-                <article class="dato-panel-profesor">
-                    <span class="dato-panel-profesor__label">Tareas activas</span>
-                    <strong class="dato-panel-profesor__valor"><?php echo $total_tareas_activas; ?></strong>
+                <article class="tarjeta-resumen-docente">
+                    <span>Tareas activas</span>
+                    <strong><?php echo $total_tareas_activas; ?></strong>
                 </article>
 
-                <article class="dato-panel-profesor">
-                    <span class="dato-panel-profesor__label">Entregas pendientes</span>
-                    <strong class="dato-panel-profesor__valor"><?php echo $total_entregas_pendientes; ?></strong>
+                <article class="tarjeta-resumen-docente">
+                    <span>Entregas pendientes</span>
+                    <strong><?php echo $total_entregas_pendientes; ?></strong>
                 </article>
 
-                <article class="dato-panel-profesor">
-                    <span class="dato-panel-profesor__label">Recursos publicados</span>
-                    <strong class="dato-panel-profesor__valor"><?php echo $total_recursos_publicados; ?></strong>
+                <article class="tarjeta-resumen-docente">
+                    <span>Recursos publicados</span>
+                    <strong><?php echo $total_recursos_publicados; ?></strong>
+                </article>
                 </article>
             </section>
 

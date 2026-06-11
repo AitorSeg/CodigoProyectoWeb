@@ -360,23 +360,23 @@ $url_calificaciones = "calificaciones_profesor.php?id_asignatura=" . $id_asignat
 
             <h2 class="titulo-seccion-calificaciones">Calificaciones del grupo</h2>
 
-            <section class="resumen-calificaciones" aria-label="Resumen de calificaciones del grupo">
-                <article class="tarjeta-resumen-nota tarjeta-resumen-nota--principal">
+            <section class="resumen-docente" aria-label="Resumen de calificaciones del grupo">
+                <article class="tarjeta-resumen-docente tarjeta-resumen-docente--principal">
                     <span>Nota media del grupo</span>
                     <strong><?php echo limpiar_texto_doa($nota_media_grupo); ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-nota">
+                <article class="tarjeta-resumen-docente">
                     <span>Alumnos aprobados</span>
                     <strong><?php echo $total_aprobados; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-nota">
+                <article class="tarjeta-resumen-docente">
                     <span>Pendientes de corregir</span>
                     <strong><?php echo $total_pendientes_correccion; ?></strong>
                 </article>
 
-                <article class="tarjeta-resumen-nota">
+                <article class="tarjeta-resumen-docente">
                     <span>Alumnos suspendidos</span>
                     <strong><?php echo $total_suspendidos; ?></strong>
                 </article>

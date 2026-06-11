@@ -2,56 +2,6 @@
   min-height: 100vh;
 }
 
-.resumen-docente-asignatura {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-4);
-  margin-bottom: var(--space-5);
-}
-
-.dato-docente-asignatura {
-  min-height: 96px;
-  padding: var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  transition:
-    border-color 180ms ease,
-    background-color 180ms ease,
-    box-shadow 180ms ease,
-    transform 180ms ease;
-}
-
-.dato-docente-asignatura:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-muted);
-}
-
-.dato-docente-asignatura--principal {
-  border-color: rgba(var(--color-primary-rgb), 0.45);
-  box-shadow:
-    0 0 0 1px rgba(var(--color-primary-rgb), 0.08),
-    0 18px 48px rgba(var(--color-primary-rgb), 0.04);
-}
-
-.dato-docente-asignatura span {
-  display: block;
-  margin-bottom: var(--space-3);
-  color: var(--color-text);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.dato-docente-asignatura strong {
-  display: block;
-  color: var(--color-text);
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1.1;
-}
-
 .acciones-docente-asignatura {
   display: flex;
   flex-wrap: wrap;
@@ -119,23 +69,7 @@
   border-bottom: 0;
 }
 
-@media (max-width: 1100px) {
-  .resumen-docente-asignatura {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 560px) {
-  .resumen-docente-asignatura {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-  }
-
-  .dato-docente-asignatura {
-    min-height: 84px;
-    padding: var(--space-4);
-  }
-
   .acciones-docente-asignatura {
     flex-direction: column;
   }

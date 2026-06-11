@@ -42,60 +42,6 @@
 }
 
 /*
-    Resumen superior
-*/
-
-.resumen-asignaturas-profesor {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-4);
-  margin-bottom: var(--space-5);
-}
-
-.dato-asignaturas-profesor {
-  min-height: 88px;
-  padding: var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  transition:
-    border-color 180ms ease,
-    background-color 180ms ease,
-    box-shadow 180ms ease,
-    transform 180ms ease;
-}
-
-.dato-asignaturas-profesor:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-muted);
-}
-
-.dato-asignaturas-profesor--principal {
-  border-color: rgba(var(--color-primary-rgb), 0.45);
-  box-shadow:
-    0 0 0 1px rgba(var(--color-primary-rgb), 0.08),
-    0 18px 48px rgba(var(--color-primary-rgb), 0.04);
-}
-
-.dato-asignaturas-profesor__label {
-  display: block;
-  margin-bottom: var(--space-2);
-  color: var(--color-muted);
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.dato-asignaturas-profesor__valor {
-  display: block;
-  color: var(--color-text);
-  font-size: 24px;
-  font-weight: 800;
-  line-height: 1.1;
-}
-
-/*
     Grid de asignaturas
 */
 
@@ -294,21 +240,6 @@
     font-size: 28px;
   }
 
-  .resumen-asignaturas-profesor {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
-    margin-bottom: var(--space-4);
-  }
-
-  .dato-asignaturas-profesor {
-    min-height: 72px;
-    padding: var(--space-4);
-  }
-
-  .dato-asignaturas-profesor__valor {
-    font-size: 20px;
-  }
-
   .tarjeta-asignatura-docente {
     gap: var(--space-3);
     padding: var(--space-4);
@@ -348,27 +279,6 @@
 }
 
 @media (max-width: 560px) {
-  .resumen-asignaturas-profesor {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-2);
-  }
-
-  .dato-asignaturas-profesor {
-    min-height: 86px;
-    padding: var(--space-3);
-  }
-
-  .dato-asignaturas-profesor__label {
-    margin-bottom: var(--space-1);
-    font-size: 9px;
-    line-height: 1.25;
-    letter-spacing: 0.02em;
-  }
-
-  .dato-asignaturas-profesor__valor {
-    font-size: 22px;
-  }
-
   .tarjeta-asignatura-docente__stats {
     grid-template-columns: 1fr 1fr;
   }
